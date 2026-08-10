@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 130" width="100%" height="100%">
+  <!-- Coat of Arms Emblem (Rio Grande do Sul) -->
+  <g transform="translate(100, 38)" text-anchor="middle">
+    <!-- Starburst Spears Top -->
+    <path d="M 0 -34 L -3 -18 L 3 -18 Z M -8 -32 L -8 -18 M 8 -32 L 8 -18 M -16 -28 L -11 -16 M 16 -28 L 11 -16" stroke="#D97706" stroke-width="1.8" fill="#F59E0B"/>
+    
+    <!-- Central Elliptical Shield -->
+    <ellipse cx="0" cy="-2" rx="20" ry="24" fill="#059669" stroke="#D97706" stroke-width="2.5"/>
+    <!-- Diagonal Tricolor Stripes inside Shield: Green, Red, Yellow -->
+    <path d="M -18 -10 Q 0 -18 18 -10 L 18 2 Q 0 -6 -18 2 Z" fill="#DC2626"/>
+    <path d="M -16 3 Q 0 -5 16 3 L 16 16 Q 0 8 -16 16 Z" fill="#FBBF24"/>
+    
+    <!-- Center White Oval Badge -->
+    <ellipse cx="0" cy="-2" rx="8" ry="10" fill="#FFFFFF" stroke="#059669" stroke-width="1.2"/>
+    <path d="M -4 2 L 0 -6 L 4 2 L 0 0 Z" fill="#1E3A8A"/>
+
+    <!-- Flags Drape (Tricolor RS Flags on Sides) -->
+    <path d="M -20 -12 C -36 -10, -38 12, -22 18 Z" fill="#DC2626"/>
+    <path d="M -22 -16 C -40 -12, -42 16, -24 22 Z" fill="#FBBF24"/>
+    <path d="M 20 -12 C 36 -10, 38 12, 22 18 Z" fill="#059669"/>
+    <path d="M 22 -16 C 40 -12, 42 16, 24 22 Z" fill="#DC2626"/>
+
+    <!-- Scroll Ribbon at Base -->
+    <path d="M -30 22 Q 0 28 30 22 Q 34 30 26 30 Q 0 34 -26 30 Z" fill="#D97706" stroke="#78350F" stroke-width="1"/>
+    <text x="0" y="28" font-family="'Inter', sans-serif" font-weight="900" font-size="4" fill="#FFFFFF" letter-spacing="0.8">LIBERDADE IGUALDADE HUMANIDADE</text>
+  </g>
+
+  <!-- Official Typography Base -->
+  <g text-anchor="middle" font-family="'Inter', 'Arial', sans-serif">
+    <text x="100" y="94" font-weight="700" font-size="9" fill="#1E293B" letter-spacing="1.2">GOVERNO DO ESTADO</text>
+    <text x="100" y="108" font-weight="900" font-size="13" fill="#0F172A" letter-spacing="0.5">RIO GRANDE DO SUL</text>
+    <text x="100" y="119" font-weight="600" font-size="7" fill="#64748B" letter-spacing="1.8">SECRETARIA DA SAÚDE</text>
+  </g>
+</svg>
