@@ -1,0 +1,9 @@
+# Materiais de origem / trabalho — não fazem parte do dashboard publicado
+/SC Bagé/
+app_before_merge_backup.js
+
+# Backups e temporários
+*_backup.js
+_ctz_preview/
+.DS_Store
+Thumbs.db
