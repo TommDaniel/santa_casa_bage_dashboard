@@ -4888,3 +4888,113 @@ table {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   PRINT MUTIRÃO STYLES
+   ========================================================================== */
+@media print {
+  @page {
+    size: portrait;
+    margin: 0.4cm;
+  }
+  
+  body.printing-mutirao {
+    background: var(--bg-main) !important;
+    color: var(--text-main) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body.printing-mutirao * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body.printing-mutirao .sidebar,
+  body.printing-mutirao .top-header,
+  body.printing-mutirao .no-print,
+  body.printing-mutirao button,
+  body.printing-mutirao .btn-icon,
+  body.printing-mutirao a {
+    display: none !important;
+  }
+  body.printing-mutirao .main-content {
+    margin: 0 !important;
+    margin-left: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  body.printing-mutirao .tab-pane:not(#tab-sus-gaucho-mutirao) {
+    display: none !important;
+  }
+  body.printing-mutirao #tab-sus-gaucho-mutirao {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 10px !important;
+  }
+  
+  body.printing-mutirao .print-header {
+    display: flex !important;
+  }
+  
+  body.printing-mutirao #tab-sus-gaucho-mutirao h2 {
+    font-size: 1.15rem !important;
+    margin: 0 !important;
+  }
+  body.printing-mutirao #tab-sus-gaucho-mutirao h3 {
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+  }
+  body.printing-mutirao #tab-sus-gaucho-mutirao .card {
+    margin-bottom: 0.35rem !important;
+    padding: 0.5rem !important;
+    border: 1px solid var(--border-color) !important;
+    background: var(--bg-card) !important;
+    color: var(--text-main) !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    border-radius: var(--radius-sm) !important;
+  }
+  body.printing-mutirao #tab-sus-gaucho-mutirao .grid-4 {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.35rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+  
+  body.printing-mutirao #tab-sus-gaucho-mutirao .grid-4 .card {
+    padding: 0.4rem !important;
+  }
+  body.printing-mutirao #tab-sus-gaucho-mutirao .grid-4 .card div:first-child {
+    font-size: 8px !important;
+  }
+  body.printing-mutirao #tab-sus-gaucho-mutirao .grid-4 .card div:nth-child(2) {
+    font-size: 13px !important;
+  }
+  body.printing-mutirao #tab-sus-gaucho-mutirao .data-table th,
+  body.printing-mutirao #tab-sus-gaucho-mutirao .data-table td {
+    padding: 3px 5px !important;
+    font-size: 9px !important;
+  }
+  
+  /* Reduzir fonte das observações na impressão */
+  body.printing-mutirao #tab-sus-gaucho-mutirao .card:last-of-type {
+    font-size: 0.65rem !important;
+    line-height: 1.35 !important;
+    padding: 0.5rem 0.8rem !important;
+  }
+  body.printing-mutirao #tab-sus-gaucho-mutirao .card:last-of-type h3 {
+    font-size: 0.78rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+  body.printing-mutirao #tab-sus-gaucho-mutirao .card:last-of-type ol {
+    gap: 0.15rem !important;
+    margin-left: 1.1rem !important;
+  }
+  body.printing-mutirao #tab-sus-gaucho-mutirao .card:last-of-type div {
+    padding: 0.4rem 0.6rem !important;
+    margin-top: 0.2rem !important;
+  }
+}
