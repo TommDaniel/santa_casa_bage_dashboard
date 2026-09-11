@@ -1,0 +1,36 @@
+# Histórico de Atualizações & Roadmap do Projeto
+
+Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
+
+---
+
+## [2026-09-11] - Padronização CISA, Simplificação de Rateio e Catálogo Técnico
+
+### 🎯 O que foi feito:
+1. **Padronização das Tabelas Financeiras CISA**:
+   - Inclusão das colunas **QTD** e **TOTAL/MÊS** na tabela de procedimentos pactuados, garantindo paridade total com a tabela de custos operacionais fixos.
+   - Remoção de botões isolados de adicionar procedimentos/custos que poluíam o cabeçalho das tabelas.
+2. **Catálogo de Procedimentos Oftalmológicos com SIGTAP**:
+   - Criação de uma base estruturada com todos os 15 procedimentos oftalmológicos do Contrato CISA (`window.cisaProcedimentosDescricoes`).
+   - Mapeamento de cada procedimento para o código oficial correspondente da **Tabela SIGTAP / SUS**.
+   - Redação de descrições clínicas técnicas e de **Finalidades Clínicas** específicas para cada exame.
+   - Inclusão de campo de busca dinâmico em tempo real (`#cisaProcCatalogSearch`) para filtrar por nome, código CISA ou código SIGTAP.
+3. **Limpeza da Seção Antiga de Termos**:
+   - Remoção completa do bloco obsoleto com os 6 cards genéricos de termos e conformidade que constava acima do catálogo.
+   - O catálogo passou a ser o cabeçalho e corpo principal do card.
+4. **Simplificação das Regras de Negociação / Modelos de Rateio CISA**:
+   - Removidos os cards **Mínimo Garantido**, **Rateio 70% / 30%** e **Construção Livre**.
+   - Mantidos como modelos operacionais: **50% Margem Hospitalar** (ativo por padrão) e **Rateio 80% / 20%**.
+   - Removida a caixa amarela de parâmetros manuais intermediários (`#cisaRuleParams`) a pedido do usuário.
+5. **Tipografia e Diagramação dos Cards de Procedimentos**:
+   - Aplicação de alinhamento justificado (`text-align: justify; text-justify: inter-word; hyphens: auto;`) na descrição e finalidade clínica.
+   - Redução dos tamanhos de fonte (`0.74rem` no texto, `0.70rem` na finalidade e `0.84rem` no título) e redução do padding do card para deixá-lo menor, mais compacto e harmonioso.
+6. **Criação da Pasta `/docs`**:
+   - Instituído o padrão de documentação para continuidade entre IAs com `README.md`, `ARCHITECTURE.md`, `MODULES.md` e `CHANGELOG.md`.
+
+---
+
+## 🔮 Backlog de Próximas Tarefas:
+- [ ] Conectar os modelos de rateio (50% Margem e 80/20) para calcular e atualizar dinamicamente a apuração nos painéis Hospital vs. Prestador.
+- [ ] Expandir o cálculo automático do superávit operacional com base na quantidade e custos informados.
+- [ ] Exportação consolidada de relatórios de viabilidade CISA em PDF formatado.
