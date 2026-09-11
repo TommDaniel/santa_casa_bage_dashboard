@@ -2377,6 +2377,144 @@ window.cisaSimState = {
   ]
 };
 
+window.cisaProcedimentosDescricoes = [
+  {
+    cod: '00483',
+    nome: 'Consulta especializada em oftalmologia (c/ mapeam. + tonome)',
+    grupo: 'Grupo 01 · Consultas',
+    sigtap: '03.01.01.007-2',
+    icon: 'stethoscope',
+    descricao: 'Avaliação médica oftalmológica especializada ambulatorial completa. Compreende anamnese clínica detalhada, exame de acuidade visual com refração subjetiva/objetiva, biomicroscopia do segmento anterior em lâmpada de fenda, aferição da pressão intraocular por tonometria de aplanação e avaliação minuciosa dos meios transparentes e fundo de olho (mapeamento/fundoscopia).',
+    finalidade: 'Diagnóstico clínico precoce de afecções oculares, triagem e prescrição óptica de ametropias, estadiamento clínico e indicação de conduta cirúrgica especializada.'
+  },
+  {
+    cod: '00257',
+    nome: 'Biometria ultrassônica (01 olho)',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.11.06.001-1',
+    icon: 'eye',
+    descricao: 'Exame de ecografia ocular diagnóstica (Modo A) que mensura com precisão micrométrica as dimensões anatômicas do globo ocular, determinando o diâmetro axial anteroposterior, espessura do cristalino e a profundidade da câmara anterior.',
+    finalidade: 'Cálculo biométrico indispensável para a escolha do poder dióptrico exato da Lente Intraocular (LIO) no planejamento cirúrgico da facoemulsificação (catarata).'
+  },
+  {
+    cod: '00256',
+    nome: 'Campimetria computadorizada (01 olho)',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.11.06.003-8',
+    icon: 'target',
+    descricao: 'Exame psicofísico quantitativo automatizado que mapeia minuciosamente a percepção e sensibilidade da retina a estímulos luminosos em múltiplos pontos do campo visual central e periférico do paciente, quantificando escotomas e depressões retinianas.',
+    finalidade: 'Padrão-ouro mandatório para detecção precoce, estadiamento e monitoramento contínuo da perda de campo visual no glaucoma e em neuropatias ópticas.'
+  },
+  {
+    cod: '00269',
+    nome: 'Fundoscopia',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.11.06.010-0',
+    icon: 'eye',
+    descricao: 'Exame oftalmoscópico biomicroscópico do polo posterior ocular (fundo de olho), permitindo a visualização direta da papila do nervo óptico (escavação, rima neural), mácula retiniana, arcadas vasculares e parênquima retiniano.',
+    finalidade: 'Identificação e estadiamento de retinopatia diabética, retinopatia hipertensiva, edema ou atrofia de papila e degenerações maculares.'
+  },
+  {
+    cod: '00260',
+    nome: 'Gonioscopia',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.11.06.011-9',
+    icon: 'scan',
+    descricao: 'Exame biomicroscópico realizado com lente de contato espelhada especial (Goldmann ou Zeiss) apoiada sobre a córnea, que neutraliza o fenômeno óptico de reflexão total para visualização direta do ângulo iridocorneano e da malha trabecular.',
+    finalidade: 'Classificação anatômica mandatória entre glaucoma de ângulo aberto e glaucoma de ângulo fechado/estreito, detecção de sinéquias anteriores e neovasos angulares.'
+  },
+  {
+    cod: '00261',
+    nome: 'Mapeamento de retina (01 olho)',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.11.06.012-7',
+    icon: 'eye',
+    descricao: 'Exame detalhado de toda a extensão retiniana realizado sob midríase medicamentosa máxima, utilizando oftalmoscópio binocular indireto (OBI) e lente de alta dioptria, associado à depressão escleral para examinar a periferia extrema.',
+    finalidade: 'Inspeção completa da retina até a ora serrata, fundamental para o rastreamento e bloqueio de roturas retinianas, degenerações "lattice", descolamento de retina e hemorragias.'
+  },
+  {
+    cod: '00262',
+    nome: 'Microscopia especular de córnea (01 olho)',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.11.06.014-3',
+    icon: 'layers',
+    descricao: 'Fotomicrografia óptica digital de altíssima ampliação que fotografa e quantifica as células do endotélio corneano (camada posterior responsável pela transparência da córnea), mensurando densidade celular (cél/mm²), hexagonalidade (pleomorfismo) e variação de área (polimegatismo).',
+    finalidade: 'Avaliação da integridade e reserva celular endotelial no pré-operatório de cirurgia de catarata, distrofia de Fuchs e após traumas corneanos.'
+  },
+  {
+    cod: '00263',
+    nome: 'Paquimetria ultrassônica (01 olho)',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.05.02.002-0',
+    icon: 'gauge',
+    descricao: 'Mensuração ultrassônica de contato da espessura total da córnea expressa em micrômetros (µm), realizada com transdutor ecográfico de alta frequência perpendicular ao centro óptico corneano.',
+    finalidade: 'Correção fidedigna dos valores da pressão intraocular (PIO) medida por aplanação no glaucoma, rastreamento de ectasias corneanas e acompanhamento de edema corneano.'
+  },
+  {
+    cod: '00543',
+    nome: 'Potencial de acuidade visual (PAM)',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.11.06.015-1',
+    icon: 'sparkles',
+    descricao: 'Teste funcional eletro-óptico que projeta micro-feixes luminosos com optotipos miniaturizados através de micro-aberturas transparentes nos meios opacos do olho diretamente sobre a fóvea retiniana.',
+    finalidade: 'Estimativa prognóstica fidedigna da acuidade visual potencial máxima que o paciente atingirá após a realização de cirurgia desobstrutiva de catarata ou ceratoplastia.'
+  },
+  {
+    cod: '00264',
+    nome: 'Retinografia colorida binocular (02 olhos)',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.11.06.017-8',
+    icon: 'camera',
+    descricao: 'Registro fotográfico digital e colorimétrico de alta resolução do polo posterior e da retina em ambos os olhos, documentando com fidelidade o nervo óptico, mácula, vasos retinianos e eventuais lesões.',
+    finalidade: 'Documentação auditável para acompanhamento evolutivo seriado de retinopatia diabética, oclusões vasculares retinianas, DMRI, nevus de coroide e laudos para auditoria SUS.'
+  },
+  {
+    cod: '00593',
+    nome: 'Retirada de corpo estranho do olho (hon/sala/mat)',
+    grupo: 'Grupo 11 · Intervenção',
+    sigtap: '04.05.05.025-9',
+    icon: 'activity',
+    descricao: 'Procedimento microcirúrgico ambulatorial realizado sob anestesia tópica e lâmpada de fenda para extração instrumental delicada de partículas (metálicas, vegetais ou minerais) aderidas ou incrustadas na córnea ou conjuntiva, com curetagem do anel de ferrugem.',
+    finalidade: 'Tratamento resolutivo de urgência de trauma ocular superficial, cessação imediata da dor, prevenção de ceratite bacteriana, úlcera de córnea e preservação da integridade ocular.'
+  },
+  {
+    cod: '00870',
+    nome: 'Tomografia de coerência óptica (ambos os olhos / OCT)',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.11.06.028-3',
+    icon: 'scan',
+    descricao: 'Tomografia computadorizada óptica não invasiva de varredura interferométrica que captura cortes transversais de altíssima resolução micrométrica (< 5 µm) das camadas da retina e do nervo óptico, atuando como uma biópsia óptica in vivo.',
+    finalidade: 'Padrão-ouro no diagnóstico e seguimento de edema macular diabético, degeneração macular relacionada à idade (DMRI úmida/seca), buraco macular e espessura da Camada de Fibras Nervosas (CFNR) no glaucoma.'
+  },
+  {
+    cod: '00266',
+    nome: 'Tonometria (01 olho)',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.11.06.025-9',
+    icon: 'gauge',
+    descricao: 'Medição quantitativa rigorosa da pressão intraocular (PIO) expressa em milímetros de mercúrio (mmHg), realizada por aplanação através do tonômetro de Goldmann na lâmpada de fenda após instilação de colírio anestésico e fluoresceína.',
+    finalidade: 'Rastreio compulsório da hipertensão ocular, diagnóstico precoce do glaucoma e controle terapêutico do alvo pressórico.'
+  },
+  {
+    cod: '00267',
+    nome: 'Topografia computadorizada de córnea (01 olho)',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.11.06.026-7',
+    icon: 'activity',
+    descricao: 'Mapeamento ceratoscópico digital tridimensional da curvatura da superfície corneana anterior através da reflexão de múltiplos anéis concêntricos de Plácido, fornecendo mapas refrativos, altimétricos e de curvatura (K1, K2).',
+    finalidade: 'Diagnóstico precoce de ceratocone e ectasias corneanas, avaliação de astigmatismos irregulares, adaptação de lentes de contato especiais e planejamento cirúrgico pré-operatório.'
+  },
+  {
+    cod: '00258',
+    nome: 'Ultra-sonografia de globo ocular / órbita (01 olho)',
+    grupo: 'Grupo 11 · Diagnóstico',
+    sigtap: '02.05.02.008-9',
+    icon: 'waves',
+    descricao: 'Exame de ecografia ocular e orbitária bidimensional (Modo B) complementado por Modo A vetorial, permitindo a visualização da cavidade vítrea, paredes oculares e estruturas orbitárias mesmo na presença de opacidades densas dos meios refrativos.',
+    finalidade: 'Diagnóstico de descolamento de retina ou coroide oculto por hemorragia vítrea ou catarata total, detecção de corpos estranhos intraoculares e avaliação de tumores oculares e orbitários.'
+  }
+];
+
 function getCisaDefaultState() {
   return JSON.parse(JSON.stringify(window.cisaSimState));
 }
@@ -2854,6 +2992,70 @@ function renderCisaViabilidade(key) {
             <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--bg-card); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
               <i data-lucide="check-circle-2" style="width: 18px; height: 18px; color: #2563eb; flex-shrink: 0; margin-top: 2px;"></i>
               <span style="font-size: 0.84rem; line-height: 1.5;"><strong>Regulação Exclusiva CISA/GERCON:</strong> Atendimento restrito e auditado de pacientes encaminhados pelos municípios consorciados.</span>
+            </div>
+          </div>
+
+          <!-- 3.4.1 CATÁLOGO TÉCNICO & DIRETRIZES CLÍNICAS DOS PROCEDIMENTOS CISA -->
+          <div style="margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+              <div class="card-title-group">
+                <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--blue-vibrant);">
+                  <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div>
+                  <h4 style="margin: 0; font-size: 1.08rem; font-weight: 800; color: var(--text-title);">
+                    Descrição Técnica e Diretrizes dos Procedimentos Oftalmológicos
+                  </h4>
+                  <span style="font-size: 0.81rem; color: var(--text-muted);">
+                    Detalhamento clínico de cada exame e procedimento pactuado no Contrato CISA, finalidade e correspondência com a Tabela SIGTAP / SUS
+                  </span>
+                </div>
+              </div>
+
+              <!-- Busca / Filtro Rápido -->
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <div style="position: relative;">
+                  <i data-lucide="search" style="width: 14px; height: 14px; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                  <input type="text" id="cisaProcCatalogSearch" placeholder="Buscar por nome, CISA ou SIGTAP..." style="padding: 0.45rem 0.85rem 0.45rem 2rem; font-size: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); width: 280px;">
+                </div>
+                <span class="badge" style="background: rgba(37, 99, 235, 0.1); color: #2563eb; font-weight: 800; font-size: 0.72rem; padding: 0.35rem 0.65rem; border-radius: 99px;">15 PROCEDIMENTOS</span>
+              </div>
+            </div>
+
+            <!-- Grade de Cards de Procedimentos -->
+            <div id="cisaProcCatalogGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem;">
+              ${window.cisaProcedimentosDescricoes.map(item => `
+                <div class="cisa-proc-card" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.15rem; transition: all 0.2s ease;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.65rem; flex-wrap: wrap;">
+                      <div style="display: flex; align-items: center; gap: 0.4rem;">
+                        <span style="background: rgba(37, 99, 235, 0.08); color: #2563eb; font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 4px; font-family: monospace; border: 1px solid rgba(37, 99, 235, 0.2);">
+                          CISA ${item.cod}
+                        </span>
+                        <span style="font-size: 0.68rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">
+                          ${item.grupo}
+                        </span>
+                      </div>
+                      <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.25); font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 99px; font-family: monospace; display: inline-flex; align-items: center; gap: 4px;">
+                        <i data-lucide="tag" style="width: 10px; height: 10px;"></i> SIGTAP: ${item.sigtap}
+                      </span>
+                    </div>
+
+                    <h4 style="margin: 0 0 0.55rem 0; font-size: 0.95rem; font-weight: 800; color: var(--text-title); line-height: 1.35; display: flex; align-items: center; gap: 0.45rem;">
+                      <i data-lucide="${item.icon}" style="width: 16px; height: 16px; color: #2563eb; flex-shrink: 0;"></i>
+                      <span>${item.nome}</span>
+                    </h4>
+
+                    <p style="margin: 0 0 0.75rem 0; font-size: 0.81rem; color: var(--text-main); line-height: 1.55;">
+                      ${item.descricao}
+                    </p>
+                  </div>
+
+                  <div style="background: rgba(37, 99, 235, 0.03); border-left: 3px solid #2563eb; padding: 0.55rem 0.75rem; border-radius: 0 4px 4px 0; font-size: 0.75rem; color: var(--text-muted); line-height: 1.45;">
+                    <strong style="color: var(--text-title);">Finalidade Clínica:</strong> ${item.finalidade}
+                  </div>
+                </div>
+              `).join('')}
             </div>
           </div>
         </div>
@@ -3453,6 +3655,19 @@ function initCisaInteractiveSimulation() {
       state.regraAtiva = ruleKey;
     };
   });
+
+  // Filtro Rápido do Catálogo Técnico de Procedimentos
+  const inputSearch = root.querySelector('#cisaProcCatalogSearch');
+  if (inputSearch) {
+    inputSearch.oninput = (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      const cards = root.querySelectorAll('.cisa-proc-card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    };
+  }
 
   // Primeira renderização
   renderProcsTable();
