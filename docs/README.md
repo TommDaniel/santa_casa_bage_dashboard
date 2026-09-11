@@ -56,6 +56,7 @@ O sistema **Sala de Situação: Acompanhamento Contratual SUS** é uma plataform
 - **[`docs/ARCHITECTURE.md`](file:///C:/Users/henry/OneDrive/_Meus%20Projetos/_Sala%20de%20Situação/docs/ARCHITECTURE.md)**: Arquitetura técnica, pilha tecnológica, ciclo de vida das abas, gerenciamento de estado e motor de cálculos.
 - **[`docs/MODULES.md`](file:///C:/Users/henry/OneDrive/_Meus%20Projetos/_Sala%20de%20Situação/docs/MODULES.md)**: Detalhamento funcional exaustivo de cada um dos 20 módulos do sistema.
 - **[`docs/CHANGELOG.md`](file:///C:/Users/henry/OneDrive/_Meus%20Projetos/_Sala%20de%20Situação/docs/CHANGELOG.md)**: Histórico cronológico de versões, implementações, refatorações e pendências.
+- **[`docs/AUDIT.md`](file:///C:/Users/henry/OneDrive/_Meus%20Projetos/_Sala%20de%20Situação/docs/AUDIT.md)**: Relatórios periódicos de auditoria, integridade sintática e testes automatizados de execução via Chrome Headless.
 
 ---
 

@@ -4,6 +4,19 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-11] - Auditoria Geral do Sistema e Criação do `docs/AUDIT.md`
+
+### 🎯 O que foi feito:
+1. **Auditoria Geral Automatizada (Chrome Headless & DOM)**:
+   - Execução de suíte de testes dinâmicos via Google Chrome Headless com inspeção profunda do DOM gerado.
+   - Validação de 100% de aprovação (zero erros, tabelas paritárias CISA, catálogo técnico de 15 procedimentos com SIGTAP, diagramação justificada e modelos de rateio simplificados).
+2. **Criação do Documento Oficial de Auditoria (`docs/AUDIT.md`)**:
+   - Centralização dos critérios de aceitação, matriz de testes e evidências de renderização para referência futura.
+3. **Reforço do Protocolo de Documentação Obrigatória para IAs**:
+   - Registro de que toda e qualquer intervenção ou auditoria deve ser registrada em `/docs`.
+
+---
+
 ## [2026-09-11] - Instituição da Matriz Tecnológica Padrão ("A IA Acerta na Primeira Tentativa") e Auditoria do Código
 
 ### 🎯 O que foi feito:
