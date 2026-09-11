@@ -2352,21 +2352,21 @@ window.renderCisaServico = renderCisaServico;
 
 window.cisaSimState = {
   procs: [
-    { especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '00483', desc: 'Consulta especializada em oftalmologia (c/ mapeam. + tonome)', val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', val: 64.24 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', val: 64.24 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00269', desc: 'Fundoscopia', val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00260', desc: 'Gonioscopia', val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00261', desc: 'Mapeamento de retina (01 olho)', val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', val: 149.09 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00263', desc: 'Paquimetria ultrassônica (01 olho)', val: 40.40 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00543', desc: 'Potencial de acuidade visual', val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00264', desc: 'Retinografia colorida binocular (02 olhos)', val: 71.95 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00593', desc: 'Retirada de corpo estranho do olho (hon/sala/mat)', val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', val: 313.47 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00266', desc: 'Tonometria (01 olho)', val: 14.21 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', val: 64.24 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00258', desc: 'Ultra-sonografia de globo ocular / órbita (01 olho)', val: null }
+    { especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '00483', desc: 'Consulta especializada em oftalmologia (c/ mapeam. + tonome)', qtd: 1, val: null },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', qtd: 1, val: 64.24 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', qtd: 1, val: 64.24 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00269', desc: 'Fundoscopia', qtd: 1, val: null },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00260', desc: 'Gonioscopia', qtd: 1, val: null },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00261', desc: 'Mapeamento de retina (01 olho)', qtd: 1, val: null },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', qtd: 1, val: 149.09 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00263', desc: 'Paquimetria ultrassônica (01 olho)', qtd: 1, val: 40.40 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00543', desc: 'Potencial de acuidade visual', qtd: 1, val: null },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00264', desc: 'Retinografia colorida binocular (02 olhos)', qtd: 1, val: 71.95 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00593', desc: 'Retirada de corpo estranho do olho (hon/sala/mat)', qtd: 1, val: null },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', qtd: 1, val: 313.47 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00266', desc: 'Tonometria (01 olho)', qtd: 1, val: 14.21 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', qtd: 1, val: 64.24 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00258', desc: 'Ultra-sonografia de globo ocular / órbita (01 olho)', qtd: 1, val: null }
   ],
   custos: [
     { item: 'Médicos Oftalmologistas Cirurgiões com RQE (2 prof. 20h cada)', qtd: 2, val: 12000.00 },
@@ -2536,18 +2536,20 @@ function renderCisaViabilidade(key) {
             <table class="cisa-table-modern">
               <thead>
                 <tr>
-                  <th style="width: 120px;">Código</th>
-                  <th style="min-width: 440px;">Procedimento</th>
-                  <th style="width: 190px; text-align: right;">Valor Unitário (R$)</th>
-                  <th style="width: 140px; text-align: center;">Status</th>
-                  <th style="width: 50px;"></th>
+                  <th style="width: 100px;">Código</th>
+                  <th style="min-width: 380px;">Procedimento</th>
+                  <th style="width: 80px; text-align: center;">Qtd</th>
+                  <th style="width: 140px; text-align: right;">R$ Unitário</th>
+                  <th style="width: 150px; text-align: right;">Total/mês</th>
+                  <th style="width: 130px; text-align: center;">Status</th>
+                  <th style="width: 70px; text-align: center;">Ações</th>
                 </tr>
               </thead>
               <tbody id="tbCisaProcs"></tbody>
               <tfoot>
                 <tr style="background: rgba(37, 99, 235, 0.05); font-weight: 800; border-top: 2px solid rgba(37, 99, 235, 0.2);">
-                  <td colspan="2" style="padding: 14px 18px; color: #2563eb; font-size: 0.88rem;">
-                    SOMA DOS VALORES UNITÁRIOS PACTUADOS (TABELA CISA)
+                  <td colspan="4" style="padding: 14px 18px; color: #2563eb; font-size: 0.88rem;">
+                    SOMA DA RECEITA ESTIMADA PACTUADA (TABELA CISA)
                   </td>
                   <td id="totCisaRec" style="padding: 14px 18px; text-align: right; color: #2563eb; font-size: 1.05rem; font-weight: 800;">
                     Aguardando valores
@@ -2906,7 +2908,7 @@ function initCisaInteractiveSimulation() {
         trGroup.className = 'cisa-group-row';
 
         const tdGroup = document.createElement('td');
-        tdGroup.colSpan = 5;
+        tdGroup.colSpan = 7;
 
         const groupTitle = isGroup01
           ? '01 · Consultas especializadas'
@@ -2937,7 +2939,7 @@ function initCisaInteractiveSimulation() {
         tdCod.className = 'cisa-cell';
         const inCod = document.createElement('input');
         inCod.className = 'cisa-inline-input';
-        inCod.style.width = '85px';
+        inCod.style.width = '75px';
         inCod.value = p.cod || '';
         tdCod.appendChild(inCod);
         tr.appendChild(tdCod);
@@ -2948,12 +2950,27 @@ function initCisaInteractiveSimulation() {
         const inDesc = document.createElement('input');
         inDesc.className = 'cisa-inline-input';
         inDesc.style.width = '100%';
-        inDesc.style.minWidth = '300px';
+        inDesc.style.minWidth = '260px';
         inDesc.value = p.desc || '';
         tdDesc.appendChild(inDesc);
         tr.appendChild(tdDesc);
 
-        // 3. Valor Unitário (R$)
+        // 3. Qtd
+        const tdQtd = document.createElement('td');
+        tdQtd.className = 'cisa-cell';
+        tdQtd.style.textAlign = 'center';
+        const inQtd = document.createElement('input');
+        inQtd.type = 'number';
+        inQtd.step = '1';
+        inQtd.min = '0';
+        inQtd.className = 'cisa-inline-input';
+        inQtd.style.width = '60px';
+        inQtd.style.textAlign = 'center';
+        inQtd.value = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? p.qtd : 1;
+        tdQtd.appendChild(inQtd);
+        tr.appendChild(tdQtd);
+
+        // 4. Valor Unitário (R$)
         const tdVal = document.createElement('td');
         tdVal.className = 'cisa-cell';
         tdVal.style.textAlign = 'right';
@@ -2969,7 +2986,24 @@ function initCisaInteractiveSimulation() {
         tdVal.appendChild(inVal);
         tr.appendChild(tdVal);
 
-        // 4. Status Preview
+        // 5. Total/mês
+        const tdTot = document.createElement('td');
+        tdTot.className = 'cisa-cell';
+        tdTot.style.textAlign = 'right';
+        tdTot.style.fontWeight = '800';
+        tdTot.style.color = '#2563eb';
+        const updateTot = () => {
+          const q = parseFloat(inQtd.value) || 0;
+          const v = parseFloat(inVal.value) || 0;
+          if (v > 0 && q > 0) {
+            tdTot.textContent = BRL.format(q * v);
+          } else {
+            tdTot.textContent = '—';
+          }
+        };
+        tr.appendChild(tdTot);
+
+        // 6. Status Preview
         const tdStatus = document.createElement('td');
         tdStatus.className = 'cisa-cell';
         tdStatus.style.textAlign = 'center';
@@ -2982,11 +3016,13 @@ function initCisaInteractiveSimulation() {
           }
           if (window.lucide && lucide.createIcons) lucide.createIcons();
         };
-        inVal.oninput = updateStatusPreview;
+        inQtd.oninput = () => { updateTot(); updateStatusPreview(); };
+        inVal.oninput = () => { updateTot(); updateStatusPreview(); };
+        updateTot();
         updateStatusPreview();
         tr.appendChild(tdStatus);
 
-        // 5. Ações (Salvar, Cancelar, Excluir)
+        // 7. Ações (Salvar, Cancelar, Excluir)
         const tdAct = document.createElement('td');
         tdAct.className = 'cisa-cell';
         tdAct.style.textAlign = 'center';
@@ -3006,6 +3042,7 @@ function initCisaInteractiveSimulation() {
         tdAct.querySelector('.btn-cisa-save').onclick = () => {
           p.cod = inCod.value.trim();
           p.desc = inDesc.value.trim();
+          p.qtd = inQtd.value !== '' ? (parseFloat(inQtd.value) || 0) : 1;
           p.val = inVal.value !== '' ? parseFloat(inVal.value) : null;
           editingProcIdx = -1;
           renderProcsTable();
@@ -3024,7 +3061,9 @@ function initCisaInteractiveSimulation() {
         tr.appendChild(tdAct);
 
       } else {
-        // MODO VISUALIZAÇÃO LIMPO (IDÊNTICO AO PRINT)
+        // MODO VISUALIZAÇÃO LIMPO (IDÊNTICO AO DA TABELA DE CUSTOS)
+        const qVal = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? p.qtd : 1;
+        const hasVal = (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val) && Number(p.val) > 0);
 
         // 1. Código
         const tdCod = document.createElement('td');
@@ -3038,11 +3077,17 @@ function initCisaInteractiveSimulation() {
         tdDesc.innerHTML = `<span class="cisa-cell-desc">${p.desc || '—'}</span>`;
         tr.appendChild(tdDesc);
 
-        // 3. Valor Unitário (R$)
+        // 3. Qtd (badge pill estilizado exatamente como na tabela de custos)
+        const tdQtd = document.createElement('td');
+        tdQtd.className = 'cisa-cell';
+        tdQtd.style.textAlign = 'center';
+        tdQtd.innerHTML = `<span style="display: inline-block; padding: 3px 10px; border-radius: 99px; background: rgba(0,0,0,0.04); font-weight: 700; font-size: 0.82rem; color: var(--text-title);">${qVal}</span>`;
+        tr.appendChild(tdQtd);
+
+        // 4. Valor Unitário (R$)
         const tdVal = document.createElement('td');
         tdVal.className = 'cisa-cell';
         tdVal.style.textAlign = 'right';
-        const hasVal = (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val) && Number(p.val) > 0);
         if (hasVal) {
           tdVal.innerHTML = `<span class="cisa-cell-val">${BRL.format(p.val)}</span>`;
         } else {
@@ -3050,7 +3095,18 @@ function initCisaInteractiveSimulation() {
         }
         tr.appendChild(tdVal);
 
-        // 4. Status
+        // 5. Total/mês
+        const tdTot = document.createElement('td');
+        tdTot.className = 'cisa-cell';
+        tdTot.style.textAlign = 'right';
+        if (hasVal) {
+          tdTot.innerHTML = `<strong style="color: #2563eb; font-size: 0.92rem;">${BRL.format(qVal * p.val)}</strong>`;
+        } else {
+          tdTot.innerHTML = `<span class="cisa-val-empty">—</span>`;
+        }
+        tr.appendChild(tdTot);
+
+        // 6. Status
         const tdStatus = document.createElement('td');
         tdStatus.className = 'cisa-cell';
         tdStatus.style.textAlign = 'center';
@@ -3061,7 +3117,7 @@ function initCisaInteractiveSimulation() {
         }
         tr.appendChild(tdStatus);
 
-        // 5. Ação (Editar)
+        // 7. Ação (Editar)
         const tdAct = document.createElement('td');
         tdAct.className = 'cisa-cell';
         tdAct.style.textAlign = 'center';
@@ -3247,7 +3303,8 @@ function initCisaInteractiveSimulation() {
 
     state.procs.forEach((p) => {
       if (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val)) {
-        totRec += parseFloat(p.val);
+        const q = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? parseFloat(p.qtd) : 1;
+        totRec += (q * parseFloat(p.val));
         countComValor++;
       }
     });
@@ -3307,7 +3364,7 @@ function initCisaInteractiveSimulation() {
 
   // Handlers para Adicionar Itens
   const handleAddProc = () => {
-    state.procs.unshift({ especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '', desc: '', val: null });
+    state.procs.unshift({ especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '', desc: '', qtd: 1, val: null });
     editingProcIdx = 0;
     renderProcsTable();
     recalc();
