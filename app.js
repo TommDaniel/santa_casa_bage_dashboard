@@ -2796,43 +2796,6 @@ function renderCisaViabilidade(key) {
               </button>
             </div>
 
-            <!-- Parâmetros da Regra (Inputs) -->
-            <div class="cisa-rule-params" id="cisaRuleParams">
-              <div class="cisa-pgroup" id="cisaGInc">
-                <label for="cisaPInc">Incentivo ASSISTIR — hospital</label>
-                <div class="cisa-pinput-wrap">
-                  <input type="number" id="cisaPInc" min="0" max="100" step="1" value="50">
-                  <span class="cisa-pct">%</span>
-                </div>
-              </div>
-              <div class="cisa-pgroup" id="cisaGProd">
-                <label for="cisaPProd">Produção SIGTAP — hospital</label>
-                <div class="cisa-pinput-wrap">
-                  <input type="number" id="cisaPProd" min="0" max="100" step="1" value="100">
-                  <span class="cisa-pct">%</span>
-                </div>
-              </div>
-              <div class="cisa-pgroup" id="cisaGMin">
-                <label for="cisaPMin">Mínimo garantido ao prestador R$</label>
-                <div class="cisa-pinput-wrap">
-                  <input type="number" id="cisaPMin" min="0" step="500" value="" placeholder="—" style="width: 80px;">
-                </div>
-              </div>
-              <div class="cisa-pgroup" id="cisaGSplit">
-                <label for="cisaPSplit">Excedente — hospital</label>
-                <div class="cisa-pinput-wrap">
-                  <input type="number" id="cisaPSplit" min="0" max="100" step="1" value="50">
-                  <span class="cisa-pct">%</span>
-                </div>
-              </div>
-              <div class="cisa-pgroup" id="cisaGRes">
-                <label for="cisaPRes">Taxa do hospital sobre o resultado</label>
-                <div class="cisa-pinput-wrap">
-                  <input type="number" id="cisaPRes" min="0" max="100" step="1" value="30">
-                  <span class="cisa-pct">%</span>
-                </div>
-              </div>
-            </div>
 
             <!-- Nota Explicativa da Regra -->
             <div class="cisa-rule-note" id="cisaRuleNote">
