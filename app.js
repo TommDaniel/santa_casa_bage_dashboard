@@ -2945,118 +2945,67 @@ function renderCisaViabilidade(key) {
           </div>
         </div>
 
-        <!-- 3.4 SEÇÃO 3: TERMOS, REGRAMENTO E CONFORMIDADE CISA (ABAIXO DAS DUAS TABELAS) -->
+        <!-- 3.4 DESCRIÇÃO TÉCNICA E DIRETRIZES DOS PROCEDIMENTOS OFTALMOLÓGICOS CISA -->
         <div class="card" style="padding: 1.5rem; width: 100%; box-sizing: border-box; border-left: 5px solid var(--blue-vibrant);">
-          <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.15rem;">
+          <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
             <div class="card-title-group">
               <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--blue-vibrant);">
-                <i data-lucide="shield-check" style="width: 20px; height: 20px;"></i>
+                <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
               </div>
               <div>
                 <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
-                  Termos, Regramento e Conformidade do Contrato CISA
+                  Descrição Técnica e Diretrizes dos Procedimentos Oftalmológicos
                 </h3>
                 <span style="font-size: 0.82rem; color: var(--text-muted);">
-                  Critérios de auditoria, diretrizes normativas e cumprimento de metas pactuadas com o Consórcio
+                  Detalhamento clínico de cada exame e procedimento pactuado no Contrato CISA, finalidade e correspondência com a Tabela SIGTAP / SUS
                 </span>
               </div>
             </div>
-          </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem;">
-            <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--bg-card); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-              <i data-lucide="check-circle-2" style="width: 18px; height: 18px; color: #2563eb; flex-shrink: 0; margin-top: 2px;"></i>
-              <span style="font-size: 0.84rem; line-height: 1.5;"><strong>Meta de Consultas:</strong> Mínimo de 240 consultas médicas oftalmológicas/mês (CBO 225265) disponibilizadas na agenda do consórcio.</span>
-            </div>
-
-            <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--bg-card); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-              <i data-lucide="check-circle-2" style="width: 18px; height: 18px; color: #2563eb; flex-shrink: 0; margin-top: 2px;"></i>
-              <span style="font-size: 0.84rem; line-height: 1.5;"><strong>Cirurgias Oftalmológicas:</strong> Meta básica de 100 cirurgias/mês com centro cirúrgico completo e suporte de anestesiologista.</span>
-            </div>
-
-            <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--bg-card); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-              <i data-lucide="check-circle-2" style="width: 18px; height: 18px; color: #2563eb; flex-shrink: 0; margin-top: 2px;"></i>
-              <span style="font-size: 0.84rem; line-height: 1.5;"><strong>Facoemulsificação (Catarata):</strong> Procedimento cirúrgico prioritário com implante de lente intraocular dobrável, correspondendo a até 20% da cota cirúrgica pactuada.</span>
-            </div>
-
-            <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--bg-card); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-              <i data-lucide="check-circle-2" style="width: 18px; height: 18px; color: #2563eb; flex-shrink: 0; margin-top: 2px;"></i>
-              <span style="font-size: 0.84rem; line-height: 1.5;"><strong>Habilitação 0506 (Glaucoma):</strong> Linha de cuidado integral em estrita conformidade com o PCDT CONITEC.</span>
-            </div>
-
-            <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--bg-card); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-              <i data-lucide="check-circle-2" style="width: 18px; height: 18px; color: #2563eb; flex-shrink: 0; margin-top: 2px;"></i>
-              <span style="font-size: 0.84rem; line-height: 1.5;"><strong>Rol de Métodos Diagnósticos CISA:</strong> Oferta integral dos exames diagnósticos e especializados pactuados no contrato intermunicipal.</span>
-            </div>
-
-            <div style="display: flex; gap: 0.75rem; align-items: flex-start; background: var(--bg-card); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-              <i data-lucide="check-circle-2" style="width: 18px; height: 18px; color: #2563eb; flex-shrink: 0; margin-top: 2px;"></i>
-              <span style="font-size: 0.84rem; line-height: 1.5;"><strong>Regulação Exclusiva CISA/GERCON:</strong> Atendimento restrito e auditado de pacientes encaminhados pelos municípios consorciados.</span>
+            <!-- Busca / Filtro Rápido -->
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <div style="position: relative;">
+                <i data-lucide="search" style="width: 14px; height: 14px; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                <input type="text" id="cisaProcCatalogSearch" placeholder="Buscar por nome, CISA ou SIGTAP..." style="padding: 0.45rem 0.85rem 0.45rem 2rem; font-size: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); width: 280px;">
+              </div>
+              <span class="badge" style="background: rgba(37, 99, 235, 0.1); color: #2563eb; font-weight: 800; font-size: 0.72rem; padding: 0.35rem 0.65rem; border-radius: 99px;">15 PROCEDIMENTOS</span>
             </div>
           </div>
 
-          <!-- 3.4.1 CATÁLOGO TÉCNICO & DIRETRIZES CLÍNICAS DOS PROCEDIMENTOS CISA -->
-          <div style="margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
-              <div class="card-title-group">
-                <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--blue-vibrant);">
-                  <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
-                </div>
+          <!-- Grade de Cards de Procedimentos -->
+          <div id="cisaProcCatalogGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem;">
+            ${window.cisaProcedimentosDescricoes.map(item => `
+              <div class="cisa-proc-card" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.15rem; transition: all 0.2s ease;">
                 <div>
-                  <h4 style="margin: 0; font-size: 1.08rem; font-weight: 800; color: var(--text-title);">
-                    Descrição Técnica e Diretrizes dos Procedimentos Oftalmológicos
-                  </h4>
-                  <span style="font-size: 0.81rem; color: var(--text-muted);">
-                    Detalhamento clínico de cada exame e procedimento pactuado no Contrato CISA, finalidade e correspondência com a Tabela SIGTAP / SUS
-                  </span>
-                </div>
-              </div>
-
-              <!-- Busca / Filtro Rápido -->
-              <div style="display: flex; align-items: center; gap: 0.6rem;">
-                <div style="position: relative;">
-                  <i data-lucide="search" style="width: 14px; height: 14px; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
-                  <input type="text" id="cisaProcCatalogSearch" placeholder="Buscar por nome, CISA ou SIGTAP..." style="padding: 0.45rem 0.85rem 0.45rem 2rem; font-size: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); width: 280px;">
-                </div>
-                <span class="badge" style="background: rgba(37, 99, 235, 0.1); color: #2563eb; font-weight: 800; font-size: 0.72rem; padding: 0.35rem 0.65rem; border-radius: 99px;">15 PROCEDIMENTOS</span>
-              </div>
-            </div>
-
-            <!-- Grade de Cards de Procedimentos -->
-            <div id="cisaProcCatalogGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem;">
-              ${window.cisaProcedimentosDescricoes.map(item => `
-                <div class="cisa-proc-card" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.15rem; transition: all 0.2s ease;">
-                  <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.65rem; flex-wrap: wrap;">
-                      <div style="display: flex; align-items: center; gap: 0.4rem;">
-                        <span style="background: rgba(37, 99, 235, 0.08); color: #2563eb; font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 4px; font-family: monospace; border: 1px solid rgba(37, 99, 235, 0.2);">
-                          CISA ${item.cod}
-                        </span>
-                        <span style="font-size: 0.68rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">
-                          ${item.grupo}
-                        </span>
-                      </div>
-                      <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.25); font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 99px; font-family: monospace; display: inline-flex; align-items: center; gap: 4px;">
-                        <i data-lucide="tag" style="width: 10px; height: 10px;"></i> SIGTAP: ${item.sigtap}
+                  <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.65rem; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                      <span style="background: rgba(37, 99, 235, 0.08); color: #2563eb; font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 4px; font-family: monospace; border: 1px solid rgba(37, 99, 235, 0.2);">
+                        CISA ${item.cod}
+                      </span>
+                      <span style="font-size: 0.68rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">
+                        ${item.grupo}
                       </span>
                     </div>
-
-                    <h4 style="margin: 0 0 0.55rem 0; font-size: 0.95rem; font-weight: 800; color: var(--text-title); line-height: 1.35; display: flex; align-items: center; gap: 0.45rem;">
-                      <i data-lucide="${item.icon}" style="width: 16px; height: 16px; color: #2563eb; flex-shrink: 0;"></i>
-                      <span>${item.nome}</span>
-                    </h4>
-
-                    <p style="margin: 0 0 0.75rem 0; font-size: 0.81rem; color: var(--text-main); line-height: 1.55;">
-                      ${item.descricao}
-                    </p>
+                    <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.25); font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 99px; font-family: monospace; display: inline-flex; align-items: center; gap: 4px;">
+                      <i data-lucide="tag" style="width: 10px; height: 10px;"></i> SIGTAP: ${item.sigtap}
+                    </span>
                   </div>
 
-                  <div style="background: rgba(37, 99, 235, 0.03); border-left: 3px solid #2563eb; padding: 0.55rem 0.75rem; border-radius: 0 4px 4px 0; font-size: 0.75rem; color: var(--text-muted); line-height: 1.45;">
-                    <strong style="color: var(--text-title);">Finalidade Clínica:</strong> ${item.finalidade}
-                  </div>
+                  <h4 style="margin: 0 0 0.55rem 0; font-size: 0.95rem; font-weight: 800; color: var(--text-title); line-height: 1.35; display: flex; align-items: center; gap: 0.45rem;">
+                    <i data-lucide="${item.icon}" style="width: 16px; height: 16px; color: #2563eb; flex-shrink: 0;"></i>
+                    <span>${item.nome}</span>
+                  </h4>
+
+                  <p style="margin: 0 0 0.75rem 0; font-size: 0.81rem; color: var(--text-main); line-height: 1.55;">
+                    ${item.descricao}
+                  </p>
                 </div>
-              `).join('')}
-            </div>
+
+                <div style="background: rgba(37, 99, 235, 0.03); border-left: 3px solid #2563eb; padding: 0.55rem 0.75rem; border-radius: 0 4px 4px 0; font-size: 0.75rem; color: var(--text-muted); line-height: 1.45;">
+                  <strong style="color: var(--text-title);">Finalidade Clínica:</strong> ${item.finalidade}
+                </div>
+              </div>
+            `).join('')}
           </div>
         </div>
 
