@@ -2580,9 +2580,7 @@ function renderCisaViabilidade(key) {
                 </span>
               </div>
             </div>
-            <button class="btn-primary" id="btnCisaAddCustoTable" style="background: #dc2626; border-color: #dc2626; font-size: 0.8rem; padding: 0.4rem 0.85rem; border-radius: 6px;">
-              <i data-lucide="plus" style="width: 14px; height: 14px;"></i> Inserir Custo
-            </button>
+
           </div>
 
           <div class="table-responsive" style="overflow-x: auto;">
@@ -3323,8 +3321,7 @@ function initCisaInteractiveSimulation() {
     renderCustosTable();
     recalc();
   };
-  const btnAddCTab = root.querySelector('#btnCisaAddCustoTable');
-  if (btnAddCTab) btnAddCTab.onclick = handleAddCusto;
+
 
   // Reset
   const handleReset = () => {
