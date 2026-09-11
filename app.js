@@ -2769,7 +2769,7 @@ function renderCisaViabilidade(key) {
             <!-- Grade de Regras -->
             <div class="cisa-rule-grid" role="group" aria-label="Regra de negociação">
               <!-- 1. 50% Margem Hospitalar -->
-              <button type="button" class="cisa-rule-card" data-rule="margem50" aria-pressed="false">
+              <button type="button" class="cisa-rule-card" data-rule="margem50" aria-pressed="true">
                 <div class="cisa-rule-head">
                   <span class="cisa-rule-dot"></span>
                   <span class="cisa-rule-name">50% Margem Hospitalar</span>
@@ -2778,27 +2778,7 @@ function renderCisaViabilidade(key) {
                 <div class="cisa-rule-formula">custo = SIGTAP × 50%</div>
               </button>
 
-              <!-- 2. Mínimo Garantido -->
-              <button type="button" class="cisa-rule-card" data-rule="mingar" aria-pressed="false">
-                <div class="cisa-rule-head">
-                  <span class="cisa-rule-dot"></span>
-                  <span class="cisa-rule-name">Mínimo Garantido</span>
-                </div>
-                <div class="cisa-rule-desc">A equipe recebe um piso por procedimento, independente do volume alcançado. Protege o prestador em meses de baixa produção.</div>
-                <div class="cisa-rule-formula">custo = máx(piso; SIGTAP × %)</div>
-              </button>
-
-              <!-- 3. Rateio 70% / 30% -->
-              <button type="button" class="cisa-rule-card" data-rule="rateio7030" aria-pressed="false">
-                <div class="cisa-rule-head">
-                  <span class="cisa-rule-dot"></span>
-                  <span class="cisa-rule-name">Rateio 70% / 30%</span>
-                </div>
-                <div class="cisa-rule-desc">Setenta por cento do valor SIGTAP vai para a equipe e trinta permanecem com o hospital, que arca com estrutura e insumos.</div>
-                <div class="cisa-rule-formula">custo = SIGTAP × 70%</div>
-              </button>
-
-              <!-- 4. Rateio 80% / 20% -->
+              <!-- 2. Rateio 80% / 20% -->
               <button type="button" class="cisa-rule-card" data-rule="rateio8020" aria-pressed="false">
                 <div class="cisa-rule-head">
                   <span class="cisa-rule-dot"></span>
@@ -2808,17 +2788,7 @@ function renderCisaViabilidade(key) {
                 <div class="cisa-rule-formula">custo = SIGTAP × 80%</div>
               </button>
 
-              <!-- 5. Construção Livre (Ativa no print) -->
-              <button type="button" class="cisa-rule-card" data-rule="livre" aria-pressed="true">
-                <div class="cisa-rule-head">
-                  <span class="cisa-rule-dot"></span>
-                  <span class="cisa-rule-name">Construção Livre</span>
-                </div>
-                <div class="cisa-rule-desc">Sem fórmula. Cada linha da produção recebe o custo digitado manualmente, como em uma planilha.</div>
-                <div class="cisa-rule-formula">custo = valor informado</div>
-              </button>
-
-              <!-- 6. Nova Regra Personalizada -->
+              <!-- 3. Nova Regra Personalizada -->
               <button type="button" class="cisa-rule-card cisa-rule-add" id="cisaAddRule" title="Disponível em versão futura">
                 <span class="cisa-plus">+</span>
                 <span class="cisa-rule-name" style="font-size: 11.5px;">Nova regra</span>
@@ -2866,7 +2836,7 @@ function renderCisaViabilidade(key) {
 
             <!-- Nota Explicativa da Regra -->
             <div class="cisa-rule-note" id="cisaRuleNote">
-              <strong>Construção Livre.</strong> Nenhum rateio é aplicado — o hospital opera e arca com tudo, e cada linha recebe o custo digitado. É o modo indicado quando o custo vem da apuração contábil e não de percentual sobre a tabela.
+              <strong>50% Margem Hospitalar.</strong> O hospital retém metade do valor SIGTAP de cada procedimento; a outra metade remunera a equipe executora.
             </div>
           </div>
 
@@ -3572,26 +3542,28 @@ function initCisaInteractiveSimulation() {
       nome: '50% Margem Hospitalar',
       nota: 'O hospital retém metade do valor SIGTAP de cada procedimento; a outra metade remunera a equipe executora.'
     },
-    mingar: {
-      nome: 'Mínimo Garantido',
-      nota: 'A equipe recebe um piso por procedimento, independente do volume alcançado. Protege o prestador em meses de baixa produção.'
-    },
-    rateio7030: {
-      nome: 'Rateio 70% / 30%',
-      nota: 'Setenta por cento do valor SIGTAP vai para a equipe e trinta permanecem com o hospital, que arca com estrutura e insumos.'
-    },
     rateio8020: {
       nome: 'Rateio 80% / 20%',
       nota: 'Oitenta por cento do valor SIGTAP vai para a equipe e vinte permanecem com o hospital, que arca com estrutura e insumos.'
-    },
-    livre: {
-      nome: 'Construção Livre',
-      nota: 'Nenhum rateio é aplicado — o hospital opera e arca com tudo, e cada linha recebe o custo digitado. É o modo indicado quando o custo vem da apuração contábil e não de percentual sobre a tabela.'
     }
   };
 
+  if (!state.regraAtiva || !cisaRegras[state.regraAtiva]) {
+    state.regraAtiva = 'margem50';
+  }
+
   const ruleCards = root.querySelectorAll('.cisa-rule-card[data-rule]');
   const ruleNote = root.querySelector('#cisaRuleNote');
+
+  // Sincronizar estado inicial visual
+  ruleCards.forEach(c => {
+    c.setAttribute('aria-pressed', c.dataset.rule === state.regraAtiva ? 'true' : 'false');
+  });
+  if (cisaRegras[state.regraAtiva] && ruleNote) {
+    const r = cisaRegras[state.regraAtiva];
+    ruleNote.innerHTML = `<strong>${r.nome}.</strong> ${r.nota}`;
+  }
+
   ruleCards.forEach(card => {
     card.onclick = () => {
       ruleCards.forEach(c => c.setAttribute('aria-pressed', 'false'));
