@@ -2615,7 +2615,202 @@ function renderCisaViabilidade(key) {
           </div>
         </div>
 
-        <!-- 3.3 SEÇÃO 3: TERMOS, REGRAMENTO E CONFORMIDADE CISA (ABAIXO DAS DUAS TABELAS) -->
+        <!-- 3.3 REGRA DE NEGOCIAÇÃO | ESTUDO DE VIABILIDADE CISA -->
+        <div class="card cisa-neg-card" id="cisaRegraNegCard" style="padding: 0; overflow: hidden; width: 100%; box-sizing: border-box; border: 1px solid var(--border-color);">
+          <div class="cisa-neg-header" style="padding: 14px 20px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; background: var(--bg-card);">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <h3 style="margin: 0; font-size: 0.95rem; font-weight: 800; letter-spacing: 0.6px; color: var(--text-title); text-transform: uppercase;">
+                REGRA DE NEGOCIAÇÃO <span style="color: var(--text-muted); font-weight: 400; margin: 0 4px;">|</span> ESTUDO DE VIABILIDADE
+              </h3>
+            </div>
+            <span class="cisa-neg-badge" id="cisaRuleBadge">ATIVA</span>
+          </div>
+
+          <div style="padding: 16px 20px 0 20px;">
+            <p style="margin: 0 0 16px 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+              Define como o custo de cada procedimento é derivado do valor SIGTAP na negociação com a equipe médica. A regra escolhida passa a alimentar a coluna <b>R$ custo</b> da produção.
+            </p>
+
+            <!-- Grade de Regras -->
+            <div class="cisa-rule-grid" role="group" aria-label="Regra de negociação">
+              <!-- 1. 50% Margem Hospitalar -->
+              <button type="button" class="cisa-rule-card" data-rule="margem50" aria-pressed="false">
+                <div class="cisa-rule-head">
+                  <span class="cisa-rule-dot"></span>
+                  <span class="cisa-rule-name">50% Margem Hospitalar</span>
+                </div>
+                <div class="cisa-rule-desc">O hospital retém metade do valor SIGTAP de cada procedimento; a outra metade remunera a equipe executora.</div>
+                <div class="cisa-rule-formula">custo = SIGTAP × 50%</div>
+              </button>
+
+              <!-- 2. Mínimo Garantido -->
+              <button type="button" class="cisa-rule-card" data-rule="mingar" aria-pressed="false">
+                <div class="cisa-rule-head">
+                  <span class="cisa-rule-dot"></span>
+                  <span class="cisa-rule-name">Mínimo Garantido</span>
+                </div>
+                <div class="cisa-rule-desc">A equipe recebe um piso por procedimento, independente do volume alcançado. Protege o prestador em meses de baixa produção.</div>
+                <div class="cisa-rule-formula">custo = máx(piso; SIGTAP × %)</div>
+              </button>
+
+              <!-- 3. Rateio 70% / 30% -->
+              <button type="button" class="cisa-rule-card" data-rule="rateio7030" aria-pressed="false">
+                <div class="cisa-rule-head">
+                  <span class="cisa-rule-dot"></span>
+                  <span class="cisa-rule-name">Rateio 70% / 30%</span>
+                </div>
+                <div class="cisa-rule-desc">Setenta por cento do valor SIGTAP vai para a equipe e trinta permanecem com o hospital, que arca com estrutura e insumos.</div>
+                <div class="cisa-rule-formula">custo = SIGTAP × 70%</div>
+              </button>
+
+              <!-- 4. Rateio 80% / 20% -->
+              <button type="button" class="cisa-rule-card" data-rule="rateio8020" aria-pressed="false">
+                <div class="cisa-rule-head">
+                  <span class="cisa-rule-dot"></span>
+                  <span class="cisa-rule-name">Rateio 80% / 20%</span>
+                </div>
+                <div class="cisa-rule-desc">Oitenta por cento do valor SIGTAP vai para a equipe e vinte permanecem com o hospital, que arca com estrutura e insumos.</div>
+                <div class="cisa-rule-formula">custo = SIGTAP × 80%</div>
+              </button>
+
+              <!-- 5. Construção Livre (Ativa no print) -->
+              <button type="button" class="cisa-rule-card" data-rule="livre" aria-pressed="true">
+                <div class="cisa-rule-head">
+                  <span class="cisa-rule-dot"></span>
+                  <span class="cisa-rule-name">Construção Livre</span>
+                </div>
+                <div class="cisa-rule-desc">Sem fórmula. Cada linha da produção recebe o custo digitado manualmente, como em uma planilha.</div>
+                <div class="cisa-rule-formula">custo = valor informado</div>
+              </button>
+
+              <!-- 6. Nova Regra Personalizada -->
+              <button type="button" class="cisa-rule-card cisa-rule-add" id="cisaAddRule" title="Disponível em versão futura">
+                <span class="cisa-plus">+</span>
+                <span class="cisa-rule-name" style="font-size: 11.5px;">Nova regra</span>
+                <span class="cisa-rule-desc" style="font-size: 10.5px;">Personalizada</span>
+              </button>
+            </div>
+
+            <!-- Parâmetros da Regra (Inputs) -->
+            <div class="cisa-rule-params" id="cisaRuleParams">
+              <div class="cisa-pgroup" id="cisaGInc">
+                <label for="cisaPInc">Incentivo ASSISTIR — hospital</label>
+                <div class="cisa-pinput-wrap">
+                  <input type="number" id="cisaPInc" min="0" max="100" step="1" value="50">
+                  <span class="cisa-pct">%</span>
+                </div>
+              </div>
+              <div class="cisa-pgroup" id="cisaGProd">
+                <label for="cisaPProd">Produção SIGTAP — hospital</label>
+                <div class="cisa-pinput-wrap">
+                  <input type="number" id="cisaPProd" min="0" max="100" step="1" value="100">
+                  <span class="cisa-pct">%</span>
+                </div>
+              </div>
+              <div class="cisa-pgroup" id="cisaGMin">
+                <label for="cisaPMin">Mínimo garantido ao prestador R$</label>
+                <div class="cisa-pinput-wrap">
+                  <input type="number" id="cisaPMin" min="0" step="500" value="" placeholder="—" style="width: 80px;">
+                </div>
+              </div>
+              <div class="cisa-pgroup" id="cisaGSplit">
+                <label for="cisaPSplit">Excedente — hospital</label>
+                <div class="cisa-pinput-wrap">
+                  <input type="number" id="cisaPSplit" min="0" max="100" step="1" value="50">
+                  <span class="cisa-pct">%</span>
+                </div>
+              </div>
+              <div class="cisa-pgroup" id="cisaGRes">
+                <label for="cisaPRes">Taxa do hospital sobre o resultado</label>
+                <div class="cisa-pinput-wrap">
+                  <input type="number" id="cisaPRes" min="0" max="100" step="1" value="30">
+                  <span class="cisa-pct">%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nota Explicativa da Regra -->
+            <div class="cisa-rule-note" id="cisaRuleNote">
+              <strong>Construção Livre.</strong> Nenhum rateio é aplicado — o hospital opera e arca com tudo, e cada linha recebe o custo digitado. É o modo indicado quando o custo vem da apuração contábil e não de percentual sobre a tabela.
+            </div>
+          </div>
+
+          <!-- Pool / Faixa de Resultado (Dark Bar) -->
+          <div class="cisa-pool" id="cisaPoolBox">
+            <div class="cisa-pool-item">
+              <span class="cisa-pl">RECEITA TOTAL</span>
+              <span class="cisa-pv" id="cisaPoolRec">—</span>
+            </div>
+            <span class="cisa-pool-op">−</span>
+            <div class="cisa-pool-item">
+              <span class="cisa-pl">DESPESA TOTAL</span>
+              <span class="cisa-pv" id="cisaPoolDes">—</span>
+            </div>
+            <span class="cisa-pool-op">=</span>
+            <div class="cisa-pool-item cisa-forte">
+              <span class="cisa-pl">RESULTADO A RATEAR</span>
+              <span class="cisa-pv" id="cisaPoolLiq">—</span>
+            </div>
+          </div>
+
+          <!-- Split: 2 Colunas (Hospital vs Prestador) -->
+          <div class="cisa-split" id="cisaSplitBox">
+            <!-- Coluna Hospital -->
+            <div class="cisa-side cisa-hosp">
+              <h3><span class="cisa-sq"></span>■ HOSPITAL</h3>
+              <div class="cisa-kv" id="cisaHStream">
+                <span class="cisa-k">Incentivo ASSISTIR</span><span class="cisa-v" id="cisaHInc">—</span>
+                <span class="cisa-k">Produção SIGTAP</span><span class="cisa-v" id="cisaHProd">—</span>
+                <span class="cisa-k">Exames Linha de Cuidado</span><span class="cisa-v" id="cisaHCusVar">—</span>
+                <span class="cisa-k">Custos de Produção/Fixos</span><span class="cisa-v" id="cisaHCusFix">—</span>
+              </div>
+              <div class="cisa-kv" id="cisaHMin" style="display: none;">
+                <span class="cisa-sep"></span>
+                <span class="cisa-k cisa-tot">Resultado da operação</span><span class="cisa-v cisa-tot" id="cisaHLiqM">—</span>
+                <span class="cisa-k">Mínimo garantido ao prestador</span><span class="cisa-v" id="cisaHMinV">—</span>
+                <span class="cisa-k cisa-tot">Excedente a ratear</span><span class="cisa-v cisa-tot" id="cisaHExc">—</span>
+                <span class="cisa-k">Participação no excedente</span><span class="cisa-v" id="cisaHPctM">—</span>
+              </div>
+              <div class="cisa-kv" id="cisaHPool" style="display: none;">
+                <span class="cisa-sep"></span>
+                <span class="cisa-k cisa-tot">Resultado da operação</span><span class="cisa-v cisa-tot" id="cisaHLiq">—</span>
+                <span class="cisa-k cisa-tot">Participação — taxa de administração</span><span class="cisa-v" id="cisaHPct">—</span>
+              </div>
+              <div class="cisa-res">
+                <span class="cisa-lb">RESULTADO MENSAL</span>
+                <span class="cisa-vl" id="cisaHRes">—</span>
+              </div>
+            </div>
+
+            <!-- Coluna Prestador -->
+            <div class="cisa-side cisa-pres">
+              <h3><span class="cisa-sq"></span>■ PRESTADOR</h3>
+              <div class="cisa-kv" id="cisaPStream">
+                <span class="cisa-k">Incentivo ASSISTIR</span><span class="cisa-v" id="cisaPIncV">—</span>
+                <span class="cisa-k">Produção SIGTAP</span><span class="cisa-v" id="cisaPProdV">—</span>
+                <span class="cisa-k">Exames Linha de Cuidado</span><span class="cisa-v" id="cisaPCusVar">—</span>
+                <span class="cisa-k">Custos de Produção/Fixos</span><span class="cisa-v" id="cisaPCusFix">—</span>
+              </div>
+              <div class="cisa-kv" id="cisaPMin" style="display: none;">
+                <span class="cisa-k">Mínimo garantido</span><span class="cisa-v" id="cisaPMinV">—</span>
+                <span class="cisa-k">Excedente a ratear</span><span class="cisa-v" id="cisaPExcBase">—</span>
+                <span class="cisa-k">Participação no excedente</span><span class="cisa-v" id="cisaPPctM">—</span>
+                <span class="cisa-sep"></span>
+                <span class="cisa-k cisa-tot">PARCELA VARIÁVEL</span><span class="cisa-v cisa-tot" id="cisaPExcV">—</span>
+              </div>
+              <div class="cisa-kv" id="cisaPPool" style="display: none;">
+                <span class="cisa-k">Resultado da operação</span><span class="cisa-v" id="cisaPLiq">—</span>
+                <span class="cisa-k cisa-tot">PARTICIPAÇÃO — OPERAÇÃO DO SERVIÇO</span><span class="cisa-v" id="cisaPPct">—</span>
+              </div>
+              <div class="cisa-res">
+                <span class="cisa-lb">RESULTADO MENSAL</span>
+                <span class="cisa-vl" id="cisaPRes2">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.4 SEÇÃO 3: TERMOS, REGRAMENTO E CONFORMIDADE CISA (ABAIXO DAS DUAS TABELAS) -->
         <div class="card" style="padding: 1.5rem; width: 100%; box-sizing: border-box; border-left: 5px solid var(--blue-vibrant);">
           <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.15rem;">
             <div class="card-title-group">
@@ -3170,6 +3365,45 @@ function initCisaInteractiveSimulation() {
   const handlePrint = () => window.print();
   const btnPrintTop = root.querySelector('#btnCisaPrintTop');
   if (btnPrintTop) btnPrintTop.onclick = handlePrint;
+
+  // Modelos de Viabilidade / Regras de Negociação
+  const cisaRegras = {
+    margem50: {
+      nome: '50% Margem Hospitalar',
+      nota: 'O hospital retém metade do valor SIGTAP de cada procedimento; a outra metade remunera a equipe executora.'
+    },
+    mingar: {
+      nome: 'Mínimo Garantido',
+      nota: 'A equipe recebe um piso por procedimento, independente do volume alcançado. Protege o prestador em meses de baixa produção.'
+    },
+    rateio7030: {
+      nome: 'Rateio 70% / 30%',
+      nota: 'Setenta por cento do valor SIGTAP vai para a equipe e trinta permanecem com o hospital, que arca com estrutura e insumos.'
+    },
+    rateio8020: {
+      nome: 'Rateio 80% / 20%',
+      nota: 'Oitenta por cento do valor SIGTAP vai para a equipe e vinte permanecem com o hospital, que arca com estrutura e insumos.'
+    },
+    livre: {
+      nome: 'Construção Livre',
+      nota: 'Nenhum rateio é aplicado — o hospital opera e arca com tudo, e cada linha recebe o custo digitado. É o modo indicado quando o custo vem da apuração contábil e não de percentual sobre a tabela.'
+    }
+  };
+
+  const ruleCards = root.querySelectorAll('.cisa-rule-card[data-rule]');
+  const ruleNote = root.querySelector('#cisaRuleNote');
+  ruleCards.forEach(card => {
+    card.onclick = () => {
+      ruleCards.forEach(c => c.setAttribute('aria-pressed', 'false'));
+      card.setAttribute('aria-pressed', 'true');
+      const ruleKey = card.dataset.rule;
+      const r = cisaRegras[ruleKey];
+      if (r && ruleNote) {
+        ruleNote.innerHTML = `<strong>${r.nome}.</strong> ${r.nota}`;
+      }
+      state.regraAtiva = ruleKey;
+    };
+  });
 
   // Primeira renderização
   renderProcsTable();

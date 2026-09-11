@@ -5257,3 +5257,444 @@ body.dark-mode .cisa-inline-input {
   outline: none;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
+
+/* ==========================================================================
+   PAINEL DE REGRA DE NEGOCIAÇÃO / MODELOS DE VIABILIDADE CISA
+   ========================================================================== */
+
+.cisa-neg-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.cisa-neg-badge {
+  font-family: monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  font-weight: 700;
+}
+
+body.dark-mode .cisa-neg-badge {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.cisa-rule-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 1024px) {
+  .cisa-rule-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cisa-rule-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cisa-rule-card {
+  position: relative;
+  text-align: left;
+  cursor: pointer;
+  background: var(--bg-card);
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: inherit;
+  color: var(--text-title);
+  transition: all 0.18s ease;
+}
+
+body.dark-mode .cisa-rule-card {
+  border-color: var(--border-color);
+  background: var(--bg-card);
+}
+
+.cisa-rule-card:hover {
+  border-color: #94a3b8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.cisa-rule-card[aria-pressed="true"] {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+}
+
+body.dark-mode .cisa-rule-card[aria-pressed="true"] {
+  background: #1e293b;
+  border-color: #38bdf8;
+}
+
+.cisa-rule-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cisa-rule-dot {
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid #cbd5e1;
+  background: transparent;
+}
+
+.cisa-rule-card[aria-pressed="true"] .cisa-rule-dot {
+  background: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.cisa-rule-name {
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
+.cisa-rule-card[aria-pressed="true"] .cisa-rule-name {
+  color: #ffffff;
+}
+
+.cisa-rule-desc {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #64748b;
+}
+
+.cisa-rule-card[aria-pressed="true"] .cisa-rule-desc {
+  color: #94a3b8;
+}
+
+.cisa-rule-formula {
+  margin-top: auto;
+  font-family: monospace;
+  font-size: 0.72rem;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #334155;
+}
+
+.cisa-rule-card[aria-pressed="true"] .cisa-rule-formula {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+.cisa-rule-card.cisa-rule-add {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-style: dashed;
+  color: #94a3b8;
+  gap: 2px;
+}
+
+.cisa-rule-card.cisa-rule-add:hover {
+  color: #2563eb;
+  border-color: #2563eb;
+}
+
+.cisa-plus {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.cisa-rule-params {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  margin-bottom: 14px;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+body.dark-mode .cisa-rule-params {
+  background: rgba(30, 41, 59, 0.4);
+  border-color: var(--border-color);
+}
+
+.cisa-pgroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cisa-pgroup label {
+  font-size: 0.8rem;
+  color: #475569;
+}
+
+body.dark-mode .cisa-pgroup label {
+  color: #cbd5e1;
+}
+
+.cisa-pinput-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cisa-pgroup input {
+  width: 58px;
+  text-align: center;
+  background: #fefce8;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--text-title);
+}
+
+body.dark-mode .cisa-pgroup input {
+  background: #1e293b;
+  border-color: #475569;
+}
+
+.cisa-pct {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.cisa-rule-note {
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border-left: 3px solid #f59e0b;
+  background: #fffbeb;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #92400e;
+  border-radius: 0 6px 6px 0;
+}
+
+body.dark-mode .cisa-rule-note {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fde68a;
+  border-left-color: #f59e0b;
+}
+
+.cisa-pool {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  padding: 14px 22px;
+  background: #0f172a;
+  border-top: 1px solid #1e293b;
+}
+
+body.dark-mode .cisa-pool {
+  background: #090e17;
+  border-top-color: #1e293b;
+}
+
+.cisa-pool-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cisa-pl {
+  font-family: monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.cisa-pv {
+  font-family: monospace;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.cisa-pool-item.cisa-forte .cisa-pv {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.cisa-pool-op {
+  font-family: monospace;
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+.cisa-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid #e2e8f0;
+}
+
+@media (max-width: 768px) {
+  .cisa-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+body.dark-mode .cisa-split {
+  border-top-color: var(--border-color);
+}
+
+.cisa-side {
+  padding: 18px 22px;
+}
+
+.cisa-side + .cisa-side {
+  border-left: 1px solid #e2e8f0;
+}
+
+body.dark-mode .cisa-side + .cisa-side {
+  border-left-color: var(--border-color);
+}
+
+.cisa-side.cisa-pres {
+  background: #f8fafc;
+}
+
+body.dark-mode .cisa-side.cisa-pres {
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.cisa-side h3 {
+  font-weight: 800;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cisa-side.cisa-hosp h3 {
+  color: #1e293b;
+}
+
+body.dark-mode .cisa-side.cisa-hosp h3 {
+  color: #f1f5f9;
+}
+
+.cisa-side.cisa-pres h3 {
+  color: #dc2626;
+}
+
+.cisa-sq {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.cisa-hosp .cisa-sq {
+  background: #1e293b;
+}
+
+body.dark-mode .cisa-hosp .cisa-sq {
+  background: #94a3b8;
+}
+
+.cisa-pres .cisa-sq {
+  background: #dc2626;
+}
+
+.cisa-kv {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 12px;
+  font-size: 0.82rem;
+  color: #475569;
+}
+
+body.dark-mode .cisa-kv {
+  color: #cbd5e1;
+}
+
+.cisa-k {
+  color: #64748b;
+}
+
+body.dark-mode .cisa-k {
+  color: #94a3b8;
+}
+
+.cisa-v {
+  text-align: right;
+  font-family: monospace;
+  font-weight: 600;
+  color: var(--text-title);
+}
+
+.cisa-sep {
+  grid-column: 1 / -1;
+  border-top: 1px dashed #cbd5e1;
+  margin: 6px 0;
+}
+
+body.dark-mode .cisa-sep {
+  border-top-color: #334155;
+}
+
+.cisa-tot {
+  font-weight: 800;
+  color: var(--text-title);
+}
+
+.cisa-res {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+body.dark-mode .cisa-res {
+  border-top-color: var(--border-color);
+}
+
+.cisa-lb {
+  font-family: monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.cisa-vl {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #16a34a;
+  font-family: monospace;
+}
+
+.cisa-vl.cisa-neg-val {
+  color: #dc2626;
+}
