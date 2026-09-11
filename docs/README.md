@@ -24,6 +24,29 @@ O sistema **Sala de Situação: Acompanhamento Contratual SUS** é uma plataform
 >    - Incrementar o parâmetro de cache do script no rodapé de `index.html` (`app.js?v=YYYYMMDD_XX`).
 >    - Versionar as alterações no Git (`git add`, `git commit` com mensagem semântica clara) e enviar para o repositório remoto (`git push origin main`).
 >    - Fornecer os links de acesso atualizados ao usuário.
+> 5. **Respeitar a Matriz de Tecnologias Obrigatórias ("A IA acerta de primeira")**:
+>    - Toda e qualquer nova biblioteca adicionada ao projeto DEVE seguir a matriz descrita em `docs/ARCHITECTURE.md` (Backend: Flask, Banco: SQLite, Gráficos: Chart.js, Mapas: Leaflet+OSM, Grafos: Cytoscape.js, Dados: Pandas+openpyxl, PDF: pdfplumber+Tesseract, etc.). Jamais introduza D3, build steps pesados (Webpack/Vite) ou bancos não locais sem autorização expressa.
+
+---
+
+## 🛠️ Stack Tecnológica & Escolhas Padrão ("A IA Acerta na Primeira Tentativa")
+
+| CAMADA | TECNOLOGIA | POR QUE |
+| :--- | :--- | :--- |
+| **Backend** | Python + Flask | Sem configuração. A IA gera correto de primeira. |
+| **Banco** | SQLite | Zero instalação. Arquivo único. Fácil de inspecionar. |
+| **Frontend** | HTML + Jinja2 + Bootstrap | Funciona. CDN. Sem build step. |
+| **Mapas** | Leaflet.js + OpenStreetMap | Gratuito, sem API key, offline possível. |
+| **Grafos** | Cytoscape.js | Feito pra grafo. A IA acerta mais que no D3. |
+| **Gráficos** | Chart.js | CDN. Barras, pizza, linha — o suficiente. |
+| **Dados** | Pandas + openpyxl | Importar ERB, CDR, qualquer planilha. |
+| **Áudio** | Whisper (local) | Transcrição offline. Dados ficam na rede interna. |
+| **PDF** | pdfplumber + Tesseract | Nativo e escaneado. Detecta automaticamente. |
+| **IA local** | Ollama | Privacidade total. Sem internet. |
+| **IA cloud** | Gemini Free / Groq Free | Modelos maiores. Análise de imagem. |
+| **Segurança** | python-dotenv | Chaves fora do código. Regra mínima. |
+
+*Para detalhes das diretrizes de cada camada, consulte [`docs/ARCHITECTURE.md`](file:///C:/Users/henry/OneDrive/_Meus%20Projetos/_Sala%20de%20Situação/docs/ARCHITECTURE.md).*
 
 ---
 

@@ -1,10 +1,42 @@
 # Arquitetura Técnica & Padrões do Sistema
 
-## 1. Stack Tecnológica
-- **HTML5 Semântico**: Estrutura modular em abas (`.tab-pane`) ativadas dinamicamente sem recarregamento de página.
-- **CSS3 Moderno**: Totalmente responsivo baseado em variáveis CSS no `:root` (com suporte a temas claro/escuro nativos), Grid Layout e Flexbox.
-- **JavaScript Vanilla (ES6+)**: Sem frameworks pesados externos, garantindo carregamento instantâneo, compatibilidade total com navegadores e independência de build tools.
-- **Lucide Icons**: Biblioteca de ícones vetoriais SVG (`data-lucide="..."`), inicializada dinamicamente com `lucide.createIcons()`.
+## 1. Stack Tecnológica & Escolhas Padrão ("A IA Acerta na Primeira Tentativa")
+
+Para assegurar máxima robustez, facilidade de manutenção e eliminar erros de configuração ou build por qualquer Inteligência Artificial ou desenvolvedor que atue no projeto, adota-se a seguinte matriz de tecnologias obrigatórias:
+
+### 1.1 Matriz de Tecnologias
+
+| CAMADA | TECNOLOGIA | POR QUE | STATUS NO PROJETO |
+| :--- | :--- | :--- | :--- |
+| **Backend** | Python + Flask | Sem configuração. A IA gera correto de primeira. | Servidor estático atual; se houver backend, usar Flask |
+| **Banco** | SQLite | Zero instalação. Arquivo único. Fácil de inspecionar. | Banco local embarcado para persistência |
+| **Frontend** | HTML + Jinja2 + Bootstrap | Funciona. CDN. Sem build step. | HTML5 + CSS nativo + Vanilla JS (Zero build) |
+| **Mapas** | Leaflet.js + OpenStreetMap | Gratuito, sem API key, offline possível. | Padrão obrigatório para recursos geográficos |
+| **Grafos** | Cytoscape.js | Feito pra grafo. A IA acerta mais que no D3. | Padrão obrigatório para diagramas de rede |
+| **Gráficos** | Chart.js | CDN. Barras, pizza, linha — o suficiente. | **Em uso ativo** (Chart.js v4.4.1 via CDN) |
+| **Dados** | Pandas + openpyxl | Importar ERB, CDR, qualquer planilha. | Scripts de extração e tratamento de dados SUS |
+| **Áudio** | Whisper (local) | Transcrição offline. Dados ficam na rede interna. | Transcrições de reuniões/áudios sem envio externo |
+| **PDF** | pdfplumber + Tesseract | Nativo e escaneado. Detecta automaticamente. | Leitura de contratos SUS, portarias e relatórios |
+| **IA local** | Ollama | Privacidade total. Sem internet. | Execução de LLMs locais sem tráfego de dados sensíveis |
+| **IA cloud** | Gemini Free / Groq Free | Modelos maiores. Análise de imagem. | Visão computacional e análises pesadas |
+| **Segurança** | python-dotenv | Chaves fora do código. Regra mínima. | Arquivo `.env` para credenciais e segredos |
+
+### 1.2 Regras Específicas por Camada
+
+1. **Frontend & Interface**:
+   - **Zero Build Step**: O projeto não utiliza Node.js, Webpack, Vite, React ou frameworks com etapa de compilação.
+   - **Estilo Atual**: O projeto conta com um Design System próprio em `style.css` (~5.700 linhas) baseado em variáveis CSS customizadas. Qualquer biblioteca CSS externa (como Bootstrap via CDN) só deve ser introduzida em módulos isolados ou templates Jinja2 específicos, **jamais** sobrescrevendo as classes globais (`.card`, `.btn`, `.badge`, `.tab-pane`) para não desconfigurar o layout existente.
+   - **Ícones**: Lucide Icons via CDN (`lucide.createIcons()`).
+2. **Gráficos & Visualização**:
+   - Já em uso: **Chart.js** via CDN (`https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js`).
+   - Para mapas: estritamente **Leaflet.js** + tiles do **OpenStreetMap** (sem chaves de API pagas).
+   - Para redes/fluxos relacionais: estritamente **Cytoscape.js** (não utilizar D3.js).
+3. **Backend & Persistência**:
+   - Caso seja necessário criar endpoints de API ou persistência em servidor, deve-se criar uma aplicação **Flask** simples (`app.py`) conectada a um banco **SQLite** (`database.db`).
+   - Todas as configurações e chaves de API devem ser carregadas via **`python-dotenv`** a partir de um arquivo `.env` (ignorado no Git).
+4. **Tratamento de Dados & Documentos**:
+   - Para ingestão de planilhas orçamentárias (SIA, SIH, CISA, emendas): **Pandas + openpyxl**.
+   - Para leitura de relatórios de faturamento e portarias em PDF: **pdfplumber** (PDFs textuais nativos) combinado com **Tesseract** (PDFs escaneados com OCR).
 
 ---
 

@@ -4,6 +4,33 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-11] - Instituição da Matriz Tecnológica Padrão ("A IA Acerta na Primeira Tentativa") e Auditoria do Código
+
+### 🎯 O que foi feito:
+1. **Documentação da Matriz de Escolhas Tecnológicas**:
+   - Inclusão em `docs/README.md` e `docs/ARCHITECTURE.md` da matriz de 12 tecnologias oficiais para guiar todas as IAs em desenvolvimentos presentes e futuros:
+     - **Backend**: Python + Flask
+     - **Banco**: SQLite
+     - **Frontend**: HTML + Jinja2 + Bootstrap (Zero build step, CDN)
+     - **Mapas**: Leaflet.js + OpenStreetMap
+     - **Grafos**: Cytoscape.js (proibição de D3)
+     - **Gráficos**: Chart.js (CDN)
+     - **Dados**: Pandas + openpyxl
+     - **Áudio**: Whisper (local)
+     - **PDF**: pdfplumber + Tesseract
+     - **IA local**: Ollama
+     - **IA cloud**: Gemini Free / Groq Free
+     - **Segurança**: python-dotenv
+2. **Auditoria Geral do Código Fonte**:
+   - Verificação completa de dependências em `index.html`, `app.js` e `style.css`.
+   - Constatada **conformidade total**:
+     - O sistema já utiliza **Chart.js v4.4.1** via CDN (alinhado à diretriz).
+     - Utiliza **Lucide Icons** via CDN (alinhado à diretriz de zero build).
+     - Não há dependências obsoletas ou conflitantes (zero D3.js, zero build tools pesadas).
+     - O frontend atual opera com arquitetura limpa sem build step.
+
+---
+
 ## [2026-09-11] - Padronização CISA, Simplificação de Rateio e Catálogo Técnico
 
 ### 🎯 O que foi feito:
