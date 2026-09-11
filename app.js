@@ -2906,35 +2906,35 @@ function renderCisaViabilidade(key) {
           </div>
 
           <!-- Grade de Cards de Procedimentos -->
-          <div id="cisaProcCatalogGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem;">
+          <div id="cisaProcCatalogGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.85rem;">
             ${window.cisaProcedimentosDescricoes.map(item => `
-              <div class="cisa-proc-card" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.15rem; transition: all 0.2s ease;">
+              <div class="cisa-proc-card" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.85rem 0.95rem; transition: all 0.2s ease;">
                 <div>
-                  <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.65rem; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 0.4rem;">
-                      <span style="background: rgba(37, 99, 235, 0.08); color: #2563eb; font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 4px; font-family: monospace; border: 1px solid rgba(37, 99, 235, 0.2);">
+                  <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.4rem; margin-bottom: 0.45rem; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 0.35rem;">
+                      <span style="background: rgba(37, 99, 235, 0.08); color: #2563eb; font-weight: 800; font-size: 0.68rem; padding: 1px 6px; border-radius: 4px; font-family: monospace; border: 1px solid rgba(37, 99, 235, 0.2);">
                         CISA ${item.cod}
                       </span>
-                      <span style="font-size: 0.68rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">
+                      <span style="font-size: 0.64rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">
                         ${item.grupo}
                       </span>
                     </div>
-                    <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.25); font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 99px; font-family: monospace; display: inline-flex; align-items: center; gap: 4px;">
-                      <i data-lucide="tag" style="width: 10px; height: 10px;"></i> SIGTAP: ${item.sigtap}
+                    <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.25); font-weight: 800; font-size: 0.68rem; padding: 1px 6px; border-radius: 99px; font-family: monospace; display: inline-flex; align-items: center; gap: 4px;">
+                      <i data-lucide="tag" style="width: 9px; height: 9px;"></i> SIGTAP: ${item.sigtap}
                     </span>
                   </div>
 
-                  <h4 style="margin: 0 0 0.55rem 0; font-size: 0.95rem; font-weight: 800; color: var(--text-title); line-height: 1.35; display: flex; align-items: center; gap: 0.45rem;">
-                    <i data-lucide="${item.icon}" style="width: 16px; height: 16px; color: #2563eb; flex-shrink: 0;"></i>
+                  <h4 style="margin: 0 0 0.4rem 0; font-size: 0.84rem; font-weight: 800; color: var(--text-title); line-height: 1.3; display: flex; align-items: center; gap: 0.4rem;">
+                    <i data-lucide="${item.icon}" style="width: 14px; height: 14px; color: #2563eb; flex-shrink: 0;"></i>
                     <span>${item.nome}</span>
                   </h4>
 
-                  <p style="margin: 0 0 0.75rem 0; font-size: 0.81rem; color: var(--text-main); line-height: 1.55;">
+                  <p style="margin: 0 0 0.55rem 0; font-size: 0.74rem; color: var(--text-main); line-height: 1.45; text-align: justify; text-justify: inter-word; hyphens: auto;">
                     ${item.descricao}
                   </p>
                 </div>
 
-                <div style="background: rgba(37, 99, 235, 0.03); border-left: 3px solid #2563eb; padding: 0.55rem 0.75rem; border-radius: 0 4px 4px 0; font-size: 0.75rem; color: var(--text-muted); line-height: 1.45;">
+                <div style="background: rgba(37, 99, 235, 0.03); border-left: 3px solid #2563eb; padding: 0.45rem 0.65rem; border-radius: 0 4px 4px 0; font-size: 0.70rem; color: var(--text-muted); line-height: 1.4; text-align: justify; text-justify: inter-word; hyphens: auto;">
                   <strong style="color: var(--text-title);">Finalidade Clínica:</strong> ${item.finalidade}
                 </div>
               </div>
