@@ -2530,9 +2530,6 @@ function renderCisaViabilidade(key) {
                 </span>
               </div>
             </div>
-            <button class="btn-primary" id="btnCisaAddProcTable" style="background: #2563eb; border-color: #2563eb; font-size: 0.8rem; padding: 0.4rem 0.85rem; border-radius: 6px;">
-              <i data-lucide="plus" style="width: 14px; height: 14px;"></i> Inserir Procedimento
-            </button>
           </div>
 
           <div class="table-responsive" style="overflow-x: auto;">
@@ -3319,8 +3316,6 @@ function initCisaInteractiveSimulation() {
   };
   const btnAddPTop = root.querySelector('#btnCisaAddProcTop');
   if (btnAddPTop) btnAddPTop.onclick = handleAddProc;
-  const btnAddPTab = root.querySelector('#btnCisaAddProcTable');
-  if (btnAddPTab) btnAddPTab.onclick = handleAddProc;
 
   const handleAddCusto = () => {
     state.custos.unshift({ item: '', qtd: 1, val: 0 });
