@@ -2352,21 +2352,21 @@ window.renderCisaServico = renderCisaServico;
 
 window.cisaSimState = {
   procs: [
-    { especialidade: 'Oftalmologia', grupo: '01 CONSULTAS / ATENDIMENTOS / EM ATENÇÃO ESPECIALIZADA', cod: '00483', desc: 'CONSULTA ESPECIALIZADA EM OFTALMOLOGIA (C/ MAPEAM. + TONOME)', val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00257', desc: 'BIOMETRIA ULTRASSONICA (01 OLHO)', val: 64.24 },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00256', desc: 'CAMPIMETRIA COMPUTADORIZADA (01 OLHO)', val: 64.24 },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00269', desc: 'FUNDOSCOPIA', val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00260', desc: 'GONIOSCOPIA', val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00261', desc: 'MAPEAMENTO DE RETINA (01 OLHO)', val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00262', desc: 'MICROSCOPIA ESPECULAR DE CORNEA (01 OLHO)', val: 149.09 },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00263', desc: 'PAQUIMETRIA ULTRASSONICA (01 OLHO)', val: 40.40 },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00543', desc: 'POTENCIAL DE ACUIDADE VISUAL', val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00264', desc: 'RETINOGRAFIA COLORIDA BINOCULAR (02 OLHOS)', val: 71.95 },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00593', desc: 'RETIRADA DE CORPO ESTRANHO DO OLHO (HON/SALA/MAT)', val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00870', desc: 'TOMOGRAFIA DE COERENCIA OPTICA (AMBOS OS OLHOS)', val: 313.47 },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00266', desc: 'TONOMETRIA (01 OLHO)', val: 14.21 },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00267', desc: 'TOPOGRAFIA COMPUTADORIZADA DE CORNEA (01 OLHO)', val: 64.24 },
-    { especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00258', desc: 'ULTRA-SONOGRAFIA DE GLOBO OCULAR / ORBITA (01 OLHO)', val: null }
+    { especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '00483', desc: 'Consulta especializada em oftalmologia (c/ mapeam. + tonome)', val: null },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', val: 64.24 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', val: 64.24 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00269', desc: 'Fundoscopia', val: null },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00260', desc: 'Gonioscopia', val: null },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00261', desc: 'Mapeamento de retina (01 olho)', val: null },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', val: 149.09 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00263', desc: 'Paquimetria ultrassônica (01 olho)', val: 40.40 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00543', desc: 'Potencial de acuidade visual', val: null },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00264', desc: 'Retinografia colorida binocular (02 olhos)', val: 71.95 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00593', desc: 'Retirada de corpo estranho do olho (hon/sala/mat)', val: null },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', val: 313.47 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00266', desc: 'Tonometria (01 olho)', val: 14.21 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', val: 64.24 },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00258', desc: 'Ultra-sonografia de globo ocular / órbita (01 olho)', val: null }
   ],
   custos: [
     { item: 'Médicos Oftalmologistas Cirurgiões com RQE (2 prof. 20h cada)', qtd: 2, val: 12000.00 },
@@ -2536,25 +2536,26 @@ function renderCisaViabilidade(key) {
           </div>
 
           <div class="table-responsive" style="overflow-x: auto;">
-            <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-              <thead style="background: #0f1741; color: #ffffff;">
+            <table class="cisa-table-modern">
+              <thead>
                 <tr>
-                  <th style="padding: 11px 12px; text-align: left; color: #fff; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; width: 140px;">Código CISA</th>
-                  <th style="padding: 11px 12px; text-align: left; color: #fff; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; min-width: 480px;">Procedimento / Descrição</th>
-                  <th style="padding: 11px 14px; text-align: right; color: #fff; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; width: 200px;">Valor Pactuado (R$)</th>
-                  <th style="width: 40px; text-align: center; color: #fff;"></th>
+                  <th style="width: 120px;">Código</th>
+                  <th style="min-width: 440px;">Procedimento</th>
+                  <th style="width: 190px; text-align: right;">Valor Unitário (R$)</th>
+                  <th style="width: 140px; text-align: center;">Status</th>
+                  <th style="width: 50px;"></th>
                 </tr>
               </thead>
               <tbody id="tbCisaProcs"></tbody>
               <tfoot>
-                <tr style="background: rgba(37, 99, 235, 0.08); font-weight: 800; border-top: 2px solid rgba(37, 99, 235, 0.3);">
-                  <td colspan="2" style="padding: 12px 12px; color: #2563eb; font-size: 0.88rem;">
+                <tr style="background: rgba(37, 99, 235, 0.05); font-weight: 800; border-top: 2px solid rgba(37, 99, 235, 0.2);">
+                  <td colspan="2" style="padding: 14px 18px; color: #2563eb; font-size: 0.88rem;">
                     SOMA DOS VALORES UNITÁRIOS PACTUADOS (TABELA CISA)
                   </td>
-                  <td id="totCisaRec" style="padding: 12px 14px; text-align: right; color: #2563eb; font-size: 1.05rem; font-weight: 900;">
+                  <td id="totCisaRec" style="padding: 14px 18px; text-align: right; color: #2563eb; font-size: 1.05rem; font-weight: 800;">
                     Aguardando valores
                   </td>
-                  <td></td>
+                  <td colspan="2"></td>
                 </tr>
               </tfoot>
             </table>
@@ -2588,23 +2589,23 @@ function renderCisaViabilidade(key) {
           </div>
 
           <div class="table-responsive" style="overflow-x: auto;">
-            <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-              <thead style="background: #0f1741; color: #ffffff;">
+            <table class="cisa-table-modern">
+              <thead>
                 <tr>
-                  <th style="padding: 11px 10px; text-align: left; color: #fff; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; min-width: 440px;">Função / Recurso Operacional</th>
-                  <th style="padding: 11px 6px; text-align: center; color: #fff; font-size: 0.72rem; text-transform: uppercase; width: 75px;">Qtd</th>
-                  <th style="padding: 11px 8px; text-align: right; color: #fff; font-size: 0.72rem; text-transform: uppercase; width: 120px;">R$ Unitário</th>
-                  <th style="padding: 11px 10px; text-align: right; color: #fff; font-size: 0.72rem; text-transform: uppercase; width: 130px;">Total/mês</th>
-                  <th style="width: 36px; text-align: center; color: #fff;"></th>
+                  <th style="min-width: 420px;">Função / Recurso Operacional</th>
+                  <th style="width: 80px; text-align: center;">Qtd</th>
+                  <th style="width: 140px; text-align: right;">R$ Unitário</th>
+                  <th style="width: 150px; text-align: right;">Total/mês</th>
+                  <th style="width: 70px; text-align: center;">Ações</th>
                 </tr>
               </thead>
               <tbody id="tbCisaCustos"></tbody>
               <tfoot>
-                <tr style="background: rgba(239, 68, 68, 0.08); font-weight: 800; border-top: 2px solid rgba(239, 68, 68, 0.25);">
-                  <td colspan="3" style="padding: 12px 10px; color: #dc2626; font-size: 0.88rem;">
+                <tr style="background: rgba(239, 68, 68, 0.05); font-weight: 800; border-top: 2px solid rgba(239, 68, 68, 0.2);">
+                  <td colspan="3" style="padding: 14px 18px; color: #dc2626; font-size: 0.88rem;">
                     SUBTOTAL DE CUSTOS OPERACIONAIS FIXOS DO SERVIÇO
                   </td>
-                  <td id="totCisaFixo" style="padding: 12px 8px; text-align: right; color: #dc2626; font-size: 1.05rem; font-weight: 900;">
+                  <td id="totCisaFixo" style="padding: 14px 18px; text-align: right; color: #dc2626; font-size: 1.05rem; font-weight: 800;">
                     R$ 39.072,86
                   </td>
                   <td></td>
@@ -2696,6 +2697,9 @@ function initCisaInteractiveSimulation() {
   const state = window.activeCisaSim;
   const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
+  let editingProcIdx = -1;
+  let editingCustoIdx = -1;
+
   function renderProcsTable() {
     const tb = root.querySelector('#tbCisaProcs');
     if (!tb) return;
@@ -2703,36 +2707,25 @@ function initCisaInteractiveSimulation() {
 
     let lastGroup = null;
     state.procs.forEach((p, idx) => {
-      const isGroup01 = (p.grupo && p.grupo.startsWith('01')) || p.cod === '00483';
+      const isGroup01 = (p.grupo && (p.grupo.includes('01') || p.grupo.includes('Consultas'))) || p.cod === '00483';
       const currentGroup = isGroup01 ? '01' : '11';
 
       if (currentGroup !== lastGroup) {
         lastGroup = currentGroup;
         const trGroup = document.createElement('tr');
-        trGroup.style.background = isGroup01
-          ? 'linear-gradient(90deg, rgba(79, 70, 229, 0.12) 0%, rgba(79, 70, 229, 0.02) 100%)'
-          : 'linear-gradient(90deg, rgba(37, 99, 235, 0.12) 0%, rgba(37, 99, 235, 0.02) 100%)';
-        trGroup.style.borderTop = isGroup01 ? '2px solid #4f46e5' : '2px solid #0284c7';
-        trGroup.style.borderBottom = isGroup01 ? '1px solid rgba(79, 70, 229, 0.25)' : '1px solid rgba(2, 132, 199, 0.25)';
+        trGroup.className = 'cisa-group-row';
 
         const tdGroup = document.createElement('td');
-        tdGroup.colSpan = 4;
-        tdGroup.style.padding = '10px 14px';
-        tdGroup.style.fontWeight = '800';
-        tdGroup.style.fontSize = '0.8rem';
-        tdGroup.style.color = isGroup01 ? '#3730a3' : '#075985';
-        tdGroup.style.textTransform = 'uppercase';
-        tdGroup.style.letterSpacing = '0.5px';
+        tdGroup.colSpan = 5;
 
         const groupTitle = isGroup01
-          ? 'Grupo 01: Consultas / Atendimentos em Atenção Especializada'
-          : 'Grupo 11: Diagnóstico em Oftalmologia';
-        const groupIcon = isGroup01 ? 'stethoscope' : 'eye';
-        const groupColor = isGroup01 ? '#4f46e5' : '#0284c7';
+          ? '01 · Consultas especializadas'
+          : '11 · Diagnóstico em oftalmologia';
+        const groupIcon = 'eye';
 
         tdGroup.innerHTML = `
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <i data-lucide="${groupIcon}" style="width: 16px; height: 16px; color: ${groupColor};"></i>
+          <div style="display: flex; align-items: center; gap: 0.55rem;">
+            <i data-lucide="${groupIcon}" style="width: 16px; height: 16px;"></i>
             <span>${groupTitle}</span>
           </div>
         `;
@@ -2741,137 +2734,163 @@ function initCisaInteractiveSimulation() {
       }
 
       const tr = document.createElement('tr');
-      tr.style.borderBottom = '1px solid var(--border-color)';
-      tr.style.transition = 'background-color 0.15s ease';
-      tr.onmouseenter = () => tr.style.backgroundColor = 'var(--bg-card-hover)';
-      tr.onmouseleave = () => tr.style.backgroundColor = 'transparent';
+      tr.className = 'cisa-row';
 
-      // 1. Código CISA
-      const tdCod = document.createElement('td');
-      tdCod.style.padding = '9px 12px';
-      tdCod.style.width = '140px';
-      const inCod = document.createElement('input');
-      inCod.type = 'text';
-      inCod.value = p.cod;
-      if (p.cod) inCod.setAttribute('value', p.cod);
-      inCod.style.width = '120px';
-      inCod.style.fontFamily = 'monospace';
-      inCod.style.fontSize = '12.5px';
-      inCod.style.fontWeight = '800';
-      inCod.style.padding = '6px 8px';
-      inCod.style.borderRadius = '4px';
-      inCod.style.border = '1px solid var(--border-color)';
-      inCod.style.background = 'var(--bg-card)';
-      inCod.style.color = '#1d4ed8';
-      inCod.title = 'Código CISA: ' + p.cod;
-      inCod.oninput = () => { p.cod = inCod.value; };
-      tdCod.appendChild(inCod);
-      tr.appendChild(tdCod);
+      const isEditing = (editingProcIdx === idx);
 
-      // 2. Nome do Procedimento com Pill de Especialidade
-      const tdDesc = document.createElement('td');
-      tdDesc.style.padding = '9px 12px';
-      tdDesc.style.minWidth = '480px';
+      if (isEditing) {
+        // MODO DE EDIÇÃO INLINE
+        tr.style.background = 'rgba(99, 102, 241, 0.05)';
 
-      const wrapDesc = document.createElement('div');
-      wrapDesc.style.display = 'flex';
-      wrapDesc.style.alignItems = 'center';
-      wrapDesc.style.gap = '0.65rem';
+        // 1. Código
+        const tdCod = document.createElement('td');
+        tdCod.className = 'cisa-cell';
+        const inCod = document.createElement('input');
+        inCod.className = 'cisa-inline-input';
+        inCod.style.width = '85px';
+        inCod.value = p.cod || '';
+        tdCod.appendChild(inCod);
+        tr.appendChild(tdCod);
 
-      const pillEsp = document.createElement('span');
-      pillEsp.style.background = 'rgba(37, 99, 235, 0.08)';
-      pillEsp.style.color = '#1d4ed8';
-      pillEsp.style.border = '1px solid rgba(37, 99, 235, 0.22)';
-      pillEsp.style.fontSize = '0.68rem';
-      pillEsp.style.fontWeight = '700';
-      pillEsp.style.padding = '2px 8px';
-      pillEsp.style.borderRadius = '99px';
-      pillEsp.style.textTransform = 'uppercase';
-      pillEsp.style.letterSpacing = '0.3px';
-      pillEsp.style.flexShrink = '0';
-      pillEsp.style.display = 'inline-flex';
-      pillEsp.style.alignItems = 'center';
-      pillEsp.style.gap = '4px';
-      pillEsp.innerHTML = '<i data-lucide="eye" style="width: 11px; height: 11px;"></i> ' + (p.especialidade || 'Oftalmologia');
+        // 2. Procedimento
+        const tdDesc = document.createElement('td');
+        tdDesc.className = 'cisa-cell';
+        const inDesc = document.createElement('input');
+        inDesc.className = 'cisa-inline-input';
+        inDesc.style.width = '100%';
+        inDesc.style.minWidth = '300px';
+        inDesc.value = p.desc || '';
+        tdDesc.appendChild(inDesc);
+        tr.appendChild(tdDesc);
 
-      const inDesc = document.createElement('input');
-      inDesc.type = 'text';
-      inDesc.value = p.desc;
-      if (p.desc) inDesc.setAttribute('value', p.desc);
-      inDesc.style.width = '100%';
-      inDesc.style.minWidth = '380px';
-      inDesc.style.fontSize = '13px';
-      inDesc.style.fontWeight = '600';
-      inDesc.style.padding = '6px 10px';
-      inDesc.style.borderRadius = '4px';
-      inDesc.style.border = '1px solid var(--border-color)';
-      inDesc.style.background = 'var(--bg-card)';
-      inDesc.style.color = 'var(--text-title)';
-      inDesc.title = p.desc;
-      inDesc.oninput = () => { p.desc = inDesc.value; };
+        // 3. Valor Unitário (R$)
+        const tdVal = document.createElement('td');
+        tdVal.className = 'cisa-cell';
+        tdVal.style.textAlign = 'right';
+        const inVal = document.createElement('input');
+        inVal.type = 'number';
+        inVal.step = '0.01';
+        inVal.min = '0';
+        inVal.placeholder = '0,00';
+        inVal.className = 'cisa-inline-input';
+        inVal.style.width = '110px';
+        inVal.style.textAlign = 'right';
+        inVal.value = (p.val !== null && p.val !== undefined && p.val !== '') ? p.val : '';
+        tdVal.appendChild(inVal);
+        tr.appendChild(tdVal);
 
-      wrapDesc.appendChild(pillEsp);
-      wrapDesc.appendChild(inDesc);
-      tdDesc.appendChild(wrapDesc);
-      tr.appendChild(tdDesc);
+        // 4. Status Preview
+        const tdStatus = document.createElement('td');
+        tdStatus.className = 'cisa-cell';
+        tdStatus.style.textAlign = 'center';
+        const updateStatusPreview = () => {
+          const v = inVal.value;
+          if (v !== '' && !isNaN(v) && parseFloat(v) > 0) {
+            tdStatus.innerHTML = `<span class="cisa-status-badge status-cotado"><i data-lucide="check-circle-2" style="width:14px;height:14px;"></i> Cotado</span>`;
+          } else {
+            tdStatus.innerHTML = `<span class="cisa-status-badge status-a-definir"><i data-lucide="clock" style="width:14px;height:14px;"></i> A definir</span>`;
+          }
+          if (window.lucide && lucide.createIcons) lucide.createIcons();
+        };
+        inVal.oninput = updateStatusPreview;
+        updateStatusPreview();
+        tr.appendChild(tdStatus);
 
-      // 3. Valor Pactuado (R$)
-      const tdVal = document.createElement('td');
-      tdVal.style.padding = '9px 14px';
-      tdVal.style.textAlign = 'right';
-      tdVal.style.width = '200px';
-      const inVal = document.createElement('input');
-      inVal.type = 'number';
-      inVal.step = '0.01';
-      inVal.min = '0';
-      inVal.placeholder = 'A definir (R$)';
-      const valFormatted = (p.val !== null && p.val !== undefined && p.val !== '') ? p.val : '';
-      inVal.value = valFormatted;
-      if (valFormatted !== '') inVal.setAttribute('value', String(valFormatted));
-      inVal.style.width = '160px';
-      inVal.style.textAlign = 'right';
-      inVal.style.fontWeight = '700';
-      inVal.style.fontSize = '13px';
-      inVal.style.padding = '6px 10px';
-      inVal.style.borderRadius = '4px';
-      inVal.style.border = '1px solid var(--border-color)';
-      inVal.style.background = 'var(--bg-card)';
-      inVal.style.color = '#1d4ed8';
-      inVal.oninput = () => {
-        p.val = inVal.value !== '' ? parseFloat(inVal.value) : null;
-        if (p.val !== null) inVal.setAttribute('value', String(p.val));
-        else inVal.removeAttribute('value');
-        recalc();
-      };
-      tdVal.appendChild(inVal);
-      tr.appendChild(tdVal);
+        // 5. Ações (Salvar, Cancelar, Excluir)
+        const tdAct = document.createElement('td');
+        tdAct.className = 'cisa-cell';
+        tdAct.style.textAlign = 'center';
+        tdAct.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+            <button class="btn-cisa-action btn-cisa-save" title="Salvar alterações">
+              <i data-lucide="check" style="width:16px;height:16px;"></i>
+            </button>
+            <button class="btn-cisa-action btn-cisa-cancel" title="Cancelar">
+              <i data-lucide="x" style="width:16px;height:16px;"></i>
+            </button>
+            <button class="btn-cisa-action btn-cisa-del" title="Excluir procedimento">
+              <i data-lucide="trash-2" style="width:15px;height:15px;"></i>
+            </button>
+          </div>
+        `;
+        tdAct.querySelector('.btn-cisa-save').onclick = () => {
+          p.cod = inCod.value.trim();
+          p.desc = inDesc.value.trim();
+          p.val = inVal.value !== '' ? parseFloat(inVal.value) : null;
+          editingProcIdx = -1;
+          renderProcsTable();
+          recalc();
+        };
+        tdAct.querySelector('.btn-cisa-cancel').onclick = () => {
+          editingProcIdx = -1;
+          renderProcsTable();
+        };
+        tdAct.querySelector('.btn-cisa-del').onclick = () => {
+          state.procs.splice(idx, 1);
+          editingProcIdx = -1;
+          renderProcsTable();
+          recalc();
+        };
+        tr.appendChild(tdAct);
 
-      // Botão Remover
-      const tdDel = document.createElement('td');
-      tdDel.style.textAlign = 'center';
-      tdDel.style.width = '40px';
-      tdDel.style.padding = '4px';
-      const btnDel = document.createElement('button');
-      btnDel.textContent = '×';
-      btnDel.style.background = 'none';
-      btnDel.style.border = 'none';
-      btnDel.style.color = 'var(--text-muted)';
-      btnDel.style.cursor = 'pointer';
-      btnDel.style.fontSize = '18px';
-      btnDel.style.fontWeight = '700';
-      btnDel.title = 'Remover procedimento';
-      btnDel.onmouseenter = () => btnDel.style.color = 'var(--danger)';
-      btnDel.onmouseleave = () => btnDel.style.color = 'var(--text-muted)';
-      btnDel.onclick = () => {
-        state.procs.splice(idx, 1);
-        renderProcsTable();
-        recalc();
-      };
-      tdDel.appendChild(btnDel);
-      tr.appendChild(tdDel);
+      } else {
+        // MODO VISUALIZAÇÃO LIMPO (IDÊNTICO AO PRINT)
+
+        // 1. Código
+        const tdCod = document.createElement('td');
+        tdCod.className = 'cisa-cell';
+        tdCod.innerHTML = `<span class="cisa-cell-code">${p.cod || '—'}</span>`;
+        tr.appendChild(tdCod);
+
+        // 2. Procedimento
+        const tdDesc = document.createElement('td');
+        tdDesc.className = 'cisa-cell';
+        tdDesc.innerHTML = `<span class="cisa-cell-desc">${p.desc || '—'}</span>`;
+        tr.appendChild(tdDesc);
+
+        // 3. Valor Unitário (R$)
+        const tdVal = document.createElement('td');
+        tdVal.className = 'cisa-cell';
+        tdVal.style.textAlign = 'right';
+        const hasVal = (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val) && Number(p.val) > 0);
+        if (hasVal) {
+          tdVal.innerHTML = `<span class="cisa-cell-val">${BRL.format(p.val)}</span>`;
+        } else {
+          tdVal.innerHTML = `<span class="cisa-val-empty">—</span>`;
+        }
+        tr.appendChild(tdVal);
+
+        // 4. Status
+        const tdStatus = document.createElement('td');
+        tdStatus.className = 'cisa-cell';
+        tdStatus.style.textAlign = 'center';
+        if (hasVal) {
+          tdStatus.innerHTML = `<span class="cisa-status-badge status-cotado"><i data-lucide="check-circle-2" style="width:14px;height:14px;"></i> Cotado</span>`;
+        } else {
+          tdStatus.innerHTML = `<span class="cisa-status-badge status-a-definir"><i data-lucide="clock" style="width:14px;height:14px;"></i> A definir</span>`;
+        }
+        tr.appendChild(tdStatus);
+
+        // 5. Ação (Editar)
+        const tdAct = document.createElement('td');
+        tdAct.className = 'cisa-cell';
+        tdAct.style.textAlign = 'center';
+        tdAct.innerHTML = `
+          <button class="btn-cisa-action btn-cisa-edit" title="Editar procedimento">
+            <i data-lucide="pencil" style="width:16px;height:16px;"></i>
+          </button>
+        `;
+        tdAct.querySelector('.btn-cisa-edit').onclick = () => {
+          editingProcIdx = idx;
+          renderProcsTable();
+        };
+        tr.appendChild(tdAct);
+      }
 
       tb.appendChild(tr);
     });
+
+    if (window.lucide && lucide.createIcons) lucide.createIcons();
   }
 
   function renderCustosTable() {
@@ -2881,107 +2900,155 @@ function initCisaInteractiveSimulation() {
 
     state.custos.forEach((c, idx) => {
       const tr = document.createElement('tr');
-      tr.style.borderBottom = '1px solid var(--border-color)';
-      tr.style.transition = 'background-color 0.15s ease';
-      tr.onmouseenter = () => tr.style.backgroundColor = 'var(--bg-card-hover)';
-      tr.onmouseleave = () => tr.style.backgroundColor = 'transparent';
+      tr.className = 'cisa-row';
 
-      // Item / Função
-      const tdItem = document.createElement('td');
-      tdItem.style.padding = '8px 8px';
-      tdItem.style.minWidth = '440px';
-      const inItem = document.createElement('input');
-      inItem.type = 'text';
-      inItem.value = c.item;
-      inItem.style.width = '100%';
-      inItem.style.minWidth = '420px';
-      inItem.style.fontSize = '13px';
-      inItem.style.fontWeight = '600';
-      inItem.style.padding = '6px 10px';
-      inItem.style.borderRadius = '4px';
-      inItem.style.border = '1px solid var(--border-color)';
-      inItem.style.background = 'var(--bg-card)';
-      inItem.style.color = 'var(--text-title)';
-      inItem.title = c.item;
-      inItem.oninput = () => { c.item = inItem.value; };
-      tdItem.appendChild(inItem);
-      tr.appendChild(tdItem);
+      const isEditing = (editingCustoIdx === idx);
 
-      // Quantidade
-      const tdQtd = document.createElement('td');
-      tdQtd.style.padding = '8px 4px';
-      tdQtd.style.textAlign = 'center';
-      const inQtd = document.createElement('input');
-      inQtd.type = 'number';
-      inQtd.step = '0.5';
-      inQtd.min = '0';
-      inQtd.value = c.qtd;
-      inQtd.style.width = '48px';
-      inQtd.style.textAlign = 'center';
-      inQtd.style.fontWeight = '700';
-      inQtd.style.padding = '4px 4px';
-      inQtd.style.borderRadius = '4px';
-      inQtd.style.border = '1px solid var(--border-color)';
-      inQtd.style.background = 'var(--bg-card)';
-      inQtd.oninput = () => { c.qtd = parseFloat(inQtd.value) || 0; recalc(); };
-      tdQtd.appendChild(inQtd);
-      tr.appendChild(tdQtd);
+      if (isEditing) {
+        tr.style.background = 'rgba(239, 68, 68, 0.05)';
 
-      // Valor Unitário
-      const tdVal = document.createElement('td');
-      tdVal.style.padding = '8px 4px';
-      tdVal.style.textAlign = 'right';
-      const inVal = document.createElement('input');
-      inVal.type = 'number';
-      inVal.step = '10';
-      inVal.min = '0';
-      inVal.value = c.val;
-      inVal.style.width = '80px';
-      inVal.style.textAlign = 'right';
-      inVal.style.fontWeight = '600';
-      inVal.style.padding = '4px 4px';
-      inVal.style.borderRadius = '4px';
-      inVal.style.border = '1px solid var(--border-color)';
-      inVal.style.background = 'var(--bg-card)';
-      inVal.oninput = () => { c.val = parseFloat(inVal.value) || 0; recalc(); };
-      tdVal.appendChild(inVal);
-      tr.appendChild(tdVal);
+        // 1. Função / Item
+        const tdItem = document.createElement('td');
+        tdItem.className = 'cisa-cell';
+        const inItem = document.createElement('input');
+        inItem.className = 'cisa-inline-input';
+        inItem.style.width = '100%';
+        inItem.value = c.item || '';
+        tdItem.appendChild(inItem);
+        tr.appendChild(tdItem);
 
-      // Total Mês
-      const tdTot = document.createElement('td');
-      tdTot.style.padding = '8px 6px';
-      tdTot.style.textAlign = 'right';
-      tdTot.style.fontWeight = '800';
-      tdTot.style.color = '#dc2626';
-      tdTot.className = 'tot-col';
-      tdTot.textContent = BRL.format(c.qtd * c.val);
-      tr.appendChild(tdTot);
+        // 2. Qtd
+        const tdQtd = document.createElement('td');
+        tdQtd.className = 'cisa-cell';
+        tdQtd.style.textAlign = 'center';
+        const inQtd = document.createElement('input');
+        inQtd.type = 'number';
+        inQtd.step = '0.5';
+        inQtd.min = '0';
+        inQtd.className = 'cisa-inline-input';
+        inQtd.style.width = '60px';
+        inQtd.style.textAlign = 'center';
+        inQtd.value = c.qtd;
+        tdQtd.appendChild(inQtd);
+        tr.appendChild(tdQtd);
 
-      // Botão Remover
-      const tdDel = document.createElement('td');
-      tdDel.style.textAlign = 'center';
-      tdDel.style.padding = '4px';
-      const btnDel = document.createElement('button');
-      btnDel.textContent = '×';
-      btnDel.style.background = 'none';
-      btnDel.style.border = 'none';
-      btnDel.style.color = 'var(--text-muted)';
-      btnDel.style.cursor = 'pointer';
-      btnDel.style.fontSize = '17px';
-      btnDel.style.fontWeight = '700';
-      btnDel.title = 'Remover item';
-      btnDel.onmouseenter = () => btnDel.style.color = 'var(--danger)';
-      btnDel.onmouseleave = () => btnDel.style.color = 'var(--text-muted)';
-      btnDel.onclick = () => {
-        state.custos.splice(idx, 1);
-        renderCustosTable();
-        recalc();
-      };
-      tdDel.appendChild(btnDel);
-      tr.appendChild(tdDel);
+        // 3. Valor Unitário
+        const tdVal = document.createElement('td');
+        tdVal.className = 'cisa-cell';
+        tdVal.style.textAlign = 'right';
+        const inVal = document.createElement('input');
+        inVal.type = 'number';
+        inVal.step = '10';
+        inVal.min = '0';
+        inVal.className = 'cisa-inline-input';
+        inVal.style.width = '110px';
+        inVal.style.textAlign = 'right';
+        inVal.value = c.val;
+        tdVal.appendChild(inVal);
+        tr.appendChild(tdVal);
+
+        // 4. Total/mês
+        const tdTot = document.createElement('td');
+        tdTot.className = 'cisa-cell';
+        tdTot.style.textAlign = 'right';
+        tdTot.style.fontWeight = '800';
+        tdTot.style.color = '#dc2626';
+        const updateTot = () => {
+          const q = parseFloat(inQtd.value) || 0;
+          const v = parseFloat(inVal.value) || 0;
+          tdTot.textContent = BRL.format(q * v);
+        };
+        inQtd.oninput = updateTot;
+        inVal.oninput = updateTot;
+        updateTot();
+        tr.appendChild(tdTot);
+
+        // 5. Ações
+        const tdAct = document.createElement('td');
+        tdAct.className = 'cisa-cell';
+        tdAct.style.textAlign = 'center';
+        tdAct.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+            <button class="btn-cisa-action btn-cisa-save" title="Salvar alterações">
+              <i data-lucide="check" style="width:16px;height:16px;"></i>
+            </button>
+            <button class="btn-cisa-action btn-cisa-cancel" title="Cancelar">
+              <i data-lucide="x" style="width:16px;height:16px;"></i>
+            </button>
+            <button class="btn-cisa-action btn-cisa-del" title="Excluir custo">
+              <i data-lucide="trash-2" style="width:15px;height:15px;"></i>
+            </button>
+          </div>
+        `;
+        tdAct.querySelector('.btn-cisa-save').onclick = () => {
+          c.item = inItem.value.trim();
+          c.qtd = parseFloat(inQtd.value) || 0;
+          c.val = parseFloat(inVal.value) || 0;
+          editingCustoIdx = -1;
+          renderCustosTable();
+          recalc();
+        };
+        tdAct.querySelector('.btn-cisa-cancel').onclick = () => {
+          editingCustoIdx = -1;
+          renderCustosTable();
+        };
+        tdAct.querySelector('.btn-cisa-del').onclick = () => {
+          state.custos.splice(idx, 1);
+          editingCustoIdx = -1;
+          renderCustosTable();
+          recalc();
+        };
+        tr.appendChild(tdAct);
+
+      } else {
+        // MODO VISUALIZAÇÃO LIMPO
+        // 1. Função / Item
+        const tdItem = document.createElement('td');
+        tdItem.className = 'cisa-cell';
+        tdItem.innerHTML = `<span class="cisa-cell-desc">${c.item}</span>`;
+        tr.appendChild(tdItem);
+
+        // 2. Qtd
+        const tdQtd = document.createElement('td');
+        tdQtd.className = 'cisa-cell';
+        tdQtd.style.textAlign = 'center';
+        tdQtd.innerHTML = `<span style="display: inline-block; padding: 3px 10px; border-radius: 99px; background: rgba(0,0,0,0.04); font-weight: 700; font-size: 0.82rem; color: var(--text-title);">${c.qtd}</span>`;
+        tr.appendChild(tdQtd);
+
+        // 3. Valor Unitário
+        const tdVal = document.createElement('td');
+        tdVal.className = 'cisa-cell';
+        tdVal.style.textAlign = 'right';
+        tdVal.innerHTML = `<span class="cisa-cell-val">${BRL.format(c.val)}</span>`;
+        tr.appendChild(tdVal);
+
+        // 4. Total/mês
+        const tdTot = document.createElement('td');
+        tdTot.className = 'cisa-cell';
+        tdTot.style.textAlign = 'right';
+        tdTot.innerHTML = `<strong style="color: #dc2626; font-size: 0.92rem;">${BRL.format(c.qtd * c.val)}</strong>`;
+        tr.appendChild(tdTot);
+
+        // 5. Ação (Editar)
+        const tdAct = document.createElement('td');
+        tdAct.className = 'cisa-cell';
+        tdAct.style.textAlign = 'center';
+        tdAct.innerHTML = `
+          <button class="btn-cisa-action btn-cisa-edit" title="Editar custo">
+            <i data-lucide="pencil" style="width:16px;height:16px;"></i>
+          </button>
+        `;
+        tdAct.querySelector('.btn-cisa-edit').onclick = () => {
+          editingCustoIdx = idx;
+          renderCustosTable();
+        };
+        tr.appendChild(tdAct);
+      }
 
       tb.appendChild(tr);
     });
+
+    if (window.lucide && lucide.createIcons) lucide.createIcons();
   }
 
   function recalc() {
@@ -3050,7 +3117,8 @@ function initCisaInteractiveSimulation() {
 
   // Handlers para Adicionar Itens
   const handleAddProc = () => {
-    state.procs.push({ especialidade: 'Oftalmologia', grupo: '11 DIAGNÓSTICO EM OFTALMOLOGIA', cod: '00000', desc: 'Novo procedimento CISA', val: null });
+    state.procs.unshift({ especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '', desc: '', val: null });
+    editingProcIdx = 0;
     renderProcsTable();
     recalc();
   };
@@ -3060,7 +3128,8 @@ function initCisaInteractiveSimulation() {
   if (btnAddPTab) btnAddPTab.onclick = handleAddProc;
 
   const handleAddCusto = () => {
-    state.custos.push({ item: 'Novo item de custo operacional', qtd: 1, val: 1000.00 });
+    state.custos.unshift({ item: '', qtd: 1, val: 0 });
+    editingCustoIdx = 0;
     renderCustosTable();
     recalc();
   };
@@ -3174,88 +3243,92 @@ function renderCisaPortaria(key) {
         </div>
 
         <div class="table-responsive" style="overflow-x: auto;">
-          <table class="data-table" style="width: 100%; font-size: 0.85rem; border-collapse: collapse;">
-            <thead style="background: #0f1741; color: #ffffff;">
+          <table class="cisa-table-modern">
+            <thead>
               <tr>
-                <th style="padding: 11px 12px; text-align: left; color: #ffffff; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; width: 140px;">Código CISA</th>
-                <th style="padding: 11px 12px; text-align: left; color: #ffffff; font-weight: 700; text-transform: uppercase; font-size: 0.75rem;">Procedimento / Descrição Oficial</th>
-                <th style="padding: 11px 14px; text-align: right; color: #ffffff; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; width: 200px;">Valor Pactuado (R$)</th>
+                <th style="width: 120px;">Código</th>
+                <th style="min-width: 440px;">Procedimento</th>
+                <th style="width: 190px; text-align: right;">Valor Unitário (R$)</th>
+                <th style="width: 140px; text-align: center;">Status</th>
               </tr>
             </thead>
             <tbody>
               <!-- FAIXA EM LINHA: GRUPO 01 -->
-              <tr style="background: linear-gradient(90deg, rgba(79, 70, 229, 0.12) 0%, rgba(79, 70, 229, 0.02) 100%); border-top: 2px solid #4f46e5; border-bottom: 1px solid rgba(79, 70, 229, 0.25);">
-                <td colspan="3" style="padding: 10px 14px; font-weight: 800; font-size: 0.8rem; color: #3730a3; text-transform: uppercase; letter-spacing: 0.5px;">
+              <tr class="cisa-group-row">
+                <td colspan="4">
                   <div style="display: flex; align-items: center; justify-content: space-between;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                      <i data-lucide="stethoscope" style="width: 16px; height: 16px; color: #2563eb;"></i>
-                      <span>Grupo 01: Consultas / Atendimentos em Atenção Especializada</span>
+                    <div style="display: flex; align-items: center; gap: 0.55rem;">
+                      <i data-lucide="stethoscope" style="width: 15px; height: 15px;"></i>
+                      <span>01 · Consultas especializadas</span>
                     </div>
                     <span style="background: #4f46e5; color: #ffffff; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 99px;">
-                      ${procs.filter(p => (p.grupo && p.grupo.startsWith('01')) || p.cod === '00483').length} Procedimento
+                      ${procs.filter(p => (p.grupo && (p.grupo.includes('01') || p.grupo.includes('Consultas'))) || p.cod === '00483').length} Procedimento
                     </span>
                   </div>
                 </td>
               </tr>
-              ${procs.filter(p => (p.grupo && p.grupo.startsWith('01')) || p.cod === '00483').map((p, idx) => `
-                <tr style="border-bottom: 1px solid var(--border-color); background: ${idx % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.015)'};">
-                  <td style="padding: 9px 12px; font-weight: 800; font-family: monospace; color: #2563eb; font-size: 0.88rem; width: 140px;">${p.cod}</td>
-                  <td style="padding: 9px 12px; font-weight: 600; color: var(--text-title);">
-                    <div style="display: flex; align-items: center; gap: 0.65rem;">
-                      <span style="background: rgba(37, 99, 235, 0.08); color: #1d4ed8; border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;">
-                        <i data-lucide="eye" style="width: 11px; height: 11px;"></i> ${p.especialidade || 'Oftalmologia'}
-                      </span>
-                      <span>${p.desc}</span>
-                    </div>
-                  </td>
-                  <td style="padding: 9px 14px; text-align: right; font-weight: 700; color: #2563eb; width: 200px;">
-                    ${p.val !== null && p.val !== undefined && p.val !== '' ? ('R$ ' + Number(p.val).toFixed(2).replace('.', ',')) : '<span style="color: var(--text-muted); font-style: italic;">A definir</span>'}
-                  </td>
-                </tr>
-              `).join('')}
+              ${procs.filter(p => (p.grupo && (p.grupo.includes('01') || p.grupo.includes('Consultas'))) || p.cod === '00483').map((p) => {
+                const hasVal = (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val) && Number(p.val) > 0);
+                return `
+                  <tr class="cisa-row">
+                    <td class="cisa-cell"><span class="cisa-cell-code">${p.cod || '—'}</span></td>
+                    <td class="cisa-cell"><span class="cisa-cell-desc">${p.desc || '—'}</span></td>
+                    <td class="cisa-cell" style="text-align: right;">
+                      ${hasVal ? `<span class="cisa-cell-val">R$ ${Number(p.val).toFixed(2).replace('.', ',')}</span>` : `<span class="cisa-val-empty">—</span>`}
+                    </td>
+                    <td class="cisa-cell" style="text-align: center;">
+                      ${hasVal
+                        ? `<span class="cisa-status-badge status-cotado"><i data-lucide="check-circle" style="width:13px;height:13px;"></i> Cotado</span>`
+                        : `<span class="cisa-status-badge status-a-definir"><i data-lucide="clock" style="width:13px;height:13px;"></i> A definir</span>`}
+                    </td>
+                  </tr>
+                `;
+              }).join('')}
 
               <!-- FAIXA EM LINHA: GRUPO 11 -->
-              <tr style="background: linear-gradient(90deg, rgba(37, 99, 235, 0.12) 0%, rgba(37, 99, 235, 0.02) 100%); border-top: 2px solid var(--blue-vibrant); border-bottom: 1px solid rgba(37, 99, 235, 0.25);">
-                <td colspan="3" style="padding: 10px 14px; font-weight: 800; font-size: 0.8rem; color: var(--navy-primary); text-transform: uppercase; letter-spacing: 0.5px;">
+              <tr class="cisa-group-row">
+                <td colspan="4">
                   <div style="display: flex; align-items: center; justify-content: space-between;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                      <i data-lucide="eye" style="width: 16px; height: 16px; color: var(--blue-vibrant);"></i>
-                      <span>Grupo 11: Diagnóstico em Oftalmologia</span>
+                    <div style="display: flex; align-items: center; gap: 0.55rem;">
+                      <i data-lucide="eye" style="width: 15px; height: 15px;"></i>
+                      <span>11 · Diagnóstico em oftalmologia</span>
                     </div>
-                    <span style="background: var(--blue-vibrant); color: #ffffff; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 99px;">
-                      ${procs.filter(p => !((p.grupo && p.grupo.startsWith('01')) || p.cod === '00483')).length} Procedimentos
+                    <span style="background: #4f46e5; color: #ffffff; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 99px;">
+                      ${procs.filter(p => !((p.grupo && (p.grupo.includes('01') || p.grupo.includes('Consultas'))) || p.cod === '00483')).length} Procedimentos
                     </span>
                   </div>
                 </td>
               </tr>
-              ${procs.filter(p => !((p.grupo && p.grupo.startsWith('01')) || p.cod === '00483')).map((p, idx) => `
-                <tr style="border-bottom: 1px solid var(--border-color); background: ${idx % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.015)'};">
-                  <td style="padding: 9px 12px; font-weight: 800; font-family: monospace; color: #2563eb; font-size: 0.88rem; width: 140px;">${p.cod}</td>
-                  <td style="padding: 9px 12px; font-weight: 600; color: var(--text-title);">
-                    <div style="display: flex; align-items: center; gap: 0.65rem;">
-                      <span style="background: rgba(37, 99, 235, 0.08); color: #1d4ed8; border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;">
-                        <i data-lucide="eye" style="width: 11px; height: 11px;"></i> ${p.especialidade || 'Oftalmologia'}
-                      </span>
-                      <span>${p.desc}</span>
-                    </div>
-                  </td>
-                  <td style="padding: 9px 14px; text-align: right; font-weight: 700; color: #2563eb; width: 200px;">
-                    ${p.val !== null && p.val !== undefined && p.val !== '' ? ('R$ ' + Number(p.val).toFixed(2).replace('.', ',')) : '<span style="color: var(--text-muted); font-style: italic;">A definir</span>'}
-                  </td>
-                </tr>
-              `).join('')}
+              ${procs.filter(p => !((p.grupo && (p.grupo.includes('01') || p.grupo.includes('Consultas'))) || p.cod === '00483')).map((p) => {
+                const hasVal = (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val) && Number(p.val) > 0);
+                return `
+                  <tr class="cisa-row">
+                    <td class="cisa-cell"><span class="cisa-cell-code">${p.cod || '—'}</span></td>
+                    <td class="cisa-cell"><span class="cisa-cell-desc">${p.desc || '—'}</span></td>
+                    <td class="cisa-cell" style="text-align: right;">
+                      ${hasVal ? `<span class="cisa-cell-val">R$ ${Number(p.val).toFixed(2).replace('.', ',')}</span>` : `<span class="cisa-val-empty">—</span>`}
+                    </td>
+                    <td class="cisa-cell" style="text-align: center;">
+                      ${hasVal
+                        ? `<span class="cisa-status-badge status-cotado"><i data-lucide="check-circle" style="width:13px;height:13px;"></i> Cotado</span>`
+                        : `<span class="cisa-status-badge status-a-definir"><i data-lucide="clock" style="width:13px;height:13px;"></i> A definir</span>`}
+                    </td>
+                  </tr>
+                `;
+              }).join('')}
             </tbody>
             <tfoot>
-              <tr style="background: rgba(37, 99, 235, 0.08); font-weight: 800; border-top: 2px solid rgba(37, 99, 235, 0.3);">
-                <td colspan="2" style="padding: 12px 12px; color: #2563eb; font-size: 0.88rem;">
+              <tr style="background: rgba(37, 99, 235, 0.05); font-weight: 800; border-top: 2px solid rgba(37, 99, 235, 0.2);">
+                <td colspan="2" style="padding: 14px 18px; color: #2563eb; font-size: 0.88rem;">
                   SOMA DOS VALORES UNITÁRIOS PACTUADOS (${procs.filter(p => p.val !== null && p.val !== undefined && p.val !== '').length} DE ${procs.length} ITENS COTADOS)
                 </td>
-                <td style="padding: 12px 14px; text-align: right; color: #2563eb; font-size: 1rem; font-weight: 900;">
+                <td style="padding: 14px 18px; text-align: right; color: #2563eb; font-size: 1.05rem; font-weight: 800;">
                   ${(() => {
                     const s = procs.reduce((acc, p) => acc + (p.val ? Number(p.val) : 0), 0);
                     return s > 0 ? ('R$ ' + s.toFixed(2).replace('.', ',')) : 'Valores a definir';
                   })()}
                 </td>
+                <td></td>
               </tr>
             </tfoot>
           </table>
