@@ -4,6 +4,16 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-21] - Ajuste de Interface CISA: Renomeação do Botão de Alternância
+
+### 🎯 O que foi feito:
+1. **Renomeação do Botão Executivo do CISA**:
+   - O botão principal de visualização no cabeçalho do Consórcio CISA foi simplificado de *"Estudo de Viabilidade Financeira"* para apenas **"Viabilidade Financeira"**, tornando a barra de navegação superior mais concisa e equilibrada com o botão *"Ficha Técnica"*.
+2. **Atualização de Cache e Build**:
+   - Incrementado o parâmetro de cache em `index.html` para `app.js?v=20260921_01`.
+
+---
+
 ## [2026-09-11] - Emissão do Estudo Executivo: 10 Funcionalidades Disruptivas (PDF)
 
 ### 🎯 O que foi feito:
