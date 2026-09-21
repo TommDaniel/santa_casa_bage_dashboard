@@ -4,6 +4,20 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-21] - Módulo CISA: Coluna com Pill de Especialidade na Tabela da Ficha Técnica
+
+### 🎯 O que foi feito:
+1. **Nova Coluna de Especialidade na Tabela Oficial de Procedimentos CISA**:
+   - Inserida uma coluna específica para a **Especialidade** posicionada imediatamente à esquerda da coluna de *Valor Unitário (R$)* na tabela da **Ficha Técnica** (`renderCisaPortaria`).
+   - Ordem das colunas padronizada: `Código`, `Procedimento`, `Especialidade`, `Valor Unitário (R$)`, `Status`.
+2. **Pill / Badge Visual de Especialidade**:
+   - Cada procedimento exibe uma pill estilizada (`badge`) com cantos arredondados, fundo translúcido azul (`rgba(37, 99, 235, 0.08)`), borda sutil e ícone contextual Lucide (`eye` para Oftalmologia ou `stethoscope` para clínicas gerais).
+   - Ajustados os cabeçalhos de grupo (Grupo 01 e Grupo 11) com `colspan="5"` e o rodapé de totalização com `colspan="3"` para alinhamento geométrico perfeito da tabela.
+3. **Atualização de Cache e Build**:
+   - Cache buster de `app.js` atualizado para `app.js?v=20260921_03` em `index.html`.
+
+---
+
 ## [2026-09-21] - Módulo CISA: Opção 'Todas Especialidades' com Consolidação Geral do Programa Regional
 
 ### 🎯 O que foi feito:

@@ -3896,16 +3896,17 @@ function renderCisaPortaria(key) {
           <table class="cisa-table-modern">
             <thead>
               <tr>
-                <th style="width: 120px;">Código</th>
-                <th style="min-width: 440px;">Procedimento</th>
-                <th style="width: 190px; text-align: right;">Valor Unitário (R$)</th>
-                <th style="width: 140px; text-align: center;">Status</th>
+                <th style="width: 100px;">Código</th>
+                <th style="min-width: 380px;">Procedimento</th>
+                <th style="width: 150px; text-align: center;">Especialidade</th>
+                <th style="width: 180px; text-align: right;">Valor Unitário (R$)</th>
+                <th style="width: 130px; text-align: center;">Status</th>
               </tr>
             </thead>
             <tbody>
               <!-- FAIXA EM LINHA: GRUPO 01 -->
               <tr class="cisa-group-row">
-                <td colspan="4">
+                <td colspan="5">
                   <div style="display: flex; align-items: center; justify-content: space-between;">
                     <div style="display: flex; align-items: center; gap: 0.55rem;">
                       <i data-lucide="stethoscope" style="width: 15px; height: 15px;"></i>
@@ -3919,10 +3920,17 @@ function renderCisaPortaria(key) {
               </tr>
               ${procs.filter(p => (p.grupo && (p.grupo.includes('01') || p.grupo.includes('Consultas'))) || p.cod === '00483').map((p) => {
                 const hasVal = (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val) && Number(p.val) > 0);
+                const specName = p.especialidade || 'Oftalmologia';
+                const specIcon = specName.toLowerCase() === 'oftalmologia' ? 'eye' : 'stethoscope';
                 return `
                   <tr class="cisa-row">
                     <td class="cisa-cell"><span class="cisa-cell-code">${p.cod || '—'}</span></td>
                     <td class="cisa-cell"><span class="cisa-cell-desc">${p.desc || '—'}</span></td>
+                    <td class="cisa-cell" style="text-align: center;">
+                      <span class="badge" style="background: rgba(37, 99, 235, 0.08); color: #2563eb; font-weight: 700; font-size: 0.72rem; padding: 3px 8px; border-radius: 99px; border: 1px solid rgba(37, 99, 235, 0.2); display: inline-flex; align-items: center; gap: 4px;">
+                        <i data-lucide="${specIcon}" style="width: 11px; height: 11px;"></i> ${specName}
+                      </span>
+                    </td>
                     <td class="cisa-cell" style="text-align: right;">
                       ${hasVal ? `<span class="cisa-cell-val">R$ ${Number(p.val).toFixed(2).replace('.', ',')}</span>` : `<span class="cisa-val-empty">—</span>`}
                     </td>
@@ -3937,7 +3945,7 @@ function renderCisaPortaria(key) {
 
               <!-- FAIXA EM LINHA: GRUPO 11 -->
               <tr class="cisa-group-row">
-                <td colspan="4">
+                <td colspan="5">
                   <div style="display: flex; align-items: center; justify-content: space-between;">
                     <div style="display: flex; align-items: center; gap: 0.55rem;">
                       <i data-lucide="eye" style="width: 15px; height: 15px;"></i>
@@ -3951,10 +3959,17 @@ function renderCisaPortaria(key) {
               </tr>
               ${procs.filter(p => !((p.grupo && (p.grupo.includes('01') || p.grupo.includes('Consultas'))) || p.cod === '00483')).map((p) => {
                 const hasVal = (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val) && Number(p.val) > 0);
+                const specName = p.especialidade || 'Oftalmologia';
+                const specIcon = specName.toLowerCase() === 'oftalmologia' ? 'eye' : 'stethoscope';
                 return `
                   <tr class="cisa-row">
                     <td class="cisa-cell"><span class="cisa-cell-code">${p.cod || '—'}</span></td>
                     <td class="cisa-cell"><span class="cisa-cell-desc">${p.desc || '—'}</span></td>
+                    <td class="cisa-cell" style="text-align: center;">
+                      <span class="badge" style="background: rgba(37, 99, 235, 0.08); color: #2563eb; font-weight: 700; font-size: 0.72rem; padding: 3px 8px; border-radius: 99px; border: 1px solid rgba(37, 99, 235, 0.2); display: inline-flex; align-items: center; gap: 4px;">
+                        <i data-lucide="${specIcon}" style="width: 11px; height: 11px;"></i> ${specName}
+                      </span>
+                    </td>
                     <td class="cisa-cell" style="text-align: right;">
                       ${hasVal ? `<span class="cisa-cell-val">R$ ${Number(p.val).toFixed(2).replace('.', ',')}</span>` : `<span class="cisa-val-empty">—</span>`}
                     </td>
@@ -3969,7 +3984,7 @@ function renderCisaPortaria(key) {
             </tbody>
             <tfoot>
               <tr style="background: rgba(37, 99, 235, 0.05); font-weight: 800; border-top: 2px solid rgba(37, 99, 235, 0.2);">
-                <td colspan="2" style="padding: 14px 18px; color: #2563eb; font-size: 0.88rem;">
+                <td colspan="3" style="padding: 14px 18px; color: #2563eb; font-size: 0.88rem;">
                   SOMA DOS VALORES UNITÁRIOS PACTUADOS (${procs.filter(p => p.val !== null && p.val !== undefined && p.val !== '').length} DE ${procs.length} ITENS COTADOS)
                 </td>
                 <td style="padding: 14px 18px; text-align: right; color: #2563eb; font-size: 1.05rem; font-weight: 800;">
