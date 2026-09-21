@@ -2548,6 +2548,55 @@ window.cisaProcedimentosDescricoes = [
   }
 ];
 
+const CISA_MESES = [
+  { id: '01', sigla: 'JAN', nome: 'Janeiro' },
+  { id: '02', sigla: 'FEV', nome: 'Fevereiro' },
+  { id: '03', sigla: 'MAR', nome: 'Março' },
+  { id: '04', sigla: 'ABR', nome: 'Abril' },
+  { id: '05', sigla: 'MAI', nome: 'Maio' },
+  { id: '06', sigla: 'JUN', nome: 'Junho' },
+  { id: '07', sigla: 'JUL', nome: 'Julho' },
+  { id: '08', sigla: 'AGO', nome: 'Agosto' },
+  { id: '09', sigla: 'SET', nome: 'Setembro' },
+  { id: '10', sigla: 'OUT', nome: 'Outubro' },
+  { id: '11', sigla: 'NOV', nome: 'Novembro' },
+  { id: '12', sigla: 'DEZ', nome: 'Dezembro' }
+];
+
+window.cisaSelectedMonth = window.cisaSelectedMonth || '03';
+
+function getCisaMonthlyStore(monthId) {
+  if (!window.cisaMonthlyStore) {
+    try {
+      const saved = localStorage.getItem('cisa_monthly_store_2026_v2');
+      if (saved) window.cisaMonthlyStore = JSON.parse(saved);
+    } catch (e) {}
+    if (!window.cisaMonthlyStore || typeof window.cisaMonthlyStore !== 'object') {
+      window.cisaMonthlyStore = {};
+    }
+  }
+
+  if (!monthId) monthId = window.cisaSelectedMonth || '03';
+
+  if (!window.cisaMonthlyStore[monthId] || !Array.isArray(window.cisaMonthlyStore[monthId].procs)) {
+    window.cisaMonthlyStore[monthId] = {
+      procs: JSON.parse(JSON.stringify(window.cisaSimState.procs)),
+      custos: JSON.parse(JSON.stringify(window.cisaSimState.custos)),
+      regraAtiva: 'margem50'
+    };
+  }
+
+  return window.cisaMonthlyStore[monthId];
+}
+
+function saveCisaMonthlyStore() {
+  try {
+    if (window.cisaMonthlyStore) {
+      localStorage.setItem('cisa_monthly_store_2026_v2', JSON.stringify(window.cisaMonthlyStore));
+    }
+  } catch (e) {}
+}
+
 function getCisaDefaultState() {
   return JSON.parse(JSON.stringify(window.cisaSimState));
 }
@@ -2561,10 +2610,17 @@ function renderCisaViabilidade(key) {
   const container = document.getElementById('cisaMainContent');
   if (!container) return;
 
+  const curMonth = window.cisaSelectedMonth || '03';
+  const curMonthObj = CISA_MESES.find(m => m.id === curMonth) || CISA_MESES[2];
+  const monthData = getCisaMonthlyStore(curMonth);
+
   if (!window.activeCisaSim) {
     window.activeCisaSim = getCisaDefaultState();
   }
   const state = window.activeCisaSim;
+  state.procs = monthData.procs;
+  state.custos = monthData.custos;
+  state.regraAtiva = monthData.regraAtiva || 'margem50';
   const isTodas = (key === 'todas');
 
   container.innerHTML = `
@@ -2695,6 +2751,46 @@ function renderCisaViabilidade(key) {
           </div>
         </div>
 
+      </div>
+
+      <!-- 2.5 BARRA DE CONTROLE MENSAL DA PRODUÇÃO CISA -->
+      <div class="card cisa-month-bar ${isTodas ? 'theme-todas' : ''}" style="padding: 1rem 1.4rem; border-left: 5px solid ${isTodas ? '#10b981' : '#2563eb'}; background: var(--bg-card); display: flex; flex-direction: column; gap: 0.85rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+          <div style="display: flex; align-items: center; gap: 0.65rem;">
+            <div style="width: 34px; height: 34px; border-radius: 8px; background: ${isTodas ? 'rgba(16,185,129,0.12)' : 'rgba(37,99,235,0.12)'}; color: ${isTodas ? '#059669' : '#2563eb'}; display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+            </div>
+            <div>
+              <div style="font-weight: 800; color: var(--text-title); font-size: 0.95rem; line-height: 1.2;">
+                Controle Mensal da Produção & Repasse CISA · Exercício 2026
+              </div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">
+                Selecione o mês de competência para lançar a produção física (Qtd), faturamento e apurar a divisão de valores
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="badge" id="cisaMonthKpiBadge" style="background: ${isTodas ? 'rgba(16,185,129,0.12)' : 'rgba(37,99,235,0.1)'}; color: ${isTodas ? '#059669' : '#2563eb'}; font-weight: 800; font-size: 0.78rem; padding: 0.35rem 0.75rem; border-radius: 99px; border: 1px solid ${isTodas ? 'rgba(16,185,129,0.25)' : 'rgba(37,99,235,0.2)'}; display: inline-flex; align-items: center; gap: 6px;">
+              <i data-lucide="calendar-check" style="width: 13px; height: 13px;"></i>
+              <span id="cisaMonthSelectedLabel">COMPETÊNCIA: ${curMonthObj.nome.toUpperCase()} / 2026</span>
+            </span>
+
+            <button type="button" class="btn-icon" id="btnCisaReplicateMonth" title="Copiar valores deste mês para os outros meses de 2026" style="border-radius: 6px; font-size: 0.75rem; padding: 0.35rem 0.65rem; height: auto; display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--border-color); color: var(--text-title);">
+              <i data-lucide="copy" style="width: 13px; height: 13px;"></i> Replicar Mês
+            </button>
+          </div>
+        </div>
+
+        <!-- Tira de 12 Meses (Pills) -->
+        <div style="display: flex; gap: 0.45rem; flex-wrap: wrap; align-items: center;">
+          ${CISA_MESES.map(m => `
+            <button type="button" class="cisa-month-pill ${m.id === curMonth ? 'active' : ''}" data-month="${m.id}" style="flex: 1 1 calc(8.33% - 0.45rem); min-width: 68px; text-align: center; padding: 7px 6px; border-radius: 8px; font-size: 0.78rem; font-weight: 800; border: 1px solid var(--border-color); background: var(--bg-card); cursor: pointer; transition: all 0.15s ease;">
+              <div style="font-size: 0.8rem; font-weight: 800;">${m.sigla}</div>
+              <div class="cisa-month-subval" id="cisaMonthSub_${m.id}" style="font-size: 0.65rem; font-weight: 600; opacity: 0.8; margin-top: 2px;">—</div>
+            </button>
+          `).join('')}
+        </div>
       </div>
 
       ${isTodas ? `
@@ -3082,16 +3178,23 @@ function initCisaInteractiveSimulation(currentKey) {
   let editingProc = null;
   let editingCusto = null;
 
+  function matchSpec(itemSpec, key) {
+    if (!itemSpec || !key) return true;
+    const s = itemSpec.toLowerCase();
+    const k = key.toLowerCase();
+    return s === k || s.startsWith(k) || k.startsWith(s);
+  }
+
   function getFilteredProcs() {
     return isTodas
       ? state.procs
-      : state.procs.filter(p => !p.especialidade || p.especialidade.toLowerCase() === currentKey.toLowerCase());
+      : state.procs.filter(p => !p.especialidade || matchSpec(p.especialidade, currentKey));
   }
 
   function getFilteredCustos() {
     return isTodas
       ? state.custos
-      : state.custos.filter(c => !c.especialidade || c.especialidade.toLowerCase() === currentKey.toLowerCase());
+      : state.custos.filter(c => !c.especialidade || matchSpec(c.especialidade, currentKey));
   }
 
   function renderProcsTable() {
@@ -3254,6 +3357,7 @@ function initCisaInteractiveSimulation(currentKey) {
           p.qtd = inQtd.value !== '' ? (parseFloat(inQtd.value) || 0) : 1;
           p.val = inVal.value !== '' ? parseFloat(inVal.value) : null;
           editingProc = null;
+          saveCisaMonthlyStore();
           renderProcsTable();
           recalc();
         };
@@ -3265,13 +3369,14 @@ function initCisaInteractiveSimulation(currentKey) {
           const realIdx = state.procs.indexOf(p);
           if (realIdx !== -1) state.procs.splice(realIdx, 1);
           editingProc = null;
+          saveCisaMonthlyStore();
           renderProcsTable();
           recalc();
         };
         tr.appendChild(tdAct);
 
       } else {
-        // MODO VISUALIZAÇÃO LIMPO
+        // MODO VISUALIZAÇÃO LIMPO COM EDIÇÃO RÁPIDA DE PRODUÇÃO
         const qVal = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? p.qtd : 1;
         const hasVal = (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val) && Number(p.val) > 0);
 
@@ -3287,11 +3392,23 @@ function initCisaInteractiveSimulation(currentKey) {
         tdDesc.innerHTML = `<span class="cisa-cell-desc">${p.desc || '—'}</span>`;
         tr.appendChild(tdDesc);
 
-        // 3. Qtd
+        // 3. Qtd (Lançamento Mensal Rápido)
         const tdQtd = document.createElement('td');
         tdQtd.className = 'cisa-cell';
         tdQtd.style.textAlign = 'center';
-        tdQtd.innerHTML = `<span style="display: inline-block; padding: 3px 10px; border-radius: 99px; background: rgba(0,0,0,0.04); font-weight: 700; font-size: 0.82rem; color: var(--text-title);">${qVal}</span>`;
+        tdQtd.innerHTML = `
+          <input type="number" min="0" step="1" class="cisa-inline-input cisa-qtd-input" value="${qVal}" title="Alterar quantidade produzida neste mês" style="width: 58px; text-align: center; font-weight: 700; padding: 3px 5px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title); font-size: 0.85rem;">
+        `;
+        const inQtdQuick = tdQtd.querySelector('.cisa-qtd-input');
+        inQtdQuick.oninput = (e) => {
+          const newQ = Math.max(0, parseInt(e.target.value) || 0);
+          p.qtd = newQ;
+          saveCisaMonthlyStore();
+          if (hasVal) {
+            tdTot.innerHTML = `<strong style="color: #2563eb; font-size: 0.92rem;">${BRL.format(newQ * p.val)}</strong>`;
+          }
+          recalc();
+        };
         tr.appendChild(tdQtd);
 
         // 4. Valor Unitário (R$)
@@ -3443,6 +3560,7 @@ function initCisaInteractiveSimulation(currentKey) {
           c.qtd = parseFloat(inQtd.value) || 0;
           c.val = parseFloat(inVal.value) || 0;
           editingCusto = null;
+          saveCisaMonthlyStore();
           renderCustosTable();
           recalc();
         };
@@ -3454,6 +3572,7 @@ function initCisaInteractiveSimulation(currentKey) {
           const realIdx = state.custos.indexOf(c);
           if (realIdx !== -1) state.custos.splice(realIdx, 1);
           editingCusto = null;
+          saveCisaMonthlyStore();
           renderCustosTable();
           recalc();
         };
@@ -3467,11 +3586,20 @@ function initCisaInteractiveSimulation(currentKey) {
         tdItem.innerHTML = `<span class="cisa-cell-desc">${c.item}</span>`;
         tr.appendChild(tdItem);
 
-        // 2. Qtd
+        // 2. Qtd (Lançamento Rápido)
         const tdQtd = document.createElement('td');
         tdQtd.className = 'cisa-cell';
         tdQtd.style.textAlign = 'center';
-        tdQtd.innerHTML = `<span style="display: inline-block; padding: 3px 10px; border-radius: 99px; background: rgba(0,0,0,0.04); font-weight: 700; font-size: 0.82rem; color: var(--text-title);">${c.qtd}</span>`;
+        tdQtd.innerHTML = `
+          <input type="number" min="0" step="0.5" class="cisa-inline-input cisa-qtd-input" value="${c.qtd}" title="Alterar quantidade para este mês" style="width: 58px; text-align: center; font-weight: 700; padding: 3px 5px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title); font-size: 0.85rem;">
+        `;
+        const inCustoQtd = tdQtd.querySelector('.cisa-qtd-input');
+        inCustoQtd.oninput = (e) => {
+          c.qtd = Math.max(0, parseFloat(e.target.value) || 0);
+          saveCisaMonthlyStore();
+          tdTot.innerHTML = `<strong style="color: #dc2626; font-size: 0.92rem;">${BRL.format(c.qtd * c.val)}</strong>`;
+          recalc();
+        };
         tr.appendChild(tdQtd);
 
         // 3. Valor Unitário
@@ -3533,15 +3661,12 @@ function initCisaInteractiveSimulation(currentKey) {
 
     const despesaTotal = totFix;
     const resultadoMensal = totRec > 0 ? (totRec - despesaTotal) : 0;
-    const resultadoAnual = resultadoMensal * 12;
     const margem = totRec > 0 ? ((resultadoMensal / totRec) * 100) : 0;
     const breakeven = totRec > 0 ? ((despesaTotal / totRec) * 100) : 0;
 
-    // Atualiza KPIs
+    // Atualiza KPIs do mês ativo
     const elKpiRec = root.querySelector('#kpiCisaReceita');
     if (elKpiRec) elKpiRec.textContent = totRec > 0 ? BRL.format(totRec) : 'Aguardando valores';
-    const elKpiRecAno = root.querySelector('#kpiCisaReceitaAno');
-    if (elKpiRecAno) elKpiRecAno.textContent = totRec > 0 ? BRL.format(totRec * 12) : 'Conforme demanda mensal';
 
     const elSubProd = root.querySelector('#subCisaProdTxt');
     if (elSubProd) elSubProd.textContent = isTodas ? `${countComValor} de ${listProcs.length} cotados (Todas Especialidades)` : `${countComValor} de ${listProcs.length} cotados`;
@@ -3550,8 +3675,6 @@ function initCisaInteractiveSimulation(currentKey) {
 
     const elKpiDesp = root.querySelector('#kpiCisaDespesa');
     if (elKpiDesp) elKpiDesp.textContent = BRL.format(despesaTotal);
-    const elKpiDespAno = root.querySelector('#kpiCisaDespesaAno');
-    if (elKpiDespAno) elKpiDespAno.textContent = BRL.format(despesaTotal * 12);
 
     const elKpiRes = root.querySelector('#kpiCisaResultado');
     if (elKpiRes) {
@@ -3561,16 +3684,6 @@ function initCisaInteractiveSimulation(currentKey) {
       } else {
         elKpiRes.textContent = countComValor > 0 ? 'Tabela CISA' : 'Em definição';
         elKpiRes.style.color = '#0284c7';
-      }
-    }
-    const elKpiResAno = root.querySelector('#kpiCisaResultadoAno');
-    if (elKpiResAno) {
-      if (totRec > 0) {
-        elKpiResAno.textContent = (resultadoAnual >= 0 ? '+ ' : '') + BRL.format(resultadoAnual);
-        elKpiResAno.style.color = resultadoAnual >= 0 ? '#2563eb' : '#dc2626';
-      } else {
-        elKpiResAno.textContent = countComValor > 0 ? 'Faturamento variável' : 'Aguardando valores';
-        elKpiResAno.style.color = 'var(--text-muted)';
       }
     }
 
@@ -3586,6 +3699,116 @@ function initCisaInteractiveSimulation(currentKey) {
 
     const elTotFix = root.querySelector('#totCisaFixo');
     if (elTotFix) elTotFix.textContent = BRL.format(totFix);
+
+    // LOOP DOS 12 MESES: Atualiza subvalores de cada pill e calcula acumulado anual
+    let annualRec = 0;
+    let annualDesp = 0;
+
+    CISA_MESES.forEach(m => {
+      let mProcs, mCustos;
+      if (m.id === window.cisaSelectedMonth) {
+        mProcs = listProcs;
+        mCustos = listCustos;
+      } else {
+        const mStore = getCisaMonthlyStore(m.id);
+        mProcs = isTodas ? mStore.procs : mStore.procs.filter(p => !p.especialidade || matchSpec(p.especialidade, currentKey));
+        mCustos = isTodas ? mStore.custos : mStore.custos.filter(c => !c.especialidade || matchSpec(c.especialidade, currentKey));
+      }
+
+      let mRec = 0;
+      mProcs.forEach(p => {
+        if (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val)) {
+          const q = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? parseFloat(p.qtd) : 1;
+          mRec += (q * parseFloat(p.val));
+        }
+      });
+
+      let mCus = 0;
+      mCustos.forEach(c => {
+        mCus += ((c.qtd || 0) * (c.val || 0));
+      });
+
+      annualRec += mRec;
+      annualDesp += mCus;
+
+      const elPillSub = root.querySelector(`#cisaMonthSub_${m.id}`);
+      if (elPillSub) {
+        if (mRec > 0) {
+          elPillSub.textContent = BRL.format(mRec);
+        } else {
+          elPillSub.textContent = '—';
+        }
+      }
+    });
+
+    const annualRes = annualRec - annualDesp;
+
+    // Atualiza KPIs Anuais
+    const elKpiRecAno = root.querySelector('#kpiCisaReceitaAno');
+    if (elKpiRecAno) elKpiRecAno.textContent = annualRec > 0 ? BRL.format(annualRec) : 'Conforme demanda mensal';
+
+    const elKpiDespAno = root.querySelector('#kpiCisaDespesaAno');
+    if (elKpiDespAno) elKpiDespAno.textContent = annualDesp > 0 ? BRL.format(annualDesp) : BRL.format(despesaTotal * 12);
+
+    const elKpiResAno = root.querySelector('#kpiCisaResultadoAno');
+    if (elKpiResAno) {
+      if (annualRec > 0) {
+        elKpiResAno.textContent = (annualRes >= 0 ? '+ ' : '') + BRL.format(annualRes);
+        elKpiResAno.style.color = annualRes >= 0 ? '#2563eb' : '#dc2626';
+      } else {
+        elKpiResAno.textContent = countComValor > 0 ? 'Faturamento variável' : 'Aguardando valores';
+        elKpiResAno.style.color = 'var(--text-muted)';
+      }
+    }
+
+    // DIVISÃO DE VALORES / RATEIO (HOSPITAL VS PRESTADOR)
+    const elPoolRec = root.querySelector('#cisaPoolRec');
+    if (elPoolRec) elPoolRec.textContent = totRec > 0 ? BRL.format(totRec) : '—';
+    const elPoolDes = root.querySelector('#cisaPoolDes');
+    if (elPoolDes) elPoolDes.textContent = totFix > 0 ? BRL.format(totFix) : '—';
+    const elPoolLiq = root.querySelector('#cisaPoolLiq');
+    if (elPoolLiq) {
+      elPoolLiq.textContent = totRec > 0 ? ((resultadoMensal >= 0 ? '+ ' : '') + BRL.format(resultadoMensal)) : '—';
+      elPoolLiq.style.color = resultadoMensal >= 0 ? '#10b981' : '#dc2626';
+    }
+
+    const activeRule = state.regraAtiva || 'margem50';
+    let hospProd = 0;
+    let presProd = 0;
+
+    if (activeRule === 'margem50') {
+      hospProd = totRec * 0.50;
+      presProd = totRec * 0.50;
+    } else if (activeRule === 'rateio8020') {
+      hospProd = totRec * 0.20;
+      presProd = totRec * 0.80;
+    } else {
+      hospProd = totRec * 0.50;
+      presProd = totRec * 0.50;
+    }
+
+    const hospRes = hospProd - totFix;
+    const presRes = presProd;
+
+    // Hospital
+    const elHProd = root.querySelector('#cisaHProd');
+    if (elHProd) elHProd.textContent = totRec > 0 ? BRL.format(hospProd) : '—';
+    const elHCusFix = root.querySelector('#cisaHCusFix');
+    if (elHCusFix) elHCusFix.textContent = totFix > 0 ? ('- ' + BRL.format(totFix)) : 'R$ 0,00';
+    const elHRes = root.querySelector('#cisaHRes');
+    if (elHRes) {
+      elHRes.textContent = totRec > 0 ? ((hospRes >= 0 ? '+ ' : '') + BRL.format(hospRes)) : '—';
+      elHRes.style.color = hospRes >= 0 ? '#10b981' : '#dc2626';
+    }
+
+    // Prestador
+    const elPProd = root.querySelector('#cisaPProdV');
+    if (elPProd) elPProd.textContent = totRec > 0 ? BRL.format(presProd) : '—';
+    const elPRes = root.querySelector('#cisaPRes2');
+    if (elPRes) {
+      elPRes.textContent = totRec > 0 ? ((presRes >= 0 ? '+ ' : '') + BRL.format(presRes)) : '—';
+      elPRes.style.color = presRes >= 0 ? '#10b981' : '#dc2626';
+    }
 
     // Se for TODAS ESPECIALIDADES, preenche também o Quadro de Consolidação por Especialidade
     if (isTodas) {
@@ -3691,12 +3914,67 @@ function initCisaInteractiveSimulation(currentKey) {
     }
   }
 
+  // Sincronização dos 12 Meses (Pills de Navegação e Competência)
+  const monthPills = root.querySelectorAll('.cisa-month-pill[data-month]');
+  monthPills.forEach(pill => {
+    pill.onclick = () => {
+      const mId = pill.dataset.month;
+      if (mId === window.cisaSelectedMonth) return;
+
+      saveCisaMonthlyStore();
+      window.cisaSelectedMonth = mId;
+
+      const newStore = getCisaMonthlyStore(mId);
+      state.procs = newStore.procs;
+      state.custos = newStore.custos;
+      state.regraAtiva = newStore.regraAtiva || 'margem50';
+
+      const curMObj = CISA_MESES.find(m => m.id === mId) || CISA_MESES[0];
+      const lbl = root.querySelector('#cisaMonthSelectedLabel');
+      if (lbl) lbl.textContent = `COMPETÊNCIA: ${curMObj.nome.toUpperCase()} / 2026`;
+
+      monthPills.forEach(p => p.classList.toggle('active', p.dataset.month === mId));
+
+      ruleCards.forEach(c => {
+        c.setAttribute('aria-pressed', c.dataset.rule === state.regraAtiva ? 'true' : 'false');
+      });
+      if (cisaRegras[state.regraAtiva] && ruleNote) {
+        const r = cisaRegras[state.regraAtiva];
+        ruleNote.innerHTML = `<strong>${r.nome}.</strong> ${r.nota}`;
+      }
+
+      renderProcsTable();
+      renderCustosTable();
+      recalc();
+    };
+  });
+
+  // Replicar Mês para todo o ano de 2026
+  const btnReplicate = root.querySelector('#btnCisaReplicateMonth');
+  if (btnReplicate) {
+    btnReplicate.onclick = () => {
+      const curMObj = CISA_MESES.find(m => m.id === window.cisaSelectedMonth) || CISA_MESES[2];
+      if (confirm(`Deseja replicar a produção física (quantidades) e valores de ${curMObj.nome}/2026 para todos os outros 11 meses de 2026?`)) {
+        CISA_MESES.forEach(m => {
+          const targetStore = getCisaMonthlyStore(m.id);
+          targetStore.procs = JSON.parse(JSON.stringify(state.procs));
+          targetStore.custos = JSON.parse(JSON.stringify(state.custos));
+          targetStore.regraAtiva = state.regraAtiva;
+        });
+        saveCisaMonthlyStore();
+        recalc();
+        alert(`Produção de ${curMObj.nome}/2026 replicada com sucesso para todo o exercício de 2026!`);
+      }
+    };
+  }
+
   // Handlers para Adicionar Itens
   const handleAddProc = () => {
     const spec = (currentKey && currentKey !== 'todas') ? (SERVICOS_CISA[currentKey]?.nome || 'Oftalmologia') : 'Oftalmologia';
     const newProc = { especialidade: spec, grupo: '01 · Consultas especializadas', cod: '', desc: '', qtd: 1, val: null };
     state.procs.unshift(newProc);
     editingProc = newProc;
+    saveCisaMonthlyStore();
     renderProcsTable();
     recalc();
   };
@@ -3708,15 +3986,26 @@ function initCisaInteractiveSimulation(currentKey) {
     const newCusto = { especialidade: spec, item: '', qtd: 1, val: 0 };
     state.custos.unshift(newCusto);
     editingCusto = newCusto;
+    saveCisaMonthlyStore();
     renderCustosTable();
     recalc();
   };
 
   // Reset
   const handleReset = () => {
-    if (confirm('Deseja restaurar os procedimentos e valores originais do Anexo 3 do CISA?')) {
-      window.activeCisaSim = getCisaDefaultState();
-      initCisaInteractiveSimulation(currentKey);
+    if (confirm('Deseja restaurar os procedimentos e valores originais do Anexo 3 do CISA para o mês atual?')) {
+      const defState = getCisaDefaultState();
+      state.procs = defState.procs;
+      state.custos = defState.custos;
+      state.regraAtiva = 'margem50';
+      const curStore = getCisaMonthlyStore(window.cisaSelectedMonth);
+      curStore.procs = JSON.parse(JSON.stringify(defState.procs));
+      curStore.custos = JSON.parse(JSON.stringify(defState.custos));
+      curStore.regraAtiva = 'margem50';
+      saveCisaMonthlyStore();
+      renderProcsTable();
+      renderCustosTable();
+      recalc();
     }
   };
   const btnResetTop = root.querySelector('#btnCisaResetTop');
@@ -3787,6 +4076,10 @@ function initCisaInteractiveSimulation(currentKey) {
         ruleNote.innerHTML = `<strong>${r.nome}.</strong> ${r.nota}`;
       }
       state.regraAtiva = ruleKey;
+      const curStore = getCisaMonthlyStore(window.cisaSelectedMonth);
+      curStore.regraAtiva = ruleKey;
+      saveCisaMonthlyStore();
+      recalc();
     };
   });
 

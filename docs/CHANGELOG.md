@@ -4,6 +4,31 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-21] - Módulo CISA: Controle Mensal da Produção Física e Financeira (Exercício 2026) & Rateio
+
+### 🎯 O que foi feito:
+1. **Barra de Controle Mensal da Produção (Tira de 12 Meses 2026)**:
+   - Inserida a linha/barra de competências mensais (`.cisa-month-bar`) exatamente entre os 3 KPI cards de topo e as tabelas analíticas na página da especialidade CISA (e também em Todas Especialidades).
+   - Contém 12 pills interativas (de `JAN` a `DEZ`), exibindo a sigla do mês e um subvalor dinâmico atualizado com o faturamento apurado de cada competência.
+   - Badge dinâmico de competência ativa (`COMPETÊNCIA: [MÊS] / 2026`) com botão de atalho **"Replicar Mês"**, permitindo clonar as quantidades e cotações de um mês de referência para todo o exercício de 2026.
+2. **Lançamento Físico e Financeiro Mensal com Edição Rápida Inline**:
+   - Na tabela de procedimentos pactuados, a coluna `QTD` agora conta com um `<input type="number">` estilizado e responsivo no modo visual, permitindo lançar a produção física do mês ativo diretamente na tabela.
+   - Modificações recalculam em tempo real a receita da linha, o total da tabela, os KPIs mensais, o acumulado anual da projeção e o rateio financeiro.
+3. **Persistência Mensal Independente & Consolidação Automática**:
+   - Criado modelo de dados em memória e `localStorage` (`cisa_monthly_store_2026_v2`) que armazena a produção e custos de cada mês de forma isolada e persistente.
+   - Ao alternar entre meses, os dados da competência são carregados instantaneamente, sem perda dos lançamentos dos meses anteriores.
+   - A visão "Todas Especialidades" consolida em tempo real a soma de todas as especialidades para a competência selecionada.
+4. **Cálculo Dinâmico da Divisão de Valores / Rateio (Hospital vs. Prestador)**:
+   - Integrado o quadro de **Regra de Negociação | Divisão de Valores** (`#cisaPoolBox` e `#cisaSplitBox`) ao motor interativo:
+     - Apuração da Receita Total, Despesa Fixa Total e Resultado a Ratear.
+     - **Modelo 50% Margem Hospitalar**: 50% da produção SIGTAP para o Hospital (que deduz os custos operacionais fixos) e 50% para a equipe médica/prestador.
+     - **Modelo Rateio 80% / 20%**: 80% da produção para o prestador e 20% para o hospital deduzidos custos fixos.
+     - Atualização instantânea ao alternar o mês, alterar quantidades de procedimentos/custos ou trocar o modelo de negociação.
+5. **Atualização de Cache e Build**:
+   - Cache buster de `app.js` atualizado para `app.js?v=20260921_05` em `index.html`.
+
+---
+
 ## [2026-09-21] - Módulo CISA: Valor Médio dos Procedimentos no Rodapé da Ficha Técnica
 
 ### 🎯 O que foi feito:
