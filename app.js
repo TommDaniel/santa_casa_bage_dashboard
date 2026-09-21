@@ -2226,9 +2226,36 @@ window.renderAssistirSidebar = renderAssistirSidebar;
 // SERVIÇOS DO CONSÓRCIO INTERMUNICIPAL DE SAÚDE (CISA)
 // ==========================================
 const SERVICOS_CISA = {
+  todas: {
+    key: 'todas',
+    nome: 'Todas Especialidades',
+    icon: 'layers',
+    badge: 'TOTAL',
+    titulo: 'PROGRAMA CISA REGIONAL — CONSOLIDAÇÃO DE TODAS AS ESPECIALIDADES',
+    contrato: 'Consórcio Intermunicipal de Saúde (CISA) · Regional',
+    tabelaRef: 'Portaria SES nº 46/2026 · CISA Regional',
+    fields: {
+      ID: 'CISA-CONSOLIDADO',
+      TABELA: 'Todas as Linhas de Cuidado',
+      CLASSIFICACAO: 'Consolidação Geral do Consórcio Intermunicipal de Saúde (CISA)',
+      MODELO: 'CONSORCIO CISA · UR: Produção Pactuada Multiespecialidades',
+      VITS_MENSAL_REFERENCIAL: 'Conforme pactuação regional global CISA',
+      ESCOPO: 'Consolidação de todos os serviços ambulatoriais e cirúrgicos pactuados via Consórcio Intermunicipal de Saúde (CISA) com a Santa Casa de Caridade de Bagé.',
+      EQUIPE: 'Corpo clínico multidisciplinar especializado com RQE nas especialidades pactuadas, equipes dedicadas de enfermagem e apoio técnico de regulação.',
+      META_CONSULTAS: 'Soma das metas ambulatoriais regionais CISA',
+      META_CIRURGICA: 'Soma das metas cirúrgicas regionais CISA',
+      EXAMES_MINIMOS: 'Métodos diagnósticos e exames especializados de todas as linhas de cuidado contratualizadas.',
+      COMPUTAM_META: 'Procedimentos e consultas com codificação CISA e correspondência SIGTAP/SUS.',
+      REFERENCIA: 'Santa Casa de Caridade de Bagé — Centro Macrorregional de Referência CISA',
+      CONTRARREFERENCIA: 'Atenção Primária dos Municípios Consorciados CISA',
+      PONTOS_ESPECIFICOS: 'Regulação de acessos, encaminhamentos e faturamento das cotas municipais gerenciadas via CISA.'
+    }
+  },
   oftalmologia: {
     key: 'oftalmologia',
     nome: 'Oftalmologia',
+    icon: 'eye',
+    badge: 'CISA',
     titulo: 'AMBULATÓRIO DE OFTALMOLOGIA — CONSÓRCIO CISA',
     contrato: 'Consórcio Intermunicipal de Saúde (CISA)',
     tabelaRef: 'Portaria SES nº 46/2026 (Tabela 19) · CISA Regional',
@@ -2252,7 +2279,7 @@ const SERVICOS_CISA = {
 };
 window.SERVICOS_CISA = SERVICOS_CISA;
 
-window.currentCisaKey = 'oftalmologia';
+window.currentCisaKey = 'todas';
 window.cisaViewMode = 'viabilidade';
 
 function setCisaViewMode(mode) {
@@ -2275,7 +2302,7 @@ function setCisaViewMode(mode) {
       btnPort.style.color = 'var(--text-muted)';
       btnPort.style.boxShadow = 'none';
     }
-    renderCisaViabilidade(window.currentCisaKey || 'oftalmologia');
+    renderCisaViabilidade(window.currentCisaKey || 'todas');
   } else {
     if (btnPort) {
       btnPort.classList.add('active-period');
@@ -2291,7 +2318,7 @@ function setCisaViewMode(mode) {
       btnViab.style.color = 'var(--text-muted)';
       btnViab.style.boxShadow = 'none';
     }
-    renderCisaPortaria(window.currentCisaKey || 'oftalmologia');
+    renderCisaPortaria(window.currentCisaKey || 'todas');
   }
 }
 window.setCisaViewMode = setCisaViewMode;
@@ -2302,14 +2329,20 @@ function renderCisaSidebar() {
 
   let html = '';
   for (const [key, item] of Object.entries(SERVICOS_CISA)) {
-    const isActive = (key === (window.currentCisaKey || 'oftalmologia')) ? 'active' : '';
+    const isActive = (key === (window.currentCisaKey || 'todas')) ? 'active' : '';
+    const iconName = item.icon || (key === 'todas' ? 'layers' : 'stethoscope');
+    const badgeText = item.badge || (key === 'todas' ? 'TOTAL' : 'CISA');
+    const badgeBg = key === 'todas' ? 'rgba(16, 185, 129, 0.12)' : 'rgba(37, 99, 235, 0.12)';
+    const badgeColor = key === 'todas' ? '#059669' : '#2563eb';
+    const iconColor = key === 'todas' ? '#10b981' : '#2563eb';
+
     html += `
       <button class="pill-btn ${isActive}" data-key="${key}" style="width: 100%; text-align: left; padding: 0.55rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.8rem; display: flex; align-items: center; justify-content: space-between;" onclick="switchCisaServico('${key}', this)">
         <span style="display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px;">
-          <i data-lucide="eye" style="width: 14px; height: 14px; flex-shrink: 0; color: #2563eb;"></i> 
+          <i data-lucide="${iconName}" style="width: 14px; height: 14px; flex-shrink: 0; color: ${iconColor};"></i> 
           <span>${item.nome}</span>
         </span>
-        <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.58rem; padding: 0.1rem 0.35rem; border-radius: 3px; font-weight: 700; flex-shrink: 0;">CISA</span>
+        <span class="badge-sus" style="background: ${badgeBg}; color: ${badgeColor}; font-size: 0.58rem; padding: 0.1rem 0.35rem; border-radius: 3px; font-weight: 700; flex-shrink: 0;">${badgeText}</span>
       </button>
     `;
   }
@@ -2332,7 +2365,7 @@ function switchCisaServico(key, btnEl) {
 window.switchCisaServico = switchCisaServico;
 
 function renderCisaServico(key) {
-  if (!key) key = window.currentCisaKey || 'oftalmologia';
+  if (!key) key = window.currentCisaKey || 'todas';
   window.currentCisaKey = key;
   if (window.cisaViewMode === 'portaria') {
     renderCisaPortaria(key);
@@ -2369,11 +2402,11 @@ window.cisaSimState = {
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00258', desc: 'Ultra-sonografia de globo ocular / órbita (01 olho)', qtd: 1, val: null }
   ],
   custos: [
-    { item: 'Médicos Oftalmologistas Cirurgiões com RQE (2 prof. 20h cada)', qtd: 2, val: 12000.00 },
-    { item: 'Enfermeiro(a) Centro Cirúrgico / Ambulatório Especializado', qtd: 1, val: 4200.00 },
-    { item: 'Técnicos de Enfermagem (Ambulatório / Centro Cirúrgico)', qtd: 2, val: 3086.43 },
-    { item: 'Recepcionista / Apoio Central de Regulação CISA', qtd: 1, val: 2200.00 },
-    { item: 'Manutenção preventiva e calibração de equipamentos oftálmicos', qtd: 1, val: 2500.00 }
+    { especialidade: 'Oftalmologia', item: 'Médicos Oftalmologistas Cirurgiões com RQE (2 prof. 20h cada)', qtd: 2, val: 12000.00 },
+    { especialidade: 'Oftalmologia', item: 'Enfermeiro(a) Centro Cirúrgico / Ambulatório Especializado', qtd: 1, val: 4200.00 },
+    { especialidade: 'Oftalmologia', item: 'Técnicos de Enfermagem (Ambulatório / Centro Cirúrgico)', qtd: 2, val: 3086.43 },
+    { especialidade: 'Oftalmologia', item: 'Recepcionista / Apoio Central de Regulação CISA', qtd: 1, val: 2200.00 },
+    { especialidade: 'Oftalmologia', item: 'Manutenção preventiva e calibração de equipamentos oftálmicos', qtd: 1, val: 2500.00 }
   ]
 };
 
@@ -2523,6 +2556,8 @@ function getCisaDefaultState() {
 // 1. ESTUDO DE VIABILIDADE FINANCEIRA NATIVO (ANTIGRAVITY DASHBOARD)
 // ----------------------------------------------------------------------------
 function renderCisaViabilidade(key) {
+  if (!key) key = window.currentCisaKey || 'todas';
+  window.currentCisaKey = key;
   const container = document.getElementById('cisaMainContent');
   if (!container) return;
 
@@ -2530,41 +2565,54 @@ function renderCisaViabilidade(key) {
     window.activeCisaSim = getCisaDefaultState();
   }
   const state = window.activeCisaSim;
+  const isTodas = (key === 'todas');
 
   container.innerHTML = `
     <div id="cisaNativeDashboard" style="display: flex; flex-direction: column; gap: 1.5rem;">
       
       <!-- 1. CABEÇALHO EXECUTIVO DO SERVIÇO CISA -->
-      <div class="card" style="padding: 1.5rem 1.75rem; border-left: 5px solid #2563eb; background: linear-gradient(135deg, var(--bg-card) 0%, rgba(37, 99, 235, 0.04) 100%);">
+      <div class="card" style="padding: 1.5rem 1.75rem; border-left: 5px solid ${isTodas ? '#10b981' : '#2563eb'}; background: linear-gradient(135deg, var(--bg-card) 0%, ${isTodas ? 'rgba(16, 185, 129, 0.04)' : 'rgba(37, 99, 235, 0.04)'} 100%);">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.25rem;">
           <div style="display: flex; align-items: center; gap: 1.25rem;">
             <img src="logos/LOGO__SC_Bage.png" alt="Santa Casa de Bagé" style="height: 52px; width: auto;" onerror="this.style.display='none'">
-            <div style="width: 2px; height: 42px; background: rgba(37, 99, 235, 0.25);"></div>
+            <div style="width: 2px; height: 42px; background: ${isTodas ? 'rgba(16, 185, 129, 0.25)' : 'rgba(37, 99, 235, 0.25)'};"></div>
             <img src="logo_cisa.png" alt="CISA" style="height: 48px; width: auto;" onerror="this.style.display='none'">
             <div style="margin-left: 0.5rem;">
               <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.35rem;">
-                <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                  PACTUAÇÃO CISA REGIONAL
-                </span>
-                <span class="badge-sus" style="background: rgba(37, 99, 235, 0.1); color: var(--blue-vibrant); font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                  CONTRATO INTERMUNICIPAL
-                </span>
-                <span class="badge-sus" style="background: rgba(245, 158, 11, 0.12); color: #b45309; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                  HABILITAÇÃO 0506 GLAUCOMA
-                </span>
+                ${isTodas ? `
+                  <span class="badge-sus" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px; display: inline-flex; align-items: center; gap: 4px;">
+                    <i data-lucide="layers" style="width: 11px; height: 11px;"></i> TODAS ESPECIALIDADES
+                  </span>
+                  <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
+                    PACTUAÇÃO CISA REGIONAL
+                  </span>
+                  <span class="badge-sus" style="background: rgba(37, 99, 235, 0.1); color: var(--blue-vibrant); font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
+                    CONTRATO INTERMUNICIPAL CONSOLIDADO
+                  </span>
+                ` : `
+                  <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
+                    PACTUAÇÃO CISA REGIONAL
+                  </span>
+                  <span class="badge-sus" style="background: rgba(37, 99, 235, 0.1); color: var(--blue-vibrant); font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
+                    CONTRATO INTERMUNICIPAL
+                  </span>
+                  <span class="badge-sus" style="background: rgba(245, 158, 11, 0.12); color: #b45309; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
+                    HABILITAÇÃO 0506 GLAUCOMA
+                  </span>
+                `}
               </div>
               <h2 style="font-size: 1.45rem; font-weight: 800; color: var(--text-title); margin: 0; line-height: 1.2;">
-                Ambulatório de Especialidade em Oftalmologia Clínico-Cirúrgica
+                ${isTodas ? 'Consórcio CISA — Consolidação Geral de Especialidades' : 'Ambulatório de Especialidade em Oftalmologia Clínico-Cirúrgica'}
               </h2>
               <div style="font-size: 0.84rem; color: var(--text-muted); margin-top: 0.3rem;">
-                Estudo de Viabilidade Econômico-Financeira · Santa Casa de Caridade de Bagé & Consórcio Intermunicipal de Saúde (CNPJ: 02.231.696/0001-92 · licitacoes@cisaijui.com.br)
+                ${isTodas ? 'Demonstrativo Consolidado de Viabilidade Econômico-Financeira · Santa Casa de Caridade de Bagé & Consórcio Intermunicipal de Saúde (CNPJ: 02.231.696/0001-92)' : 'Estudo de Viabilidade Econômico-Financeira · Santa Casa de Caridade de Bagé & Consórcio Intermunicipal de Saúde (CNPJ: 02.231.696/0001-92 · licitacoes@cisaijui.com.br)'}
               </div>
             </div>
           </div>
 
           <!-- Ações Rápidas -->
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
-            <button class="btn-primary" id="btnCisaAddProcTop" style="background: #2563eb; border-color: #2563eb; font-size: 0.8rem; padding: 0.45rem 0.85rem; border-radius: 6px; box-shadow: 0 2px 6px rgba(37,99,235,0.25);">
+            <button class="btn-primary" id="btnCisaAddProcTop" style="background: ${isTodas ? '#10b981' : '#2563eb'}; border-color: ${isTodas ? '#10b981' : '#2563eb'}; font-size: 0.8rem; padding: 0.45rem 0.85rem; border-radius: 6px; box-shadow: 0 2px 6px ${isTodas ? 'rgba(16,185,129,0.25)' : 'rgba(37,99,235,0.25)'};">
               <i data-lucide="plus-circle" style="width: 15px; height: 15px;"></i> Novo Procedimento
             </button>
             <button class="btn-icon" id="btnCisaExportCsvTop" title="Exportar CSV" style="border-radius: 6px;">
@@ -2573,7 +2621,7 @@ function renderCisaViabilidade(key) {
             <button class="btn-icon" id="btnCisaPrintTop" title="Imprimir Relatório" style="border-radius: 6px;">
               <i data-lucide="printer" style="width: 16px; height: 16px;"></i>
             </button>
-            <button class="btn-icon" id="btnCisaResetTop" title="Restaurar Padrões Anexo 3" style="border-radius: 6px; color: var(--danger);">
+            <button class="btn-icon" id="btnCisaResetTop" title="Restaurar Padrões CISA" style="border-radius: 6px; color: var(--danger);">
               <i data-lucide="rotate-ccw" style="width: 16px; height: 16px;"></i>
             </button>
           </div>
@@ -2586,68 +2634,122 @@ function renderCisaViabilidade(key) {
         <!-- KPI 1: Receita Contratada -->
         <div class="card kpi-card" style="border-top: 4px solid #2563eb; padding: 1.25rem;">
           <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <span class="kpi-label">Receita Mensal Contratada</span>
+            <span class="kpi-label">${isTodas ? 'Receita Total Contratada (Consolidada)' : 'Receita Mensal Contratada'}</span>
             <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: #2563eb;">
               <i data-lucide="wallet" style="width: 20px; height: 20px;"></i>
             </div>
           </div>
           <div class="kpi-value" id="kpiCisaReceita" style="color: #2563eb; font-size: 1.85rem; margin: 0.5rem 0 0.2rem 0;">
-            R$ 135.848,20
+            Aguardando valores
           </div>
           <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
-            <span>Produção: <strong id="subCisaProdTxt" style="color: var(--text-title);">R$ 59.260,50</strong></span>
+            <span>Produção: <strong id="subCisaProdTxt" style="color: var(--text-title);">${isTodas ? 'Todas Especialidades' : '—'}</strong></span>
             <span style="margin: 0 4px;">•</span>
-            <span>Custeio: <strong id="subCisaIncTxt" style="color: #2563eb;">R$ 76.587,70</strong></span>
+            <span>Custeio: <strong id="subCisaIncTxt" style="color: #2563eb;">${isTodas ? 'Consolidação Regional' : '—'}</strong></span>
           </div>
           <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem;">
-            <span style="color: var(--text-muted);">Projeção Anual:</span>
-            <strong id="kpiCisaReceitaAno" style="color: var(--text-title); font-weight: 800;">R$ 1.630.178,40</strong>
+            <span style="color: var(--text-muted);">${isTodas ? 'Projeção Anual Consolidada:' : 'Projeção Anual:'}</span>
+            <strong id="kpiCisaReceitaAno" style="color: var(--text-title); font-weight: 800;">Conforme demanda mensal</strong>
           </div>
         </div>
 
         <!-- KPI 2: Custos Operacionais -->
         <div class="card kpi-card" style="border-top: 4px solid #dc2626; padding: 1.25rem;">
           <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <span class="kpi-label">Custos Operacionais</span>
+            <span class="kpi-label">${isTodas ? 'Custos Operacionais Totais (Consolidados)' : 'Custos Operacionais'}</span>
             <div class="card-icon" style="background: rgba(239, 68, 68, 0.12); color: #dc2626;">
               <i data-lucide="users" style="width: 20px; height: 20px;"></i>
             </div>
           </div>
           <div class="kpi-value" id="kpiCisaDespesa" style="color: #dc2626; font-size: 1.85rem; margin: 0.5rem 0 0.2rem 0;">
-            R$ 39.072,86
+            R$ 0,00
           </div>
           <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
-            <span>Equipe Mínima RQE + Enfermagem + Apoio</span>
+            <span>${isTodas ? 'Equipes Mínimas RQE + Enfermagem + Apoio (Todas Especialidades)' : 'Equipe Mínima RQE + Enfermagem + Apoio'}</span>
           </div>
           <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem;">
-            <span style="color: var(--text-muted);">Custo Anual Total:</span>
-            <strong id="kpiCisaDespesaAno" style="color: var(--text-title); font-weight: 800;">R$ 468.874,32</strong>
+            <span style="color: var(--text-muted);">${isTodas ? 'Custo Anual Consolidado:' : 'Custo Anual Total:'}</span>
+            <strong id="kpiCisaDespesaAno" style="color: var(--text-title); font-weight: 800;">R$ 0,00</strong>
           </div>
         </div>
 
         <!-- KPI 3: Resultado Líquido Mensal -->
         <div class="card kpi-card" style="border-top: 4px solid var(--blue-vibrant); padding: 1.25rem;">
           <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <span class="kpi-label">Superávit Operacional Líquido</span>
+            <span class="kpi-label">${isTodas ? 'Superávit Operacional Líquido do Programa' : 'Superávit Operacional Líquido'}</span>
             <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--blue-vibrant);">
               <i data-lucide="trending-up" style="width: 20px; height: 20px;"></i>
             </div>
           </div>
           <div class="kpi-value" id="kpiCisaResultado" style="color: #2563eb; font-size: 1.85rem; margin: 0.5rem 0 0.2rem 0;">
-            + R$ 96.775,34
+            Aguardando valores
           </div>
           <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
-            <span>Margem Líquida: <strong id="kpiCisaMargemTxt" style="color: #2563eb; font-weight: 800;">71,2%</strong></span>
+            <span>Margem Líquida: <strong id="kpiCisaMargemTxt" style="color: #2563eb; font-weight: 800;">Tabela Unitária</strong></span>
             <span style="margin: 0 4px;">•</span>
-            <span>Break-Even: <strong id="kpiCisaBreakeven" style="color: var(--text-title); font-weight: 800;">28,8%</strong></span>
+            <span>Break-Even: <strong id="kpiCisaBreakeven" style="color: var(--text-title); font-weight: 800;">Por Produção</strong></span>
           </div>
           <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem;">
-            <span style="color: var(--text-muted);">Resultado Anual Líquido:</span>
-            <strong id="kpiCisaResultadoAno" style="color: #2563eb; font-weight: 800;">+ R$ 1.161.304,08</strong>
+            <span style="color: var(--text-muted);">${isTodas ? 'Resultado Anual do Programa:' : 'Resultado Anual Líquido:'}</span>
+            <strong id="kpiCisaResultadoAno" style="color: #2563eb; font-weight: 800;">Aguardando valores</strong>
           </div>
         </div>
 
       </div>
+
+      ${isTodas ? `
+        <!-- QUADRO EXECUTIVO DE CONSOLIDAÇÃO POR ESPECIALIDADE -->
+        <div class="card" style="padding: 1.5rem; width: 100%; box-sizing: border-box; border-left: 5px solid #10b981;">
+          <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div class="card-title-group">
+              <div class="card-icon" style="background: rgba(16, 185, 129, 0.12); color: #059669;">
+                <i data-lucide="layers" style="width: 20px; height: 20px;"></i>
+              </div>
+              <div>
+                <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
+                  Quadro de Consolidação das Especialidades CISA
+                </h3>
+                <span style="font-size: 0.82rem; color: var(--text-muted);">
+                  Demonstrativo analítico consolidado por linha de cuidado contratualizada com o Consórcio Regional
+                </span>
+              </div>
+            </div>
+            <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-weight: 800; font-size: 0.72rem; padding: 0.35rem 0.65rem; border-radius: 99px;">
+              PROGRAMA REGIONAL CISA
+            </span>
+          </div>
+
+          <div class="table-responsive" style="overflow-x: auto;">
+            <table class="cisa-table-modern">
+              <thead>
+                <tr>
+                  <th style="min-width: 220px;">Especialidade CISA</th>
+                  <th style="width: 140px; text-align: center;">Procedimentos</th>
+                  <th style="width: 150px; text-align: center;">Status Cotação</th>
+                  <th style="width: 160px; text-align: right;">Receita Estimada/mês</th>
+                  <th style="width: 160px; text-align: right;">Custo Fixo/mês</th>
+                  <th style="width: 160px; text-align: right;">Saldo Estimado/mês</th>
+                  <th style="width: 110px; text-align: center;">Ações</th>
+                </tr>
+              </thead>
+              <tbody id="tbCisaConsolidacaoBody"></tbody>
+              <tfoot>
+                <tr style="background: rgba(16, 185, 129, 0.06); font-weight: 800; border-top: 2px solid rgba(16, 185, 129, 0.25);">
+                  <td style="padding: 14px 18px; color: #059669; font-size: 0.88rem;">TOTAL DO PROGRAMA CISA</td>
+                  <td id="totConsolQtdProcs" style="padding: 14px 18px; text-align: center; color: var(--text-title); font-size: 0.88rem;">—</td>
+                  <td id="totConsolStatus" style="padding: 14px 18px; text-align: center; color: var(--text-title); font-size: 0.82rem;">—</td>
+                  <td id="totConsolReceita" style="padding: 14px 18px; text-align: right; color: #2563eb; font-size: 1rem; font-weight: 800;">—</td>
+                  <td id="totConsolCusto" style="padding: 14px 18px; text-align: right; color: #dc2626; font-size: 1rem; font-weight: 800;">—</td>
+                  <td id="totConsolSaldo" style="padding: 14px 18px; text-align: right; color: #059669; font-size: 1.05rem; font-weight: 800;">—</td>
+                  <td style="text-align: center; padding: 14px 18px;">
+                    <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #059669; font-size: 0.68rem; font-weight: 800;">CONSOLIDADO</span>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      ` : ''}
 
       <!-- 3. GRADE PRINCIPAL: TABELAS EXECUTIVAS EMPILHADAS VERTICALMENTE -->
       <div style="display: flex; flex-direction: column; gap: 1.75rem;">
@@ -2661,10 +2763,10 @@ function renderCisaViabilidade(key) {
               </div>
               <div>
                 <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
-                  Tabela de Procedimentos e Valores Pactuados (Contrato CISA)
+                  ${isTodas ? 'Tabela Geral de Procedimentos e Valores Pactuados (Todas as Especialidades CISA)' : 'Tabela de Procedimentos e Valores Pactuados (Contrato CISA)'}
                 </h3>
                 <span style="font-size: 0.82rem; color: var(--text-muted);">
-                  Procedimentos oftalmológicos com codificação própria oficial do Consórcio CISA
+                  ${isTodas ? 'Procedimentos ambulatoriais e cirúrgicos com codificação própria oficial do Consórcio CISA' : 'Procedimentos oftalmológicos com codificação própria oficial do Consórcio CISA'}
                 </span>
               </div>
             </div>
@@ -2687,7 +2789,7 @@ function renderCisaViabilidade(key) {
               <tfoot>
                 <tr style="background: rgba(37, 99, 235, 0.05); font-weight: 800; border-top: 2px solid rgba(37, 99, 235, 0.2);">
                   <td colspan="4" style="padding: 14px 18px; color: #2563eb; font-size: 0.88rem;">
-                    SOMA DA RECEITA ESTIMADA PACTUADA (TABELA CISA)
+                    ${isTodas ? 'SOMA DA RECEITA ESTIMADA PACTUADA (PROGRAMA CISA COMPLETO)' : 'SOMA DA RECEITA ESTIMADA PACTUADA (TABELA CISA)'}
                   </td>
                   <td id="totCisaRec" style="padding: 14px 18px; text-align: right; color: #2563eb; font-size: 1.05rem; font-weight: 800;">
                     Aguardando valores
@@ -2700,7 +2802,9 @@ function renderCisaViabilidade(key) {
 
           <!-- Nota Técnica do Contrato -->
           <div style="margin-top: 1.25rem; background: rgba(37, 99, 235, 0.04); border-left: 3px solid #2563eb; padding: 0.85rem 1.15rem; border-radius: 0 6px 6px 0; font-size: 0.82rem; color: var(--text-main); line-height: 1.55;">
-            <strong>Codificação Própria CISA:</strong> Os códigos e procedimentos acima seguem a tabela oficial do Consórcio Intermunicipal de Saúde (CISA), compreendendo o Grupo 01 (Consultas Especializadas) e o Grupo 11 (Diagnóstico em Oftalmologia). Os valores pactuados unitários encontram-se em branco e serão preenchidos conforme o contrato formal.
+            ${isTodas
+              ? '<strong>Codificação Própria CISA:</strong> Relação consolidada dos procedimentos de todas as especialidades pactuadas junto ao Consórcio Intermunicipal de Saúde (CISA). Os valores unitários encontram-se em fase de cotação e pactuação formal com os municípios consorciados.'
+              : '<strong>Codificação Própria CISA:</strong> Os códigos e procedimentos acima seguem a tabela oficial do Consórcio Intermunicipal de Saúde (CISA), compreendendo o Grupo 01 (Consultas Especializadas) e o Grupo 11 (Diagnóstico em Oftalmologia). Os valores pactuados unitários encontram-se em branco e serão preenchidos conforme o contrato formal.'}
           </div>
         </div>
 
@@ -2713,10 +2817,10 @@ function renderCisaViabilidade(key) {
               </div>
               <div>
                 <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
-                  Custos Operacionais do Serviço (Equipe e Infraestrutura)
+                  ${isTodas ? 'Custos Operacionais Globais do Programa CISA (Equipes e Infraestrutura)' : 'Custos Operacionais do Serviço (Equipe e Infraestrutura)'}
                 </h3>
                 <span style="font-size: 0.82rem; color: var(--text-muted);">
-                  Dimensionamento de corpo clínico especializado com RQE, enfermagem dedicada e apoio administrativo
+                  ${isTodas ? 'Dimensionamento global de equipes clínicas com RQE, enfermagem dedicada e apoio para todas as especialidades consorciadas' : 'Dimensionamento de corpo clínico especializado com RQE, enfermagem dedicada e apoio administrativo'}
                 </span>
               </div>
             </div>
@@ -2738,10 +2842,10 @@ function renderCisaViabilidade(key) {
               <tfoot>
                 <tr style="background: rgba(239, 68, 68, 0.05); font-weight: 800; border-top: 2px solid rgba(239, 68, 68, 0.2);">
                   <td colspan="3" style="padding: 14px 18px; color: #dc2626; font-size: 0.88rem;">
-                    SUBTOTAL DE CUSTOS OPERACIONAIS FIXOS DO SERVIÇO
+                    ${isTodas ? 'SUBTOTAL DE CUSTOS OPERACIONAIS FIXOS DO PROGRAMA CISA' : 'SUBTOTAL DE CUSTOS OPERACIONAIS FIXOS DO SERVIÇO'}
                   </td>
                   <td id="totCisaFixo" style="padding: 14px 18px; text-align: right; color: #dc2626; font-size: 1.05rem; font-weight: 800;">
-                    R$ 39.072,86
+                    R$ 0,00
                   </td>
                   <td></td>
                 </tr>
@@ -2878,7 +2982,7 @@ function renderCisaViabilidade(key) {
           </div>
         </div>
 
-        <!-- 3.4 DESCRIÇÃO TÉCNICA E DIRETRIZES DOS PROCEDIMENTOS OFTALMOLÓGICOS CISA -->
+        <!-- 3.4 DESCRIÇÃO TÉCNICA E DIRETRIZES DOS PROCEDIMENTOS CISA -->
         <div class="card" style="padding: 1.5rem; width: 100%; box-sizing: border-box; border-left: 5px solid var(--blue-vibrant);">
           <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
             <div class="card-title-group">
@@ -2887,10 +2991,10 @@ function renderCisaViabilidade(key) {
               </div>
               <div>
                 <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
-                  Descrição Técnica e Diretrizes dos Procedimentos Oftalmológicos
+                  ${isTodas ? 'Descrição Técnica e Diretrizes dos Procedimentos CISA (Todas as Especialidades)' : 'Descrição Técnica e Diretrizes dos Procedimentos Oftalmológicos'}
                 </h3>
                 <span style="font-size: 0.82rem; color: var(--text-muted);">
-                  Detalhamento clínico de cada exame e procedimento pactuado no Contrato CISA, finalidade e correspondência com a Tabela SIGTAP / SUS
+                  ${isTodas ? 'Detalhamento clínico de cada exame e procedimento pactuado no Contrato Regional CISA, finalidade e correspondência com a Tabela SIGTAP / SUS' : 'Detalhamento clínico de cada exame e procedimento pactuado no Contrato CISA, finalidade e correspondência com a Tabela SIGTAP / SUS'}
                 </span>
               </div>
             </div>
@@ -2959,35 +3063,52 @@ function renderCisaViabilidade(key) {
     </div>
   `;
 
-  initCisaInteractiveSimulation();
+  initCisaInteractiveSimulation(key);
   if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
 }
 
 // ----------------------------------------------------------------------------
 // 2. MOTOR INTERATIVO DE CÁLCULO E CONTROLES CISA
 // ----------------------------------------------------------------------------
-function initCisaInteractiveSimulation() {
+function initCisaInteractiveSimulation(currentKey) {
+  if (!currentKey) currentKey = window.currentCisaKey || 'todas';
+  const isTodas = (currentKey === 'todas');
   const root = document.getElementById('cisaNativeDashboard');
   if (!root) return;
 
   const state = window.activeCisaSim;
   const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
-  let editingProcIdx = -1;
-  let editingCustoIdx = -1;
+  let editingProc = null;
+  let editingCusto = null;
+
+  function getFilteredProcs() {
+    return isTodas
+      ? state.procs
+      : state.procs.filter(p => !p.especialidade || p.especialidade.toLowerCase() === currentKey.toLowerCase());
+  }
+
+  function getFilteredCustos() {
+    return isTodas
+      ? state.custos
+      : state.custos.filter(c => !c.especialidade || c.especialidade.toLowerCase() === currentKey.toLowerCase());
+  }
 
   function renderProcsTable() {
     const tb = root.querySelector('#tbCisaProcs');
     if (!tb) return;
     tb.innerHTML = '';
 
-    let lastGroup = null;
-    state.procs.forEach((p, idx) => {
-      const isGroup01 = (p.grupo && (p.grupo.includes('01') || p.grupo.includes('Consultas'))) || p.cod === '00483';
-      const currentGroup = isGroup01 ? '01' : '11';
+    const list = getFilteredProcs();
+    let lastGroupKey = null;
 
-      if (currentGroup !== lastGroup) {
-        lastGroup = currentGroup;
+    list.forEach((p) => {
+      const isGroup01 = (p.grupo && (p.grupo.includes('01') || p.grupo.includes('Consultas'))) || p.cod === '00483';
+      const specName = p.especialidade || 'Oftalmologia';
+      const currentGroupKey = isTodas ? `${specName}__${isGroup01 ? '01' : '11'}` : (isGroup01 ? '01' : '11');
+
+      if (currentGroupKey !== lastGroupKey) {
+        lastGroupKey = currentGroupKey;
         const trGroup = document.createElement('tr');
         trGroup.className = 'cisa-group-row';
 
@@ -2997,12 +3118,16 @@ function initCisaInteractiveSimulation() {
         const groupTitle = isGroup01
           ? '01 · Consultas especializadas'
           : '11 · Diagnóstico em oftalmologia';
-        const groupIcon = 'eye';
+        const displayGroup = isTodas ? `${specName} · ${groupTitle}` : groupTitle;
+        const groupIcon = isGroup01 ? 'stethoscope' : 'eye';
 
         tdGroup.innerHTML = `
-          <div style="display: flex; align-items: center; gap: 0.55rem;">
-            <i data-lucide="${groupIcon}" style="width: 16px; height: 16px;"></i>
-            <span>${groupTitle}</span>
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 0.55rem;">
+              <i data-lucide="${groupIcon}" style="width: 16px; height: 16px;"></i>
+              <span>${displayGroup}</span>
+            </div>
+            ${isTodas ? `<span style="background: rgba(37, 99, 235, 0.15); color: #2563eb; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 99px;">${specName.toUpperCase()}</span>` : ''}
           </div>
         `;
         trGroup.appendChild(tdGroup);
@@ -3012,7 +3137,7 @@ function initCisaInteractiveSimulation() {
       const tr = document.createElement('tr');
       tr.className = 'cisa-row';
 
-      const isEditing = (editingProcIdx === idx);
+      const isEditing = (editingProc === p);
 
       if (isEditing) {
         // MODO DE EDIÇÃO INLINE
@@ -3128,24 +3253,25 @@ function initCisaInteractiveSimulation() {
           p.desc = inDesc.value.trim();
           p.qtd = inQtd.value !== '' ? (parseFloat(inQtd.value) || 0) : 1;
           p.val = inVal.value !== '' ? parseFloat(inVal.value) : null;
-          editingProcIdx = -1;
+          editingProc = null;
           renderProcsTable();
           recalc();
         };
         tdAct.querySelector('.btn-cisa-cancel').onclick = () => {
-          editingProcIdx = -1;
+          editingProc = null;
           renderProcsTable();
         };
         tdAct.querySelector('.btn-cisa-del').onclick = () => {
-          state.procs.splice(idx, 1);
-          editingProcIdx = -1;
+          const realIdx = state.procs.indexOf(p);
+          if (realIdx !== -1) state.procs.splice(realIdx, 1);
+          editingProc = null;
           renderProcsTable();
           recalc();
         };
         tr.appendChild(tdAct);
 
       } else {
-        // MODO VISUALIZAÇÃO LIMPO (IDÊNTICO AO DA TABELA DE CUSTOS)
+        // MODO VISUALIZAÇÃO LIMPO
         const qVal = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? p.qtd : 1;
         const hasVal = (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val) && Number(p.val) > 0);
 
@@ -3161,7 +3287,7 @@ function initCisaInteractiveSimulation() {
         tdDesc.innerHTML = `<span class="cisa-cell-desc">${p.desc || '—'}</span>`;
         tr.appendChild(tdDesc);
 
-        // 3. Qtd (badge pill estilizado exatamente como na tabela de custos)
+        // 3. Qtd
         const tdQtd = document.createElement('td');
         tdQtd.className = 'cisa-cell';
         tdQtd.style.textAlign = 'center';
@@ -3211,7 +3337,7 @@ function initCisaInteractiveSimulation() {
           </button>
         `;
         tdAct.querySelector('.btn-cisa-edit').onclick = () => {
-          editingProcIdx = idx;
+          editingProc = p;
           renderProcsTable();
         };
         tr.appendChild(tdAct);
@@ -3228,11 +3354,13 @@ function initCisaInteractiveSimulation() {
     if (!tb) return;
     tb.innerHTML = '';
 
-    state.custos.forEach((c, idx) => {
+    const list = getFilteredCustos();
+
+    list.forEach((c) => {
       const tr = document.createElement('tr');
       tr.className = 'cisa-row';
 
-      const isEditing = (editingCustoIdx === idx);
+      const isEditing = (editingCusto === c);
 
       if (isEditing) {
         tr.style.background = 'rgba(239, 68, 68, 0.05)';
@@ -3314,17 +3442,18 @@ function initCisaInteractiveSimulation() {
           c.item = inItem.value.trim();
           c.qtd = parseFloat(inQtd.value) || 0;
           c.val = parseFloat(inVal.value) || 0;
-          editingCustoIdx = -1;
+          editingCusto = null;
           renderCustosTable();
           recalc();
         };
         tdAct.querySelector('.btn-cisa-cancel').onclick = () => {
-          editingCustoIdx = -1;
+          editingCusto = null;
           renderCustosTable();
         };
         tdAct.querySelector('.btn-cisa-del').onclick = () => {
-          state.custos.splice(idx, 1);
-          editingCustoIdx = -1;
+          const realIdx = state.custos.indexOf(c);
+          if (realIdx !== -1) state.custos.splice(realIdx, 1);
+          editingCusto = null;
           renderCustosTable();
           recalc();
         };
@@ -3369,7 +3498,7 @@ function initCisaInteractiveSimulation() {
           </button>
         `;
         tdAct.querySelector('.btn-cisa-edit').onclick = () => {
-          editingCustoIdx = idx;
+          editingCusto = c;
           renderCustosTable();
         };
         tr.appendChild(tdAct);
@@ -3382,10 +3511,13 @@ function initCisaInteractiveSimulation() {
   }
 
   function recalc() {
+    const listProcs = getFilteredProcs();
+    const listCustos = getFilteredCustos();
+
     let totRec = 0;
     let countComValor = 0;
 
-    state.procs.forEach((p) => {
+    listProcs.forEach((p) => {
       if (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val)) {
         const q = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? parseFloat(p.qtd) : 1;
         totRec += (q * parseFloat(p.val));
@@ -3394,8 +3526,8 @@ function initCisaInteractiveSimulation() {
     });
 
     let totFix = 0;
-    state.custos.forEach((c) => {
-      const totLinha = c.qtd * c.val;
+    listCustos.forEach((c) => {
+      const totLinha = (c.qtd || 0) * (c.val || 0);
       totFix += totLinha;
     });
 
@@ -3409,12 +3541,12 @@ function initCisaInteractiveSimulation() {
     const elKpiRec = root.querySelector('#kpiCisaReceita');
     if (elKpiRec) elKpiRec.textContent = totRec > 0 ? BRL.format(totRec) : 'Aguardando valores';
     const elKpiRecAno = root.querySelector('#kpiCisaReceitaAno');
-    if (elKpiRecAno) elKpiRecAno.textContent = 'Conforme demanda mensal';
+    if (elKpiRecAno) elKpiRecAno.textContent = totRec > 0 ? BRL.format(totRec * 12) : 'Conforme demanda mensal';
 
     const elSubProd = root.querySelector('#subCisaProdTxt');
-    if (elSubProd) elSubProd.textContent = `${countComValor} de ${state.procs.length} cotados`;
+    if (elSubProd) elSubProd.textContent = isTodas ? `${countComValor} de ${listProcs.length} cotados (Todas Especialidades)` : `${countComValor} de ${listProcs.length} cotados`;
     const elSubInc = root.querySelector('#subCisaIncTxt');
-    if (elSubInc) elSubInc.textContent = countComValor < state.procs.length ? `${state.procs.length - countComValor} a definir` : 'Tabela 100% preenchida';
+    if (elSubInc) elSubInc.textContent = countComValor < listProcs.length ? `${listProcs.length - countComValor} a definir` : (isTodas ? 'Programa 100% cotado' : 'Tabela 100% preenchida');
 
     const elKpiDesp = root.querySelector('#kpiCisaDespesa');
     if (elKpiDesp) elKpiDesp.textContent = BRL.format(despesaTotal);
@@ -3423,20 +3555,30 @@ function initCisaInteractiveSimulation() {
 
     const elKpiRes = root.querySelector('#kpiCisaResultado');
     if (elKpiRes) {
-      elKpiRes.textContent = countComValor > 0 ? 'Tabela CISA' : 'Em definição';
-      elKpiRes.style.color = '#0284c7';
+      if (totRec > 0) {
+        elKpiRes.textContent = (resultadoMensal >= 0 ? '+ ' : '') + BRL.format(resultadoMensal);
+        elKpiRes.style.color = resultadoMensal >= 0 ? '#2563eb' : '#dc2626';
+      } else {
+        elKpiRes.textContent = countComValor > 0 ? 'Tabela CISA' : 'Em definição';
+        elKpiRes.style.color = '#0284c7';
+      }
     }
     const elKpiResAno = root.querySelector('#kpiCisaResultadoAno');
     if (elKpiResAno) {
-      elKpiResAno.textContent = countComValor > 0 ? 'Faturamento variável' : 'Aguardando valores';
-      elKpiResAno.style.color = 'var(--text-muted)';
+      if (totRec > 0) {
+        elKpiResAno.textContent = (resultadoAnual >= 0 ? '+ ' : '') + BRL.format(resultadoAnual);
+        elKpiResAno.style.color = resultadoAnual >= 0 ? '#2563eb' : '#dc2626';
+      } else {
+        elKpiResAno.textContent = countComValor > 0 ? 'Faturamento variável' : 'Aguardando valores';
+        elKpiResAno.style.color = 'var(--text-muted)';
+      }
     }
 
     const elKpiMargem = root.querySelector('#kpiCisaMargemTxt');
-    if (elKpiMargem) elKpiMargem.textContent = 'Tabela Unitária';
+    if (elKpiMargem) elKpiMargem.textContent = totRec > 0 ? margem.toFixed(1).replace('.', ',') + '%' : 'Tabela Unitária';
 
     const elKpiBk = root.querySelector('#kpiCisaBreakeven');
-    if (elKpiBk) elKpiBk.textContent = 'Por Produção';
+    if (elKpiBk) elKpiBk.textContent = totRec > 0 ? breakeven.toFixed(1).replace('.', ',') + '%' : 'Por Produção';
 
     // Atualiza Totais das Tabelas
     const elTotRec = root.querySelector('#totCisaRec');
@@ -3444,12 +3586,117 @@ function initCisaInteractiveSimulation() {
 
     const elTotFix = root.querySelector('#totCisaFixo');
     if (elTotFix) elTotFix.textContent = BRL.format(totFix);
+
+    // Se for TODAS ESPECIALIDADES, preenche também o Quadro de Consolidação por Especialidade
+    if (isTodas) {
+      const tbConsol = root.querySelector('#tbCisaConsolidacaoBody');
+      if (tbConsol) {
+        tbConsol.innerHTML = '';
+        let totalGeralProcs = 0;
+        let totalGeralCotados = 0;
+        let totalGeralRec = 0;
+        let totalGeralCusto = 0;
+
+        Object.entries(SERVICOS_CISA).forEach(([sKey, sItem]) => {
+          if (sKey === 'todas') return;
+
+          const sProcs = state.procs.filter(p => !p.especialidade || p.especialidade.toLowerCase() === sKey.toLowerCase());
+          const sCustos = state.custos.filter(c => !c.especialidade || c.especialidade.toLowerCase() === sKey.toLowerCase());
+
+          let sRec = 0;
+          let sCotados = 0;
+          sProcs.forEach(p => {
+            if (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val)) {
+              const q = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? parseFloat(p.qtd) : 1;
+              sRec += (q * parseFloat(p.val));
+              sCotados++;
+            }
+          });
+
+          let sCus = 0;
+          sCustos.forEach(c => {
+            sCus += (c.qtd * c.val);
+          });
+
+          const sSaldo = sRec > 0 ? (sRec - sCus) : -sCus;
+
+          totalGeralProcs += sProcs.length;
+          totalGeralCotados += sCotados;
+          totalGeralRec += sRec;
+          totalGeralCusto += sCus;
+
+          const tr = document.createElement('tr');
+          tr.className = 'cisa-row';
+          tr.innerHTML = `
+            <td class="cisa-cell">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <div style="width: 32px; height: 32px; border-radius: 6px; background: rgba(37, 99, 235, 0.1); color: #2563eb; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <i data-lucide="${sItem.icon || 'eye'}" style="width: 16px; height: 16px;"></i>
+                </div>
+                <div>
+                  <div style="font-weight: 800; color: var(--text-title); font-size: 0.88rem;">${sItem.nome}</div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">${sItem.fields?.CLASSIFICACAO || 'Linha de Cuidado Regional'}</div>
+                </div>
+              </div>
+            </td>
+            <td class="cisa-cell" style="text-align: center;">
+              <span style="display: inline-block; padding: 3px 10px; border-radius: 99px; background: rgba(0,0,0,0.04); font-weight: 700; font-size: 0.82rem; color: var(--text-title);">${sProcs.length} procs</span>
+            </td>
+            <td class="cisa-cell" style="text-align: center;">
+              <span class="cisa-status-badge ${sCotados > 0 ? 'status-cotado' : 'status-a-definir'}">
+                <i data-lucide="${sCotados > 0 ? 'check-circle-2' : 'clock'}" style="width:13px;height:13px;"></i>
+                ${sCotados}/${sProcs.length} cotados
+              </span>
+            </td>
+            <td class="cisa-cell" style="text-align: right;">
+              <strong style="color: #2563eb; font-size: 0.92rem;">${sRec > 0 ? BRL.format(sRec) : 'Aguardando valores'}</strong>
+            </td>
+            <td class="cisa-cell" style="text-align: right;">
+              <strong style="color: #dc2626; font-size: 0.92rem;">${BRL.format(sCus)}</strong>
+            </td>
+            <td class="cisa-cell" style="text-align: right;">
+              <strong style="color: ${sSaldo >= 0 ? '#059669' : '#dc2626'}; font-size: 0.95rem;">
+                ${sRec > 0 ? (sSaldo >= 0 ? '+ ' : '') + BRL.format(sSaldo) : 'Definir receita'}
+              </strong>
+            </td>
+            <td class="cisa-cell" style="text-align: center;">
+              <button class="pill-btn active" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;" onclick="switchCisaServico('${sKey}')">
+                <span>Detalhar</span>
+                <i data-lucide="arrow-right" style="width: 12px; height: 12px;"></i>
+              </button>
+            </td>
+          `;
+          tbConsol.appendChild(tr);
+        });
+
+        // Atualiza footer da tabela de consolidação
+        const elTotProcs = root.querySelector('#totConsolQtdProcs');
+        if (elTotProcs) elTotProcs.textContent = `${totalGeralProcs} procedimentos`;
+
+        const elTotStatus = root.querySelector('#totConsolStatus');
+        if (elTotStatus) elTotStatus.textContent = `${totalGeralCotados} de ${totalGeralProcs} cotados`;
+
+        const elTotRecConsol = root.querySelector('#totConsolReceita');
+        if (elTotRecConsol) elTotRecConsol.textContent = totalGeralRec > 0 ? BRL.format(totalGeralRec) : 'Aguardando valores';
+
+        const elTotCusConsol = root.querySelector('#totConsolCusto');
+        if (elTotCusConsol) elTotCusConsol.textContent = BRL.format(totalGeralCusto);
+
+        const elTotSalConsol = root.querySelector('#totConsolSaldo');
+        if (elTotSalConsol) {
+          const saldoGeral = totalGeralRec > 0 ? (totalGeralRec - totalGeralCusto) : -totalGeralCusto;
+          elTotSalConsol.textContent = totalGeralRec > 0 ? ((saldoGeral >= 0 ? '+ ' : '') + BRL.format(saldoGeral)) : 'Em apuração';
+        }
+      }
+    }
   }
 
   // Handlers para Adicionar Itens
   const handleAddProc = () => {
-    state.procs.unshift({ especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '', desc: '', qtd: 1, val: null });
-    editingProcIdx = 0;
+    const spec = (currentKey && currentKey !== 'todas') ? (SERVICOS_CISA[currentKey]?.nome || 'Oftalmologia') : 'Oftalmologia';
+    const newProc = { especialidade: spec, grupo: '01 · Consultas especializadas', cod: '', desc: '', qtd: 1, val: null };
+    state.procs.unshift(newProc);
+    editingProc = newProc;
     renderProcsTable();
     recalc();
   };
@@ -3457,18 +3704,19 @@ function initCisaInteractiveSimulation() {
   if (btnAddPTop) btnAddPTop.onclick = handleAddProc;
 
   const handleAddCusto = () => {
-    state.custos.unshift({ item: '', qtd: 1, val: 0 });
-    editingCustoIdx = 0;
+    const spec = (currentKey && currentKey !== 'todas') ? (SERVICOS_CISA[currentKey]?.nome || 'Oftalmologia') : 'Oftalmologia';
+    const newCusto = { especialidade: spec, item: '', qtd: 1, val: 0 };
+    state.custos.unshift(newCusto);
+    editingCusto = newCusto;
     renderCustosTable();
     recalc();
   };
 
-
   // Reset
   const handleReset = () => {
-    if (confirm('Deseja restaurar os procedimentos e valores originais do Anexo 3 da Oftalmologia?')) {
+    if (confirm('Deseja restaurar os procedimentos e valores originais do Anexo 3 do CISA?')) {
       window.activeCisaSim = getCisaDefaultState();
-      initCisaInteractiveSimulation();
+      initCisaInteractiveSimulation(currentKey);
     }
   };
   const btnResetTop = root.querySelector('#btnCisaResetTop');
@@ -3476,18 +3724,20 @@ function initCisaInteractiveSimulation() {
 
   // Exportar CSV
   const handleCsv = () => {
-    let csv = 'Tipo;Codigo;Descricao;Quantidade_Meta;Valor_Unitario;Custo_Direto;Total_Mensal\n';
-    state.procs.forEach(p => {
-      csv += `Procedimento;"${p.cod}";"${p.desc}";${p.qtd};${p.val};${p.cus||0};${p.qtd*p.val}\n`;
+    let csv = 'Especialidade;Tipo;Codigo;Descricao;Quantidade_Meta;Valor_Unitario;Total_Mensal\n';
+    const listP = getFilteredProcs();
+    const listC = getFilteredCustos();
+    listP.forEach(p => {
+      csv += `"${p.especialidade || 'Oftalmologia'}";Procedimento;"${p.cod}";"${p.desc}";${p.qtd};${p.val};${p.qtd*(p.val||0)}\n`;
     });
-    state.custos.forEach(c => {
-      csv += `Custo_Operacional;"-";"${c.item}";${c.qtd};${c.val};0;${c.qtd*c.val}\n`;
+    listC.forEach(c => {
+      csv += `"${c.especialidade || 'Oftalmologia'}";Custo_Operacional;"-";"${c.item}";${c.qtd};${c.val};${c.qtd*c.val}\n`;
     });
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'viabilidade_cisa_anexo3.csv';
+    a.download = isTodas ? 'viabilidade_cisa_consolidado.csv' : `viabilidade_cisa_${currentKey}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -3565,43 +3815,61 @@ window.renderCisaViabilidade = renderCisaViabilidade;
 // 3. FICHA TÉCNICA OFICIAL DO SERVIÇO CISA (ANEXO 3 NATIVO)
 // ----------------------------------------------------------------------------
 function renderCisaPortaria(key) {
+  if (!key) key = window.currentCisaKey || 'todas';
+  window.currentCisaKey = key;
+  const isTodas = (key === 'todas');
   const container = document.getElementById('cisaMainContent');
   if (!container) return;
 
-  const procs = (window.activeCisaSim && window.activeCisaSim.procs) || window.cisaSimState.procs;
+  const allProcs = (window.activeCisaSim && window.activeCisaSim.procs) || window.cisaSimState.procs;
+  const procs = isTodas
+    ? allProcs
+    : allProcs.filter(p => !p.especialidade || p.especialidade.toLowerCase() === key.toLowerCase());
 
   container.innerHTML = `
     <div id="cisaNativePortaria" style="display: flex; flex-direction: column; gap: 1.5rem;">
       
       <!-- CABEÇALHO OFICIAL CISA -->
-      <div class="card" style="padding: 1.75rem 2rem; border-left: 5px solid #2563eb; background: linear-gradient(135deg, var(--bg-card) 0%, rgba(37, 99, 235, 0.04) 100%);">
+      <div class="card" style="padding: 1.75rem 2rem; border-left: 5px solid ${isTodas ? '#10b981' : '#2563eb'}; background: linear-gradient(135deg, var(--bg-card) 0%, ${isTodas ? 'rgba(16, 185, 129, 0.04)' : 'rgba(37, 99, 235, 0.04)'} 100%);">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem;">
           <div style="display: flex; align-items: center; gap: 1.25rem;">
             <img src="logos/LOGO__SC_Bage.png" alt="Santa Casa de Bagé" style="height: 56px; width: auto;" onerror="this.style.display='none'">
-            <div style="width: 2px; height: 44px; background: rgba(37, 99, 235, 0.25);"></div>
+            <div style="width: 2px; height: 44px; background: ${isTodas ? 'rgba(16, 185, 129, 0.25)' : 'rgba(37, 99, 235, 0.25)'};"></div>
             <img src="logo_cisa.png" alt="Consórcio CISA" style="height: 52px; width: auto;" onerror="this.style.display='none'">
             <div style="margin-left: 0.5rem;">
-              <span style="font-size: 0.72rem; font-weight: 800; color: #2563eb; text-transform: uppercase; letter-spacing: 0.8px; display: block; margin-bottom: 0.2rem;">
-                FICHA TÉCNICA OFICIAL DO SERVIÇO DE OFTALMOLOGIA CISA
+              <span style="font-size: 0.72rem; font-weight: 800; color: ${isTodas ? '#059669' : '#2563eb'}; text-transform: uppercase; letter-spacing: 0.8px; display: block; margin-bottom: 0.2rem;">
+                ${isTodas ? 'FICHA TÉCNICA OFICIAL DO PROGRAMA REGIONAL CISA — CONSOLIDADO' : 'FICHA TÉCNICA OFICIAL DO SERVIÇO DE OFTALMOLOGIA CISA'}
               </span>
               <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text-title); margin: 0; line-height: 1.2;">
-                Ambulatório de Especialidade em Oftalmologia
+                ${isTodas ? 'Consórcio CISA — Portfólio Geral de Especialidades' : 'Ambulatório de Especialidade em Oftalmologia'}
               </h2>
               <div style="font-size: 0.84rem; color: var(--text-muted); margin-top: 0.35rem;">
-                Contrato Intermunicipal de Serviços de Saúde · Consórcio Intermunicipal de Saúde (CNPJ: 02.231.696/0001-92 · licitacoes@cisaijui.com.br)
+                ${isTodas ? 'Contrato Intermunicipal de Serviços de Saúde · Consórcio Intermunicipal de Saúde (CNPJ: 02.231.696/0001-92)' : 'Contrato Intermunicipal de Serviços de Saúde · Consórcio Intermunicipal de Saúde (CNPJ: 02.231.696/0001-92 · licitacoes@cisaijui.com.br)'}
               </div>
             </div>
           </div>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.7rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 99px;">
-              PACTUAÇÃO CISA / REGIONAL
-            </span>
-            <span class="badge-sus" style="background: rgba(37, 99, 235, 0.1); color: var(--blue-vibrant); font-size: 0.7rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 99px;">
-              CONTRATO INTERMUNICIPAL
-            </span>
-            <span class="badge-sus" style="background: rgba(245, 158, 11, 0.12); color: #b45309; font-size: 0.7rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 99px;">
-              HABILITAÇÃO 0506 GLAUCOMA
-            </span>
+            ${isTodas ? `
+              <span class="badge-sus" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-size: 0.7rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 99px;">
+                TODAS AS ESPECIALIDADES
+              </span>
+              <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.7rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 99px;">
+                PACTUAÇÃO CISA / REGIONAL
+              </span>
+              <span class="badge-sus" style="background: rgba(37, 99, 235, 0.1); color: var(--blue-vibrant); font-size: 0.7rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 99px;">
+                CONTRATO INTERMUNICIPAL
+              </span>
+            ` : `
+              <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.7rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 99px;">
+                PACTUAÇÃO CISA / REGIONAL
+              </span>
+              <span class="badge-sus" style="background: rgba(37, 99, 235, 0.1); color: var(--blue-vibrant); font-size: 0.7rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 99px;">
+                CONTRATO INTERMUNICIPAL
+              </span>
+              <span class="badge-sus" style="background: rgba(245, 158, 11, 0.12); color: #b45309; font-size: 0.7rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 99px;">
+                HABILITAÇÃO 0506 GLAUCOMA
+              </span>
+            `}
           </div>
         </div>
       </div>
@@ -3615,11 +3883,11 @@ function renderCisaPortaria(key) {
                 <i data-lucide="layers" style="width: 20px; height: 20px;"></i>
               </div>
               <h3 style="font-size: 1.15rem; color: var(--text-title); font-weight: 800; margin: 0;">
-                Tabela Oficial de Procedimentos e Valores Pactuados (Contrato CISA)
+                ${isTodas ? 'Tabela Geral de Procedimentos e Valores Pactuados (Todas as Especialidades CISA)' : 'Tabela Oficial de Procedimentos e Valores Pactuados (Contrato CISA)'}
               </h3>
             </div>
             <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.78rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 4px;">
-              15 PROCEDIMENTOS PACTUADOS
+              ${procs.length} PROCEDIMENTOS PACTUADOS
             </span>
           </div>
         </div>

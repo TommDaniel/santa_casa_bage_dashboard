@@ -4,6 +4,30 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-21] - Módulo CISA: Opção 'Todas Especialidades' com Consolidação Geral do Programa Regional
+
+### 🎯 O que foi feito:
+1. **Menu Lateral CISA com Opção "Todas Especialidades" no Topo**:
+   - Inserida a opção **"Todas Especialidades"** em primeiro lugar no menu lateral esquerdo do módulo CISA (`todas`), seguida por **"Oftalmologia"** (`oftalmologia`).
+   - Ícone dinâmico `layers` em verde esmeralda com badge `TOTAL` para a visão consolidada, e ícone `eye` em azul com badge `CISA` para Oftalmologia.
+   - Definida como opção ativa por padrão na abertura da aba CISA.
+2. **Resultados Consolidados nos KPI Cards (Programa Completo)**:
+   - Os 3 cards executivos de topo passam a consolidar a soma global de todas as especialidades CISA ativas:
+     - **Receita Total Contratada (Consolidada)**: soma da produção cotada de todas as linhas de cuidado e projeção anual global.
+     - **Custos Operacionais Totais (Consolidados)**: soma do custeio fixo de equipes clínicas multidisciplinares com RQE, enfermagem e apoio.
+     - **Superávit Operacional Líquido do Programa**: saldo líquido global consolidado, margem e break-even do programa intermunicipal.
+3. **Novo "Quadro de Consolidação das Especialidades CISA"**:
+   - Tabela executiva comparativa inserida na visão consolidada que decompõe indicadores por especialidade (procedimentos, status de cotação, receita mensal, custos operacionais e resultado líquido) com botão direto de atalho ("Detalhar") para cada especialidade.
+4. **Filtros e Detalhamento por Especialidade**:
+   - Ao clicar em qualquer especialidade individual (ex.: "Oftalmologia"), a interface isola automaticamente os procedimentos e custos específicos daquela linha de cuidado.
+   - Suporte a agrupamento dinâmico de procedimentos e exportação de CSV contendo a identificação da especialidade de cada item.
+5. **Navegação Direta por Hash/URL**:
+   - Implementado listener `checkUrlHashTab` em `index.html` para abrir diretamente abas via hash (ex.: `#tab-cisa`) ou parâmetro de consulta (`?tab=cisa`).
+6. **Atualização de Cache e Build**:
+   - Cache buster de `app.js` atualizado para `app.js?v=20260921_02`.
+
+---
+
 ## [2026-09-21] - Ajuste de Interface CISA: Renomeação do Botão de Alternância
 
 ### 🎯 O que foi feito:

@@ -61,7 +61,7 @@
           if (typeof window.renderCisaSidebar === 'function') window.renderCisaSidebar();
           if (typeof window.renderCisaServico === 'function') {
             try {
-              window.renderCisaServico(window.currentCisaKey || 'oftalmologia');
+              window.renderCisaServico(window.currentCisaKey || 'todas');
             } catch (e) {}
           }
         }
@@ -120,6 +120,23 @@
     if (document.readyState !== 'loading') syncAppHeaderH();
     else document.addEventListener('DOMContentLoaded', syncAppHeaderH);
     window.syncAppHeaderH = syncAppHeaderH;
+
+    function checkUrlHashTab() {
+      var hash = window.location.hash ? window.location.hash.replace('#', '') : '';
+      if (!hash) {
+        var params = new URLSearchParams(window.location.search);
+        hash = params.get('tab');
+      }
+      if (hash) {
+        var tabId = hash.startsWith('tab-') ? hash : ('tab-' + hash);
+        var targetPane = document.getElementById(tabId);
+        if (targetPane) {
+          switchTab(null, tabId);
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', checkUrlHashTab);
+    window.addEventListener('hashchange', checkUrlHashTab);
   </script>
 </head>
 <body>
@@ -6983,7 +7000,7 @@
   </div>
 
   <!-- Main JavaScript File -->
-  <script src="app.js?v=20260921_01"></script>
+  <script src="app.js?v=20260921_02"></script>
   <script>
     if (typeof renderAssistirSidebar === 'function') {
       renderAssistirSidebar();
@@ -7000,9 +7017,9 @@
     }
     if (typeof renderCisaServico === 'function') {
       try {
-        renderCisaServico('oftalmologia');
+        renderCisaServico(window.currentCisaKey || 'todas');
       } catch (e) {
-        console.error('Error initializing CISA Oftalmologia:', e);
+        console.error('Error initializing CISA Todas Especialidades:', e);
       }
     }
   </script>
