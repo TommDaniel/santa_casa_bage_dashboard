@@ -3985,12 +3985,14 @@ function renderCisaPortaria(key) {
             <tfoot>
               <tr style="background: rgba(37, 99, 235, 0.05); font-weight: 800; border-top: 2px solid rgba(37, 99, 235, 0.2);">
                 <td colspan="3" style="padding: 14px 18px; color: #2563eb; font-size: 0.88rem;">
-                  SOMA DOS VALORES UNITÁRIOS PACTUADOS (${procs.filter(p => p.val !== null && p.val !== undefined && p.val !== '').length} DE ${procs.length} ITENS COTADOS)
+                  VALOR MÉDIO DOS PROCEDIMENTOS (${procs.filter(p => p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val) && Number(p.val) > 0).length} DE ${procs.length} ITENS COTADOS)
                 </td>
                 <td style="padding: 14px 18px; text-align: right; color: #2563eb; font-size: 1.05rem; font-weight: 800;">
                   ${(() => {
-                    const s = procs.reduce((acc, p) => acc + (p.val ? Number(p.val) : 0), 0);
-                    return s > 0 ? ('R$ ' + s.toFixed(2).replace('.', ',')) : 'Valores a definir';
+                    const cotados = procs.filter(p => p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val) && Number(p.val) > 0);
+                    if (cotados.length === 0) return 'Valores a definir';
+                    const avg = cotados.reduce((acc, p) => acc + Number(p.val), 0) / cotados.length;
+                    return 'R$ ' + avg.toFixed(2).replace('.', ',');
                   })()}
                 </td>
                 <td></td>

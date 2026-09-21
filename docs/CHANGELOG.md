@@ -4,6 +4,19 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-21] - Módulo CISA: Valor Médio dos Procedimentos no Rodapé da Ficha Técnica
+
+### 🎯 O que foi feito:
+1. **Substituição da Soma pelo Valor Médio dos Procedimentos**:
+   - No rodapé (`<tfoot>`) da tabela de procedimentos da **Ficha Técnica** (`renderCisaPortaria`), a linha de totalizador foi renomeada de *"Soma dos Valores Unitários Pactuados"* para **"VALOR MÉDIO DOS PROCEDIMENTOS"**, mantendo a contagem dinâmica de procedimentos cotados.
+2. **Cálculo da Média dos Procedimentos Oftalmológicos Cotados**:
+   - O valor total anterior de R$ 781,84 (soma dos 8 itens já cotados) foi substituído pelo cálculo automatizado do **ticket médio unitário dos procedimentos pactuados** da linha de cuidado: `R$ 97,73` (\(781,84 \div 8\)).
+   - O cálculo é reativo e recalcula a média aritmética sempre que itens forem atualizados ou filtrados por especialidade.
+3. **Atualização de Cache e Build**:
+   - Cache buster de `app.js` atualizado para `app.js?v=20260921_04` em `index.html`.
+
+---
+
 ## [2026-09-21] - Módulo CISA: Coluna com Pill de Especialidade na Tabela da Ficha Técnica
 
 ### 🎯 O que foi feito:
