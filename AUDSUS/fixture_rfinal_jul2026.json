@@ -1,0 +1,1897 @@
+{
+  "arquivo": "RFINAL_AMB_E_NEFRO.JUL",
+  "meta": {
+    "orgao_emissor": "SAS/DATASUS/0202",
+    "municipio": "SANTANA DO LIVRAMENTO",
+    "emissao": "20/08/2026",
+    "competencia": "JUL/2026",
+    "cnes": "2248220",
+    "estabelecimento": "SANTA CASA DE MISERICORDIA"
+  },
+  "contagens": {
+    "itens": 873,
+    "procedimentos": 844,
+    "procedimentos_mac": 819,
+    "procedimentos_est": 25,
+    "subgrupos_resumo_mac": 11,
+    "competencias": [
+      "FEV/26",
+      "MAR/26",
+      "ABR/26",
+      "MAI/26",
+      "JUN/26",
+      "JUL/26"
+    ]
+  },
+  "total_geral": [
+    {
+      "competencia": "MAR/26",
+      "fisico_programado": 22138,
+      "fisico_aprovado": 21638,
+      "fisico_pct": 97.74,
+      "fisico_apresentado": 23755,
+      "orc_programado": 484259.43,
+      "orc_aprovado": 451785.11,
+      "orc_pct": 93.29,
+      "orc_apresentado": 481243.0,
+      "diferenca_pagto": 0.0
+    },
+    {
+      "competencia": "ABR/26",
+      "fisico_programado": 21248,
+      "fisico_aprovado": 21043,
+      "fisico_pct": 99.04,
+      "fisico_apresentado": 22432,
+      "orc_programado": 486372.5,
+      "orc_aprovado": 448352.22,
+      "orc_pct": 92.18,
+      "orc_apresentado": 472338.92,
+      "diferenca_pagto": 0.0
+    },
+    {
+      "competencia": "MAI/26",
+      "fisico_programado": 21343,
+      "fisico_aprovado": 21377,
+      "fisico_pct": 100.16,
+      "fisico_apresentado": 23214,
+      "orc_programado": 498288.51,
+      "orc_aprovado": 458276.72,
+      "orc_pct": 91.97,
+      "orc_apresentado": 479338.79,
+      "diferenca_pagto": 0.0
+    },
+    {
+      "competencia": "JUN/26",
+      "fisico_programado": 21334,
+      "fisico_aprovado": 19875,
+      "fisico_pct": 93.16,
+      "fisico_apresentado": 21721,
+      "orc_programado": 498746.17,
+      "orc_aprovado": 435981.34,
+      "orc_pct": 87.42,
+      "orc_apresentado": 460286.8,
+      "diferenca_pagto": 0.0
+    },
+    {
+      "competencia": "JUL/26",
+      "fisico_programado": 7227,
+      "fisico_aprovado": 7436,
+      "fisico_pct": 102.89,
+      "fisico_apresentado": 8036,
+      "orc_programado": 377918.15,
+      "orc_aprovado": 353495.62,
+      "orc_pct": 93.54,
+      "orc_apresentado": 365813.63,
+      "diferenca_pagto": 0.0
+    }
+  ],
+  "resumo_ppi_mac_subgrupo": [
+    {
+      "codigo": "020100000",
+      "subgrupo": "0201",
+      "descricao": "Coleta de material",
+      "meses": [
+        {
+          "competencia": "FEV/26",
+          "fisico_programado": 2,
+          "fisico_aprovado": 0,
+          "fisico_pct": 0.0,
+          "fisico_apresentado": 0,
+          "orc_programado": 47.46,
+          "orc_aprovado": 0.0,
+          "orc_pct": 0.0,
+          "orc_apresentado": 0.0,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAR/26",
+          "fisico_programado": 2,
+          "fisico_aprovado": 0,
+          "fisico_pct": 0.0,
+          "fisico_apresentado": 0,
+          "orc_programado": 47.46,
+          "orc_aprovado": 0.0,
+          "orc_pct": 0.0,
+          "orc_apresentado": 0.0,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "ABR/26",
+          "fisico_programado": 2,
+          "fisico_aprovado": 2,
+          "fisico_pct": 100.0,
+          "fisico_apresentado": 8,
+          "orc_programado": 47.46,
+          "orc_aprovado": 47.46,
+          "orc_pct": 100.0,
+          "orc_apresentado": 189.84,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAI/26",
+          "fisico_programado": 2,
+          "fisico_aprovado": 1,
+          "fisico_pct": 50.0,
+          "fisico_apresentado": 1,
+          "orc_programado": 47.46,
+          "orc_aprovado": 23.73,
+          "orc_pct": 50.0,
+          "orc_apresentado": 23.73,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUN/26",
+          "fisico_programado": 2,
+          "fisico_aprovado": 2,
+          "fisico_pct": 100.0,
+          "fisico_apresentado": 9,
+          "orc_programado": 47.46,
+          "orc_aprovado": 47.46,
+          "orc_pct": 100.0,
+          "orc_apresentado": 171.65,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUL/26",
+          "fisico_programado": 2,
+          "fisico_aprovado": 2,
+          "fisico_pct": 100.0,
+          "fisico_apresentado": 10,
+          "orc_programado": 47.46,
+          "orc_aprovado": 47.46,
+          "orc_pct": 100.0,
+          "orc_apresentado": 237.3,
+          "diferenca_pagto": 0.0
+        }
+      ]
+    },
+    {
+      "codigo": "020200000",
+      "subgrupo": "0202",
+      "descricao": "Diagnostico em laboratorio clinico",
+      "meses": [
+        {
+          "competencia": "FEV/26",
+          "fisico_programado": 3650,
+          "fisico_aprovado": 4371,
+          "fisico_pct": 119.75,
+          "fisico_apresentado": 4606,
+          "orc_programado": 17520.0,
+          "orc_aprovado": 17518.33,
+          "orc_pct": 99.99,
+          "orc_apresentado": 19801.38,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAR/26",
+          "fisico_programado": 3650,
+          "fisico_aprovado": 4056,
+          "fisico_pct": 111.12,
+          "fisico_apresentado": 4079,
+          "orc_programado": 17520.0,
+          "orc_aprovado": 17517.72,
+          "orc_pct": 99.99,
+          "orc_apresentado": 17724.72,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "ABR/26",
+          "fisico_programado": 3650,
+          "fisico_aprovado": 4307,
+          "fisico_pct": 118.0,
+          "fisico_apresentado": 4307,
+          "orc_programado": 17520.0,
+          "orc_aprovado": 13707.6,
+          "orc_pct": 78.24,
+          "orc_apresentado": 13707.6,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAI/26",
+          "fisico_programado": 3650,
+          "fisico_aprovado": 3997,
+          "fisico_pct": 109.51,
+          "fisico_apresentado": 3997,
+          "orc_programado": 17520.0,
+          "orc_aprovado": 13820.73,
+          "orc_pct": 78.89,
+          "orc_apresentado": 13820.73,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUN/26",
+          "fisico_programado": 3650,
+          "fisico_aprovado": 4850,
+          "fisico_pct": 132.88,
+          "fisico_apresentado": 5084,
+          "orc_programado": 17520.0,
+          "orc_aprovado": 17518.89,
+          "orc_pct": 99.99,
+          "orc_apresentado": 21128.94,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUL/26",
+          "fisico_programado": 2050,
+          "fisico_aprovado": 2590,
+          "fisico_pct": 126.34,
+          "fisico_apresentado": 2590,
+          "orc_programado": 9840.0,
+          "orc_aprovado": 9793.07,
+          "orc_pct": 99.52,
+          "orc_apresentado": 9793.07,
+          "diferenca_pagto": 0.0
+        }
+      ]
+    },
+    {
+      "codigo": "020300000",
+      "subgrupo": "0203",
+      "descricao": "Diagnostico por anatomia patologica e citopatologia",
+      "meses": [
+        {
+          "competencia": "FEV/26",
+          "fisico_programado": 50,
+          "fisico_aprovado": 16,
+          "fisico_pct": 32.0,
+          "fisico_apresentado": 16,
+          "orc_programado": 2500.0,
+          "orc_aprovado": 652.48,
+          "orc_pct": 26.1,
+          "orc_apresentado": 652.48,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAR/26",
+          "fisico_programado": 50,
+          "fisico_aprovado": 61,
+          "fisico_pct": 122.0,
+          "fisico_apresentado": 98,
+          "orc_programado": 2500.0,
+          "orc_aprovado": 2487.58,
+          "orc_pct": 99.5,
+          "orc_apresentado": 3996.44,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "ABR/26",
+          "fisico_programado": 50,
+          "fisico_aprovado": 61,
+          "fisico_pct": 122.0,
+          "fisico_apresentado": 69,
+          "orc_programado": 2500.0,
+          "orc_aprovado": 2487.58,
+          "orc_pct": 99.5,
+          "orc_apresentado": 2813.82,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAI/26",
+          "fisico_programado": 50,
+          "fisico_aprovado": 61,
+          "fisico_pct": 122.0,
+          "fisico_apresentado": 69,
+          "orc_programado": 2500.0,
+          "orc_aprovado": 2487.58,
+          "orc_pct": 99.5,
+          "orc_apresentado": 2813.82,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUN/26",
+          "fisico_programado": 50,
+          "fisico_aprovado": 61,
+          "fisico_pct": 122.0,
+          "fisico_apresentado": 71,
+          "orc_programado": 2500.0,
+          "orc_aprovado": 2487.58,
+          "orc_pct": 99.5,
+          "orc_apresentado": 2895.38,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUL/26",
+          "fisico_programado": 50,
+          "fisico_aprovado": 61,
+          "fisico_pct": 122.0,
+          "fisico_apresentado": 127,
+          "orc_programado": 2500.0,
+          "orc_aprovado": 2487.58,
+          "orc_pct": 99.5,
+          "orc_apresentado": 5179.06,
+          "diferenca_pagto": 0.0
+        }
+      ]
+    },
+    {
+      "codigo": "020400000",
+      "subgrupo": "0204",
+      "descricao": "Diagnostico por radiologia",
+      "meses": [
+        {
+          "competencia": "FEV/26",
+          "fisico_programado": 1090,
+          "fisico_aprovado": 1121,
+          "fisico_pct": 102.84,
+          "fisico_apresentado": 1124,
+          "orc_programado": 9810.0,
+          "orc_aprovado": 9805.55,
+          "orc_pct": 99.95,
+          "orc_apresentado": 9832.37,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAR/26",
+          "fisico_programado": 2010,
+          "fisico_aprovado": 1441,
+          "fisico_pct": 71.69,
+          "fisico_apresentado": 1441,
+          "orc_programado": 18090.0,
+          "orc_aprovado": 12640.25,
+          "orc_pct": 69.87,
+          "orc_apresentado": 12640.25,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "ABR/26",
+          "fisico_programado": 1110,
+          "fisico_aprovado": 1170,
+          "fisico_pct": 105.41,
+          "fisico_apresentado": 1412,
+          "orc_programado": 9990.0,
+          "orc_aprovado": 9983.98,
+          "orc_pct": 99.94,
+          "orc_apresentado": 11761.18,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAI/26",
+          "fisico_programado": 1110,
+          "fisico_aprovado": 1128,
+          "fisico_pct": 101.62,
+          "fisico_apresentado": 1510,
+          "orc_programado": 9990.0,
+          "orc_aprovado": 9988.53,
+          "orc_pct": 99.99,
+          "orc_apresentado": 12731.14,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUN/26",
+          "fisico_programado": 1110,
+          "fisico_aprovado": 1106,
+          "fisico_pct": 99.64,
+          "fisico_apresentado": 1426,
+          "orc_programado": 9990.0,
+          "orc_aprovado": 9989.33,
+          "orc_pct": 99.99,
+          "orc_apresentado": 12277.94,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUL/26",
+          "fisico_programado": 620,
+          "fisico_aprovado": 629,
+          "fisico_pct": 101.45,
+          "fisico_apresentado": 663,
+          "orc_programado": 5580.0,
+          "orc_aprovado": 5577.94,
+          "orc_pct": 99.96,
+          "orc_apresentado": 5834.38,
+          "diferenca_pagto": 0.0
+        }
+      ]
+    },
+    {
+      "codigo": "020500000",
+      "subgrupo": "0205",
+      "descricao": "Diagnostico por ultrasonografia",
+      "meses": [
+        {
+          "competencia": "FEV/26",
+          "fisico_programado": 45,
+          "fisico_aprovado": 56,
+          "fisico_pct": 124.44,
+          "fisico_apresentado": 210,
+          "orc_programado": 1465.2,
+          "orc_aprovado": 1463.0,
+          "orc_pct": 99.85,
+          "orc_apresentado": 7558.78,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAR/26",
+          "fisico_programado": 45,
+          "fisico_aprovado": 58,
+          "fisico_pct": 128.89,
+          "fisico_apresentado": 192,
+          "orc_programado": 1465.2,
+          "orc_aprovado": 1465.2,
+          "orc_pct": 100.0,
+          "orc_apresentado": 4790.5,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "ABR/26",
+          "fisico_programado": 45,
+          "fisico_aprovado": 60,
+          "fisico_pct": 133.33,
+          "fisico_apresentado": 240,
+          "orc_programado": 1465.2,
+          "orc_aprovado": 1452.0,
+          "orc_pct": 99.1,
+          "orc_apresentado": 5876.75,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAI/26",
+          "fisico_programado": 45,
+          "fisico_aprovado": 59,
+          "fisico_pct": 131.11,
+          "fisico_apresentado": 150,
+          "orc_programado": 1465.2,
+          "orc_aprovado": 1443.2,
+          "orc_pct": 98.5,
+          "orc_apresentado": 3741.65,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUN/26",
+          "fisico_programado": 45,
+          "fisico_aprovado": 58,
+          "fisico_pct": 128.89,
+          "fisico_apresentado": 241,
+          "orc_programado": 1465.2,
+          "orc_aprovado": 1465.2,
+          "orc_pct": 100.0,
+          "orc_apresentado": 5948.8,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUL/26",
+          "fisico_programado": 40,
+          "fisico_aprovado": 53,
+          "fisico_pct": 132.5,
+          "fisico_apresentado": 179,
+          "orc_programado": 1302.4,
+          "orc_aprovado": 1282.6,
+          "orc_pct": 98.48,
+          "orc_apresentado": 4373.05,
+          "diferenca_pagto": 0.0
+        }
+      ]
+    },
+    {
+      "codigo": "020600000",
+      "subgrupo": "0206",
+      "descricao": "Diagnostico por tomografia",
+      "meses": [
+        {
+          "competencia": "FEV/26",
+          "fisico_programado": 222,
+          "fisico_aprovado": 218,
+          "fisico_pct": 98.2,
+          "fisico_apresentado": 222,
+          "orc_programado": 26664.42,
+          "orc_aprovado": 26584.93,
+          "orc_pct": 99.7,
+          "orc_apresentado": 27139.45,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAR/26",
+          "fisico_programado": 222,
+          "fisico_aprovado": 221,
+          "fisico_pct": 99.55,
+          "fisico_apresentado": 222,
+          "orc_programado": 26664.42,
+          "orc_aprovado": 26584.68,
+          "orc_pct": 99.7,
+          "orc_apresentado": 26723.31,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "ABR/26",
+          "fisico_programado": 222,
+          "fisico_aprovado": 219,
+          "fisico_pct": 98.65,
+          "fisico_apresentado": 219,
+          "orc_programado": 26664.42,
+          "orc_aprovado": 26021.9,
+          "orc_pct": 97.59,
+          "orc_apresentado": 26021.9,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAI/26",
+          "fisico_programado": 222,
+          "fisico_aprovado": 221,
+          "fisico_pct": 99.55,
+          "fisico_apresentado": 221,
+          "orc_programado": 27261.6,
+          "orc_aprovado": 27217.29,
+          "orc_pct": 99.84,
+          "orc_apresentado": 27217.29,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUN/26",
+          "fisico_programado": 222,
+          "fisico_aprovado": 213,
+          "fisico_pct": 95.95,
+          "fisico_apresentado": 213,
+          "orc_programado": 27261.6,
+          "orc_aprovado": 25239.9,
+          "orc_pct": 92.58,
+          "orc_apresentado": 25239.9,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUL/26",
+          "fisico_programado": 72,
+          "fisico_aprovado": 70,
+          "fisico_pct": 97.22,
+          "fisico_apresentado": 70,
+          "orc_programado": 8841.6,
+          "orc_aprovado": 8563.69,
+          "orc_pct": 96.86,
+          "orc_apresentado": 8563.69,
+          "diferenca_pagto": 0.0
+        }
+      ]
+    },
+    {
+      "codigo": "020700000",
+      "subgrupo": "0207",
+      "descricao": "Diagnostico por ressonancia magnetica",
+      "meses": [
+        {
+          "competencia": "FEV/26",
+          "fisico_programado": 4,
+          "fisico_aprovado": 4,
+          "fisico_pct": 100.0,
+          "fisico_apresentado": 9,
+          "orc_programado": 1075.0,
+          "orc_aprovado": 1075.0,
+          "orc_pct": 100.0,
+          "orc_apresentado": 2418.75,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAR/26",
+          "fisico_programado": 4,
+          "fisico_aprovado": 4,
+          "fisico_pct": 100.0,
+          "fisico_apresentado": 8,
+          "orc_programado": 1075.0,
+          "orc_aprovado": 1075.0,
+          "orc_pct": 100.0,
+          "orc_apresentado": 2150.0,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "ABR/26",
+          "fisico_programado": 4,
+          "fisico_aprovado": 4,
+          "fisico_pct": 100.0,
+          "fisico_apresentado": 13,
+          "orc_programado": 1075.0,
+          "orc_aprovado": 1075.0,
+          "orc_pct": 100.0,
+          "orc_apresentado": 3493.75,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAI/26",
+          "fisico_programado": 4,
+          "fisico_aprovado": 4,
+          "fisico_pct": 100.0,
+          "fisico_apresentado": 10,
+          "orc_programado": 1075.0,
+          "orc_aprovado": 1075.0,
+          "orc_pct": 100.0,
+          "orc_apresentado": 2687.5,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUN/26",
+          "fisico_programado": 4,
+          "fisico_aprovado": 4,
+          "fisico_pct": 100.0,
+          "fisico_apresentado": 14,
+          "orc_programado": 1075.0,
+          "orc_aprovado": 1075.0,
+          "orc_pct": 100.0,
+          "orc_apresentado": 3762.5,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUL/26",
+          "fisico_programado": 2,
+          "fisico_aprovado": 2,
+          "fisico_pct": 100.0,
+          "fisico_apresentado": 15,
+          "orc_programado": 537.5,
+          "orc_aprovado": 537.5,
+          "orc_pct": 100.0,
+          "orc_apresentado": 4031.25,
+          "diferenca_pagto": 0.0
+        }
+      ]
+    },
+    {
+      "codigo": "021100000",
+      "subgrupo": "0211",
+      "descricao": "Metodos diagnosticos em especialidades",
+      "meses": [
+        {
+          "competencia": "FEV/26",
+          "fisico_programado": 450,
+          "fisico_aprovado": 438,
+          "fisico_pct": 97.33,
+          "fisico_apresentado": 438,
+          "orc_programado": 2587.5,
+          "orc_aprovado": 1883.68,
+          "orc_pct": 72.8,
+          "orc_apresentado": 1883.68,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAR/26",
+          "fisico_programado": 550,
+          "fisico_aprovado": 607,
+          "fisico_pct": 110.36,
+          "fisico_apresentado": 607,
+          "orc_programado": 3162.5,
+          "orc_aprovado": 2548.51,
+          "orc_pct": 80.59,
+          "orc_apresentado": 2548.51,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "ABR/26",
+          "fisico_programado": 550,
+          "fisico_aprovado": 595,
+          "fisico_pct": 108.18,
+          "fisico_apresentado": 595,
+          "orc_programado": 3135.0,
+          "orc_aprovado": 2771.11,
+          "orc_pct": 88.39,
+          "orc_apresentado": 2771.11,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAI/26",
+          "fisico_programado": 550,
+          "fisico_aprovado": 683,
+          "fisico_pct": 124.18,
+          "fisico_apresentado": 702,
+          "orc_programado": 3118.5,
+          "orc_aprovado": 3114.93,
+          "orc_pct": 99.89,
+          "orc_apresentado": 3371.62,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUN/26",
+          "fisico_programado": 550,
+          "fisico_aprovado": 686,
+          "fisico_pct": 124.73,
+          "fisico_apresentado": 814,
+          "orc_programado": 3118.5,
+          "orc_aprovado": 3117.7,
+          "orc_pct": 99.97,
+          "orc_apresentado": 3803.1,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUL/26",
+          "fisico_programado": 140,
+          "fisico_aprovado": 151,
+          "fisico_pct": 107.86,
+          "fisico_apresentado": 236,
+          "orc_programado": 781.2,
+          "orc_aprovado": 777.65,
+          "orc_pct": 99.55,
+          "orc_apresentado": 1331.44,
+          "diferenca_pagto": 0.0
+        }
+      ]
+    },
+    {
+      "codigo": "021200000",
+      "subgrupo": "0212",
+      "descricao": "Diagnostico e procedimentos especiais em hemoterapia",
+      "meses": [
+        {
+          "competencia": "FEV/26",
+          "fisico_programado": 60,
+          "fisico_aprovado": 40,
+          "fisico_pct": 66.67,
+          "fisico_apresentado": 40,
+          "orc_programado": 1638.0,
+          "orc_aprovado": 681.6,
+          "orc_pct": 41.61,
+          "orc_apresentado": 681.6,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAR/26",
+          "fisico_programado": 60,
+          "fisico_aprovado": 53,
+          "fisico_pct": 88.33,
+          "fisico_apresentado": 53,
+          "orc_programado": 1638.0,
+          "orc_aprovado": 903.12,
+          "orc_pct": 55.14,
+          "orc_apresentado": 903.12,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "ABR/26",
+          "fisico_programado": 60,
+          "fisico_aprovado": 56,
+          "fisico_pct": 93.33,
+          "fisico_apresentado": 56,
+          "orc_programado": 1638.0,
+          "orc_aprovado": 954.24,
+          "orc_pct": 58.26,
+          "orc_apresentado": 954.24,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAI/26",
+          "fisico_programado": 60,
+          "fisico_aprovado": 89,
+          "fisico_pct": 148.33,
+          "fisico_apresentado": 89,
+          "orc_programado": 1638.0,
+          "orc_aprovado": 1516.56,
+          "orc_pct": 92.59,
+          "orc_apresentado": 1516.56,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUN/26",
+          "fisico_programado": 60,
+          "fisico_aprovado": 58,
+          "fisico_pct": 96.67,
+          "fisico_apresentado": 58,
+          "orc_programado": 1638.0,
+          "orc_aprovado": 988.32,
+          "orc_pct": 60.34,
+          "orc_apresentado": 988.32,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUL/26",
+          "fisico_programado": 35,
+          "fisico_aprovado": 26,
+          "fisico_pct": 74.29,
+          "fisico_apresentado": 26,
+          "orc_programado": 955.5,
+          "orc_aprovado": 443.04,
+          "orc_pct": 46.37,
+          "orc_apresentado": 443.04,
+          "diferenca_pagto": 0.0
+        }
+      ]
+    },
+    {
+      "codigo": "030600000",
+      "subgrupo": "0306",
+      "descricao": "Hemoterapia",
+      "meses": [
+        {
+          "competencia": "FEV/26",
+          "fisico_programado": 30,
+          "fisico_aprovado": 24,
+          "fisico_pct": 80.0,
+          "fisico_apresentado": 24,
+          "orc_programado": 511.2,
+          "orc_aprovado": 359.56,
+          "orc_pct": 70.34,
+          "orc_apresentado": 359.56,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAR/26",
+          "fisico_programado": 30,
+          "fisico_aprovado": 34,
+          "fisico_pct": 113.33,
+          "fisico_apresentado": 34,
+          "orc_programado": 511.2,
+          "orc_aprovado": 505.26,
+          "orc_pct": 98.84,
+          "orc_apresentado": 505.26,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "ABR/26",
+          "fisico_programado": 30,
+          "fisico_aprovado": 34,
+          "fisico_pct": 113.33,
+          "fisico_apresentado": 34,
+          "orc_programado": 511.2,
+          "orc_aprovado": 505.26,
+          "orc_pct": 98.84,
+          "orc_apresentado": 505.26,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAI/26",
+          "fisico_programado": 30,
+          "fisico_aprovado": 35,
+          "fisico_pct": 116.67,
+          "fisico_apresentado": 54,
+          "orc_programado": 511.2,
+          "orc_aprovado": 497.6,
+          "orc_pct": 97.34,
+          "orc_apresentado": 821.36,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUN/26",
+          "fisico_programado": 30,
+          "fisico_aprovado": 35,
+          "fisico_pct": 116.67,
+          "fisico_apresentado": 36,
+          "orc_programado": 511.2,
+          "orc_aprovado": 509.95,
+          "orc_pct": 99.76,
+          "orc_apresentado": 526.99,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUL/26",
+          "fisico_programado": 20,
+          "fisico_aprovado": 17,
+          "fisico_pct": 85.0,
+          "fisico_apresentado": 17,
+          "orc_programado": 340.8,
+          "orc_aprovado": 240.28,
+          "orc_pct": 70.5,
+          "orc_apresentado": 240.28,
+          "diferenca_pagto": 0.0
+        }
+      ]
+    },
+    {
+      "codigo": "040100000",
+      "subgrupo": "0401",
+      "descricao": "Pequenas cirurgias e cirurgias de pele, tecido subcutaneo e",
+      "meses": [
+        {
+          "competencia": "FEV/26",
+          "fisico_programado": 100,
+          "fisico_aprovado": 80,
+          "fisico_pct": 80.0,
+          "fisico_apresentado": 80,
+          "orc_programado": 2316.0,
+          "orc_aprovado": 1660.36,
+          "orc_pct": 71.69,
+          "orc_apresentado": 1660.36,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAR/26",
+          "fisico_programado": 100,
+          "fisico_aprovado": 94,
+          "fisico_pct": 94.0,
+          "fisico_apresentado": 94,
+          "orc_programado": 2316.0,
+          "orc_aprovado": 1928.0,
+          "orc_pct": 83.25,
+          "orc_apresentado": 1928.0,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "ABR/26",
+          "fisico_programado": 100,
+          "fisico_aprovado": 80,
+          "fisico_pct": 80.0,
+          "fisico_apresentado": 80,
+          "orc_programado": 2316.0,
+          "orc_aprovado": 1608.1,
+          "orc_pct": 69.43,
+          "orc_apresentado": 1608.1,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "MAI/26",
+          "fisico_programado": 100,
+          "fisico_aprovado": 65,
+          "fisico_pct": 65.0,
+          "fisico_apresentado": 65,
+          "orc_programado": 2316.0,
+          "orc_aprovado": 1426.78,
+          "orc_pct": 61.61,
+          "orc_apresentado": 1426.78,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUN/26",
+          "fisico_programado": 100,
+          "fisico_aprovado": 57,
+          "fisico_pct": 57.0,
+          "fisico_apresentado": 57,
+          "orc_programado": 2316.0,
+          "orc_aprovado": 1083.64,
+          "orc_pct": 46.79,
+          "orc_apresentado": 1083.64,
+          "diferenca_pagto": 0.0
+        },
+        {
+          "competencia": "JUL/26",
+          "fisico_programado": 50,
+          "fisico_aprovado": 12,
+          "fisico_pct": 24.0,
+          "fisico_apresentado": 12,
+          "orc_programado": 1158.0,
+          "orc_aprovado": 176.04,
+          "orc_pct": 15.2,
+          "orc_apresentado": 176.04,
+          "diferenca_pagto": 0.0
+        }
+      ]
+    }
+  ],
+  "producao_mac_por_subgrupo": {
+    "FEV/26": {
+      "0201": {
+        "procedimentos": 54,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      },
+      "0202": {
+        "procedimentos": 461,
+        "fisico_aprovado": 4371,
+        "orc_aprovado": 17518.33,
+        "fisico_apresentado": 4606,
+        "orc_apresentado": 19801.38
+      },
+      "0203": {
+        "procedimentos": 12,
+        "fisico_aprovado": 16,
+        "orc_aprovado": 652.48,
+        "fisico_apresentado": 16,
+        "orc_apresentado": 652.48
+      },
+      "0204": {
+        "procedimentos": 95,
+        "fisico_aprovado": 1309,
+        "orc_aprovado": 18265.55,
+        "fisico_apresentado": 1312,
+        "orc_apresentado": 18292.37
+      },
+      "0205": {
+        "procedimentos": 24,
+        "fisico_aprovado": 56,
+        "orc_aprovado": 1463.0,
+        "fisico_apresentado": 210,
+        "orc_apresentado": 7558.78
+      },
+      "0206": {
+        "procedimentos": 15,
+        "fisico_aprovado": 218,
+        "orc_aprovado": 26584.93,
+        "fisico_apresentado": 222,
+        "orc_apresentado": 27139.45
+      },
+      "0207": {
+        "procedimentos": 16,
+        "fisico_aprovado": 4,
+        "orc_aprovado": 1075.0,
+        "fisico_apresentado": 9,
+        "orc_apresentado": 2418.75
+      },
+      "0209": {
+        "procedimentos": 2,
+        "fisico_aprovado": 2,
+        "orc_aprovado": 160.82,
+        "fisico_apresentado": 70,
+        "orc_apresentado": 5628.7
+      },
+      "0211": {
+        "procedimentos": 74,
+        "fisico_aprovado": 438,
+        "orc_aprovado": 1883.68,
+        "fisico_apresentado": 438,
+        "orc_apresentado": 1883.68
+      },
+      "0212": {
+        "procedimentos": 11,
+        "fisico_aprovado": 40,
+        "orc_aprovado": 681.6,
+        "fisico_apresentado": 40,
+        "orc_apresentado": 681.6
+      },
+      "0301": {
+        "procedimentos": 6,
+        "fisico_aprovado": 12083,
+        "orc_aprovado": 98562.83,
+        "fisico_apresentado": 12083,
+        "orc_apresentado": 98562.83
+      },
+      "0303": {
+        "procedimentos": 7,
+        "fisico_aprovado": 20,
+        "orc_aprovado": 574.02,
+        "fisico_apresentado": 20,
+        "orc_apresentado": 574.02
+      },
+      "0306": {
+        "procedimentos": 21,
+        "fisico_aprovado": 24,
+        "orc_aprovado": 359.56,
+        "fisico_apresentado": 24,
+        "orc_apresentado": 359.56
+      },
+      "0401": {
+        "procedimentos": 11,
+        "fisico_aprovado": 191,
+        "orc_aprovado": 5256.76,
+        "fisico_apresentado": 191,
+        "orc_apresentado": 5256.76
+      },
+      "0407": {
+        "procedimentos": 3,
+        "fisico_aprovado": 2,
+        "orc_aprovado": 43.47,
+        "fisico_apresentado": 16,
+        "orc_apresentado": 234.29
+      },
+      "0412": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      },
+      "0417": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      }
+    },
+    "MAR/26": {
+      "0201": {
+        "procedimentos": 54,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      },
+      "0202": {
+        "procedimentos": 461,
+        "fisico_aprovado": 4056,
+        "orc_aprovado": 17517.72,
+        "fisico_apresentado": 4079,
+        "orc_apresentado": 17724.72
+      },
+      "0203": {
+        "procedimentos": 12,
+        "fisico_aprovado": 61,
+        "orc_aprovado": 2487.58,
+        "fisico_apresentado": 98,
+        "orc_apresentado": 3996.44
+      },
+      "0204": {
+        "procedimentos": 95,
+        "fisico_aprovado": 1631,
+        "orc_aprovado": 21190.25,
+        "fisico_apresentado": 1631,
+        "orc_apresentado": 21190.25
+      },
+      "0205": {
+        "procedimentos": 23,
+        "fisico_aprovado": 90,
+        "orc_aprovado": 3636.72,
+        "fisico_apresentado": 268,
+        "orc_apresentado": 9947.86
+      },
+      "0206": {
+        "procedimentos": 15,
+        "fisico_aprovado": 221,
+        "orc_aprovado": 26584.68,
+        "fisico_apresentado": 222,
+        "orc_apresentado": 26723.31
+      },
+      "0207": {
+        "procedimentos": 16,
+        "fisico_aprovado": 4,
+        "orc_aprovado": 1075.0,
+        "fisico_apresentado": 8,
+        "orc_apresentado": 2150.0
+      },
+      "0209": {
+        "procedimentos": 2,
+        "fisico_aprovado": 2,
+        "orc_aprovado": 160.82,
+        "fisico_apresentado": 70,
+        "orc_apresentado": 5628.7
+      },
+      "0210": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      },
+      "0211": {
+        "procedimentos": 77,
+        "fisico_aprovado": 625,
+        "orc_aprovado": 3088.51,
+        "fisico_apresentado": 627,
+        "orc_apresentado": 3148.51
+      },
+      "0212": {
+        "procedimentos": 11,
+        "fisico_aprovado": 53,
+        "orc_aprovado": 903.12,
+        "fisico_apresentado": 53,
+        "orc_apresentado": 903.12
+      },
+      "0301": {
+        "procedimentos": 6,
+        "fisico_aprovado": 13614,
+        "orc_aprovado": 111636.2,
+        "fisico_apresentado": 15405,
+        "orc_apresentado": 126115.97
+      },
+      "0303": {
+        "procedimentos": 7,
+        "fisico_aprovado": 15,
+        "orc_aprovado": 548.57,
+        "fisico_apresentado": 15,
+        "orc_apresentado": 548.57
+      },
+      "0306": {
+        "procedimentos": 21,
+        "fisico_aprovado": 34,
+        "orc_aprovado": 505.26,
+        "fisico_apresentado": 34,
+        "orc_apresentado": 505.26
+      },
+      "0401": {
+        "procedimentos": 11,
+        "fisico_aprovado": 178,
+        "orc_aprovado": 4649.6,
+        "fisico_apresentado": 178,
+        "orc_apresentado": 4649.6
+      },
+      "0407": {
+        "procedimentos": 3,
+        "fisico_aprovado": 2,
+        "orc_aprovado": 43.47,
+        "fisico_apresentado": 15,
+        "orc_apresentado": 253.08
+      },
+      "0412": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      },
+      "0417": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      }
+    },
+    "ABR/26": {
+      "0201": {
+        "procedimentos": 54,
+        "fisico_aprovado": 2,
+        "orc_aprovado": 47.46,
+        "fisico_apresentado": 8,
+        "orc_apresentado": 189.84
+      },
+      "0202": {
+        "procedimentos": 461,
+        "fisico_aprovado": 4307,
+        "orc_aprovado": 13707.6,
+        "fisico_apresentado": 4307,
+        "orc_apresentado": 13707.6
+      },
+      "0203": {
+        "procedimentos": 12,
+        "fisico_aprovado": 61,
+        "orc_aprovado": 2487.58,
+        "fisico_apresentado": 69,
+        "orc_apresentado": 2813.82
+      },
+      "0204": {
+        "procedimentos": 95,
+        "fisico_aprovado": 1364,
+        "orc_aprovado": 18713.98,
+        "fisico_apresentado": 1606,
+        "orc_apresentado": 20491.18
+      },
+      "0205": {
+        "procedimentos": 24,
+        "fisico_aprovado": 92,
+        "orc_aprovado": 3623.52,
+        "fisico_apresentado": 316,
+        "orc_apresentado": 11034.11
+      },
+      "0206": {
+        "procedimentos": 15,
+        "fisico_aprovado": 219,
+        "orc_aprovado": 26021.9,
+        "fisico_apresentado": 219,
+        "orc_apresentado": 26021.9
+      },
+      "0207": {
+        "procedimentos": 16,
+        "fisico_aprovado": 4,
+        "orc_aprovado": 1075.0,
+        "fisico_apresentado": 13,
+        "orc_apresentado": 3493.75
+      },
+      "0209": {
+        "procedimentos": 2,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 68,
+        "orc_apresentado": 5532.38
+      },
+      "0210": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      },
+      "0211": {
+        "procedimentos": 77,
+        "fisico_aprovado": 613,
+        "orc_aprovado": 3311.11,
+        "fisico_apresentado": 613,
+        "orc_apresentado": 3311.11
+      },
+      "0212": {
+        "procedimentos": 11,
+        "fisico_aprovado": 56,
+        "orc_aprovado": 954.24,
+        "fisico_apresentado": 56,
+        "orc_apresentado": 954.24
+      },
+      "0301": {
+        "procedimentos": 6,
+        "fisico_aprovado": 13029,
+        "orc_aprovado": 107356.67,
+        "fisico_apresentado": 13857,
+        "orc_apresentado": 113616.47
+      },
+      "0303": {
+        "procedimentos": 7,
+        "fisico_aprovado": 9,
+        "orc_aprovado": 356.15,
+        "fisico_apresentado": 9,
+        "orc_apresentado": 356.15
+      },
+      "0306": {
+        "procedimentos": 21,
+        "fisico_aprovado": 34,
+        "orc_aprovado": 505.26,
+        "fisico_apresentado": 34,
+        "orc_apresentado": 505.26
+      },
+      "0401": {
+        "procedimentos": 11,
+        "fisico_aprovado": 201,
+        "orc_aprovado": 5528.5,
+        "fisico_apresentado": 201,
+        "orc_apresentado": 5528.5
+      },
+      "0407": {
+        "procedimentos": 3,
+        "fisico_aprovado": 19,
+        "orc_aprovado": 338.66,
+        "fisico_apresentado": 23,
+        "orc_apresentado": 458.02
+      },
+      "0412": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      },
+      "0417": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      }
+    },
+    "MAI/26": {
+      "0201": {
+        "procedimentos": 54,
+        "fisico_aprovado": 1,
+        "orc_aprovado": 23.73,
+        "fisico_apresentado": 1,
+        "orc_apresentado": 23.73
+      },
+      "0202": {
+        "procedimentos": 462,
+        "fisico_aprovado": 3997,
+        "orc_aprovado": 13820.73,
+        "fisico_apresentado": 3997,
+        "orc_apresentado": 13820.73
+      },
+      "0203": {
+        "procedimentos": 12,
+        "fisico_aprovado": 61,
+        "orc_aprovado": 2487.58,
+        "fisico_apresentado": 69,
+        "orc_apresentado": 2813.82
+      },
+      "0204": {
+        "procedimentos": 95,
+        "fisico_aprovado": 1313,
+        "orc_aprovado": 18313.53,
+        "fisico_apresentado": 1695,
+        "orc_apresentado": 21056.14
+      },
+      "0205": {
+        "procedimentos": 24,
+        "fisico_aprovado": 93,
+        "orc_aprovado": 3693.92,
+        "fisico_apresentado": 237,
+        "orc_apresentado": 9588.95
+      },
+      "0206": {
+        "procedimentos": 15,
+        "fisico_aprovado": 221,
+        "orc_aprovado": 27217.29,
+        "fisico_apresentado": 221,
+        "orc_apresentado": 27217.29
+      },
+      "0207": {
+        "procedimentos": 16,
+        "fisico_aprovado": 4,
+        "orc_aprovado": 1075.0,
+        "fisico_apresentado": 10,
+        "orc_apresentado": 2687.5
+      },
+      "0209": {
+        "procedimentos": 2,
+        "fisico_aprovado": 70,
+        "orc_aprovado": 5693.2,
+        "fisico_apresentado": 70,
+        "orc_apresentado": 5693.2
+      },
+      "0210": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      },
+      "0211": {
+        "procedimentos": 77,
+        "fisico_aprovado": 702,
+        "orc_aprovado": 3684.93,
+        "fisico_apresentado": 732,
+        "orc_apresentado": 4271.62
+      },
+      "0212": {
+        "procedimentos": 11,
+        "fisico_aprovado": 89,
+        "orc_aprovado": 1516.56,
+        "fisico_apresentado": 89,
+        "orc_apresentado": 1516.56
+      },
+      "0301": {
+        "procedimentos": 6,
+        "fisico_aprovado": 13554,
+        "orc_aprovado": 110888.0,
+        "fisico_apresentado": 14799,
+        "orc_apresentado": 120422.35
+      },
+      "0303": {
+        "procedimentos": 7,
+        "fisico_aprovado": 22,
+        "orc_aprovado": 627.14,
+        "fisico_apresentado": 22,
+        "orc_apresentado": 627.14
+      },
+      "0306": {
+        "procedimentos": 21,
+        "fisico_aprovado": 35,
+        "orc_aprovado": 497.6,
+        "fisico_apresentado": 54,
+        "orc_apresentado": 821.36
+      },
+      "0401": {
+        "procedimentos": 11,
+        "fisico_aprovado": 146,
+        "orc_aprovado": 4051.18,
+        "fisico_apresentado": 146,
+        "orc_apresentado": 4051.18
+      },
+      "0407": {
+        "procedimentos": 3,
+        "fisico_aprovado": 23,
+        "orc_aprovado": 362.12,
+        "fisico_apresentado": 26,
+        "orc_apresentado": 403.01
+      },
+      "0412": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      },
+      "0417": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      }
+    },
+    "JUN/26": {
+      "0201": {
+        "procedimentos": 54,
+        "fisico_aprovado": 2,
+        "orc_aprovado": 47.46,
+        "fisico_apresentado": 9,
+        "orc_apresentado": 171.65
+      },
+      "0202": {
+        "procedimentos": 462,
+        "fisico_aprovado": 4850,
+        "orc_aprovado": 17518.89,
+        "fisico_apresentado": 5084,
+        "orc_apresentado": 21128.94
+      },
+      "0203": {
+        "procedimentos": 12,
+        "fisico_aprovado": 61,
+        "orc_aprovado": 2487.58,
+        "fisico_apresentado": 71,
+        "orc_apresentado": 2895.38
+      },
+      "0204": {
+        "procedimentos": 95,
+        "fisico_aprovado": 1293,
+        "orc_aprovado": 18359.33,
+        "fisico_apresentado": 1613,
+        "orc_apresentado": 20647.94
+      },
+      "0205": {
+        "procedimentos": 24,
+        "fisico_aprovado": 91,
+        "orc_aprovado": 3676.32,
+        "fisico_apresentado": 335,
+        "orc_apresentado": 12299.38
+      },
+      "0206": {
+        "procedimentos": 15,
+        "fisico_aprovado": 213,
+        "orc_aprovado": 25239.9,
+        "fisico_apresentado": 213,
+        "orc_apresentado": 25239.9
+      },
+      "0207": {
+        "procedimentos": 16,
+        "fisico_aprovado": 4,
+        "orc_aprovado": 1075.0,
+        "fisico_apresentado": 14,
+        "orc_apresentado": 3762.5
+      },
+      "0209": {
+        "procedimentos": 2,
+        "fisico_aprovado": 69,
+        "orc_aprovado": 5516.04,
+        "fisico_apresentado": 69,
+        "orc_apresentado": 5516.04
+      },
+      "0210": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      },
+      "0211": {
+        "procedimentos": 77,
+        "fisico_aprovado": 705,
+        "orc_aprovado": 3687.7,
+        "fisico_apresentado": 835,
+        "orc_apresentado": 4433.1
+      },
+      "0212": {
+        "procedimentos": 11,
+        "fisico_aprovado": 58,
+        "orc_aprovado": 988.32,
+        "fisico_apresentado": 58,
+        "orc_apresentado": 988.32
+      },
+      "0301": {
+        "procedimentos": 6,
+        "fisico_aprovado": 11300,
+        "orc_aprovado": 85988.33,
+        "fisico_apresentado": 12190,
+        "orc_apresentado": 91790.14
+      },
+      "0303": {
+        "procedimentos": 7,
+        "fisico_aprovado": 12,
+        "orc_aprovado": 446.5,
+        "fisico_apresentado": 12,
+        "orc_apresentado": 446.5
+      },
+      "0306": {
+        "procedimentos": 21,
+        "fisico_aprovado": 35,
+        "orc_aprovado": 509.95,
+        "fisico_apresentado": 36,
+        "orc_apresentado": 526.99
+      },
+      "0401": {
+        "procedimentos": 11,
+        "fisico_aprovado": 139,
+        "orc_aprovado": 3740.44,
+        "fisico_apresentado": 139,
+        "orc_apresentado": 3740.44
+      },
+      "0407": {
+        "procedimentos": 3,
+        "fisico_aprovado": 20,
+        "orc_aprovado": 336.08,
+        "fisico_apresentado": 20,
+        "orc_apresentado": 336.08
+      },
+      "0412": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      },
+      "0417": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      }
+    },
+    "JUL/26": {
+      "0201": {
+        "procedimentos": 54,
+        "fisico_aprovado": 2,
+        "orc_aprovado": 47.46,
+        "fisico_apresentado": 10,
+        "orc_apresentado": 237.3
+      },
+      "0202": {
+        "procedimentos": 462,
+        "fisico_aprovado": 2590,
+        "orc_aprovado": 9793.07,
+        "fisico_apresentado": 2590,
+        "orc_apresentado": 9793.07
+      },
+      "0203": {
+        "procedimentos": 12,
+        "fisico_aprovado": 61,
+        "orc_aprovado": 2487.58,
+        "fisico_apresentado": 127,
+        "orc_apresentado": 5179.06
+      },
+      "0204": {
+        "procedimentos": 95,
+        "fisico_aprovado": 820,
+        "orc_aprovado": 14150.44,
+        "fisico_apresentado": 854,
+        "orc_apresentado": 14406.88
+      },
+      "0205": {
+        "procedimentos": 24,
+        "fisico_aprovado": 85,
+        "orc_aprovado": 3454.12,
+        "fisico_apresentado": 213,
+        "orc_apresentado": 6680.29
+      },
+      "0206": {
+        "procedimentos": 15,
+        "fisico_aprovado": 70,
+        "orc_aprovado": 8563.69,
+        "fisico_apresentado": 70,
+        "orc_apresentado": 8563.69
+      },
+      "0207": {
+        "procedimentos": 16,
+        "fisico_aprovado": 2,
+        "orc_aprovado": 537.5,
+        "fisico_apresentado": 15,
+        "orc_apresentado": 4031.25
+      },
+      "0209": {
+        "procedimentos": 2,
+        "fisico_aprovado": 70,
+        "orc_aprovado": 5628.7,
+        "fisico_apresentado": 70,
+        "orc_apresentado": 5628.7
+      },
+      "0210": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      },
+      "0211": {
+        "procedimentos": 77,
+        "fisico_aprovado": 168,
+        "orc_aprovado": 1287.65,
+        "fisico_apresentado": 253,
+        "orc_apresentado": 1841.44
+      },
+      "0212": {
+        "procedimentos": 11,
+        "fisico_aprovado": 26,
+        "orc_aprovado": 443.04,
+        "fisico_apresentado": 26,
+        "orc_apresentado": 443.04
+      },
+      "0301": {
+        "procedimentos": 4,
+        "fisico_aprovado": 2288,
+        "orc_aprovado": 18589.69,
+        "fisico_apresentado": 2553,
+        "orc_apresentado": 20466.39
+      },
+      "0303": {
+        "procedimentos": 7,
+        "fisico_aprovado": 13,
+        "orc_aprovado": 428.97,
+        "fisico_apresentado": 13,
+        "orc_apresentado": 428.97
+      },
+      "0306": {
+        "procedimentos": 21,
+        "fisico_aprovado": 17,
+        "orc_aprovado": 240.28,
+        "fisico_apresentado": 17,
+        "orc_apresentado": 240.28
+      },
+      "0401": {
+        "procedimentos": 11,
+        "fisico_aprovado": 69,
+        "orc_aprovado": 2022.84,
+        "fisico_apresentado": 69,
+        "orc_apresentado": 2022.84
+      },
+      "0407": {
+        "procedimentos": 2,
+        "fisico_aprovado": 25,
+        "orc_aprovado": 421.8,
+        "fisico_apresentado": 26,
+        "orc_apresentado": 451.64
+      },
+      "0417": {
+        "procedimentos": 1,
+        "fisico_aprovado": 0,
+        "orc_aprovado": 0.0,
+        "fisico_apresentado": 0,
+        "orc_apresentado": 0.0
+      }
+    }
+  },
+  "producao_est_por_subgrupo": {
+    "FEV/26": {
+      "0301": {
+        "procedimentos": 2,
+        "fisico_aprovado": 20,
+        "orc_aprovado": 1220.0,
+        "fisico_apresentado": 20,
+        "orc_apresentado": 1220.0
+      },
+      "0305": {
+        "procedimentos": 4,
+        "fisico_aprovado": 928,
+        "orc_aprovado": 227700.64,
+        "fisico_apresentado": 928,
+        "orc_apresentado": 227700.64
+      },
+      "0418": {
+        "procedimentos": 9,
+        "fisico_aprovado": 6,
+        "orc_aprovado": 3377.6,
+        "fisico_apresentado": 6,
+        "orc_apresentado": 3377.6
+      },
+      "0702": {
+        "procedimentos": 10,
+        "fisico_aprovado": 2,
+        "orc_aprovado": 964.68,
+        "fisico_apresentado": 2,
+        "orc_apresentado": 964.68
+      }
+    },
+    "MAR/26": {
+      "0301": {
+        "procedimentos": 2,
+        "fisico_aprovado": 12,
+        "orc_aprovado": 732.0,
+        "fisico_apresentado": 12,
+        "orc_apresentado": 732.0
+      },
+      "0305": {
+        "procedimentos": 4,
+        "fisico_aprovado": 1033,
+        "orc_aprovado": 253342.53,
+        "fisico_apresentado": 1033,
+        "orc_apresentado": 253342.53
+      },
+      "0418": {
+        "procedimentos": 9,
+        "fisico_aprovado": 5,
+        "orc_aprovado": 2718.4,
+        "fisico_apresentado": 5,
+        "orc_apresentado": 2718.4
+      },
+      "0702": {
+        "procedimentos": 10,
+        "fisico_aprovado": 2,
+        "orc_aprovado": 964.68,
+        "fisico_apresentado": 2,
+        "orc_apresentado": 964.68
+      }
+    },
+    "ABR/26": {
+      "0301": {
+        "procedimentos": 2,
+        "fisico_aprovado": 1,
+        "orc_aprovado": 122.0,
+        "fisico_apresentado": 1,
+        "orc_apresentado": 122.0
+      },
+      "0305": {
+        "procedimentos": 4,
+        "fisico_aprovado": 1026,
+        "orc_aprovado": 262725.82,
+        "fisico_apresentado": 1026,
+        "orc_apresentado": 262725.82
+      },
+      "0418": {
+        "procedimentos": 9,
+        "fisico_aprovado": 3,
+        "orc_aprovado": 1375.01,
+        "fisico_apresentado": 3,
+        "orc_apresentado": 1375.01
+      },
+      "0702": {
+        "procedimentos": 10,
+        "fisico_aprovado": 3,
+        "orc_aprovado": 101.76,
+        "fisico_apresentado": 3,
+        "orc_apresentado": 101.76
+      }
+    },
+    "MAI/26": {
+      "0301": {
+        "procedimentos": 2,
+        "fisico_aprovado": 2,
+        "orc_aprovado": 244.0,
+        "fisico_apresentado": 2,
+        "orc_apresentado": 244.0
+      },
+      "0305": {
+        "procedimentos": 4,
+        "fisico_aprovado": 1023,
+        "orc_aprovado": 262592.36,
+        "fisico_apresentado": 1023,
+        "orc_apresentado": 262592.36
+      },
+      "0418": {
+        "procedimentos": 9,
+        "fisico_aprovado": 6,
+        "orc_aprovado": 979.05,
+        "fisico_apresentado": 6,
+        "orc_apresentado": 979.05
+      },
+      "0702": {
+        "procedimentos": 10,
+        "fisico_aprovado": 15,
+        "orc_aprovado": 508.8,
+        "fisico_apresentado": 15,
+        "orc_apresentado": 508.8
+      }
+    },
+    "JUN/26": {
+      "0301": {
+        "procedimentos": 2,
+        "fisico_aprovado": 5,
+        "orc_aprovado": 610.0,
+        "fisico_apresentado": 5,
+        "orc_apresentado": 610.0
+      },
+      "0305": {
+        "procedimentos": 4,
+        "fisico_aprovado": 1008,
+        "orc_aprovado": 258197.56,
+        "fisico_apresentado": 1008,
+        "orc_apresentado": 258197.56
+      },
+      "0418": {
+        "procedimentos": 9,
+        "fisico_aprovado": 9,
+        "orc_aprovado": 7073.6,
+        "fisico_apresentado": 9,
+        "orc_apresentado": 7073.6
+      },
+      "0702": {
+        "procedimentos": 10,
+        "fisico_aprovado": 1,
+        "orc_aprovado": 482.34,
+        "fisico_apresentado": 1,
+        "orc_apresentado": 482.34
+      }
+    },
+    "JUL/26": {
+      "0301": {
+        "procedimentos": 2,
+        "fisico_aprovado": 17,
+        "orc_aprovado": 2074.0,
+        "fisico_apresentado": 17,
+        "orc_apresentado": 2074.0
+      },
+      "0305": {
+        "procedimentos": 4,
+        "fisico_aprovado": 1092,
+        "orc_aprovado": 281636.94,
+        "fisico_apresentado": 1092,
+        "orc_apresentado": 281636.94
+      },
+      "0418": {
+        "procedimentos": 9,
+        "fisico_aprovado": 6,
+        "orc_aprovado": 1179.05,
+        "fisico_apresentado": 6,
+        "orc_apresentado": 1179.05
+      },
+      "0702": {
+        "procedimentos": 10,
+        "fisico_aprovado": 15,
+        "orc_aprovado": 508.8,
+        "fisico_apresentado": 15,
+        "orc_apresentado": 508.8
+      }
+    }
+  }
+}
