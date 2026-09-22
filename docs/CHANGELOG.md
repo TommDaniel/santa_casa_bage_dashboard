@@ -4,6 +4,25 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Detalhamento e Desmembramento das Linhas de Apoio, Faturamento e Manutenção
+
+### 🎯 O que foi feito:
+1. **Desmembramento e Reestruturação das Despesas de Apoio e Regulação**:
+   - **Recepção**: Criada como linha exclusiva com 1 profissional, custo unitário de R$ 2.500,00 e **20% de rateio** (\(\text{Total} = \text{R\$\,500,00}\)).
+   - **Supervisão de Regulação de Agendas GERCON/CISA**: Nova linha específica para regulação de agendas com 1 profissional, custo unitário de R$ 2.500,00 e **20% de rateio** (\(\text{Total} = \text{R\$\,500,00}\)).
+   - **Apoio de Faturamento**: Renomeada a linha de faturamento, configurada com 1 profissional, custo unitário de R$ 2.500,00 e **10% de rateio** (\(\text{Total} = \text{R\$\,250,00}\)).
+2. **Desmembramento da Manutenção Hospitalar e Infraestrutura Predial**:
+   - **Manutenção Sistema Hospitalar - TASY**: Criada linha própria do ERP Hospitalar TASY com custo de R$ 5.800,00 e **10% de rateio** (\(\text{Total} = \text{R\$\,580,00}\)).
+   - **Manutenção e Infra Predial (Luz/Agua/Net)**: Criada linha para utilidades e infraestrutura física com valor total de R$ 20.000,00 e **3% de rateio** (\(\text{Total} = \text{R\$\,600,00}\)).
+3. **Consolidação Geral do Custo Rateado CISA**:
+   - **Novo Custo Operacional Rateado**: **`R$ 5.430,00/mês`**;
+   - **Resultado Operacional Líquido**: **`+ R$ 12.106,44/mês`**;
+   - **Indicadores**: Margem Líquida em **`69,0%`** e Break-Even em **`31,0%`**.
+4. **Versionamento e Armazenamento**:
+   - Store atualizado para `cisa_monthly_store_2026_v11` e cache buster para `app.js?v=20260922_11`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Ajuste de Custos e Rateio para Enfermeiro e Técnico de Enfermagem
 
 ### 🎯 O que foi feito:

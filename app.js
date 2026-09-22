@@ -2441,9 +2441,11 @@ window.cisaSimState = {
     { especialidade: 'Oftalmologia', item: 'Médicos Oftalmologistas Cirurgiões com RQE (por produção)', rateio: 100, qtd: 2, val: 0.00 },
     { especialidade: 'Oftalmologia', item: 'Enfermeiro(a) / Ambulatório Especializado', rateio: 15, qtd: 2, val: 5000.00 },
     { especialidade: 'Oftalmologia', item: 'Técnicos de Enfermagem (Triagem/Suporte Ambulatorial)', rateio: 15, qtd: 2, val: 5000.00 },
-    { especialidade: 'Oftalmologia', item: 'Recepcionista / Apoio Central de Regulação CISA', rateio: 30, qtd: 1, val: 2500.00 },
-    { especialidade: 'Oftalmologia', item: 'Faturamento / Central de Regulação (GERCON)', rateio: 30, qtd: 1, val: 2500.00 },
-    { especialidade: 'Oftalmologia', item: 'Manutenção Sistemas Hospitalares e Infra Predial', rateio: 10, qtd: 1, val: 3000.00 }
+    { especialidade: 'Oftalmologia', item: 'Recepção', rateio: 20, qtd: 1, val: 2500.00 },
+    { especialidade: 'Oftalmologia', item: 'Supervisão de Regulação de Agendas GERCON/CISA', rateio: 20, qtd: 1, val: 2500.00 },
+    { especialidade: 'Oftalmologia', item: 'Apoio de Faturamento', rateio: 10, qtd: 1, val: 2500.00 },
+    { especialidade: 'Oftalmologia', item: 'Manutenção Sistema Hospitalar - TASY', rateio: 10, qtd: 1, val: 5800.00 },
+    { especialidade: 'Oftalmologia', item: 'Manutenção e Infra Predial (Luz/Agua/Net)', rateio: 3, qtd: 1, val: 20000.00 }
   ]
 };
 
@@ -2605,7 +2607,7 @@ window.cisaSelectedMonth = window.cisaSelectedMonth || '08';
 function getCisaMonthlyStore(monthId) {
   if (!window.cisaMonthlyStore) {
     try {
-      const saved = localStorage.getItem('cisa_monthly_store_2026_v10');
+      const saved = localStorage.getItem('cisa_monthly_store_2026_v11');
       if (saved) window.cisaMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.cisaMonthlyStore || typeof window.cisaMonthlyStore !== 'object') {
@@ -2645,7 +2647,7 @@ function getCisaMonthlyStore(monthId) {
 function saveCisaMonthlyStore() {
   try {
     if (window.cisaMonthlyStore) {
-      localStorage.setItem('cisa_monthly_store_2026_v10', JSON.stringify(window.cisaMonthlyStore));
+      localStorage.setItem('cisa_monthly_store_2026_v11', JSON.stringify(window.cisaMonthlyStore));
     }
   } catch (e) {}
 }
