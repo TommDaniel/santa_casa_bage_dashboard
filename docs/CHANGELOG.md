@@ -4,6 +4,30 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Ajuste de Custos e Rateio para Enfermeiro e Técnico de Enfermagem
+
+### 🎯 O que foi feito:
+1. **Atualização da Equipe de Enfermagem no Rateio de Custos**:
+   - **Enfermeiro(a) / Ambulatório Especializado**:
+     - Quantidade: atualizada de `0` para **`2`** profissionais;
+     - Rateio Ambulatorial: ajustado para **`15%`**;
+     - Custo Unitário: **`R$ 5.000,00`**;
+     - Total Rateado da Linha: \(2 \times \text{R\$\,5.000,00} \times 15\% =\) **`R$ 1.500,00/mês`**.
+   - **Técnicos de Enfermagem (Triagem/Suporte Ambulatorial)**:
+     - Quantidade: atualizada de `1` para **`2`** profissionais;
+     - Rateio Ambulatorial: ajustado de 50% para **`15%`**;
+     - Custo Unitário: ajustado de R$ 4.200,00 para **`R$ 5.000,00`**;
+     - Total Rateado da Linha: \(2 \times \text{R\$\,5.000,00} \times 15\% =\) **`R$ 1.500,00/mês`**.
+2. **Impacto no Custo Operacional e Resultados do Serviço CISA**:
+   - **Custo Operacional Fixo Rateado**: Ajustado para **`R$ 4.800,00/mês`** (antes R$ 3.900,00);
+   - **Resultado Operacional Mensal do Programa**: **`+ R$ 12.736,44/mês`**;
+   - **Indicadores de Desempenho**: Margem Líquida em **`72,6%`** e Ponto de Equilíbrio (Break-Even) em **`27,4%`**;
+   - Cards executivos e faixas de rateio sincronizados automaticamente com os novos valores.
+3. **Versionamento e Armazenamento**:
+   - Store atualizado para `cisa_monthly_store_2026_v10` e cache buster para `app.js?v=20260922_10`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Reformulação da Coluna "RECEITAS" no Estudo de Viabilidade / Regra de Negociação
 
 ### 🎯 O que foi feito:
