@@ -2826,10 +2826,6 @@ function renderCisaViabilidade(key) {
               <i data-lucide="calendar-check" style="width: 13px; height: 13px;"></i>
               <span id="cisaMonthSelectedLabel">COMPETÊNCIA: ${curMonthObj.nome.toUpperCase()} / 2026</span>
             </span>
-
-            <button type="button" class="btn-icon" id="btnCisaReplicateMonth" title="Copiar valores deste mês para os outros meses de 2026" style="border-radius: 6px; font-size: 0.75rem; padding: 0.35rem 0.65rem; height: auto; display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--border-color); color: var(--text-title);">
-              <i data-lucide="copy" style="width: 13px; height: 13px;"></i> Replicar Mês
-            </button>
           </div>
         </div>
 
@@ -4076,24 +4072,6 @@ function initCisaInteractiveSimulation(currentKey) {
     };
   });
 
-  // Replicar Mês para todo o ano de 2026
-  const btnReplicate = root.querySelector('#btnCisaReplicateMonth');
-  if (btnReplicate) {
-    btnReplicate.onclick = () => {
-      const curMObj = CISA_MESES.find(m => m.id === window.cisaSelectedMonth) || CISA_MESES[2];
-      if (confirm(`Deseja replicar a produção física (quantidades) e valores de ${curMObj.nome}/2026 para todos os outros 11 meses de 2026?`)) {
-        CISA_MESES.forEach(m => {
-          const targetStore = getCisaMonthlyStore(m.id);
-          targetStore.procs = JSON.parse(JSON.stringify(state.procs));
-          targetStore.custos = JSON.parse(JSON.stringify(state.custos));
-          targetStore.regraAtiva = state.regraAtiva;
-        });
-        saveCisaMonthlyStore();
-        recalc();
-        alert(`Produção de ${curMObj.nome}/2026 replicada com sucesso para todo o exercício de 2026!`);
-      }
-    };
-  }
 
   // Handlers para Adicionar Itens
   const handleAddProc = () => {

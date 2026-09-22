@@ -4,6 +4,18 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Remoção do Botão e Função "Replicar Mês"
+
+### 🎯 O que foi feito:
+1. **Remoção Visual do Botão**:
+   - Retirado o botão `#btnCisaReplicateMonth` ("Replicar Mês") da barra de controle mensal da produção CISA (`cisa-month-bar`), mantendo o foco exclusivo na seleção pontual de competências.
+2. **Remoção da Função JavaScript**:
+   - Eliminado o listener e lógica de replicação em lote de dados entre meses em `app.js`, prevenindo sobrescrita acidental de competências com dados reais.
+3. **Versionamento**:
+   - Cache buster atualizado para `app.js?v=20260922_08`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Atualização dos Cards Executivos com Valores Mensais Médios e Limpeza Visual
 
 ### 🎯 O que foi feito:
