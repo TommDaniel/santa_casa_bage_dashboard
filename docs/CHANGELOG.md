@@ -4,6 +4,24 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Reformulação da Coluna "RECEITAS" no Estudo de Viabilidade / Regra de Negociação
+
+### 🎯 O que foi feito:
+1. **Atualização dos Cabeçalhos das Colunas de Split**:
+   - Coluna da esquerda renomeada de "■ HOSPITAL" para **"■ RECEITAS"**.
+   - Coluna da direita renomeada de "■ PRESTADOR" para **"■ DESPESAS"** (preparada para os detalhamentos da próxima etapa).
+2. **Reestruturação das Linhas de Receita do Programa CISA**:
+   - **Incentivo ASSISTIR**: Definido como `R$ 0,00` (não aplicável ao consórcio CISA).
+   - **Produção Tabela CISA**: Renomeado de "Produção SIGTAP" para **"Produção Tabela CISA"**, vinculado dinamicamente à soma total faturada na tabela de produção mensal acima (`totRec`, atualmente **R$ 17.536,44** na competência de Agosto/2026).
+   - **Remoção de Linhas Inaplicáveis**: Removidas da coluna de Receitas as linhas de *"Exames Linha de Cuidado"* e *"Custos de Produção/Fixos"*.
+3. **Resultado Mensal da Coluna de Receitas**:
+   - O rodapé **"RESULTADO MENSAL"** da coluna soma as receitas apuradas acima (`R$ 0,00 + R$ 17.536,44 = + R$ 17.536,44`), representando a receita bruta total do programa.
+   - Os valores da coluna de Receitas permanecem estáveis e independentes de qualquer alternância entre as opções de regras de negociação (50% Margem ou Rateio 80/20).
+4. **Versionamento**:
+   - Cache buster atualizado para `app.js?v=20260922_09`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Remoção do Botão e Função "Replicar Mês"
 
 ### 🎯 O que foi feito:

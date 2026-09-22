@@ -3087,15 +3087,14 @@ function renderCisaViabilidade(key) {
           </div>
 
           <!-- Split: 2 Colunas (Hospital vs Prestador) -->
+          <!-- Split: 2 Colunas (Receitas vs Despesas) -->
           <div class="cisa-split" id="cisaSplitBox">
-            <!-- Coluna Hospital -->
+            <!-- Coluna RECEITAS -->
             <div class="cisa-side cisa-hosp">
-              <h3><span class="cisa-sq"></span>■ HOSPITAL</h3>
+              <h3><span class="cisa-sq" style="background: #2563eb;"></span>■ RECEITAS</h3>
               <div class="cisa-kv" id="cisaHStream">
-                <span class="cisa-k">Incentivo ASSISTIR</span><span class="cisa-v" id="cisaHInc">—</span>
-                <span class="cisa-k">Produção SIGTAP</span><span class="cisa-v" id="cisaHProd">—</span>
-                <span class="cisa-k">Exames Linha de Cuidado</span><span class="cisa-v" id="cisaHCusVar">—</span>
-                <span class="cisa-k">Custos de Produção/Fixos</span><span class="cisa-v" id="cisaHCusFix">—</span>
+                <span class="cisa-k">Incentivo ASSISTIR</span><span class="cisa-v" id="cisaHInc">R$&nbsp;0,00</span>
+                <span class="cisa-k">Produção Tabela CISA</span><span class="cisa-v" id="cisaHProd" style="color: #2563eb; font-weight: 700;">—</span>
               </div>
               <div class="cisa-kv" id="cisaHMin" style="display: none;">
                 <span class="cisa-sep"></span>
@@ -3111,13 +3110,13 @@ function renderCisaViabilidade(key) {
               </div>
               <div class="cisa-res">
                 <span class="cisa-lb">RESULTADO MENSAL</span>
-                <span class="cisa-vl" id="cisaHRes">—</span>
+                <span class="cisa-vl" id="cisaHRes" style="color: #10b981;">—</span>
               </div>
             </div>
 
-            <!-- Coluna Prestador -->
+            <!-- Coluna DESPESAS -->
             <div class="cisa-side cisa-pres">
-              <h3><span class="cisa-sq"></span>■ PRESTADOR</h3>
+              <h3><span class="cisa-sq"></span>■ DESPESAS</h3>
               <div class="cisa-kv" id="cisaPStream">
                 <span class="cisa-k">Incentivo ASSISTIR</span><span class="cisa-v" id="cisaPIncV">—</span>
                 <span class="cisa-k">Produção SIGTAP</span><span class="cisa-v" id="cisaPProdV">—</span>
@@ -3913,15 +3912,15 @@ function initCisaInteractiveSimulation(currentKey) {
     const hospRes = hospProd - totFix;
     const presRes = presProd;
 
-    // Hospital
+    // Coluna RECEITAS (Total da Receita do Programa CISA)
+    const elHInc = root.querySelector('#cisaHInc');
+    if (elHInc) elHInc.textContent = 'R$ 0,00';
     const elHProd = root.querySelector('#cisaHProd');
-    if (elHProd) elHProd.textContent = BRL.format(hospProd);
-    const elHCusFix = root.querySelector('#cisaHCusFix');
-    if (elHCusFix) elHCusFix.textContent = totFix > 0 ? ('- ' + BRL.format(totFix)) : 'R$ 0,00';
+    if (elHProd) elHProd.textContent = BRL.format(totRec);
     const elHRes = root.querySelector('#cisaHRes');
     if (elHRes) {
-      elHRes.textContent = (hospRes > 0 ? '+ ' : '') + BRL.format(hospRes);
-      elHRes.style.color = hospRes >= 0 ? '#10b981' : '#dc2626';
+      elHRes.textContent = totRec > 0 ? ('+ ' + BRL.format(totRec)) : 'R$ 0,00';
+      elHRes.style.color = '#10b981';
     }
 
     // Prestador
