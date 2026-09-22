@@ -2563,12 +2563,12 @@ const CISA_MESES = [
   { id: '12', sigla: 'DEZ', nome: 'Dezembro' }
 ];
 
-window.cisaSelectedMonth = window.cisaSelectedMonth || '03';
+window.cisaSelectedMonth = window.cisaSelectedMonth || '08';
 
 function getCisaMonthlyStore(monthId) {
   if (!window.cisaMonthlyStore) {
     try {
-      const saved = localStorage.getItem('cisa_monthly_store_2026_v2');
+      const saved = localStorage.getItem('cisa_monthly_store_2026_v4');
       if (saved) window.cisaMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.cisaMonthlyStore || typeof window.cisaMonthlyStore !== 'object') {
@@ -2576,12 +2576,26 @@ function getCisaMonthlyStore(monthId) {
     }
   }
 
-  if (!monthId) monthId = window.cisaSelectedMonth || '03';
+  if (!monthId) monthId = window.cisaSelectedMonth || '08';
 
   if (!window.cisaMonthlyStore[monthId] || !Array.isArray(window.cisaMonthlyStore[monthId].procs)) {
+    const isAgosto = (monthId === '08');
+
+    // Somente Agosto possui produção física e financeira cadastrada inicialmente.
+    // Os demais meses iniciam zerados (quantidades = 0), permitindo lançamentos mensais sob demanda.
+    const baseProcs = window.cisaSimState.procs.map(p => ({
+      ...p,
+      qtd: isAgosto ? ((p.qtd !== undefined && p.qtd !== null) ? p.qtd : 1) : 0
+    }));
+
+    const baseCustos = window.cisaSimState.custos.map(c => ({
+      ...c,
+      qtd: isAgosto ? ((c.qtd !== undefined && c.qtd !== null) ? c.qtd : 1) : 0
+    }));
+
     window.cisaMonthlyStore[monthId] = {
-      procs: JSON.parse(JSON.stringify(window.cisaSimState.procs)),
-      custos: JSON.parse(JSON.stringify(window.cisaSimState.custos)),
+      procs: JSON.parse(JSON.stringify(baseProcs)),
+      custos: JSON.parse(JSON.stringify(baseCustos)),
       regraAtiva: 'margem50'
     };
   }
@@ -2592,7 +2606,7 @@ function getCisaMonthlyStore(monthId) {
 function saveCisaMonthlyStore() {
   try {
     if (window.cisaMonthlyStore) {
-      localStorage.setItem('cisa_monthly_store_2026_v2', JSON.stringify(window.cisaMonthlyStore));
+      localStorage.setItem('cisa_monthly_store_2026_v4', JSON.stringify(window.cisaMonthlyStore));
     }
   } catch (e) {}
 }
@@ -2610,8 +2624,8 @@ function renderCisaViabilidade(key) {
   const container = document.getElementById('cisaMainContent');
   if (!container) return;
 
-  const curMonth = window.cisaSelectedMonth || '03';
-  const curMonthObj = CISA_MESES.find(m => m.id === curMonth) || CISA_MESES[2];
+  const curMonth = window.cisaSelectedMonth || '08';
+  const curMonthObj = CISA_MESES.find(m => m.id === curMonth) || CISA_MESES[7];
   const monthData = getCisaMonthlyStore(curMonth);
 
   if (!window.activeCisaSim) {
@@ -3078,70 +3092,6 @@ function renderCisaViabilidade(key) {
           </div>
         </div>
 
-        <!-- 3.4 DESCRIÇÃO TÉCNICA E DIRETRIZES DOS PROCEDIMENTOS CISA -->
-        <div class="card" style="padding: 1.5rem; width: 100%; box-sizing: border-box; border-left: 5px solid var(--blue-vibrant);">
-          <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-            <div class="card-title-group">
-              <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--blue-vibrant);">
-                <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
-              </div>
-              <div>
-                <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
-                  ${isTodas ? 'Descrição Técnica e Diretrizes dos Procedimentos CISA (Todas as Especialidades)' : 'Descrição Técnica e Diretrizes dos Procedimentos Oftalmológicos'}
-                </h3>
-                <span style="font-size: 0.82rem; color: var(--text-muted);">
-                  ${isTodas ? 'Detalhamento clínico de cada exame e procedimento pactuado no Contrato Regional CISA, finalidade e correspondência com a Tabela SIGTAP / SUS' : 'Detalhamento clínico de cada exame e procedimento pactuado no Contrato CISA, finalidade e correspondência com a Tabela SIGTAP / SUS'}
-                </span>
-              </div>
-            </div>
-
-            <!-- Busca / Filtro Rápido -->
-            <div style="display: flex; align-items: center; gap: 0.6rem;">
-              <div style="position: relative;">
-                <i data-lucide="search" style="width: 14px; height: 14px; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
-                <input type="text" id="cisaProcCatalogSearch" placeholder="Buscar por nome, CISA ou SIGTAP..." style="padding: 0.45rem 0.85rem 0.45rem 2rem; font-size: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); width: 280px;">
-              </div>
-              <span class="badge" style="background: rgba(37, 99, 235, 0.1); color: #2563eb; font-weight: 800; font-size: 0.72rem; padding: 0.35rem 0.65rem; border-radius: 99px;">15 PROCEDIMENTOS</span>
-            </div>
-          </div>
-
-          <!-- Grade de Cards de Procedimentos -->
-          <div id="cisaProcCatalogGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.85rem;">
-            ${window.cisaProcedimentosDescricoes.map(item => `
-              <div class="cisa-proc-card" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.85rem 0.95rem; transition: all 0.2s ease;">
-                <div>
-                  <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.4rem; margin-bottom: 0.45rem; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 0.35rem;">
-                      <span style="background: rgba(37, 99, 235, 0.08); color: #2563eb; font-weight: 800; font-size: 0.68rem; padding: 1px 6px; border-radius: 4px; font-family: monospace; border: 1px solid rgba(37, 99, 235, 0.2);">
-                        CISA ${item.cod}
-                      </span>
-                      <span style="font-size: 0.64rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">
-                        ${item.grupo}
-                      </span>
-                    </div>
-                    <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.25); font-weight: 800; font-size: 0.68rem; padding: 1px 6px; border-radius: 99px; font-family: monospace; display: inline-flex; align-items: center; gap: 4px;">
-                      <i data-lucide="tag" style="width: 9px; height: 9px;"></i> SIGTAP: ${item.sigtap}
-                    </span>
-                  </div>
-
-                  <h4 style="margin: 0 0 0.4rem 0; font-size: 0.84rem; font-weight: 800; color: var(--text-title); line-height: 1.3; display: flex; align-items: center; gap: 0.4rem;">
-                    <i data-lucide="${item.icon}" style="width: 14px; height: 14px; color: #2563eb; flex-shrink: 0;"></i>
-                    <span>${item.nome}</span>
-                  </h4>
-
-                  <p style="margin: 0 0 0.55rem 0; font-size: 0.74rem; color: var(--text-main); line-height: 1.45; text-align: justify; text-justify: inter-word; hyphens: auto;">
-                    ${item.descricao}
-                  </p>
-                </div>
-
-                <div style="background: rgba(37, 99, 235, 0.03); border-left: 3px solid #2563eb; padding: 0.45rem 0.65rem; border-radius: 0 4px 4px 0; font-size: 0.70rem; color: var(--text-muted); line-height: 1.4; text-align: justify; text-justify: inter-word; hyphens: auto;">
-                  <strong style="color: var(--text-title);">Finalidade Clínica:</strong> ${item.finalidade}
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-
       </div>
 
       <!-- 4. FOOTER INSTITUCIONAL -->
@@ -3377,7 +3327,7 @@ function initCisaInteractiveSimulation(currentKey) {
 
       } else {
         // MODO VISUALIZAÇÃO LIMPO COM EDIÇÃO RÁPIDA DE PRODUÇÃO
-        const qVal = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? p.qtd : 1;
+        const qVal = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? p.qtd : 0;
         const hasVal = (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val) && Number(p.val) > 0);
 
         // 1. Código
@@ -3646,56 +3596,69 @@ function initCisaInteractiveSimulation(currentKey) {
     let countComValor = 0;
 
     listProcs.forEach((p) => {
+      const q = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? parseFloat(p.qtd) : 0;
       if (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val)) {
-        const q = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? parseFloat(p.qtd) : 1;
         totRec += (q * parseFloat(p.val));
-        countComValor++;
+        if (q > 0) countComValor++;
       }
     });
 
     let totFix = 0;
     listCustos.forEach((c) => {
-      const totLinha = (c.qtd || 0) * (c.val || 0);
+      const q = (c.qtd !== undefined && c.qtd !== null && c.qtd !== '') ? parseFloat(c.qtd) : 0;
+      const totLinha = q * (c.val || 0);
       totFix += totLinha;
     });
 
     const despesaTotal = totFix;
-    const resultadoMensal = totRec > 0 ? (totRec - despesaTotal) : 0;
+    const resultadoMensal = totRec - despesaTotal;
     const margem = totRec > 0 ? ((resultadoMensal / totRec) * 100) : 0;
     const breakeven = totRec > 0 ? ((despesaTotal / totRec) * 100) : 0;
 
     // Atualiza KPIs do mês ativo
     const elKpiRec = root.querySelector('#kpiCisaReceita');
-    if (elKpiRec) elKpiRec.textContent = totRec > 0 ? BRL.format(totRec) : 'Aguardando valores';
+    if (elKpiRec) elKpiRec.textContent = BRL.format(totRec);
 
     const elSubProd = root.querySelector('#subCisaProdTxt');
-    if (elSubProd) elSubProd.textContent = isTodas ? `${countComValor} de ${listProcs.length} cotados (Todas Especialidades)` : `${countComValor} de ${listProcs.length} cotados`;
+    if (elSubProd) {
+      if (countComValor > 0) {
+        elSubProd.textContent = isTodas ? `${countComValor} procedimentos com produção (Todas Especialidades)` : `${countComValor} procedimentos com produção`;
+      } else {
+        elSubProd.textContent = 'Sem produção lançada neste mês';
+      }
+    }
     const elSubInc = root.querySelector('#subCisaIncTxt');
-    if (elSubInc) elSubInc.textContent = countComValor < listProcs.length ? `${listProcs.length - countComValor} a definir` : (isTodas ? 'Programa 100% cotado' : 'Tabela 100% preenchida');
+    if (elSubInc) {
+      if (countComValor > 0) {
+        elSubInc.textContent = 'Produção apurada';
+      } else {
+        elSubInc.textContent = 'Competência zerada';
+      }
+    }
 
     const elKpiDesp = root.querySelector('#kpiCisaDespesa');
     if (elKpiDesp) elKpiDesp.textContent = BRL.format(despesaTotal);
 
     const elKpiRes = root.querySelector('#kpiCisaResultado');
     if (elKpiRes) {
-      if (totRec > 0) {
-        elKpiRes.textContent = (resultadoMensal >= 0 ? '+ ' : '') + BRL.format(resultadoMensal);
+      if (totRec > 0 || despesaTotal > 0) {
+        elKpiRes.textContent = (resultadoMensal > 0 ? '+ ' : '') + BRL.format(resultadoMensal);
         elKpiRes.style.color = resultadoMensal >= 0 ? '#2563eb' : '#dc2626';
       } else {
-        elKpiRes.textContent = countComValor > 0 ? 'Tabela CISA' : 'Em definição';
-        elKpiRes.style.color = '#0284c7';
+        elKpiRes.textContent = 'R$ 0,00';
+        elKpiRes.style.color = 'var(--text-title)';
       }
     }
 
     const elKpiMargem = root.querySelector('#kpiCisaMargemTxt');
-    if (elKpiMargem) elKpiMargem.textContent = totRec > 0 ? margem.toFixed(1).replace('.', ',') + '%' : 'Tabela Unitária';
+    if (elKpiMargem) elKpiMargem.textContent = totRec > 0 ? margem.toFixed(1).replace('.', ',') + '%' : '0,0%';
 
     const elKpiBk = root.querySelector('#kpiCisaBreakeven');
-    if (elKpiBk) elKpiBk.textContent = totRec > 0 ? breakeven.toFixed(1).replace('.', ',') + '%' : 'Por Produção';
+    if (elKpiBk) elKpiBk.textContent = totRec > 0 ? breakeven.toFixed(1).replace('.', ',') + '%' : '0,0%';
 
     // Atualiza Totais das Tabelas
     const elTotRec = root.querySelector('#totCisaRec');
-    if (elTotRec) elTotRec.textContent = totRec > 0 ? BRL.format(totRec) : 'Aguardando valores';
+    if (elTotRec) elTotRec.textContent = BRL.format(totRec);
 
     const elTotFix = root.querySelector('#totCisaFixo');
     if (elTotFix) elTotFix.textContent = BRL.format(totFix);
@@ -3718,14 +3681,15 @@ function initCisaInteractiveSimulation(currentKey) {
       let mRec = 0;
       mProcs.forEach(p => {
         if (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val)) {
-          const q = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? parseFloat(p.qtd) : 1;
+          const q = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? parseFloat(p.qtd) : 0;
           mRec += (q * parseFloat(p.val));
         }
       });
 
       let mCus = 0;
       mCustos.forEach(c => {
-        mCus += ((c.qtd || 0) * (c.val || 0));
+        const q = (c.qtd !== undefined && c.qtd !== null && c.qtd !== '') ? parseFloat(c.qtd) : 0;
+        mCus += (q * (c.val || 0));
       });
 
       annualRec += mRec;
@@ -3736,7 +3700,7 @@ function initCisaInteractiveSimulation(currentKey) {
         if (mRec > 0) {
           elPillSub.textContent = BRL.format(mRec);
         } else {
-          elPillSub.textContent = '—';
+          elPillSub.textContent = 'R$ 0,00';
         }
       }
     });
@@ -3745,30 +3709,30 @@ function initCisaInteractiveSimulation(currentKey) {
 
     // Atualiza KPIs Anuais
     const elKpiRecAno = root.querySelector('#kpiCisaReceitaAno');
-    if (elKpiRecAno) elKpiRecAno.textContent = annualRec > 0 ? BRL.format(annualRec) : 'Conforme demanda mensal';
+    if (elKpiRecAno) elKpiRecAno.textContent = BRL.format(annualRec);
 
     const elKpiDespAno = root.querySelector('#kpiCisaDespesaAno');
-    if (elKpiDespAno) elKpiDespAno.textContent = annualDesp > 0 ? BRL.format(annualDesp) : BRL.format(despesaTotal * 12);
+    if (elKpiDespAno) elKpiDespAno.textContent = BRL.format(annualDesp);
 
     const elKpiResAno = root.querySelector('#kpiCisaResultadoAno');
     if (elKpiResAno) {
-      if (annualRec > 0) {
-        elKpiResAno.textContent = (annualRes >= 0 ? '+ ' : '') + BRL.format(annualRes);
+      if (annualRec > 0 || annualDesp > 0) {
+        elKpiResAno.textContent = (annualRes > 0 ? '+ ' : '') + BRL.format(annualRes);
         elKpiResAno.style.color = annualRes >= 0 ? '#2563eb' : '#dc2626';
       } else {
-        elKpiResAno.textContent = countComValor > 0 ? 'Faturamento variável' : 'Aguardando valores';
+        elKpiResAno.textContent = 'R$ 0,00';
         elKpiResAno.style.color = 'var(--text-muted)';
       }
     }
 
     // DIVISÃO DE VALORES / RATEIO (HOSPITAL VS PRESTADOR)
     const elPoolRec = root.querySelector('#cisaPoolRec');
-    if (elPoolRec) elPoolRec.textContent = totRec > 0 ? BRL.format(totRec) : '—';
+    if (elPoolRec) elPoolRec.textContent = BRL.format(totRec);
     const elPoolDes = root.querySelector('#cisaPoolDes');
-    if (elPoolDes) elPoolDes.textContent = totFix > 0 ? BRL.format(totFix) : '—';
+    if (elPoolDes) elPoolDes.textContent = BRL.format(totFix);
     const elPoolLiq = root.querySelector('#cisaPoolLiq');
     if (elPoolLiq) {
-      elPoolLiq.textContent = totRec > 0 ? ((resultadoMensal >= 0 ? '+ ' : '') + BRL.format(resultadoMensal)) : '—';
+      elPoolLiq.textContent = (resultadoMensal > 0 ? '+ ' : '') + BRL.format(resultadoMensal);
       elPoolLiq.style.color = resultadoMensal >= 0 ? '#10b981' : '#dc2626';
     }
 
@@ -3792,21 +3756,21 @@ function initCisaInteractiveSimulation(currentKey) {
 
     // Hospital
     const elHProd = root.querySelector('#cisaHProd');
-    if (elHProd) elHProd.textContent = totRec > 0 ? BRL.format(hospProd) : '—';
+    if (elHProd) elHProd.textContent = BRL.format(hospProd);
     const elHCusFix = root.querySelector('#cisaHCusFix');
     if (elHCusFix) elHCusFix.textContent = totFix > 0 ? ('- ' + BRL.format(totFix)) : 'R$ 0,00';
     const elHRes = root.querySelector('#cisaHRes');
     if (elHRes) {
-      elHRes.textContent = totRec > 0 ? ((hospRes >= 0 ? '+ ' : '') + BRL.format(hospRes)) : '—';
+      elHRes.textContent = (hospRes > 0 ? '+ ' : '') + BRL.format(hospRes);
       elHRes.style.color = hospRes >= 0 ? '#10b981' : '#dc2626';
     }
 
     // Prestador
     const elPProd = root.querySelector('#cisaPProdV');
-    if (elPProd) elPProd.textContent = totRec > 0 ? BRL.format(presProd) : '—';
+    if (elPProd) elPProd.textContent = BRL.format(presProd);
     const elPRes = root.querySelector('#cisaPRes2');
     if (elPRes) {
-      elPRes.textContent = totRec > 0 ? ((presRes >= 0 ? '+ ' : '') + BRL.format(presRes)) : '—';
+      elPRes.textContent = (presRes > 0 ? '+ ' : '') + BRL.format(presRes);
       elPRes.style.color = presRes >= 0 ? '#10b981' : '#dc2626';
     }
 
@@ -4083,19 +4047,6 @@ function initCisaInteractiveSimulation(currentKey) {
     };
   });
 
-  // Filtro Rápido do Catálogo Técnico de Procedimentos
-  const inputSearch = root.querySelector('#cisaProcCatalogSearch');
-  if (inputSearch) {
-    inputSearch.oninput = (e) => {
-      const q = e.target.value.toLowerCase().trim();
-      const cards = root.querySelectorAll('.cisa-proc-card');
-      cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.style.display = text.includes(q) ? 'flex' : 'none';
-      });
-    };
-  }
-
   // Primeira renderização
   renderProcsTable();
   renderCustosTable();
@@ -4299,8 +4250,85 @@ function renderCisaPortaria(key) {
         </div>
       </div>
 
+      <!-- CATÁLOGO TÉCNICO E DIRETRIZES CLÍNICAS DOS PROCEDIMENTOS CISA -->
+      <div class="card" style="padding: 1.5rem 1.75rem; border-left: 5px solid #2563eb;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.85rem;">
+            <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(37, 99, 235, 0.1); display: flex; align-items: center; justify-content: center; color: #2563eb;">
+              <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div>
+              <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title); display: flex; align-items: center; gap: 0.5rem;">
+                ${isTodas ? 'Descrição Técnica e Diretrizes dos Procedimentos CISA (Todas as Especialidades)' : 'Descrição Técnica e Diretrizes dos Procedimentos CISA'}
+              </h3>
+              <span style="font-size: 0.82rem; color: var(--text-muted);">
+                ${isTodas ? 'Detalhamento clínico de cada exame e procedimento pactuado no Contrato Regional CISA, finalidade e correspondência com a Tabela SIGTAP / SUS' : 'Detalhamento clínico de cada exame e procedimento pactuado no Contrato CISA, finalidade e correspondência com a Tabela SIGTAP / SUS'}
+              </span>
+            </div>
+          </div>
+
+          <!-- Busca / Filtro Rápido -->
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <div style="position: relative;">
+              <i data-lucide="search" style="width: 14px; height: 14px; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+              <input type="text" id="cisaProcCatalogSearch" placeholder="Buscar por nome, CISA ou SIGTAP..." style="padding: 0.45rem 0.85rem 0.45rem 2rem; font-size: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); width: 280px;">
+            </div>
+            <span class="badge" style="background: rgba(37, 99, 235, 0.1); color: #2563eb; font-weight: 800; font-size: 0.72rem; padding: 0.35rem 0.65rem; border-radius: 99px;">${(window.cisaProcedimentosDescricoes || []).length} PROCEDIMENTOS</span>
+          </div>
+        </div>
+
+        <!-- Grade de Cards de Procedimentos -->
+        <div id="cisaProcCatalogGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.85rem;">
+          ${(window.cisaProcedimentosDescricoes || []).map(item => `
+            <div class="cisa-proc-card" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.85rem 0.95rem; transition: all 0.2s ease;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.4rem; margin-bottom: 0.45rem; flex-wrap: wrap;">
+                  <div style="display: flex; align-items: center; gap: 0.35rem;">
+                    <span style="background: rgba(37, 99, 235, 0.08); color: #2563eb; font-weight: 800; font-size: 0.68rem; padding: 1px 6px; border-radius: 4px; font-family: monospace; border: 1px solid rgba(37, 99, 235, 0.2);">
+                      CISA ${item.cod}
+                    </span>
+                    <span style="font-size: 0.64rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">
+                      ${item.grupo}
+                    </span>
+                  </div>
+                  <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.25); font-weight: 800; font-size: 0.68rem; padding: 1px 6px; border-radius: 99px; font-family: monospace; display: inline-flex; align-items: center; gap: 4px;">
+                    <i data-lucide="tag" style="width: 9px; height: 9px;"></i> SIGTAP: ${item.sigtap}
+                  </span>
+                </div>
+
+                <h4 style="margin: 0 0 0.4rem 0; font-size: 0.84rem; font-weight: 800; color: var(--text-title); line-height: 1.3; display: flex; align-items: center; gap: 0.4rem;">
+                  <i data-lucide="${item.icon}" style="width: 14px; height: 14px; color: #2563eb; flex-shrink: 0;"></i>
+                  <span>${item.nome}</span>
+                </h4>
+
+                <p style="margin: 0 0 0.55rem 0; font-size: 0.74rem; color: var(--text-main); line-height: 1.45; text-align: justify; text-justify: inter-word; hyphens: auto;">
+                  ${item.descricao}
+                </p>
+              </div>
+
+              <div style="background: rgba(37, 99, 235, 0.03); border-left: 3px solid #2563eb; padding: 0.45rem 0.65rem; border-radius: 0 4px 4px 0; font-size: 0.70rem; color: var(--text-muted); line-height: 1.4; text-align: justify; text-justify: inter-word; hyphens: auto;">
+                <strong style="color: var(--text-title);">Finalidade Clínica:</strong> ${item.finalidade}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
     </div>
   `;
+
+  // Filtro Rápido do Catálogo Técnico de Procedimentos
+  const inputSearch = container.querySelector('#cisaProcCatalogSearch');
+  if (inputSearch) {
+    inputSearch.oninput = (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      const cards = container.querySelectorAll('.cisa-proc-card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    };
+  }
 
   if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
 }

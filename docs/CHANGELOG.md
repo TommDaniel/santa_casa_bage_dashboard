@@ -4,7 +4,24 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
-## [2026-09-21] - Módulo CISA: Controle Mensal da Produção Física e Financeira (Exercício 2026) & Rateio
+## [2026-09-22] - Módulo CISA: Produção Inicial Exclusiva em Agosto/26 & Transferência do Catálogo Técnico para a Ficha Técnica
+
+### 🎯 O que foi feito:
+1. **Produção Física e Financeira Inicial Exclusiva em Agosto/26**:
+   - Ajustada a inicialização do store mensal (`cisa_monthly_store_2026_v4`) para que **somente Agosto/26** (`AGO` / `'08'`) inicie com a produção física e financeira cadastrada (`R$ 781,84` de receita e custos base).
+   - Todos os demais meses (`JAN` a `JUL` e `SET` a `DEZ`) iniciam com quantidades e valores estritamente zerados (`qtd: 0`, financeiro `R$ 0,00`), permitindo lançamentos mensais manuais sob demanda.
+   - O mês padrão selecionado na abertura da aba CISA passa a ser **Agosto** (`window.cisaSelectedMonth = '08'`).
+   - Motor de recálculo atualizado para manter exibição limpa de `R$ 0,00` nos pills dos meses sem produção e somar na projeção anual apenas as competências efetivamente lançadas.
+
+2. **Transferência do Catálogo de Descrição Técnica para a Ficha Técnica**:
+   - Removida a seção 3.4 (*"Descrição Técnica e Diretrizes dos Procedimentos CISA"*) da visualização de **Viabilidade Financeira**, mantendo esta página focada exclusivamente na modelagem econômico-financeira, faturamento e rateio.
+   - O catálogo descritivo com os 15 cards de procedimentos (código CISA, grupo, badge SIGTAP, descrição detalhada e finalidade clínica) foi transferido para o final da página de **Ficha Técnica** (`renderCisaPortaria`), posicionado imediatamente abaixo da tabela oficial e da nota de governança CISA.
+   - O campo de busca rápida (`#cisaProcCatalogSearch`) foi reativado e integrado ao escopo da Ficha Técnica, filtrando em tempo real os cards por nome do procedimento, código CISA ou código SIGTAP.
+
+3. **Atualização de Cache e Build**:
+   - Cache buster de `app.js` atualizado para `app.js?v=20260922_01` em `index.html`.
+
+---
 
 ### 🎯 O que foi feito:
 1. **Barra de Controle Mensal da Produção (Tira de 12 Meses 2026)**:
