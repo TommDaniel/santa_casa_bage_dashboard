@@ -2740,67 +2740,65 @@ function renderCisaViabilidade(key) {
       <!-- 2. GRID EXECUTIVO DE INDICADORES (KPIs NATIVOS - 3 CARDS EM 1 LINHA) -->
       <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem;">
         
-        <!-- KPI 1: Receita Contratada -->
-        <div class="card kpi-card" style="border-top: 4px solid #2563eb; padding: 1.25rem;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <span class="kpi-label">${isTodas ? 'Receita Total Contratada (Consolidada)' : 'Receita Mensal Contratada'}</span>
-            <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: #2563eb;">
-              <i data-lucide="wallet" style="width: 20px; height: 20px;"></i>
+        <!-- KPI 1: Receita Mensal Média -->
+        <div class="card kpi-card" style="border-top: 4px solid #2563eb; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <span class="kpi-label">${isTodas ? 'Receita Mensal Média (Consolidada)' : 'Receita Mensal Média'}</span>
+              <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: #2563eb;">
+                <i data-lucide="wallet" style="width: 20px; height: 20px;"></i>
+              </div>
+            </div>
+            <div class="kpi-value" id="kpiCisaReceita" style="color: #2563eb; font-size: 1.85rem; margin: 0.65rem 0 0.25rem 0;">
+              Aguardando valores
             </div>
           </div>
-          <div class="kpi-value" id="kpiCisaReceita" style="color: #2563eb; font-size: 1.85rem; margin: 0.5rem 0 0.2rem 0;">
-            Aguardando valores
-          </div>
-          <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
-            <span>Produção: <strong id="subCisaProdTxt" style="color: var(--text-title);">${isTodas ? 'Todas Especialidades' : '—'}</strong></span>
-            <span style="margin: 0 4px;">•</span>
-            <span>Custeio: <strong id="subCisaIncTxt" style="color: #2563eb;">${isTodas ? 'Consolidação Regional' : '—'}</strong></span>
-          </div>
-          <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem;">
+          <div style="margin-top: 1.25rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-size: 0.75rem;">
             <span style="color: var(--text-muted);">${isTodas ? 'Projeção Anual Consolidada:' : 'Projeção Anual:'}</span>
             <strong id="kpiCisaReceitaAno" style="color: var(--text-title); font-weight: 800;">Conforme demanda mensal</strong>
           </div>
         </div>
 
-        <!-- KPI 2: Custos Operacionais -->
-        <div class="card kpi-card" style="border-top: 4px solid #dc2626; padding: 1.25rem;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <span class="kpi-label">${isTodas ? 'Custos Operacionais Totais (Consolidados)' : 'Custos Operacionais'}</span>
-            <div class="card-icon" style="background: rgba(239, 68, 68, 0.12); color: #dc2626;">
-              <i data-lucide="users" style="width: 20px; height: 20px;"></i>
+        <!-- KPI 2: Custo Operacional Médio -->
+        <div class="card kpi-card" style="border-top: 4px solid #dc2626; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <span class="kpi-label">${isTodas ? 'Custo Operacional Médio (Consolidado)' : 'Custo Operacional Médio'}</span>
+              <div class="card-icon" style="background: rgba(239, 68, 68, 0.12); color: #dc2626;">
+                <i data-lucide="users" style="width: 20px; height: 20px;"></i>
+              </div>
+            </div>
+            <div class="kpi-value" id="kpiCisaDespesa" style="color: #dc2626; font-size: 1.85rem; margin: 0.65rem 0 0.25rem 0;">
+              R$ 0,00
             </div>
           </div>
-          <div class="kpi-value" id="kpiCisaDespesa" style="color: #dc2626; font-size: 1.85rem; margin: 0.5rem 0 0.2rem 0;">
-            R$ 0,00
-          </div>
-          <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
-            <span>${isTodas ? 'Equipes Mínimas RQE + Enfermagem + Apoio (Todas Especialidades)' : 'Equipe Mínima RQE + Enfermagem + Apoio'}</span>
-          </div>
-          <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem;">
+          <div style="margin-top: 1.25rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-size: 0.75rem;">
             <span style="color: var(--text-muted);">${isTodas ? 'Custo Anual Consolidado:' : 'Custo Anual Total:'}</span>
             <strong id="kpiCisaDespesaAno" style="color: var(--text-title); font-weight: 800;">R$ 0,00</strong>
           </div>
         </div>
 
-        <!-- KPI 3: Resultado Líquido Mensal -->
-        <div class="card kpi-card" style="border-top: 4px solid var(--blue-vibrant); padding: 1.25rem;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <span class="kpi-label">${isTodas ? 'Superávit Operacional Líquido do Programa' : 'Superávit Operacional Líquido'}</span>
-            <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--blue-vibrant);">
-              <i data-lucide="trending-up" style="width: 20px; height: 20px;"></i>
+        <!-- KPI 3: Resultado Operacional Médio -->
+        <div class="card kpi-card" style="border-top: 4px solid #059669; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <span class="kpi-label">${isTodas ? 'Resultado Operacional Médio (Consolidado)' : 'Resultado Operacional Médio'}</span>
+              <div class="card-icon" style="background: rgba(16, 185, 129, 0.12); color: #059669;">
+                <i data-lucide="trending-up" style="width: 20px; height: 20px;"></i>
+              </div>
+            </div>
+            <div class="kpi-value" id="kpiCisaResultado" style="color: #059669; font-size: 1.85rem; margin: 0.65rem 0 0.25rem 0;">
+              Aguardando valores
+            </div>
+            <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
+              <span>Margem Líquida: <strong id="kpiCisaMargemTxt" style="color: #059669; font-weight: 800;">77,8%</strong></span>
+              <span style="margin: 0 4px;">•</span>
+              <span>Break-Even: <strong id="kpiCisaBreakeven" style="color: var(--text-title); font-weight: 800;">22,2%</strong></span>
             </div>
           </div>
-          <div class="kpi-value" id="kpiCisaResultado" style="color: #2563eb; font-size: 1.85rem; margin: 0.5rem 0 0.2rem 0;">
-            Aguardando valores
-          </div>
-          <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
-            <span>Margem Líquida: <strong id="kpiCisaMargemTxt" style="color: #2563eb; font-weight: 800;">Tabela Unitária</strong></span>
-            <span style="margin: 0 4px;">•</span>
-            <span>Break-Even: <strong id="kpiCisaBreakeven" style="color: var(--text-title); font-weight: 800;">Por Produção</strong></span>
-          </div>
-          <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem;">
+          <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-size: 0.75rem;">
             <span style="color: var(--text-muted);">${isTodas ? 'Resultado Anual do Programa:' : 'Resultado Anual Líquido:'}</span>
-            <strong id="kpiCisaResultadoAno" style="color: #2563eb; font-weight: 800;">Aguardando valores</strong>
+            <strong id="kpiCisaResultadoAno" style="color: #059669; font-weight: 800;">Aguardando valores</strong>
           </div>
         </div>
 
@@ -3773,51 +3771,8 @@ function initCisaInteractiveSimulation(currentKey) {
 
     const despesaTotal = totFix;
     const resultadoMensal = totRec - despesaTotal;
-    const margem = totRec > 0 ? ((resultadoMensal / totRec) * 100) : 0;
-    const breakeven = totRec > 0 ? ((despesaTotal / totRec) * 100) : 0;
 
-    // Atualiza KPIs do mês ativo
-    const elKpiRec = root.querySelector('#kpiCisaReceita');
-    if (elKpiRec) elKpiRec.textContent = BRL.format(totRec);
-
-    const elSubProd = root.querySelector('#subCisaProdTxt');
-    if (elSubProd) {
-      if (countComValor > 0) {
-        elSubProd.textContent = isTodas ? `${countComValor} procedimentos com produção (Todas Especialidades)` : `${countComValor} procedimentos com produção`;
-      } else {
-        elSubProd.textContent = 'Sem produção lançada neste mês';
-      }
-    }
-    const elSubInc = root.querySelector('#subCisaIncTxt');
-    if (elSubInc) {
-      if (countComValor > 0) {
-        elSubInc.textContent = 'Produção apurada';
-      } else {
-        elSubInc.textContent = 'Competência zerada';
-      }
-    }
-
-    const elKpiDesp = root.querySelector('#kpiCisaDespesa');
-    if (elKpiDesp) elKpiDesp.textContent = BRL.format(despesaTotal);
-
-    const elKpiRes = root.querySelector('#kpiCisaResultado');
-    if (elKpiRes) {
-      if (totRec > 0 || despesaTotal > 0) {
-        elKpiRes.textContent = (resultadoMensal > 0 ? '+ ' : '') + BRL.format(resultadoMensal);
-        elKpiRes.style.color = resultadoMensal >= 0 ? '#059669' : '#dc2626';
-      } else {
-        elKpiRes.textContent = 'R$ 0,00';
-        elKpiRes.style.color = 'var(--text-title)';
-      }
-    }
-
-    const elKpiMargem = root.querySelector('#kpiCisaMargemTxt');
-    if (elKpiMargem) elKpiMargem.textContent = totRec > 0 ? margem.toFixed(1).replace('.', ',') + '%' : '0,0%';
-
-    const elKpiBk = root.querySelector('#kpiCisaBreakeven');
-    if (elKpiBk) elKpiBk.textContent = totRec > 0 ? breakeven.toFixed(1).replace('.', ',') + '%' : '0,0%';
-
-    // Atualiza Totais das Tabelas
+    // Atualiza Totais das Tabelas da Competência Ativa
     const elTotRec = root.querySelector('#totCisaRec');
     if (elTotRec) elTotRec.textContent = BRL.format(totRec);
 
@@ -3835,9 +3790,10 @@ function initCisaInteractiveSimulation(currentKey) {
     const elTotFix = root.querySelector('#totCisaFixo');
     if (elTotFix) elTotFix.textContent = BRL.format(totFix);
 
-    // LOOP DOS 12 MESES: Atualiza subvalores de cada pill e calcula acumulado anual
+    // LOOP DOS 12 MESES: Atualiza subvalores de cada pill e calcula acumulado anual e médias mensais
     let annualRec = 0;
     let annualDesp = 0;
+    let countMonthsActive = 0;
 
     CISA_MESES.forEach(m => {
       let mProcs, mCustos;
@@ -3867,6 +3823,9 @@ function initCisaInteractiveSimulation(currentKey) {
 
       annualRec += mRec;
       annualDesp += mCus;
+      if (mRec > 0 || mCus > 0) {
+        countMonthsActive++;
+      }
 
       const elPillSub = root.querySelector(`#cisaMonthSub_${m.id}`);
       if (elPillSub) {
@@ -3878,9 +3837,40 @@ function initCisaInteractiveSimulation(currentKey) {
       }
     });
 
+    const divisor = Math.max(1, countMonthsActive);
+    const mediaRec = annualRec / divisor;
+    const mediaDesp = annualDesp / divisor;
+    const mediaRes = mediaRec - mediaDesp;
+    const margemMedia = mediaRec > 0 ? ((mediaRes / mediaRec) * 100) : 0;
+    const bkMedia = mediaRec > 0 ? ((mediaDesp / mediaRec) * 100) : 0;
+
+    // Atualiza KPIs Executivos com as Médias Mensais
+    const elKpiRec = root.querySelector('#kpiCisaReceita');
+    if (elKpiRec) elKpiRec.textContent = mediaRec > 0 ? BRL.format(mediaRec) : 'R$ 0,00';
+
+    const elKpiDesp = root.querySelector('#kpiCisaDespesa');
+    if (elKpiDesp) elKpiDesp.textContent = BRL.format(mediaDesp);
+
+    const elKpiRes = root.querySelector('#kpiCisaResultado');
+    if (elKpiRes) {
+      if (mediaRec > 0 || mediaDesp > 0) {
+        elKpiRes.textContent = (mediaRes > 0 ? '+ ' : '') + BRL.format(mediaRes);
+        elKpiRes.style.color = mediaRes >= 0 ? '#059669' : '#dc2626';
+      } else {
+        elKpiRes.textContent = 'R$ 0,00';
+        elKpiRes.style.color = 'var(--text-title)';
+      }
+    }
+
+    const elKpiMargem = root.querySelector('#kpiCisaMargemTxt');
+    if (elKpiMargem) elKpiMargem.textContent = mediaRec > 0 ? margemMedia.toFixed(1).replace('.', ',') + '%' : '0,0%';
+
+    const elKpiBk = root.querySelector('#kpiCisaBreakeven');
+    if (elKpiBk) elKpiBk.textContent = mediaRec > 0 ? bkMedia.toFixed(1).replace('.', ',') + '%' : '0,0%';
+
     const annualRes = annualRec - annualDesp;
 
-    // Atualiza KPIs Anuais
+    // Atualiza KPIs Anuais (rodapé dos cards)
     const elKpiRecAno = root.querySelector('#kpiCisaReceitaAno');
     if (elKpiRecAno) elKpiRecAno.textContent = BRL.format(annualRec);
 
@@ -3891,7 +3881,7 @@ function initCisaInteractiveSimulation(currentKey) {
     if (elKpiResAno) {
       if (annualRec > 0 || annualDesp > 0) {
         elKpiResAno.textContent = (annualRes > 0 ? '+ ' : '') + BRL.format(annualRes);
-        elKpiResAno.style.color = annualRes >= 0 ? '#2563eb' : '#dc2626';
+        elKpiResAno.style.color = annualRes >= 0 ? '#059669' : '#dc2626';
       } else {
         elKpiResAno.textContent = 'R$ 0,00';
         elKpiResAno.style.color = 'var(--text-muted)';

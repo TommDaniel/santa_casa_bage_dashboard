@@ -4,6 +4,29 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Atualização dos Cards Executivos com Valores Mensais Médios e Limpeza Visual
+
+### 🎯 O que foi feito:
+1. **Atualização dos Títulos e Textos dos 3 Cards Executivos de Topo**:
+   - **Card 1**: Renomeado para **"Receita Mensal Média"**; removido o subtítulo redundante (*"Produção: 17 procedimentos com produção • Custeio: Produção apurada"*).
+   - **Card 2**: Renomeado para **"Custo Operacional Médio"**; removido o texto redundante (*"Equipe Mínima RQE + Enfermagem + Apoio"*).
+   - **Card 3**: Renomeado para **"Resultado Operacional Médio"**; mantidos os indicadores de *Margem Líquida* e *Break-Even*.
+2. **Cálculo Dinâmico de Valores Mensais Médios**:
+   - O cálculo do motor analítico (`recalc`) agora afere a quantidade de meses com produção/custos lançados (`countMonthsActive`).
+   - Os valores de destaque nos 3 cards passam a refletir a **Média Mensal** (\(\text{Total Acumulado} \div \text{Meses Ativos}\)). Como atualmente apenas a competência de Agosto/2026 está lançada, a média calculada reflete:
+     - **Receita Mensal Média**: **R$ 17.536,44**
+     - **Custo Operacional Médio**: **R$ 3.900,00**
+     - **Resultado Operacional Médio**: **+ R$ 13.636,44** (Margem: **77,8%** | Break-Even: **22,2%**)
+3. **Preservação dos Resultados Anuais no Rodapé dos Cards**:
+   - Mantidas no rodapé inferior de cada um dos 3 cards as linhas de controle anual acumulado:
+     - Card 1: *Projeção Anual*: **R$ 17.536,44**
+     - Card 2: *Custo Anual Total*: **R$ 3.900,00**
+     - Card 3: *Resultado Anual Líquido*: **+ R$ 13.636,44** (em verde institucional `#059669`)
+4. **Versionamento**:
+   - Cache buster atualizado para `app.js?v=20260922_07`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Implementação do Rateio de Custos Operacionais Ambulatoriais
 
 ### 🎯 O que foi feito:
