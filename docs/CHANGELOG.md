@@ -4,6 +4,44 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Atualização dos Custos Operacionais com Valores Reais (Médias de Enfermagem, Apoio, Regulação e TASY)
+
+### 🎯 O que foi feito:
+1. **Atualização dos Valores Unitários e Médias Salariais**:
+   - **Enfermeiro(a) / Ambulatório Especializado**:
+     - Média calculada entre Enf 1 (R$ 6.246,65) e Enf 2 (R$ 5.130,34): **`R$ 5.688,50`**;
+     - Quantidade: `2` | Rateio: `15%` | Custo Total Rateado: **`R$ 1.706,55/mês`**.
+   - **Técnicos de Enfermagem (Triagem/Suporte Ambulatorial)**:
+     - Média calculada entre Tec Enf 1 (R$ 3.784,91) e Tec Enf 2 (R$ 3.696,99): **`R$ 3.740,95`**;
+     - Quantidade: `2` | Rateio: `15%` | Custo Total Rateado: **`R$ 1.122,29/mês`**.
+   - **Recepção**:
+     - Custo Unitário real: **`R$ 2.639,07`**;
+     - Quantidade: `1` | Rateio: `20%` | Custo Total Rateado: **`R$ 527,81/mês`**.
+   - **Supervisão de Regulação de Agendas GERCON/CISA**:
+     - Custo Unitário real: **`R$ 3.404,23`**;
+     - Quantidade: `1` | Rateio: `20%` | Custo Total Rateado: **`R$ 680,85/mês`**.
+   - **Apoio de Faturamento**:
+     - Custo Unitário real: **`R$ 3.192,73`**;
+     - Quantidade: `1` | Rateio: `10%` | Custo Total Rateado: **`R$ 319,27/mês`**.
+   - **Manutenção Sistema Hospitalar - TASY**:
+     - Retificado o Custo Unitário para: **`R$ 5.100,00`**;
+     - Quantidade: `1` | Rateio: `10%` | Custo Total Rateado: **`R$ 510,00/mês`**.
+   - **Manutenção e Infra Predial (Luz/Agua/Net)**:
+     - Mantido Custo Unitário em **`R$ 20.000,00`** | Quantidade: `1` | Rateio: `3%` | Custo Total Rateado: **`R$ 600,00/mês`**.
+   - **Médicos Oftalmologistas Cirurgiões com RQE (por produção)**:
+     - Mantido com remuneração por resultado/produção (Custo direto: `R$ 0,00`).
+2. **Consolidação Geral dos Indicadores Operacionais**:
+   - **Novo Custo Operacional Rateado**: **`R$ 5.466,77/mês`**;
+   - **Receita Mensal Média**: **`R$ 17.536,44/mês`**;
+   - **Resultado Operacional Médio Líquido**: **`+ R$ 12.069,67/mês`**;
+   - **Margem Líquida**: **`68,8%`**;
+   - **Ponto de Equilíbrio (Break-Even)**: **`31,2%`**.
+3. **Versionamento e Persistência**:
+   - Storage versionado para `cisa_monthly_store_2026_v12`.
+   - Script cache buster atualizado para `app.js?v=20260922_13`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Atualização do Badge de Status da Produção para "Realizado"
 
 ### 🎯 O que foi feito:
