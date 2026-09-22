@@ -3344,7 +3344,7 @@ function initCisaInteractiveSimulation(currentKey) {
         const updateStatusPreview = () => {
           const v = inVal.value;
           if (v !== '' && !isNaN(v) && parseFloat(v) > 0) {
-            tdStatus.innerHTML = `<span class="cisa-status-badge status-cotado"><i data-lucide="check-circle-2" style="width:14px;height:14px;"></i> Cotado</span>`;
+            tdStatus.innerHTML = `<span class="cisa-status-badge status-cotado"><i data-lucide="check-circle-2" style="width:14px;height:14px;"></i> Realizado</span>`;
           } else {
             tdStatus.innerHTML = `<span class="cisa-status-badge status-a-definir"><i data-lucide="clock" style="width:14px;height:14px;"></i> A definir</span>`;
           }
@@ -3469,7 +3469,7 @@ function initCisaInteractiveSimulation(currentKey) {
         tdStatus.className = 'cisa-cell';
         tdStatus.style.textAlign = 'center';
         if (hasVal) {
-          tdStatus.innerHTML = `<span class="cisa-status-badge status-cotado"><i data-lucide="check-circle-2" style="width:14px;height:14px;"></i> Cotado</span>`;
+          tdStatus.innerHTML = `<span class="cisa-status-badge status-cotado"><i data-lucide="check-circle-2" style="width:14px;height:14px;"></i> Realizado</span>`;
         } else {
           tdStatus.innerHTML = `<span class="cisa-status-badge status-a-definir"><i data-lucide="clock" style="width:14px;height:14px;"></i> A definir</span>`;
         }

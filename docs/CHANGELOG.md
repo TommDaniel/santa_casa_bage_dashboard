@@ -4,6 +4,17 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Atualização do Badge de Status da Produção para "Realizado"
+
+### 🎯 O que foi feito:
+1. **Atualização da Pill de Status de Produção**:
+   - Alterado o texto do badge de status na tabela de acompanhamento de produção mensal CISA de *"Cotado"* para **"Realizado"** (`.status-cotado` exibindo ícone de confirmação e texto `Realizado`).
+   - Reflete adequadamente a natureza da tabela executiva de competência mensal, na qual figuram apenas procedimentos oftalmológicos efetivamente realizados e faturados.
+2. **Versionamento**:
+   - Cache buster atualizado para `app.js?v=20260922_12`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Detalhamento e Desmembramento das Linhas de Apoio, Faturamento e Manutenção
 
 ### 🎯 O que foi feito:
