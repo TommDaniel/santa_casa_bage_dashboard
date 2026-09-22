@@ -2439,11 +2439,13 @@ window.cisaSimState = {
   ],
   custos: [
     { especialidade: 'Oftalmologia', item: 'Médicos Oftalmologistas Cirurgiões com RQE (por produção)', rateio: 100, qtd: 2, val: 0.00 },
-    { especialidade: 'Oftalmologia', item: 'Enfermeiro(a) / Ambulatório Especializado', rateio: 15, qtd: 2, val: 5688.50 },
-    { especialidade: 'Oftalmologia', item: 'Técnicos de Enfermagem (Triagem/Suporte Ambulatorial)', rateio: 15, qtd: 2, val: 3740.95 },
+    { especialidade: 'Oftalmologia', item: 'Enfermeiro(a) / Ambulatório Especializado', rateio: 30, qtd: 2, val: 5688.50 },
+    { especialidade: 'Oftalmologia', item: 'Técnicos de Enfermagem (Triagem/Suporte Ambulatorial)', rateio: 30, qtd: 2, val: 3740.95 },
     { especialidade: 'Oftalmologia', item: 'Recepção', rateio: 20, qtd: 1, val: 2639.07 },
     { especialidade: 'Oftalmologia', item: 'Supervisão de Regulação de Agendas GERCON/CISA', rateio: 20, qtd: 1, val: 3404.23 },
     { especialidade: 'Oftalmologia', item: 'Apoio de Faturamento', rateio: 10, qtd: 1, val: 3192.73 },
+    { especialidade: 'Oftalmologia', item: 'Material de Almoxarifado', rateio: 20, qtd: 1, val: 2639.07 },
+    { especialidade: 'Oftalmologia', item: 'Higienização e Limpeza', rateio: 20, qtd: 1, val: 2639.07 },
     { especialidade: 'Oftalmologia', item: 'Manutenção Sistema Hospitalar - TASY', rateio: 10, qtd: 1, val: 5100.00 },
     { especialidade: 'Oftalmologia', item: 'Manutenção e Infra Predial (Luz/Agua/Net)', rateio: 3, qtd: 1, val: 20000.00 }
   ]
@@ -2607,7 +2609,7 @@ window.cisaSelectedMonth = window.cisaSelectedMonth || '08';
 function getCisaMonthlyStore(monthId) {
   if (!window.cisaMonthlyStore) {
     try {
-      const saved = localStorage.getItem('cisa_monthly_store_2026_v13');
+      const saved = localStorage.getItem('cisa_monthly_store_2026_v14');
       if (saved) window.cisaMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.cisaMonthlyStore || typeof window.cisaMonthlyStore !== 'object') {
@@ -2647,7 +2649,7 @@ function getCisaMonthlyStore(monthId) {
 function saveCisaMonthlyStore() {
   try {
     if (window.cisaMonthlyStore) {
-      localStorage.setItem('cisa_monthly_store_2026_v13', JSON.stringify(window.cisaMonthlyStore));
+      localStorage.setItem('cisa_monthly_store_2026_v14', JSON.stringify(window.cisaMonthlyStore));
     }
   } catch (e) {}
 }

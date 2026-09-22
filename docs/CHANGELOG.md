@@ -4,6 +4,32 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Inclusão de Almoxarifado, Higienização e Atualização do Rateio 80/20
+
+### 🎯 O que foi feito:
+1. **Novas Linhas na Tabela de Custos Operacionais**:
+   - Inserida linha **"Material de Almoxarifado"** com os parâmetros base da recepção:
+     - Qtd: `1` | Rateio: `20%` | R$ Unitário: **`R$ 2.639,07`** | R$ Rateado: **`R$ 527,81/mês`**.
+   - Inserida linha **"Higienização e Limpeza"** com os parâmetros base da recepção:
+     - Qtd: `1` | Rateio: `20%` | R$ Unitário: **`R$ 2.639,07`** | R$ Rateado: **`R$ 527,81/mês`**.
+   - Atualizado rateio de **Enfermeiro(a)** e **Técnicos de Enfermagem** para **30%** conforme parametrização:
+     - Enfermeiro(a) (2 prof, 30%): **`R$ 3.413,10/mês`**;
+     - Técnico de Enfermagem (2 prof, 30%): **`R$ 2.244,57/mês`**.
+2. **Subtotalização e Consolidação das Despesas Operacionais**:
+   - Subtotal das despesas operacionais atualizado de R$ 8.295,60 para **`R$ 9.351,23/mês`** (consolidando Pessoal R$ 8.241,23 + TASY R$ 510,00 + Infra R$ 600,00).
+3. **Recálculo do Modelo de Negócio 80/20 (Rateio Médico)**:
+   - **Receita Mensal do Programa**: **`R$ 17.536,44`**;
+   - **Subtotal das Despesas Operacionais**: **`R$ 9.351,23`**;
+   - **Saldo a Ratear**: \(17.536,44 - 9.351,23 =\) **`R$ 8.185,21`**;
+   - **Rateio 80% Médico**: \(8.185,21 \times 80\% =\) **`R$ 6.548,17`**;
+   - **Margem Líquida Hospital (20%)**: \(8.185,21 \times 20\% =\) **`R$ 1.637,04`**;
+   - **TOTAL DA DESPESA**: \(9.351,23 + 6.548,17 =\) **`R$ 15.899,40`**.
+4. **Parametrização e Versionamento**:
+   - Store key migrada para `cisa_monthly_store_2026_v14`.
+   - Script cache buster atualizado para `app.js?v=20260922_16`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Implementação do Rateio 80% Médico e Subtotal das Despesas na Regra 80/20
 
 ### 🎯 O que foi feito:
