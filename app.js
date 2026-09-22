@@ -2385,21 +2385,45 @@ window.renderCisaServico = renderCisaServico;
 
 window.cisaSimState = {
   procs: [
+    // 01 · Consultas especializadas
     { especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '00483', desc: 'Consulta especializada em oftalmologia (c/ mapeam. + tonome)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', qtd: 1, val: 64.24, prestador: 'Dr. Christian Pretto' },
+
+    // 11 · Diagnóstico em oftalmologia
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', qtd: 1, val: 64.24, prestador: 'Dr. Christian Pretto' },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00269', desc: 'Fundoscopia', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', qtd: 2, val: 64.24, prestador: 'Dr. Heron Gomes Correia' },
+
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', qtd: 1, val: 64.24, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', qtd: 4, val: 64.24, prestador: 'Dr. Heron Gomes Correia' },
+
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00258', desc: 'Ultra-sonografia de globo ocular / órbita (01 olho)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00260', desc: 'Gonioscopia', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00261', desc: 'Mapeamento de retina (01 olho)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', qtd: 1, val: 149.09, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', qtd: 6, val: 149.09, prestador: 'Dr. Heron Gomes Correia' },
+
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00263', desc: 'Paquimetria ultrassônica (01 olho)', qtd: 1, val: 40.40, prestador: 'Dr. Christian Pretto' },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00543', desc: 'Potencial de acuidade visual', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00263', desc: 'Paquimetria ultrassônica (01 olho)', qtd: 2, val: 40.40, prestador: 'Dr. Heron Gomes Correia' },
+
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00264', desc: 'Retinografia colorida binocular (02 olhos)', qtd: 1, val: 71.95, prestador: 'Dr. Christian Pretto' },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00593', desc: 'Retirada de corpo estranho do olho (hon/sala/mat)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', qtd: 1, val: 313.47, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00264', desc: 'Retinografia colorida binocular (02 olhos)', qtd: 3, val: 71.95, prestador: 'Dr. Heron Gomes Correia' },
+
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00266', desc: 'Tonometria (01 olho)', qtd: 1, val: 14.21, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00266', desc: 'Tonometria (01 olho)', qtd: 4, val: 14.21, prestador: 'Dr. Heron Gomes Correia' },
+
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', qtd: 1, val: 64.24, prestador: 'Dr. Christian Pretto' },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00258', desc: 'Ultra-sonografia de globo ocular / órbita (01 olho)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' }
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', qtd: 2, val: 64.24, prestador: 'Dr. Heron Gomes Correia' },
+
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00269', desc: 'Fundoscopia', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00543', desc: 'Potencial de acuidade visual', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00593', desc: 'Retirada de corpo estranho do olho (hon/sala/mat)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', qtd: 1, val: 313.47, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', qtd: 2, val: 313.47, prestador: 'Dr. Heron Gomes Correia' }
   ],
   custos: [
     { especialidade: 'Oftalmologia', item: 'Médicos Oftalmologistas Cirurgiões com RQE (2 prof. 20h cada)', qtd: 2, val: 12000.00 },
@@ -2568,7 +2592,7 @@ window.cisaSelectedMonth = window.cisaSelectedMonth || '08';
 function getCisaMonthlyStore(monthId) {
   if (!window.cisaMonthlyStore) {
     try {
-      const saved = localStorage.getItem('cisa_monthly_store_2026_v5');
+      const saved = localStorage.getItem('cisa_monthly_store_2026_v6');
       if (saved) window.cisaMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.cisaMonthlyStore || typeof window.cisaMonthlyStore !== 'object') {
@@ -2607,7 +2631,7 @@ function getCisaMonthlyStore(monthId) {
 function saveCisaMonthlyStore() {
   try {
     if (window.cisaMonthlyStore) {
-      localStorage.setItem('cisa_monthly_store_2026_v5', JSON.stringify(window.cisaMonthlyStore));
+      localStorage.setItem('cisa_monthly_store_2026_v6', JSON.stringify(window.cisaMonthlyStore));
     }
   } catch (e) {}
 }
@@ -2907,6 +2931,23 @@ function renderCisaViabilidade(key) {
                   </td>
                   <td colspan="2"></td>
                 </tr>
+                <tr id="cisaDoctorBreakdownRow" style="background: rgba(248, 250, 252, 0.95); font-size: 0.82rem; border-top: 1px dashed rgba(37, 99, 235, 0.25);">
+                  <td colspan="7" style="padding: 10px 18px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+                      <span style="font-weight: 800; color: var(--text-muted); text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
+                        <i data-lucide="users" style="width: 14px; height: 14px; color: #2563eb;"></i> Subtotais por Médico Prestador:
+                      </span>
+                      <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                        <span class="badge" style="background: rgba(37, 99, 235, 0.08); color: #2563eb; font-weight: 700; padding: 5px 12px; border-radius: 99px; border: 1px solid rgba(37, 99, 235, 0.25); display: inline-flex; align-items: center; gap: 6px;">
+                          <i data-lucide="user-check" style="width: 13px; height: 13px;"></i> Dr. Christian Pretto: <strong id="cisaSubtotChristian" style="font-size: 0.88rem; margin-left: 2px;">R$ 0,00</strong> (<span id="cisaQtdChristian">0</span> exames)
+                        </span>
+                        <span class="badge" style="background: rgba(16, 185, 129, 0.08); color: #059669; font-weight: 700; padding: 5px 12px; border-radius: 99px; border: 1px solid rgba(16, 185, 129, 0.25); display: inline-flex; align-items: center; gap: 6px;">
+                          <i data-lucide="user-check" style="width: 13px; height: 13px;"></i> Dr. Heron Gomes Correia: <strong id="cisaSubtotHeron" style="font-size: 0.88rem; margin-left: 2px;">R$ 0,00</strong> (<span id="cisaQtdHeron">0</span> exames)
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
               </tfoot>
             </table>
           </div>
@@ -3137,9 +3178,24 @@ function initCisaInteractiveSimulation(currentKey) {
   }
 
   function getFilteredProcs() {
-    return isTodas
+    const raw = isTodas
       ? state.procs
       : state.procs.filter(p => !p.especialidade || matchSpec(p.especialidade, currentKey));
+
+    // Ordena para que o mesmo procedimento realizado por médicos diferentes fique com uma linha abaixo da outra
+    return raw.slice().sort((a, b) => {
+      const isGrp01A = (a.grupo && (a.grupo.includes('01') || a.grupo.includes('Consultas'))) || a.cod === '00483';
+      const isGrp01B = (b.grupo && (b.grupo.includes('01') || b.grupo.includes('Consultas'))) || b.cod === '00483';
+      if (isGrp01A !== isGrp01B) return isGrp01A ? -1 : 1;
+
+      const codA = String(a.cod || '');
+      const codB = String(b.cod || '');
+      if (codA !== codB) return codA.localeCompare(codB);
+
+      const prestA = String(a.prestador || '');
+      const prestB = String(b.prestador || '');
+      return prestA.localeCompare(prestB);
+    });
   }
 
   function getFilteredCustos() {
@@ -3293,8 +3349,8 @@ function initCisaInteractiveSimulation(currentKey) {
         tdPrest.innerHTML = `
           <div style="display: flex; flex-direction: column; gap: 4px; align-items: center;">
             <select class="cisa-prestador-select-edit" style="font-size: 0.75rem; font-weight: 700; padding: 3px 6px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title); width: 100%; min-width: 150px;">
-              <option value="Dr. Christian Pretto" ${prestadorAtual === 'Dr. Christian Pretto' ? 'selected' : ''}>Dr. Christian Pretto</option>
-              <option value="Dr. Heron Correia" ${prestadorAtual === 'Dr. Heron Correia' ? 'selected' : ''}>Dr. Heron Correia</option>
+              <option value="Dr. Christian Pretto" ${!prestadorAtual.includes('Heron') ? 'selected' : ''}>Dr. Christian Pretto</option>
+              <option value="Dr. Heron Gomes Correia" ${prestadorAtual.includes('Heron') ? 'selected' : ''}>Dr. Heron Gomes Correia</option>
             </select>
             <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
               <button class="btn-cisa-action btn-cisa-save" title="Salvar alterações">
@@ -3409,11 +3465,12 @@ function initCisaInteractiveSimulation(currentKey) {
         tdPrest.className = 'cisa-cell';
         tdPrest.style.textAlign = 'center';
         const prestadorAtual = p.prestador || 'Dr. Christian Pretto';
+        const isHeron = prestadorAtual.includes('Heron');
         tdPrest.innerHTML = `
           <div style="display: flex; align-items: center; justify-content: center;">
-            <select class="cisa-prestador-select" title="Médico Oftalmologista Responsável" style="font-size: 0.78rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title); cursor: pointer; width: 100%; min-width: 160px; max-width: 185px;">
-              <option value="Dr. Christian Pretto" ${prestadorAtual === 'Dr. Christian Pretto' ? 'selected' : ''}>Dr. Christian Pretto</option>
-              <option value="Dr. Heron Correia" ${prestadorAtual === 'Dr. Heron Correia' ? 'selected' : ''}>Dr. Heron Correia</option>
+            <select class="cisa-prestador-select" title="Médico Oftalmologista Responsável" style="font-size: 0.78rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; border: 1px solid ${isHeron ? 'rgba(16, 185, 129, 0.4)' : 'rgba(37, 99, 235, 0.4)'}; background: ${isHeron ? 'rgba(16, 185, 129, 0.08)' : 'rgba(37, 99, 235, 0.08)'}; color: ${isHeron ? '#047857' : '#1d4ed8'}; cursor: pointer; width: 100%; min-width: 165px; max-width: 195px;">
+              <option value="Dr. Christian Pretto" ${!isHeron ? 'selected' : ''}>Dr. Christian Pretto</option>
+              <option value="Dr. Heron Gomes Correia" ${isHeron ? 'selected' : ''}>Dr. Heron Gomes Correia</option>
             </select>
           </div>
         `;
@@ -3421,6 +3478,8 @@ function initCisaInteractiveSimulation(currentKey) {
         selPrest.onchange = (e) => {
           p.prestador = e.target.value;
           saveCisaMonthlyStore();
+          renderProcsTable();
+          recalc();
         };
         tr.appendChild(tdPrest);
       }
@@ -3609,12 +3668,30 @@ function initCisaInteractiveSimulation(currentKey) {
 
     let totRec = 0;
     let countComValor = 0;
+    let recChristian = 0;
+    let qtdChristian = 0;
+    let recHeron = 0;
+    let qtdHeron = 0;
 
     listProcs.forEach((p) => {
       const q = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? parseFloat(p.qtd) : 0;
+      const isHeron = (p.prestador && p.prestador.includes('Heron'));
       if (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val)) {
-        totRec += (q * parseFloat(p.val));
+        const lineTot = q * parseFloat(p.val);
+        totRec += lineTot;
         if (q > 0) countComValor++;
+        if (isHeron) {
+          recHeron += lineTot;
+          qtdHeron += q;
+        } else {
+          recChristian += lineTot;
+          qtdChristian += q;
+        }
+      } else {
+        if (q > 0) {
+          if (isHeron) qtdHeron += q;
+          else qtdChristian += q;
+        }
       }
     });
 
@@ -3674,6 +3751,17 @@ function initCisaInteractiveSimulation(currentKey) {
     // Atualiza Totais das Tabelas
     const elTotRec = root.querySelector('#totCisaRec');
     if (elTotRec) elTotRec.textContent = BRL.format(totRec);
+
+    // Atualiza Subtotais por Médico
+    const elSubtotChristian = root.querySelector('#cisaSubtotChristian');
+    if (elSubtotChristian) elSubtotChristian.textContent = BRL.format(recChristian);
+    const elQtdChristian = root.querySelector('#cisaQtdChristian');
+    if (elQtdChristian) elQtdChristian.textContent = qtdChristian;
+
+    const elSubtotHeron = root.querySelector('#cisaSubtotHeron');
+    if (elSubtotHeron) elSubtotHeron.textContent = BRL.format(recHeron);
+    const elQtdHeron = root.querySelector('#cisaQtdHeron');
+    if (elQtdHeron) elQtdHeron.textContent = qtdHeron;
 
     const elTotFix = root.querySelector('#totCisaFixo');
     if (elTotFix) elTotFix.textContent = BRL.format(totFix);
@@ -4081,9 +4169,19 @@ function renderCisaPortaria(key) {
   if (!container) return;
 
   const allProcs = (window.activeCisaSim && window.activeCisaSim.procs) || window.cisaSimState.procs;
-  const procs = isTodas
+  const rawProcs = isTodas
     ? allProcs
     : allProcs.filter(p => !p.especialidade || p.especialidade.toLowerCase() === key.toLowerCase());
+
+  // Na Ficha Técnica (especificação contratual oficial), mantém 1 linha por código (15 itens pactuados únicos)
+  const procs = [];
+  const seenCod = new Set();
+  rawProcs.forEach(p => {
+    if (!seenCod.has(p.cod)) {
+      seenCod.add(p.cod);
+      procs.push(p);
+    }
+  });
 
   container.innerHTML = `
     <div id="cisaNativePortaria" style="display: flex; flex-direction: column; gap: 1.5rem;">

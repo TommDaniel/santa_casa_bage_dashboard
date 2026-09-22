@@ -4,7 +4,34 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
-## [2026-09-22] - Módulo CISA: Coluna "Prestador" na Tabela de Procedimentos (Dr. Christian Pretto & Dr. Heron Correia)
+## [2026-09-22] - Módulo CISA: Lançamento da Produção Real do Dr. Heron Gomes Correia & Linhas Consecutivas por Médico
+
+### 🎯 O que foi feito:
+1. **Lançamento da Produção Real do Dr. Heron Gomes Correia (Agosto/26)**:
+   - Inseridos os 8 exames diagnósticos realizados pelo **Dr. Heron Gomes Correia** com as quantidades e valores reais informados:
+     - *Biometria Ultrassônica (01 olho)*: 4 exames (R$ 256,96)
+     - *Tonometria (01 olho)*: 4 exames (R$ 56,84)
+     - *Microscopia Especular de Córnea (01 olho)*: 6 exames (R$ 894,54)
+     - *Retinografia Colorida Binocular (02 olhos)*: 3 exames (R$ 215,85)
+     - *Tomografia de Coerência Óptica (ambos os olhos)*: 2 exames (R$ 626,94)
+     - *Campimetria Computadorizada (01 olho)*: 2 exames (R$ 128,48)
+     - *Topografia Computadorizada de Córnea (01 olho)*: 2 exames (R$ 128,48)
+     - *Paquimetria Ultrassônica (01 olho)*: 2 exames (R$ 80,80)
+   - **Total Produzido pelo Dr. Heron**: 25 exames, somando **R$ 2.388,89**.
+2. **Disposição Consecutiva por Procedimento (Médico Abaixo do Outro)**:
+   - Ordenação inteligente no método `getFilteredProcs()` para que, quando um procedimento for realizado por médicos diferentes, as linhas apareçam imediatamente uma abaixo da outra (ex: linha do Dr. Christian Pretto seguida da linha do Dr. Heron Gomes Correia), facilitando a conferência e o lançamento.
+   - Cores e bordas distintas nos seletores de prestador (azul para Dr. Christian Pretto e verde esmeralda para Dr. Heron Gomes Correia).
+3. **Subtotais Automatizados por Prestador no Rodapé da Tabela**:
+   - Inserida faixa de consolidação (`#cisaDoctorBreakdownRow`) no `<tfoot>` da tabela, exibindo em tempo real:
+     - **Dr. Christian Pretto**: R$ 781,84 (8 procedimentos com valor)
+     - **Dr. Heron Gomes Correia**: R$ 2.388,89 (25 exames realizados)
+     - **Receita Total Consolidada da Competência**: R$ 3.170,73 (33 exames faturados)
+4. **Desduplicação Contratual na Ficha Técnica**:
+   - A página de Ficha Técnica (`renderCisaPortaria`) preserva a relação oficial única dos 15 itens contratuais e o valor médio unitário (\(R\$\ 97,73\)), sem duplicar linhas da produção física.
+5. **Atualização de Cache e Build**:
+   - Cache buster atualizado para `app.js?v=20260922_03` em `index.html` e store atualizado para `cisa_monthly_store_2026_v6`.
+
+---
 
 ### 🎯 O que foi feito:
 1. **Substituição da Coluna "Ações" por "Prestador"**:
