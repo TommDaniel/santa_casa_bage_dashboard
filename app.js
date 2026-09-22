@@ -2385,21 +2385,21 @@ window.renderCisaServico = renderCisaServico;
 
 window.cisaSimState = {
   procs: [
-    { especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '00483', desc: 'Consulta especializada em oftalmologia (c/ mapeam. + tonome)', qtd: 1, val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', qtd: 1, val: 64.24 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', qtd: 1, val: 64.24 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00269', desc: 'Fundoscopia', qtd: 1, val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00260', desc: 'Gonioscopia', qtd: 1, val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00261', desc: 'Mapeamento de retina (01 olho)', qtd: 1, val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', qtd: 1, val: 149.09 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00263', desc: 'Paquimetria ultrassônica (01 olho)', qtd: 1, val: 40.40 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00543', desc: 'Potencial de acuidade visual', qtd: 1, val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00264', desc: 'Retinografia colorida binocular (02 olhos)', qtd: 1, val: 71.95 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00593', desc: 'Retirada de corpo estranho do olho (hon/sala/mat)', qtd: 1, val: null },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', qtd: 1, val: 313.47 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00266', desc: 'Tonometria (01 olho)', qtd: 1, val: 14.21 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', qtd: 1, val: 64.24 },
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00258', desc: 'Ultra-sonografia de globo ocular / órbita (01 olho)', qtd: 1, val: null }
+    { especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '00483', desc: 'Consulta especializada em oftalmologia (c/ mapeam. + tonome)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', qtd: 1, val: 64.24, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', qtd: 1, val: 64.24, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00269', desc: 'Fundoscopia', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00260', desc: 'Gonioscopia', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00261', desc: 'Mapeamento de retina (01 olho)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', qtd: 1, val: 149.09, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00263', desc: 'Paquimetria ultrassônica (01 olho)', qtd: 1, val: 40.40, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00543', desc: 'Potencial de acuidade visual', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00264', desc: 'Retinografia colorida binocular (02 olhos)', qtd: 1, val: 71.95, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00593', desc: 'Retirada de corpo estranho do olho (hon/sala/mat)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', qtd: 1, val: 313.47, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00266', desc: 'Tonometria (01 olho)', qtd: 1, val: 14.21, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', qtd: 1, val: 64.24, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00258', desc: 'Ultra-sonografia de globo ocular / órbita (01 olho)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' }
   ],
   custos: [
     { especialidade: 'Oftalmologia', item: 'Médicos Oftalmologistas Cirurgiões com RQE (2 prof. 20h cada)', qtd: 2, val: 12000.00 },
@@ -2568,7 +2568,7 @@ window.cisaSelectedMonth = window.cisaSelectedMonth || '08';
 function getCisaMonthlyStore(monthId) {
   if (!window.cisaMonthlyStore) {
     try {
-      const saved = localStorage.getItem('cisa_monthly_store_2026_v4');
+      const saved = localStorage.getItem('cisa_monthly_store_2026_v5');
       if (saved) window.cisaMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.cisaMonthlyStore || typeof window.cisaMonthlyStore !== 'object') {
@@ -2585,7 +2585,8 @@ function getCisaMonthlyStore(monthId) {
     // Os demais meses iniciam zerados (quantidades = 0), permitindo lançamentos mensais sob demanda.
     const baseProcs = window.cisaSimState.procs.map(p => ({
       ...p,
-      qtd: isAgosto ? ((p.qtd !== undefined && p.qtd !== null) ? p.qtd : 1) : 0
+      qtd: isAgosto ? ((p.qtd !== undefined && p.qtd !== null) ? p.qtd : 1) : 0,
+      prestador: p.prestador || 'Dr. Christian Pretto'
     }));
 
     const baseCustos = window.cisaSimState.custos.map(c => ({
@@ -2606,7 +2607,7 @@ function getCisaMonthlyStore(monthId) {
 function saveCisaMonthlyStore() {
   try {
     if (window.cisaMonthlyStore) {
-      localStorage.setItem('cisa_monthly_store_2026_v4', JSON.stringify(window.cisaMonthlyStore));
+      localStorage.setItem('cisa_monthly_store_2026_v5', JSON.stringify(window.cisaMonthlyStore));
     }
   } catch (e) {}
 }
@@ -2892,7 +2893,7 @@ function renderCisaViabilidade(key) {
                   <th style="width: 140px; text-align: right;">R$ Unitário</th>
                   <th style="width: 150px; text-align: right;">Total/mês</th>
                   <th style="width: 130px; text-align: center;">Status</th>
-                  <th style="width: 70px; text-align: center;">Ações</th>
+                  <th style="min-width: 180px; text-align: center;">Prestador</th>
                 </tr>
               </thead>
               <tbody id="tbCisaProcs"></tbody>
@@ -3284,38 +3285,47 @@ function initCisaInteractiveSimulation(currentKey) {
         updateStatusPreview();
         tr.appendChild(tdStatus);
 
-        // 7. Ações (Salvar, Cancelar, Excluir)
-        const tdAct = document.createElement('td');
-        tdAct.className = 'cisa-cell';
-        tdAct.style.textAlign = 'center';
-        tdAct.innerHTML = `
-          <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
-            <button class="btn-cisa-action btn-cisa-save" title="Salvar alterações">
-              <i data-lucide="check" style="width:16px;height:16px;"></i>
-            </button>
-            <button class="btn-cisa-action btn-cisa-cancel" title="Cancelar">
-              <i data-lucide="x" style="width:16px;height:16px;"></i>
-            </button>
-            <button class="btn-cisa-action btn-cisa-del" title="Excluir procedimento">
-              <i data-lucide="trash-2" style="width:15px;height:15px;"></i>
-            </button>
+        // 7. Prestador e Ações (Edição)
+        const tdPrest = document.createElement('td');
+        tdPrest.className = 'cisa-cell';
+        tdPrest.style.textAlign = 'center';
+        const prestadorAtual = p.prestador || 'Dr. Christian Pretto';
+        tdPrest.innerHTML = `
+          <div style="display: flex; flex-direction: column; gap: 4px; align-items: center;">
+            <select class="cisa-prestador-select-edit" style="font-size: 0.75rem; font-weight: 700; padding: 3px 6px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title); width: 100%; min-width: 150px;">
+              <option value="Dr. Christian Pretto" ${prestadorAtual === 'Dr. Christian Pretto' ? 'selected' : ''}>Dr. Christian Pretto</option>
+              <option value="Dr. Heron Correia" ${prestadorAtual === 'Dr. Heron Correia' ? 'selected' : ''}>Dr. Heron Correia</option>
+            </select>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+              <button class="btn-cisa-action btn-cisa-save" title="Salvar alterações">
+                <i data-lucide="check" style="width:14px;height:14px;"></i>
+              </button>
+              <button class="btn-cisa-action btn-cisa-cancel" title="Cancelar">
+                <i data-lucide="x" style="width:14px;height:14px;"></i>
+              </button>
+              <button class="btn-cisa-action btn-cisa-del" title="Excluir procedimento">
+                <i data-lucide="trash-2" style="width:14px;height:14px;"></i>
+              </button>
+            </div>
           </div>
         `;
-        tdAct.querySelector('.btn-cisa-save').onclick = () => {
+        const inPrestEdit = tdPrest.querySelector('.cisa-prestador-select-edit');
+        tdPrest.querySelector('.btn-cisa-save').onclick = () => {
           p.cod = inCod.value.trim();
           p.desc = inDesc.value.trim();
           p.qtd = inQtd.value !== '' ? (parseFloat(inQtd.value) || 0) : 1;
           p.val = inVal.value !== '' ? parseFloat(inVal.value) : null;
+          p.prestador = inPrestEdit.value;
           editingProc = null;
           saveCisaMonthlyStore();
           renderProcsTable();
           recalc();
         };
-        tdAct.querySelector('.btn-cisa-cancel').onclick = () => {
+        tdPrest.querySelector('.btn-cisa-cancel').onclick = () => {
           editingProc = null;
           renderProcsTable();
         };
-        tdAct.querySelector('.btn-cisa-del').onclick = () => {
+        tdPrest.querySelector('.btn-cisa-del').onclick = () => {
           const realIdx = state.procs.indexOf(p);
           if (realIdx !== -1) state.procs.splice(realIdx, 1);
           editingProc = null;
@@ -3323,7 +3333,7 @@ function initCisaInteractiveSimulation(currentKey) {
           renderProcsTable();
           recalc();
         };
-        tr.appendChild(tdAct);
+        tr.appendChild(tdPrest);
 
       } else {
         // MODO VISUALIZAÇÃO LIMPO COM EDIÇÃO RÁPIDA DE PRODUÇÃO
@@ -3394,20 +3404,25 @@ function initCisaInteractiveSimulation(currentKey) {
         }
         tr.appendChild(tdStatus);
 
-        // 7. Ação (Editar)
-        const tdAct = document.createElement('td');
-        tdAct.className = 'cisa-cell';
-        tdAct.style.textAlign = 'center';
-        tdAct.innerHTML = `
-          <button class="btn-cisa-action btn-cisa-edit" title="Editar procedimento">
-            <i data-lucide="pencil" style="width:16px;height:16px;"></i>
-          </button>
+        // 7. Prestador (Médico Oftalmologista)
+        const tdPrest = document.createElement('td');
+        tdPrest.className = 'cisa-cell';
+        tdPrest.style.textAlign = 'center';
+        const prestadorAtual = p.prestador || 'Dr. Christian Pretto';
+        tdPrest.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: center;">
+            <select class="cisa-prestador-select" title="Médico Oftalmologista Responsável" style="font-size: 0.78rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title); cursor: pointer; width: 100%; min-width: 160px; max-width: 185px;">
+              <option value="Dr. Christian Pretto" ${prestadorAtual === 'Dr. Christian Pretto' ? 'selected' : ''}>Dr. Christian Pretto</option>
+              <option value="Dr. Heron Correia" ${prestadorAtual === 'Dr. Heron Correia' ? 'selected' : ''}>Dr. Heron Correia</option>
+            </select>
+          </div>
         `;
-        tdAct.querySelector('.btn-cisa-edit').onclick = () => {
-          editingProc = p;
-          renderProcsTable();
+        const selPrest = tdPrest.querySelector('.cisa-prestador-select');
+        selPrest.onchange = (e) => {
+          p.prestador = e.target.value;
+          saveCisaMonthlyStore();
         };
-        tr.appendChild(tdAct);
+        tr.appendChild(tdPrest);
       }
 
       tb.appendChild(tr);

@@ -4,7 +4,23 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
-## [2026-09-22] - Módulo CISA: Produção Inicial Exclusiva em Agosto/26 & Transferência do Catálogo Técnico para a Ficha Técnica
+## [2026-09-22] - Módulo CISA: Coluna "Prestador" na Tabela de Procedimentos (Dr. Christian Pretto & Dr. Heron Correia)
+
+### 🎯 O que foi feito:
+1. **Substituição da Coluna "Ações" por "Prestador"**:
+   - Na tabela de procedimentos pactuados e controle de produção (`tbCisaProcs`), a última coluna foi renomeada de **"Ações"** para **"Prestador"**.
+   - Cada linha de procedimento agora conta com um seletor interativo estilizado exibindo o médico responsável pela realização do procedimento.
+2. **Corpo Clínico Oftalmológico Vinculado**:
+   - Opções configuradas para os dois profissionais atuantes no serviço: **Dr. Christian Pretto** e **Dr. Heron Correia**.
+   - Definido inicialmente **Dr. Christian Pretto** como prestador padrão dos 15 procedimentos da competência de Agosto/26.
+   - Suporte a seleção e salvamento reativo tanto no modo de visualização direta quanto no modal de edição/criação de procedimento.
+3. **Persistência do Prestador no Store Mensal**:
+   - Chave do `localStorage` atualizada para `cisa_monthly_store_2026_v5`.
+   - Campo `prestador` mapeado em cada item de procedimento, persistindo as escolhas por competência mensal.
+4. **Atualização de Cache e Build**:
+   - Cache buster de `app.js` atualizado para `app.js?v=20260922_02` em `index.html`.
+
+---
 
 ### 🎯 O que foi feito:
 1. **Produção Física e Financeira Inicial Exclusiva em Agosto/26**:
