@@ -4,6 +4,25 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Implementação do Rateio 80% Médico e Subtotal das Despesas na Regra 80/20
+
+### 🎯 O que foi feito:
+1. **Subtotalização e Nova Linha de Despesa de Repasse Médico**:
+   - No modelo de negócio **Rateio 80% / 20%**, o valor anterior de R$ 5.466,77 passa a figurar como **"Subtotal das Despesas"** (custos operacionais de estrutura, pessoal e sistemas).
+   - Inserida logo após o subtotal a nova linha de despesa **"Rateio 80% Médico"**, calculada dinamicamente como **80% do saldo total que sobrou**:
+     - Saldo a Ratear: \(\text{Receita Total (R\$\,17.536,44)} - \text{Subtotal Despesas (R\$\,5.466,77)} = \text{R\$\,12.069,67}\);
+     - **Rateio 80% Médico**: \(12.069,67 \times 80\% =\) **`R$ 9.655,74`**.
+2. **Atualização do Total Geral da Despesa**:
+   - O totalizador de rodapé **"TOTAL DA DESPESA"** passa a consolidar o subtotal operacional mais o repasse médico:
+     - \(\text{R\$\,5.466,77} + \text{R\$\,9.655,74} =\) **`R$ 15.122,51`**.
+   - O saldo remanescente retido pelo hospital corresponde com exatidão aos 20% do resultado líquido (\(17.536,44 - 15.122,51 = \text{R\$\,2.413,93}\)).
+3. **Parametrização e Versionamento**:
+   - Modelo **Rateio 80% / 20%** configurado como regra ativa padrão na inicialização do serviço.
+   - Storage versionado para `cisa_monthly_store_2026_v13`.
+   - Script cache buster atualizado para `app.js?v=20260922_15`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Consolidação das Despesas em 3 Linhas na Tabela de Regra de Negociação
 
 ### 🎯 O que foi feito:

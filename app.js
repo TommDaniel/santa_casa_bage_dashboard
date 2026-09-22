@@ -2607,7 +2607,7 @@ window.cisaSelectedMonth = window.cisaSelectedMonth || '08';
 function getCisaMonthlyStore(monthId) {
   if (!window.cisaMonthlyStore) {
     try {
-      const saved = localStorage.getItem('cisa_monthly_store_2026_v12');
+      const saved = localStorage.getItem('cisa_monthly_store_2026_v13');
       if (saved) window.cisaMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.cisaMonthlyStore || typeof window.cisaMonthlyStore !== 'object') {
@@ -2637,7 +2637,7 @@ function getCisaMonthlyStore(monthId) {
     window.cisaMonthlyStore[monthId] = {
       procs: JSON.parse(JSON.stringify(baseProcs)),
       custos: JSON.parse(JSON.stringify(baseCustos)),
-      regraAtiva: 'margem50'
+      regraAtiva: 'rateio8020'
     };
   }
 
@@ -2647,7 +2647,7 @@ function getCisaMonthlyStore(monthId) {
 function saveCisaMonthlyStore() {
   try {
     if (window.cisaMonthlyStore) {
-      localStorage.setItem('cisa_monthly_store_2026_v12', JSON.stringify(window.cisaMonthlyStore));
+      localStorage.setItem('cisa_monthly_store_2026_v13', JSON.stringify(window.cisaMonthlyStore));
     }
   } catch (e) {}
 }
@@ -2675,7 +2675,7 @@ function renderCisaViabilidade(key) {
   const state = window.activeCisaSim;
   state.procs = monthData.procs;
   state.custos = monthData.custos;
-  state.regraAtiva = monthData.regraAtiva || 'margem50';
+  state.regraAtiva = monthData.regraAtiva || 'rateio8020';
   const isTodas = (key === 'todas');
 
   container.innerHTML = `
@@ -3036,23 +3036,23 @@ function renderCisaViabilidade(key) {
             <!-- Grade de Regras -->
             <div class="cisa-rule-grid" role="group" aria-label="Regra de negociação">
               <!-- 1. 50% Margem Hospitalar -->
-              <button type="button" class="cisa-rule-card" data-rule="margem50" aria-pressed="true">
+              <button type="button" class="cisa-rule-card" data-rule="margem50" aria-pressed="false">
                 <div class="cisa-rule-head">
                   <span class="cisa-rule-dot"></span>
                   <span class="cisa-rule-name">50% Margem Hospitalar</span>
                 </div>
-                <div class="cisa-rule-desc">O hospital retém metade do valor SIGTAP de cada procedimento; a outra metade remunera a equipe executora.</div>
-                <div class="cisa-rule-formula">custo = SIGTAP × 50%</div>
+                <div class="cisa-rule-desc">O hospital retém metade do valor de cada procedimento; a outra metade remunera a equipe executora.</div>
+                <div class="cisa-rule-formula">custo = Receita × 50%</div>
               </button>
 
               <!-- 2. Rateio 80% / 20% -->
-              <button type="button" class="cisa-rule-card" data-rule="rateio8020" aria-pressed="false">
+              <button type="button" class="cisa-rule-card" data-rule="rateio8020" aria-pressed="true">
                 <div class="cisa-rule-head">
                   <span class="cisa-rule-dot"></span>
                   <span class="cisa-rule-name">Rateio 80% / 20%</span>
                 </div>
-                <div class="cisa-rule-desc">Oitenta por cento do valor SIGTAP vai para a equipe e vinte permanecem com o hospital, que arca com estrutura e insumos.</div>
-                <div class="cisa-rule-formula">custo = SIGTAP × 80%</div>
+                <div class="cisa-rule-desc">Oitenta por cento do saldo líquido remunera a equipe médica e vinte por cento permanecem com o hospital.</div>
+                <div class="cisa-rule-formula">repasse médico = saldo líquido × 80%</div>
               </button>
 
               <!-- 3. Nova Regra Personalizada -->
@@ -3066,7 +3066,7 @@ function renderCisaViabilidade(key) {
 
             <!-- Nota Explicativa da Regra -->
             <div class="cisa-rule-note" id="cisaRuleNote">
-              <strong>50% Margem Hospitalar.</strong> O hospital retém metade do valor SIGTAP de cada procedimento; a outra metade remunera a equipe executora.
+              <strong>Rateio 80% / 20%.</strong> Oitenta por cento do saldo líquido remunera a equipe médica e vinte por cento permanecem com o hospital.
             </div>
           </div>
 
@@ -3111,6 +3111,11 @@ function renderCisaViabilidade(key) {
                 <span class="cisa-k">Despesas de Pessoal</span><span class="cisa-v" id="cisaDPessoal" style="color: #dc2626; font-weight: 700;">—</span>
                 <span class="cisa-k">Sistema Hospitalar TASY</span><span class="cisa-v" id="cisaDTasy" style="color: #dc2626; font-weight: 700;">—</span>
                 <span class="cisa-k">Manutenção e infra predial (tx de sala)</span><span class="cisa-v" id="cisaDInfra" style="color: #dc2626; font-weight: 700;">—</span>
+                <div id="cisaBlockRateio80" style="display: contents;">
+                  <span class="cisa-sep" style="grid-column: 1 / -1; margin: 4px 0; border-top: 1px dashed #cbd5e1;"></span>
+                  <span class="cisa-k" style="font-weight: 700; color: var(--text-title);">Subtotal das Despesas</span><span class="cisa-v" id="cisaDSubtotal" style="color: #dc2626; font-weight: 700;">—</span>
+                  <span class="cisa-k" style="font-weight: 700; color: #b91c1c;">Rateio 80% Médico</span><span class="cisa-v" id="cisaDRateioMed" style="color: #dc2626; font-weight: 700;">—</span>
+                </div>
               </div>
               <div class="cisa-res" style="margin-top: auto;">
                 <span class="cisa-lb">TOTAL DA DESPESA</span>
@@ -3924,10 +3929,30 @@ function initCisaInteractiveSimulation(currentKey) {
     const elDInfra = root.querySelector('#cisaDInfra');
     if (elDInfra) elDInfra.textContent = BRL.format(despInfra);
 
+    // Rateio 80/20 do saldo total que sobrou (Receita Total - Subtotal de Despesas Operacionais)
+    const saldoTotalSobrou = Math.max(0, totRec - totFix);
+    const rateioMed80 = saldoTotalSobrou * 0.80;
+
+    const elBlockRateio = root.querySelector('#cisaBlockRateio80');
+    const elDSubtotal = root.querySelector('#cisaDSubtotal');
+    const elDRateioMed = root.querySelector('#cisaDRateioMed');
     const elPRes = root.querySelector('#cisaPRes2');
-    if (elPRes) {
-      elPRes.textContent = BRL.format(totFix);
-      elPRes.style.color = '#dc2626';
+
+    if (activeRule === 'rateio8020') {
+      if (elBlockRateio) elBlockRateio.style.display = 'contents';
+      if (elDSubtotal) elDSubtotal.textContent = BRL.format(totFix);
+      if (elDRateioMed) elDRateioMed.textContent = BRL.format(rateioMed80);
+      if (elPRes) {
+        const totalDespesa8020 = totFix + rateioMed80;
+        elPRes.textContent = BRL.format(totalDespesa8020);
+        elPRes.style.color = '#dc2626';
+      }
+    } else {
+      if (elBlockRateio) elBlockRateio.style.display = 'none';
+      if (elPRes) {
+        elPRes.textContent = BRL.format(totFix);
+        elPRes.style.color = '#dc2626';
+      }
     }
 
     // Se for TODAS ESPECIALIDADES, preenche também o Quadro de Consolidação por Especialidade
@@ -4144,16 +4169,16 @@ function initCisaInteractiveSimulation(currentKey) {
   const cisaRegras = {
     margem50: {
       nome: '50% Margem Hospitalar',
-      nota: 'O hospital retém metade do valor SIGTAP de cada procedimento; a outra metade remunera a equipe executora.'
+      nota: 'O hospital retém metade do valor de cada procedimento; a outra metade remunera a equipe executora.'
     },
     rateio8020: {
       nome: 'Rateio 80% / 20%',
-      nota: 'Oitenta por cento do valor SIGTAP vai para a equipe e vinte permanecem com o hospital, que arca com estrutura e insumos.'
+      nota: 'Oitenta por cento do saldo líquido remunera a equipe médica e vinte por cento permanecem com o hospital.'
     }
   };
 
   if (!state.regraAtiva || !cisaRegras[state.regraAtiva]) {
-    state.regraAtiva = 'margem50';
+    state.regraAtiva = 'rateio8020';
   }
 
   const ruleCards = root.querySelectorAll('.cisa-rule-card[data-rule]');
