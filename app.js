@@ -2386,43 +2386,43 @@ window.renderCisaServico = renderCisaServico;
 window.cisaSimState = {
   procs: [
     // 01 · Consultas especializadas
-    { especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '00483', desc: 'Consulta especializada em oftalmologia (c/ mapeam. + tonome)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '00483', desc: 'Consulta especializada em oftalmologia (c/ mapeam. + tonome)', qtd: 0, val: null, prestador: 'Dr. Christian Pretto' },
 
     // 11 · Diagnóstico em oftalmologia
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', qtd: 1, val: 64.24, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', qtd: 0, val: 64.24, prestador: 'Dr. Christian Pretto' },
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', qtd: 2, val: 64.24, prestador: 'Dr. Heron Gomes Correia' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', qtd: 1, val: 64.24, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', qtd: 40, val: 64.24, prestador: 'Dr. Christian Pretto' },
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', qtd: 4, val: 64.24, prestador: 'Dr. Heron Gomes Correia' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00258', desc: 'Ultra-sonografia de globo ocular / órbita (01 olho)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00258', desc: 'Ultra-sonografia de globo ocular / órbita (01 olho)', qtd: 4, val: 71.95, prestador: 'Dr. Christian Pretto' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00260', desc: 'Gonioscopia', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00260', desc: 'Gonioscopia', qtd: 2, val: 45.42, prestador: 'Dr. Christian Pretto' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00261', desc: 'Mapeamento de retina (01 olho)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00261', desc: 'Mapeamento de retina (01 olho)', qtd: 0, val: null, prestador: 'Dr. Christian Pretto' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', qtd: 1, val: 149.09, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', qtd: 50, val: 149.09, prestador: 'Dr. Christian Pretto' },
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', qtd: 6, val: 149.09, prestador: 'Dr. Heron Gomes Correia' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00263', desc: 'Paquimetria ultrassônica (01 olho)', qtd: 1, val: 40.40, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00263', desc: 'Paquimetria ultrassônica (01 olho)', qtd: 6, val: 40.40, prestador: 'Dr. Christian Pretto' },
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00263', desc: 'Paquimetria ultrassônica (01 olho)', qtd: 2, val: 40.40, prestador: 'Dr. Heron Gomes Correia' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00264', desc: 'Retinografia colorida binocular (02 olhos)', qtd: 1, val: 71.95, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00264', desc: 'Retinografia colorida binocular (02 olhos)', qtd: 19, val: 71.95, prestador: 'Dr. Christian Pretto' },
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00264', desc: 'Retinografia colorida binocular (02 olhos)', qtd: 3, val: 71.95, prestador: 'Dr. Heron Gomes Correia' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00266', desc: 'Tonometria (01 olho)', qtd: 1, val: 14.21, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00266', desc: 'Tonometria (01 olho)', qtd: 8, val: 14.21, prestador: 'Dr. Christian Pretto' },
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00266', desc: 'Tonometria (01 olho)', qtd: 4, val: 14.21, prestador: 'Dr. Heron Gomes Correia' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', qtd: 1, val: 64.24, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', qtd: 8, val: 64.24, prestador: 'Dr. Christian Pretto' },
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', qtd: 2, val: 64.24, prestador: 'Dr. Heron Gomes Correia' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00269', desc: 'Fundoscopia', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00269', desc: 'Fundoscopia', qtd: 0, val: null, prestador: 'Dr. Christian Pretto' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00543', desc: 'Potencial de acuidade visual', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00543', desc: 'Potencial de acuidade visual', qtd: 0, val: null, prestador: 'Dr. Christian Pretto' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00593', desc: 'Retirada de corpo estranho do olho (hon/sala/mat)', qtd: 1, val: null, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00593', desc: 'Retirada de corpo estranho do olho (hon/sala/mat)', qtd: 0, val: null, prestador: 'Dr. Christian Pretto' },
 
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', qtd: 1, val: 313.47, prestador: 'Dr. Christian Pretto' },
+    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', qtd: 8, val: 313.47, prestador: 'Dr. Christian Pretto' },
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', qtd: 2, val: 313.47, prestador: 'Dr. Heron Gomes Correia' }
   ],
   custos: [
@@ -2592,7 +2592,7 @@ window.cisaSelectedMonth = window.cisaSelectedMonth || '08';
 function getCisaMonthlyStore(monthId) {
   if (!window.cisaMonthlyStore) {
     try {
-      const saved = localStorage.getItem('cisa_monthly_store_2026_v6');
+      const saved = localStorage.getItem('cisa_monthly_store_2026_v7');
       if (saved) window.cisaMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.cisaMonthlyStore || typeof window.cisaMonthlyStore !== 'object') {
@@ -2609,7 +2609,7 @@ function getCisaMonthlyStore(monthId) {
     // Os demais meses iniciam zerados (quantidades = 0), permitindo lançamentos mensais sob demanda.
     const baseProcs = window.cisaSimState.procs.map(p => ({
       ...p,
-      qtd: isAgosto ? ((p.qtd !== undefined && p.qtd !== null) ? p.qtd : 1) : 0,
+      qtd: isAgosto ? ((p.qtd !== undefined && p.qtd !== null) ? p.qtd : 0) : 0,
       prestador: p.prestador || 'Dr. Christian Pretto'
     }));
 
@@ -2631,7 +2631,7 @@ function getCisaMonthlyStore(monthId) {
 function saveCisaMonthlyStore() {
   try {
     if (window.cisaMonthlyStore) {
-      localStorage.setItem('cisa_monthly_store_2026_v6', JSON.stringify(window.cisaMonthlyStore));
+      localStorage.setItem('cisa_monthly_store_2026_v7', JSON.stringify(window.cisaMonthlyStore));
     }
   } catch (e) {}
 }

@@ -4,6 +4,34 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Lançamento da Produção Real do Dr. Christian Pretto & Consolidação Oftalmo Agosto/26
+
+### 🎯 O que foi feito:
+1. **Lançamento da Produção Real do Dr. Christian Pretto (Agosto/26)**:
+   - Inseridos os 9 exames diagnósticos realizados pelo **Dr. Christian Pretto** com quantidades e valores reais informados:
+     - *Tonometria (01 olho)*: 8 exames (R$ 113,68)
+     - *Paquimetria Ultrassônica (01 olho)*: 6 exames (R$ 242,40)
+     - *Retinografia Colorida Binocular (02 olhos)*: 19 exames (R$ 1.367,05)
+     - *Tomografia de Coerência Óptica (ambos os olhos)*: 8 exames (R$ 2.507,76)
+     - *Biometria Ultrassônica (01 olho)*: 40 exames (R$ 2.569,60)
+     - *Microscopia Especular de Córnea (01 olho)*: 50 exames (R$ 7.454,50)
+     - *Ultra-sonografia de Globo Ocular / Órbita (01 olho)*: 4 exames (R$ 287,80)
+     - *Topografia Computadorizada de Córnea (01 olho)*: 8 exames (R$ 513,92)
+     - *Gonioscopia*: 2 exames (R$ 90,84)
+   - **Total Produzido pelo Dr. Christian Pretto**: 145 exames, somando **R$ 15.147,55**.
+2. **Novos Procedimentos Cotados Identificados na Produção Real**:
+   - `00258` Ultra-sonografia de globo ocular / órbita: valor unitário pactuado de **R$ 71,95** (status atualizado para Cotado).
+   - `00260` Gonioscopia: valor unitário pactuado de **R$ 45,42** (status atualizado para Cotado).
+   - O contrato agora possui 10 procedimentos com valores unitários cotados definidos.
+3. **Consolidação Total Oftalmologia - Agosto/2026**:
+   - **Exames Totais Realizados**: 170 exames (145 Dr. Christian + 25 Dr. Heron).
+   - **Faturamento Bruto Consolidado CISA**: **R$ 17.536,44** (R$ 15.147,55 + R$ 2.388,89).
+   - Subtotais por prestador destacados de forma transparente no rodapé da tabela e cards do painel sincronizados.
+4. **Atualização de Cache e Store**:
+   - Store atualizado para `cisa_monthly_store_2026_v7` e cache buster para `app.js?v=20260922_04`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Lançamento da Produção Real do Dr. Heron Gomes Correia & Linhas Consecutivas por Médico
 
 ### 🎯 O que foi feito:
