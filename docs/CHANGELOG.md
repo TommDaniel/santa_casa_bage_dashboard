@@ -4,6 +4,29 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Implementação do Rateio de Custos Operacionais Ambulatoriais
+
+### 🎯 O que foi feito:
+1. **Reformulação da Tabela de Despesas ("Rateio de Custos Operacionais Ambulatoriais")**:
+   - Título atualizado para **"Rateio de Custos Operacionais Ambulatoriais"** e subtítulo explicitando que os custos operacionais e de apoio são rateados proporcionalmente entre os ambulatórios de especialidades que compartilham a estrutura física e operacional.
+   - **Nova Coluna de "Rateio (%)"**: Inserida à esquerda da coluna de Quantidade, permitindo ajustar interativamente o percentual de apropriação do recurso para o ambulatório de Oftalmologia (\(\text{Total} = \text{Qtd} \times \text{Valor Unitário} \times \frac{\text{Rateio \%}}{100}\)).
+2. **Atualização dos Itens e Recursos Operacionais (Competência Agosto/2026)**:
+   - *Médicos Oftalmologistas Cirurgiões com RQE (por produção)*: Qtd = 2, Valor = R$ 0,00 (Total = R$ 0,00), visto que a remuneração médica se dá pela divisão do resultado financeiro apurado da produção.
+   - *Enfermeiro(a) / Ambulatório Especializado*: Qtd = 0, Valor = R$ 0,00 (Total = R$ 0,00).
+   - *Técnicos de Enfermagem (Triagem/Suporte Ambulatorial)*: Qtd = 1, Valor = R$ 4.200,00, Rateio = 50% (Total = R$ 2.100,00).
+   - *Recepcionista / Apoio Central de Regulação CISA*: Qtd = 1, Valor = R$ 2.500,00, Rateio = 30% (Total = R$ 750,00).
+   - *Faturamento / Central de Regulação (GERCON)*: Qtd = 1, Valor = R$ 2.500,00, Rateio = 30% (Total = R$ 750,00).
+   - *Manutenção Sistemas Hospitalares e Infra Predial*: Qtd = 1, Valor = R$ 3.000,00, Rateio = 10% (Total = R$ 300,00).
+3. **Consolidação dos Resultados Econômico-Financeiros do Ambulatório**:
+   - **Custo Operacional Fixo Rateado**: Reduzido de R$ 39.072,86 para **R$ 3.900,00/mês**.
+   - **Receita Mensal Faturada CISA**: **R$ 17.536,44**.
+   - **Superávit Operacional Líquido**: **+ R$ 13.636,44/mês** (Margem Líquida altamente superavitária de **77,8%** e Break-Even de **22,2%**).
+   - Atualizados os cards de topo com os novos valores para Agosto/2026, mantendo os demais meses em branco.
+4. **Versionamento e Armazenamento**:
+   - Store atualizado para `cisa_monthly_store_2026_v9` e cache buster para `app.js?v=20260922_06`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Remoção dos Procedimentos Não Realizados (Qtd = 0) na Competência de Agosto/26
 
 ### 🎯 O que foi feito:

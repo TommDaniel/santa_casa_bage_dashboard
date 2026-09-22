@@ -2438,11 +2438,12 @@ window.cisaSimState = {
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', qtd: 2, val: 313.47, prestador: 'Dr. Heron Gomes Correia' }
   ],
   custos: [
-    { especialidade: 'Oftalmologia', item: 'Médicos Oftalmologistas Cirurgiões com RQE (2 prof. 20h cada)', qtd: 2, val: 12000.00 },
-    { especialidade: 'Oftalmologia', item: 'Enfermeiro(a) Centro Cirúrgico / Ambulatório Especializado', qtd: 1, val: 4200.00 },
-    { especialidade: 'Oftalmologia', item: 'Técnicos de Enfermagem (Ambulatório / Centro Cirúrgico)', qtd: 2, val: 3086.43 },
-    { especialidade: 'Oftalmologia', item: 'Recepcionista / Apoio Central de Regulação CISA', qtd: 1, val: 2200.00 },
-    { especialidade: 'Oftalmologia', item: 'Manutenção preventiva e calibração de equipamentos oftálmicos', qtd: 1, val: 2500.00 }
+    { especialidade: 'Oftalmologia', item: 'Médicos Oftalmologistas Cirurgiões com RQE (por produção)', rateio: 100, qtd: 2, val: 0.00 },
+    { especialidade: 'Oftalmologia', item: 'Enfermeiro(a) / Ambulatório Especializado', rateio: 100, qtd: 0, val: 0.00 },
+    { especialidade: 'Oftalmologia', item: 'Técnicos de Enfermagem (Triagem/Suporte Ambulatorial)', rateio: 50, qtd: 1, val: 4200.00 },
+    { especialidade: 'Oftalmologia', item: 'Recepcionista / Apoio Central de Regulação CISA', rateio: 30, qtd: 1, val: 2500.00 },
+    { especialidade: 'Oftalmologia', item: 'Faturamento / Central de Regulação (GERCON)', rateio: 30, qtd: 1, val: 2500.00 },
+    { especialidade: 'Oftalmologia', item: 'Manutenção Sistemas Hospitalares e Infra Predial', rateio: 10, qtd: 1, val: 3000.00 }
   ]
 };
 
@@ -2604,7 +2605,7 @@ window.cisaSelectedMonth = window.cisaSelectedMonth || '08';
 function getCisaMonthlyStore(monthId) {
   if (!window.cisaMonthlyStore) {
     try {
-      const saved = localStorage.getItem('cisa_monthly_store_2026_v8');
+      const saved = localStorage.getItem('cisa_monthly_store_2026_v9');
       if (saved) window.cisaMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.cisaMonthlyStore || typeof window.cisaMonthlyStore !== 'object') {
@@ -2627,7 +2628,8 @@ function getCisaMonthlyStore(monthId) {
 
     const baseCustos = window.cisaSimState.custos.map(c => ({
       ...c,
-      qtd: isAgosto ? ((c.qtd !== undefined && c.qtd !== null) ? c.qtd : 1) : 0
+      rateio: (c.rateio !== undefined && c.rateio !== null) ? c.rateio : 100,
+      qtd: isAgosto ? ((c.qtd !== undefined && c.qtd !== null) ? c.qtd : 0) : 0
     }));
 
     window.cisaMonthlyStore[monthId] = {
@@ -2643,7 +2645,7 @@ function getCisaMonthlyStore(monthId) {
 function saveCisaMonthlyStore() {
   try {
     if (window.cisaMonthlyStore) {
-      localStorage.setItem('cisa_monthly_store_2026_v8', JSON.stringify(window.cisaMonthlyStore));
+      localStorage.setItem('cisa_monthly_store_2026_v9', JSON.stringify(window.cisaMonthlyStore));
     }
   } catch (e) {}
 }
@@ -2972,7 +2974,7 @@ function renderCisaViabilidade(key) {
           </div>
         </div>
 
-        <!-- 3.2 TABELA VERMELHA: CUSTOS OPERACIONAIS DO SERVIÇO (LARGURA TOTAL 100% ABAIXO DA VERDE) -->
+        <!-- 3.2 TABELA VERMELHA: RATEIO DE CUSTOS OPERACIONAIS AMBULATORIAIS (LARGURA TOTAL 100% ABAIXO DA VERDE) -->
         <div class="card" style="padding: 1.5rem; width: 100%; box-sizing: border-box;">
           <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
             <div class="card-title-group">
@@ -2981,10 +2983,10 @@ function renderCisaViabilidade(key) {
               </div>
               <div>
                 <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
-                  ${isTodas ? 'Custos Operacionais Globais do Programa CISA (Equipes e Infraestrutura)' : 'Custos Operacionais do Serviço (Equipe e Infraestrutura)'}
+                  ${isTodas ? 'Rateio de Custos Operacionais Ambulatoriais (Todas as Especialidades)' : 'Rateio de Custos Operacionais Ambulatoriais'}
                 </h3>
                 <span style="font-size: 0.82rem; color: var(--text-muted);">
-                  ${isTodas ? 'Dimensionamento global de equipes clínicas com RQE, enfermagem dedicada e apoio para todas as especialidades consorciadas' : 'Dimensionamento de corpo clínico especializado com RQE, enfermagem dedicada e apoio administrativo'}
+                  ${isTodas ? 'Custos operacionais compartilhados e rateados proporcionalmente entre os diversos ambulatórios que dividem a mesma estrutura' : 'Custos operacionais e de apoio rateados proporcionalmente entre os ambulatórios especializados que dividem a mesma estrutura física e operacional'}
                 </span>
               </div>
             </div>
@@ -2995,9 +2997,10 @@ function renderCisaViabilidade(key) {
             <table class="cisa-table-modern">
               <thead>
                 <tr>
-                  <th style="min-width: 420px;">Função / Recurso Operacional</th>
-                  <th style="width: 80px; text-align: center;">Qtd</th>
-                  <th style="width: 140px; text-align: right;">R$ Unitário</th>
+                  <th style="min-width: 380px;">Função / Recurso Operacional</th>
+                  <th style="width: 100px; text-align: center;">Rateio</th>
+                  <th style="width: 75px; text-align: center;">Qtd</th>
+                  <th style="width: 130px; text-align: right;">R$ Unitário</th>
                   <th style="width: 150px; text-align: right;">Total/mês</th>
                   <th style="width: 70px; text-align: center;">Ações</th>
                 </tr>
@@ -3005,8 +3008,8 @@ function renderCisaViabilidade(key) {
               <tbody id="tbCisaCustos"></tbody>
               <tfoot>
                 <tr style="background: rgba(239, 68, 68, 0.05); font-weight: 800; border-top: 2px solid rgba(239, 68, 68, 0.2);">
-                  <td colspan="3" style="padding: 14px 18px; color: #dc2626; font-size: 0.88rem;">
-                    ${isTodas ? 'SUBTOTAL DE CUSTOS OPERACIONAIS FIXOS DO PROGRAMA CISA' : 'SUBTOTAL DE CUSTOS OPERACIONAIS FIXOS DO SERVIÇO'}
+                  <td colspan="4" style="padding: 14px 18px; color: #dc2626; font-size: 0.88rem;">
+                    ${isTodas ? 'SUBTOTAL DE CUSTOS OPERACIONAIS RATEADOS DO PROGRAMA CISA' : 'SUBTOTAL DE CUSTOS OPERACIONAIS RATEADOS DO SERVIÇO'}
                   </td>
                   <td id="totCisaFixo" style="padding: 14px 18px; text-align: right; color: #dc2626; font-size: 1.05rem; font-weight: 800;">
                     R$ 0,00
@@ -3519,6 +3522,9 @@ function initCisaInteractiveSimulation(currentKey) {
       tr.className = 'cisa-row';
 
       const isEditing = (editingCusto === c);
+      const rateioVal = (c.rateio !== undefined && c.rateio !== null && c.rateio !== '') ? parseFloat(c.rateio) : 100;
+      const qVal = (c.qtd !== undefined && c.qtd !== null && c.qtd !== '') ? parseFloat(c.qtd) : 0;
+      const uVal = (c.val !== undefined && c.val !== null && c.val !== '') ? parseFloat(c.val) : 0;
 
       if (isEditing) {
         tr.style.background = 'rgba(239, 68, 68, 0.05)';
@@ -3533,22 +3539,38 @@ function initCisaInteractiveSimulation(currentKey) {
         tdItem.appendChild(inItem);
         tr.appendChild(tdItem);
 
-        // 2. Qtd
+        // 2. Rateio (%)
+        const tdRateio = document.createElement('td');
+        tdRateio.className = 'cisa-cell';
+        tdRateio.style.textAlign = 'center';
+        const inRateio = document.createElement('input');
+        inRateio.type = 'number';
+        inRateio.step = '5';
+        inRateio.min = '0';
+        inRateio.max = '100';
+        inRateio.className = 'cisa-inline-input';
+        inRateio.style.width = '55px';
+        inRateio.style.textAlign = 'center';
+        inRateio.value = rateioVal;
+        tdRateio.appendChild(inRateio);
+        tr.appendChild(tdRateio);
+
+        // 3. Qtd
         const tdQtd = document.createElement('td');
         tdQtd.className = 'cisa-cell';
         tdQtd.style.textAlign = 'center';
         const inQtd = document.createElement('input');
         inQtd.type = 'number';
-        inQtd.step = '0.5';
+        inQtd.step = '1';
         inQtd.min = '0';
         inQtd.className = 'cisa-inline-input';
-        inQtd.style.width = '60px';
+        inQtd.style.width = '55px';
         inQtd.style.textAlign = 'center';
-        inQtd.value = c.qtd;
+        inQtd.value = qVal;
         tdQtd.appendChild(inQtd);
         tr.appendChild(tdQtd);
 
-        // 3. Valor Unitário
+        // 4. Valor Unitário (R$)
         const tdVal = document.createElement('td');
         tdVal.className = 'cisa-cell';
         tdVal.style.textAlign = 'right';
@@ -3557,29 +3579,31 @@ function initCisaInteractiveSimulation(currentKey) {
         inVal.step = '10';
         inVal.min = '0';
         inVal.className = 'cisa-inline-input';
-        inVal.style.width = '110px';
+        inVal.style.width = '105px';
         inVal.style.textAlign = 'right';
-        inVal.value = c.val;
+        inVal.value = uVal;
         tdVal.appendChild(inVal);
         tr.appendChild(tdVal);
 
-        // 4. Total/mês
+        // 5. Total/mês
         const tdTot = document.createElement('td');
         tdTot.className = 'cisa-cell';
         tdTot.style.textAlign = 'right';
         tdTot.style.fontWeight = '800';
         tdTot.style.color = '#dc2626';
         const updateTot = () => {
+          const r = parseFloat(inRateio.value) || 0;
           const q = parseFloat(inQtd.value) || 0;
           const v = parseFloat(inVal.value) || 0;
-          tdTot.textContent = BRL.format(q * v);
+          tdTot.textContent = BRL.format(q * v * (r / 100));
         };
+        inRateio.oninput = updateTot;
         inQtd.oninput = updateTot;
         inVal.oninput = updateTot;
         updateTot();
         tr.appendChild(tdTot);
 
-        // 5. Ações
+        // 6. Ações
         const tdAct = document.createElement('td');
         tdAct.className = 'cisa-cell';
         tdAct.style.textAlign = 'center';
@@ -3598,6 +3622,7 @@ function initCisaInteractiveSimulation(currentKey) {
         `;
         tdAct.querySelector('.btn-cisa-save').onclick = () => {
           c.item = inItem.value.trim();
+          c.rateio = parseFloat(inRateio.value) || 0;
           c.qtd = parseFloat(inQtd.value) || 0;
           c.val = parseFloat(inVal.value) || 0;
           editingCusto = null;
@@ -3627,37 +3652,63 @@ function initCisaInteractiveSimulation(currentKey) {
         tdItem.innerHTML = `<span class="cisa-cell-desc">${c.item}</span>`;
         tr.appendChild(tdItem);
 
-        // 2. Qtd (Lançamento Rápido)
+        // 2. Rateio (%) (Lançamento Rápido)
+        const tdRateio = document.createElement('td');
+        tdRateio.className = 'cisa-cell';
+        tdRateio.style.textAlign = 'center';
+        tdRateio.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: center; gap: 2px;">
+            <input type="number" min="0" max="100" step="5" class="cisa-inline-input cisa-rateio-input" value="${rateioVal}" title="Percentual de rateio para a Oftalmologia" style="width: 50px; text-align: center; font-weight: 700; padding: 3px 4px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title); font-size: 0.85rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">%</span>
+          </div>
+        `;
+        const inRateioQuick = tdRateio.querySelector('.cisa-rateio-input');
+        inRateioQuick.oninput = (e) => {
+          c.rateio = Math.max(0, Math.min(100, parseFloat(e.target.value) || 0));
+          saveCisaMonthlyStore();
+          const curR = c.rateio;
+          const curQ = (c.qtd !== undefined && c.qtd !== null) ? parseFloat(c.qtd) : 0;
+          const curV = (c.val || 0);
+          tdTot.innerHTML = `<strong style="color: #dc2626; font-size: 0.92rem;">${BRL.format(curQ * curV * (curR / 100))}</strong>`;
+          recalc();
+        };
+        tr.appendChild(tdRateio);
+
+        // 3. Qtd (Lançamento Rápido)
         const tdQtd = document.createElement('td');
         tdQtd.className = 'cisa-cell';
         tdQtd.style.textAlign = 'center';
         tdQtd.innerHTML = `
-          <input type="number" min="0" step="0.5" class="cisa-inline-input cisa-qtd-input" value="${c.qtd}" title="Alterar quantidade para este mês" style="width: 58px; text-align: center; font-weight: 700; padding: 3px 5px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title); font-size: 0.85rem;">
+          <input type="number" min="0" step="1" class="cisa-inline-input cisa-qtd-input" value="${qVal}" title="Alterar quantidade para este mês" style="width: 52px; text-align: center; font-weight: 700; padding: 3px 5px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title); font-size: 0.85rem;">
         `;
         const inCustoQtd = tdQtd.querySelector('.cisa-qtd-input');
         inCustoQtd.oninput = (e) => {
           c.qtd = Math.max(0, parseFloat(e.target.value) || 0);
           saveCisaMonthlyStore();
-          tdTot.innerHTML = `<strong style="color: #dc2626; font-size: 0.92rem;">${BRL.format(c.qtd * c.val)}</strong>`;
+          const curR = (c.rateio !== undefined && c.rateio !== null) ? parseFloat(c.rateio) : 100;
+          const curQ = c.qtd;
+          const curV = (c.val || 0);
+          tdTot.innerHTML = `<strong style="color: #dc2626; font-size: 0.92rem;">${BRL.format(curQ * curV * (curR / 100))}</strong>`;
           recalc();
         };
         tr.appendChild(tdQtd);
 
-        // 3. Valor Unitário
+        // 4. Valor Unitário
         const tdVal = document.createElement('td');
         tdVal.className = 'cisa-cell';
         tdVal.style.textAlign = 'right';
-        tdVal.innerHTML = `<span class="cisa-cell-val">${BRL.format(c.val)}</span>`;
+        tdVal.innerHTML = `<span class="cisa-cell-val">${BRL.format(c.val || 0)}</span>`;
         tr.appendChild(tdVal);
 
-        // 4. Total/mês
+        // 5. Total/mês
         const tdTot = document.createElement('td');
         tdTot.className = 'cisa-cell';
         tdTot.style.textAlign = 'right';
-        tdTot.innerHTML = `<strong style="color: #dc2626; font-size: 0.92rem;">${BRL.format(c.qtd * c.val)}</strong>`;
+        const lineVal = qVal * (c.val || 0) * (rateioVal / 100);
+        tdTot.innerHTML = `<strong style="color: #dc2626; font-size: 0.92rem;">${BRL.format(lineVal)}</strong>`;
         tr.appendChild(tdTot);
 
-        // 5. Ação (Editar)
+        // 6. Ação (Editar)
         const tdAct = document.createElement('td');
         tdAct.className = 'cisa-cell';
         tdAct.style.textAlign = 'center';
@@ -3715,7 +3766,8 @@ function initCisaInteractiveSimulation(currentKey) {
     let totFix = 0;
     listCustos.forEach((c) => {
       const q = (c.qtd !== undefined && c.qtd !== null && c.qtd !== '') ? parseFloat(c.qtd) : 0;
-      const totLinha = q * (c.val || 0);
+      const rateioPct = (c.rateio !== undefined && c.rateio !== null && c.rateio !== '') ? parseFloat(c.rateio) : 100;
+      const totLinha = q * (c.val || 0) * (rateioPct / 100);
       totFix += totLinha;
     });
 
@@ -3752,7 +3804,7 @@ function initCisaInteractiveSimulation(currentKey) {
     if (elKpiRes) {
       if (totRec > 0 || despesaTotal > 0) {
         elKpiRes.textContent = (resultadoMensal > 0 ? '+ ' : '') + BRL.format(resultadoMensal);
-        elKpiRes.style.color = resultadoMensal >= 0 ? '#2563eb' : '#dc2626';
+        elKpiRes.style.color = resultadoMensal >= 0 ? '#059669' : '#dc2626';
       } else {
         elKpiRes.textContent = 'R$ 0,00';
         elKpiRes.style.color = 'var(--text-title)';
@@ -3809,7 +3861,8 @@ function initCisaInteractiveSimulation(currentKey) {
       let mCus = 0;
       mCustos.forEach(c => {
         const q = (c.qtd !== undefined && c.qtd !== null && c.qtd !== '') ? parseFloat(c.qtd) : 0;
-        mCus += (q * (c.val || 0));
+        const rateioPct = (c.rateio !== undefined && c.rateio !== null && c.rateio !== '') ? parseFloat(c.rateio) : 100;
+        mCus += (q * (c.val || 0) * (rateioPct / 100));
       });
 
       annualRec += mRec;
@@ -4067,7 +4120,7 @@ function initCisaInteractiveSimulation(currentKey) {
 
   const handleAddCusto = () => {
     const spec = (currentKey && currentKey !== 'todas') ? (SERVICOS_CISA[currentKey]?.nome || 'Oftalmologia') : 'Oftalmologia';
-    const newCusto = { especialidade: spec, item: '', qtd: 1, val: 0 };
+    const newCusto = { especialidade: spec, item: '', rateio: 100, qtd: 1, val: 0 };
     state.custos.unshift(newCusto);
     editingCusto = newCusto;
     saveCisaMonthlyStore();
