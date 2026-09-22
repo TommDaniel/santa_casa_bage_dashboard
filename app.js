@@ -2380,16 +2380,36 @@ window.renderCisaServico = renderCisaServico;
 // ============================================================================
 
 // ============================================================================
-// CONSÓRCIO CISA - PAINEL EXECUTIVO NATIVO (SALA DE SITUAÇÃO / ANTIGRAVITY)
+// CONSÓRCIO CISA - RELAÇÃO OFICIAL CONTRATUAL COMPLETA (15 PROCEDIMENTOS PACTUADOS)
+// ============================================================================
+window.cisaContratoOficialProcs = [
+  // 01 · Consultas especializadas
+  { especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '00483', desc: 'Consulta especializada em oftalmologia (c/ mapeam. + tonome)', val: null },
+
+  // 11 · Diagnóstico em oftalmologia
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', val: 64.24 },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', val: 64.24 },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00258', desc: 'Ultra-sonografia de globo ocular / órbita (01 olho)', val: 71.95 },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00260', desc: 'Gonioscopia', val: 45.42 },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00261', desc: 'Mapeamento de retina (01 olho)', val: null },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', val: 149.09 },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00263', desc: 'Paquimetria ultrassônica (01 olho)', val: 40.40 },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00264', desc: 'Retinografia colorida binocular (02 olhos)', val: 71.95 },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00266', desc: 'Tonometria (01 olho)', val: 14.21 },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', val: 64.24 },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00269', desc: 'Fundoscopia', val: null },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00543', desc: 'Potencial de acuidade visual', val: null },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00593', desc: 'Retirada de corpo estranho do olho (hon/sala/mat)', val: null },
+  { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', val: 313.47 }
+];
+
+// ============================================================================
+// CONSÓRCIO CISA - PAINEL EXECUTIVO NATIVO (PRODUÇÃO REAL APURADA - AGOSTO/2026)
 // ============================================================================
 
 window.cisaSimState = {
   procs: [
-    // 01 · Consultas especializadas
-    { especialidade: 'Oftalmologia', grupo: '01 · Consultas especializadas', cod: '00483', desc: 'Consulta especializada em oftalmologia (c/ mapeam. + tonome)', qtd: 0, val: null, prestador: 'Dr. Christian Pretto' },
-
-    // 11 · Diagnóstico em oftalmologia
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', qtd: 0, val: 64.24, prestador: 'Dr. Christian Pretto' },
+    // 11 · Diagnóstico em oftalmologia (Somente procedimentos efetivamente realizados em Agosto/26)
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00256', desc: 'Campimetria computadorizada (01 olho)', qtd: 2, val: 64.24, prestador: 'Dr. Heron Gomes Correia' },
 
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00257', desc: 'Biometria ultrassônica (01 olho)', qtd: 40, val: 64.24, prestador: 'Dr. Christian Pretto' },
@@ -2398,8 +2418,6 @@ window.cisaSimState = {
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00258', desc: 'Ultra-sonografia de globo ocular / órbita (01 olho)', qtd: 4, val: 71.95, prestador: 'Dr. Christian Pretto' },
 
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00260', desc: 'Gonioscopia', qtd: 2, val: 45.42, prestador: 'Dr. Christian Pretto' },
-
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00261', desc: 'Mapeamento de retina (01 olho)', qtd: 0, val: null, prestador: 'Dr. Christian Pretto' },
 
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', qtd: 50, val: 149.09, prestador: 'Dr. Christian Pretto' },
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00262', desc: 'Microscopia especular de córnea (01 olho)', qtd: 6, val: 149.09, prestador: 'Dr. Heron Gomes Correia' },
@@ -2415,12 +2433,6 @@ window.cisaSimState = {
 
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', qtd: 8, val: 64.24, prestador: 'Dr. Christian Pretto' },
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00267', desc: 'Topografia computadorizada de córnea (01 olho)', qtd: 2, val: 64.24, prestador: 'Dr. Heron Gomes Correia' },
-
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00269', desc: 'Fundoscopia', qtd: 0, val: null, prestador: 'Dr. Christian Pretto' },
-
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00543', desc: 'Potencial de acuidade visual', qtd: 0, val: null, prestador: 'Dr. Christian Pretto' },
-
-    { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00593', desc: 'Retirada de corpo estranho do olho (hon/sala/mat)', qtd: 0, val: null, prestador: 'Dr. Christian Pretto' },
 
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', qtd: 8, val: 313.47, prestador: 'Dr. Christian Pretto' },
     { especialidade: 'Oftalmologia', grupo: '11 · Diagnóstico em oftalmologia', cod: '00870', desc: 'Tomografia de coerência óptica (ambos os olhos)', qtd: 2, val: 313.47, prestador: 'Dr. Heron Gomes Correia' }
@@ -2592,7 +2604,7 @@ window.cisaSelectedMonth = window.cisaSelectedMonth || '08';
 function getCisaMonthlyStore(monthId) {
   if (!window.cisaMonthlyStore) {
     try {
-      const saved = localStorage.getItem('cisa_monthly_store_2026_v7');
+      const saved = localStorage.getItem('cisa_monthly_store_2026_v8');
       if (saved) window.cisaMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.cisaMonthlyStore || typeof window.cisaMonthlyStore !== 'object') {
@@ -2605,7 +2617,7 @@ function getCisaMonthlyStore(monthId) {
   if (!window.cisaMonthlyStore[monthId] || !Array.isArray(window.cisaMonthlyStore[monthId].procs)) {
     const isAgosto = (monthId === '08');
 
-    // Somente Agosto possui produção física e financeira cadastrada inicialmente.
+    // Somente Agosto possui produção física e financeira cadastrada inicialmente (apenas procedimentos realizados).
     // Os demais meses iniciam zerados (quantidades = 0), permitindo lançamentos mensais sob demanda.
     const baseProcs = window.cisaSimState.procs.map(p => ({
       ...p,
@@ -2631,7 +2643,7 @@ function getCisaMonthlyStore(monthId) {
 function saveCisaMonthlyStore() {
   try {
     if (window.cisaMonthlyStore) {
-      localStorage.setItem('cisa_monthly_store_2026_v7', JSON.stringify(window.cisaMonthlyStore));
+      localStorage.setItem('cisa_monthly_store_2026_v8', JSON.stringify(window.cisaMonthlyStore));
     }
   } catch (e) {}
 }
@@ -3178,9 +3190,14 @@ function initCisaInteractiveSimulation(currentKey) {
   }
 
   function getFilteredProcs() {
-    const raw = isTodas
+    let raw = isTodas
       ? state.procs
       : state.procs.filter(p => !p.especialidade || matchSpec(p.especialidade, currentKey));
+
+    // No mês de Agosto/26, exibe exclusivamente os procedimentos efetivamente realizados (quantitativo maior que zero)
+    if (window.cisaSelectedMonth === '08') {
+      raw = raw.filter(p => p.qtd !== undefined && p.qtd !== null && p.qtd !== '' && Number(p.qtd) > 0);
+    }
 
     // Ordena para que o mesmo procedimento realizado por médicos diferentes fique com uma linha abaixo da outra
     return raw.slice().sort((a, b) => {
@@ -4168,7 +4185,7 @@ function renderCisaPortaria(key) {
   const container = document.getElementById('cisaMainContent');
   if (!container) return;
 
-  const allProcs = (window.activeCisaSim && window.activeCisaSim.procs) || window.cisaSimState.procs;
+  const allProcs = window.cisaContratoOficialProcs || (window.activeCisaSim && window.activeCisaSim.procs) || window.cisaSimState.procs;
   const rawProcs = isTodas
     ? allProcs
     : allProcs.filter(p => !p.especialidade || p.especialidade.toLowerCase() === key.toLowerCase());

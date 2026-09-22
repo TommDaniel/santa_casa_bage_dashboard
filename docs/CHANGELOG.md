@@ -4,6 +4,28 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Remoção dos Procedimentos Não Realizados (Qtd = 0) na Competência de Agosto/26
+
+### 🎯 O que foi feito:
+1. **Otimização da Tabela de Produção de Agosto/2026 (Viabilidade CISA)**:
+   - Conforme solicitação da gestão, foram removidos da visualização e do store de **Agosto/2026** todos os procedimentos que não tiveram realização e constavam com quantitativo zerado (`0`):
+     - `00483` - Consulta especializada em oftalmologia (c/ mapeam. + tonome)
+     - `00256` - Campimetria computadorizada (linha zerada do Dr. Christian Pretto; preservada a linha produtiva do Dr. Heron com 2 exames)
+     - `00261` - Mapeamento de retina (01 olho)
+     - `00269` - Fundoscopia
+     - `00543` - Potencial de acuidade visual
+     - `00593` - Retirada de corpo estranho do olho (hon/sala/mat)
+2. **Exibição Focada Exclusivamente na Produção Real Apurada**:
+   - A tabela de produção do mês de agosto agora exibe com exclusividade as **17 linhas de exames efetivamente realizados**, totalizando **170 exames** e faturamento de **R$ 17.536,44**:
+     - **Dr. Christian Pretto**: 9 exames diagnósticos, 145 realizações, R$ 15.147,55
+     - **Dr. Heron Gomes Correia**: 8 exames diagnósticos, 25 realizações, R$ 2.388,89
+3. **Preservação Integral do Catálogo Contratual na Ficha Técnica**:
+   - A relação contratual completa dos **15 procedimentos oficiais pactuados** com o CISA foi separada em `window.cisaContratoOficialProcs`, garantindo que a página de **Ficha Técnica** continue exibindo todos os itens do convênio e seu catálogo de diretrizes clínicas (10 procedimentos cotados com valor médio de R$ 89,92 e 5 a definir).
+4. **Versionamento e Cache**:
+   - Store atualizado para `cisa_monthly_store_2026_v8` e cache buster para `app.js?v=20260922_05`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Lançamento da Produção Real do Dr. Christian Pretto & Consolidação Oftalmo Agosto/26
 
 ### 🎯 O que foi feito:
