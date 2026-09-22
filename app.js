@@ -3092,53 +3092,29 @@ function renderCisaViabilidade(key) {
           <!-- Split: 2 Colunas (Receitas vs Despesas) -->
           <div class="cisa-split" id="cisaSplitBox">
             <!-- Coluna RECEITAS -->
-            <div class="cisa-side cisa-hosp">
+            <div class="cisa-side cisa-hosp" style="display: flex; flex-direction: column;">
               <h3><span class="cisa-sq" style="background: #2563eb;"></span>■ RECEITAS</h3>
               <div class="cisa-kv" id="cisaHStream">
                 <span class="cisa-k">Incentivo ASSISTIR</span><span class="cisa-v" id="cisaHInc">R$&nbsp;0,00</span>
                 <span class="cisa-k">Produção Tabela CISA</span><span class="cisa-v" id="cisaHProd" style="color: #2563eb; font-weight: 700;">—</span>
               </div>
-              <div class="cisa-kv" id="cisaHMin" style="display: none;">
-                <span class="cisa-sep"></span>
-                <span class="cisa-k cisa-tot">Resultado da operação</span><span class="cisa-v cisa-tot" id="cisaHLiqM">—</span>
-                <span class="cisa-k">Mínimo garantido ao prestador</span><span class="cisa-v" id="cisaHMinV">—</span>
-                <span class="cisa-k cisa-tot">Excedente a ratear</span><span class="cisa-v cisa-tot" id="cisaHExc">—</span>
-                <span class="cisa-k">Participação no excedente</span><span class="cisa-v" id="cisaHPctM">—</span>
-              </div>
-              <div class="cisa-kv" id="cisaHPool" style="display: none;">
-                <span class="cisa-sep"></span>
-                <span class="cisa-k cisa-tot">Resultado da operação</span><span class="cisa-v cisa-tot" id="cisaHLiq">—</span>
-                <span class="cisa-k cisa-tot">Participação — taxa de administração</span><span class="cisa-v" id="cisaHPct">—</span>
-              </div>
-              <div class="cisa-res">
+              <div class="cisa-res" style="margin-top: auto;">
                 <span class="cisa-lb">RESULTADO MENSAL</span>
                 <span class="cisa-vl" id="cisaHRes" style="color: #10b981;">—</span>
               </div>
             </div>
 
             <!-- Coluna DESPESAS -->
-            <div class="cisa-side cisa-pres">
-              <h3><span class="cisa-sq"></span>■ DESPESAS</h3>
+            <div class="cisa-side cisa-pres" style="display: flex; flex-direction: column;">
+              <h3><span class="cisa-sq" style="background: #dc2626;"></span>■ DESPESAS</h3>
               <div class="cisa-kv" id="cisaPStream">
-                <span class="cisa-k">Incentivo ASSISTIR</span><span class="cisa-v" id="cisaPIncV">—</span>
-                <span class="cisa-k">Produção SIGTAP</span><span class="cisa-v" id="cisaPProdV">—</span>
-                <span class="cisa-k">Exames Linha de Cuidado</span><span class="cisa-v" id="cisaPCusVar">—</span>
-                <span class="cisa-k">Custos de Produção/Fixos</span><span class="cisa-v" id="cisaPCusFix">—</span>
+                <span class="cisa-k">Despesas de Pessoal</span><span class="cisa-v" id="cisaDPessoal" style="color: #dc2626; font-weight: 700;">—</span>
+                <span class="cisa-k">Sistema Hospitalar TASY</span><span class="cisa-v" id="cisaDTasy" style="color: #dc2626; font-weight: 700;">—</span>
+                <span class="cisa-k">Manutenção e infra predial (tx de sala)</span><span class="cisa-v" id="cisaDInfra" style="color: #dc2626; font-weight: 700;">—</span>
               </div>
-              <div class="cisa-kv" id="cisaPMin" style="display: none;">
-                <span class="cisa-k">Mínimo garantido</span><span class="cisa-v" id="cisaPMinV">—</span>
-                <span class="cisa-k">Excedente a ratear</span><span class="cisa-v" id="cisaPExcBase">—</span>
-                <span class="cisa-k">Participação no excedente</span><span class="cisa-v" id="cisaPPctM">—</span>
-                <span class="cisa-sep"></span>
-                <span class="cisa-k cisa-tot">PARCELA VARIÁVEL</span><span class="cisa-v cisa-tot" id="cisaPExcV">—</span>
-              </div>
-              <div class="cisa-kv" id="cisaPPool" style="display: none;">
-                <span class="cisa-k">Resultado da operação</span><span class="cisa-v" id="cisaPLiq">—</span>
-                <span class="cisa-k cisa-tot">PARTICIPAÇÃO — OPERAÇÃO DO SERVIÇO</span><span class="cisa-v" id="cisaPPct">—</span>
-              </div>
-              <div class="cisa-res">
-                <span class="cisa-lb">RESULTADO MENSAL</span>
-                <span class="cisa-vl" id="cisaPRes2">—</span>
+              <div class="cisa-res" style="margin-top: auto;">
+                <span class="cisa-lb">TOTAL DA DESPESA</span>
+                <span class="cisa-vl" id="cisaPRes2" style="color: #dc2626;">—</span>
               </div>
             </div>
           </div>
@@ -3759,11 +3735,24 @@ function initCisaInteractiveSimulation(currentKey) {
     });
 
     let totFix = 0;
+    let despPessoal = 0;
+    let despTasy = 0;
+    let despInfra = 0;
+
     listCustos.forEach((c) => {
       const q = (c.qtd !== undefined && c.qtd !== null && c.qtd !== '') ? parseFloat(c.qtd) : 0;
       const rateioPct = (c.rateio !== undefined && c.rateio !== null && c.rateio !== '') ? parseFloat(c.rateio) : 100;
       const totLinha = q * (c.val || 0) * (rateioPct / 100);
       totFix += totLinha;
+
+      const itemLower = (c.item || '').toLowerCase();
+      if (itemLower.includes('tasy')) {
+        despTasy += totLinha;
+      } else if (itemLower.includes('infra') || itemLower.includes('predial') || itemLower.includes('luz') || itemLower.includes('sala')) {
+        despInfra += totLinha;
+      } else {
+        despPessoal += totLinha;
+      }
     });
 
     const despesaTotal = totFix;
@@ -3925,13 +3914,20 @@ function initCisaInteractiveSimulation(currentKey) {
       elHRes.style.color = '#10b981';
     }
 
-    // Prestador
-    const elPProd = root.querySelector('#cisaPProdV');
-    if (elPProd) elPProd.textContent = BRL.format(presProd);
+    // Coluna DESPESAS (Consolidação em 3 Linhas do Programa CISA)
+    const elDPessoal = root.querySelector('#cisaDPessoal');
+    if (elDPessoal) elDPessoal.textContent = BRL.format(despPessoal);
+
+    const elDTasy = root.querySelector('#cisaDTasy');
+    if (elDTasy) elDTasy.textContent = BRL.format(despTasy);
+
+    const elDInfra = root.querySelector('#cisaDInfra');
+    if (elDInfra) elDInfra.textContent = BRL.format(despInfra);
+
     const elPRes = root.querySelector('#cisaPRes2');
     if (elPRes) {
-      elPRes.textContent = (presRes > 0 ? '+ ' : '') + BRL.format(presRes);
-      elPRes.style.color = presRes >= 0 ? '#10b981' : '#dc2626';
+      elPRes.textContent = BRL.format(totFix);
+      elPRes.style.color = '#dc2626';
     }
 
     // Se for TODAS ESPECIALIDADES, preenche também o Quadro de Consolidação por Especialidade

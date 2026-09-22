@@ -5542,7 +5542,7 @@ body.dark-mode .cisa-pool {
 
 .cisa-split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   border-top: 1px solid #e2e8f0;
 }
 
@@ -5558,6 +5558,8 @@ body.dark-mode .cisa-split {
 
 .cisa-side {
   padding: 18px 22px;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .cisa-side + .cisa-side {
@@ -5620,7 +5622,7 @@ body.dark-mode .cisa-hosp .cisa-sq {
 
 .cisa-kv {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 6px 12px;
   font-size: 0.82rem;
   color: #475569;
@@ -5632,6 +5634,7 @@ body.dark-mode .cisa-kv {
 
 .cisa-k {
   color: #64748b;
+  word-break: break-word;
 }
 
 body.dark-mode .cisa-k {
@@ -5643,6 +5646,7 @@ body.dark-mode .cisa-k {
   font-family: monospace;
   font-weight: 600;
   color: var(--text-title);
+  white-space: nowrap;
 }
 
 .cisa-sep {

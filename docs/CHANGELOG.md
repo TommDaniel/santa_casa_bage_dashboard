@@ -4,6 +4,27 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-22] - Módulo CISA: Consolidação das Despesas em 3 Linhas na Tabela de Regra de Negociação
+
+### 🎯 O que foi feito:
+1. **Reestruturação da Coluna "■ DESPESAS"**:
+   - As despesas foram consolidadas dinamicamente em 3 linhas operacionais principais:
+     1. **Despesas de Pessoal**: Consolida médicos, enfermagem, técnicos, recepção, supervisão de regulação e apoio de faturamento (\(1.706,55 + 1.122,29 + 527,81 + 680,85 + 319,27 =\) **`R$ 4.356,77/mês`**).
+     2. **Sistema Hospitalar TASY**: Linha dedicada à manutenção do software de gestão hospitalar (\(5.100,00 \times 10\% =\) **`R$ 510,00/mês`**).
+     3. **Manutenção e infra predial (tx de sala)**: Linha dedicada a utilidades e infraestrutura física (\(20.000,00 \times 3\% =\) **`R$ 600,00/mês`**).
+2. **Atualização do Rodapé / Total da Despesa**:
+   - Totalizador atualizado para **"TOTAL DA DESPESA"** exibindo com destaque em vermelho o valor total rateado de **`R$ 5.466,77`**.
+   - Integração com a faixa superior (Dark Pool):
+     - Receita Total: **`R$ 17.536,44`**
+     - Despesa Total: **`R$ 5.466,77`**
+     - Resultado a Ratear: **`+ R$ 12.069,67`**
+3. **Ajustes de Layout e Responsividade**:
+   - Configurado `minmax(0, 1fr)` no grid de layout do painel CISA e `.cisa-split` para evitar expansão indevida e garantir que todos os valores permaneçam 100% visíveis dentro da viewport sem cortes.
+4. **Versionamento**:
+   - Cache buster atualizado para `style.css?v=20260922_14` e `app.js?v=20260922_14`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Atualização dos Custos Operacionais com Valores Reais (Médias de Enfermagem, Apoio, Regulação e TASY)
 
 ### 🎯 O que foi feito:
