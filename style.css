@@ -5260,6 +5260,84 @@ body.dark-mode .cisa-row-encargos {
   border-bottom: 2px solid rgba(59, 130, 246, 0.35) !important;
 }
 
+/* Botão de Exportação em PDF do Rateio de Custos */
+.btn-cisa-pdf-export {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.55rem 1.15rem;
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  color: #ffffff;
+  border: 1px solid rgba(5, 150, 105, 0.4);
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+  transition: all 0.2s ease;
+}
+.btn-cisa-pdf-export:hover {
+  background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
+  transform: translateY(-1px);
+}
+.btn-cisa-pdf-export:active {
+  transform: translateY(0);
+}
+
+/* Logo do Hospital Bom Pastor */
+.cisa-hbp-logo-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid rgba(16, 185, 129, 0.35);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  flex-shrink: 0;
+  padding: 2px;
+}
+body.dark-mode .cisa-hbp-logo-wrap {
+  background: #ffffff;
+  border-color: rgba(52, 211, 153, 0.4);
+}
+
+/* Área de Destaque: Versão para Aprovação */
+.cisa-aprovacao-box {
+  margin-top: 1.25rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(217, 119, 6, 0.04) 100%);
+  border: 1.5px dashed rgba(217, 119, 6, 0.45);
+  border-radius: 10px;
+  padding: 1.15rem 1.4rem;
+  transition: all 0.2s ease;
+}
+body.dark-mode .cisa-aprovacao-box {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(217, 119, 6, 0.06) 100%) !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+}
+.cisa-aprovacao-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.18);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+body.dark-mode .cisa-aprovacao-pill {
+  color: #fcd34d !important;
+  background: rgba(245, 158, 11, 0.25) !important;
+  border-color: rgba(252, 211, 77, 0.4) !important;
+}
+
 /* Botões de Ação na Linha */
 .btn-cisa-action {
   background: none;

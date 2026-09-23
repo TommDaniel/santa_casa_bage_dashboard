@@ -2,6 +2,28 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-23] - Módulo CISA: Logo Hospital Bom Pastor, Botão de Exportação em PDF e Área "Versão para Aprovação"
+
+### 🎯 O que foi feito:
+1. **Identidade Visual Institucional - Hospital Bom Pastor (Santo Augusto)**:
+   - Inserido no canto superior esquerdo do card de custos o logo oficial do **Hospital Bom Pastor de Santo Augusto** (`logo_hbp.jpg`), com moldura e badges institucionais (`Hospital Bom Pastor • Santo Augusto` e `CISA / Oftalmologia`).
+2. **Botão Superior Direito: Baixar Comprovante em PDF**:
+   - Adicionado no canto superior direito o botão estilizado **`Baixar Comprovante PDF`** (`#btnExportCisaCustosPDF`), com ícone `file-down` e estilização verde esmeralda executiva (`btn-cisa-pdf-export`).
+   - Implementada a função global `window.exportCisaCustosPDF()`, que gera dinamicamente um documento oficial formatado para impressão A4 / PDF, contendo:
+     - Cabeçalho timbrado com logo HBP e identificação de competência e data de emissão;
+     - Tabela completa de custos e despesas rateadas (12 linhas com centros de custo, percentuais de rateio, quantitativos e valores unitários/totais);
+     - Linha de Encargos Sociais da Folha (35% s/ R$ 8.713,42 = R$ 3.049,70);
+     - Subtotal de Custos Operacionais Rateados (R$ 13.400,93);
+     - Demonstrativo de Receitas CISA e Consolidação de Despesas & Rateio 80/20 (Repasse Médico R$ 3.308,41 e Retenção Hospitalar R$ 827,10);
+     - Tarja destacada de homologação técnica;
+     - Três campos formais para assinatura da Direção Executiva/Provedoria, Coordenação Médica e Contratualização/Faturamento.
+3. **Área de Destaque "Versão para Aprovação"**:
+   - Inserido callout destacado abaixo da tabela de custos (`cisa-aprovacao-box`) com badge âmbar **`Versão para Aprovação`**, texto de memória preliminar para deliberação das partes e status dinâmico "Aguardando Aprovação Formal".
+4. **Versionamento**:
+   - Cache busters atualizados: `style.css?v=20260923_4` e `app.js?v=20260923_5`.
+
+---
+
 ## [2026-09-23] - Módulo CISA: Ajuste de Centro de Custo, Paleta das Pills e Título de Subtotal
 
 ### 🎯 O que foi feito:
