@@ -3508,6 +3508,9 @@ function initCisaInteractiveSimulation(currentKey) {
     } else if (cls === 'Taxa de Sala') {
       icon = 'building';
       slug = 'taxa-de-sala';
+    } else if (cls === 'Encargos') {
+      icon = 'shield-check';
+      slug = 'encargos';
     } else {
       icon = 'users';
       slug = 'pessoal';
@@ -3523,7 +3526,19 @@ function initCisaInteractiveSimulation(currentKey) {
 
     const list = getFilteredCustos();
 
-    list.forEach((c) => {
+    // Calcula total rateado de Pessoal para a linha de Encargos (35%)
+    let folhaPessoalRateada = 0;
+    list.forEach(c => {
+      if (c.classificacao === 'Pessoal') {
+        const r = (c.rateio !== undefined && c.rateio !== null && c.rateio !== '') ? parseFloat(c.rateio) : 100;
+        const q = (c.qtd !== undefined && c.qtd !== null && c.qtd !== '') ? parseFloat(c.qtd) : 0;
+        const v = (c.val || 0);
+        folhaPessoalRateada += (q * v * (r / 100));
+      }
+    });
+    const valEncargos = folhaPessoalRateada * 0.35;
+
+    list.forEach((c, idx) => {
       const tr = document.createElement('tr');
       tr.className = 'cisa-row';
 
@@ -3701,6 +3716,7 @@ function initCisaInteractiveSimulation(currentKey) {
           const curQ = (c.qtd !== undefined && c.qtd !== null) ? parseFloat(c.qtd) : 0;
           const curV = (c.val || 0);
           tdTot.innerHTML = `<strong style="color: #dc2626; font-size: 0.92rem;">${BRL.format(curQ * curV * (curR / 100))}</strong>`;
+          renderCustosTable();
           recalc();
         };
         tr.appendChild(tdRateio);
@@ -3720,6 +3736,7 @@ function initCisaInteractiveSimulation(currentKey) {
           const curQ = c.qtd;
           const curV = (c.val || 0);
           tdTot.innerHTML = `<strong style="color: #dc2626; font-size: 0.92rem;">${BRL.format(curQ * curV * (curR / 100))}</strong>`;
+          renderCustosTable();
           recalc();
         };
         tr.appendChild(tdQtd);
@@ -3756,6 +3773,85 @@ function initCisaInteractiveSimulation(currentKey) {
       }
 
       tb.appendChild(tr);
+
+      // Ao final do bloco de pessoal (após a última linha de Pessoal), insere a linha especial de Encargos da Folha (35%)
+      const isPessoal = (c.classificacao === 'Pessoal');
+      const isLastPessoal = isPessoal && (!list[idx + 1] || list[idx + 1].classificacao !== 'Pessoal');
+      if (isLastPessoal) {
+        const trEnc = document.createElement('tr');
+        trEnc.className = 'cisa-row cisa-row-encargos';
+
+        // 1. Função / Recurso
+        const tdItemEnc = document.createElement('td');
+        tdItemEnc.className = 'cisa-cell';
+        tdItemEnc.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 26px; height: 26px; border-radius: 6px; background: rgba(37, 99, 235, 0.15); color: #1d4ed8; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i data-lucide="calculator" style="width: 14px; height: 14px;"></i>
+            </div>
+            <div>
+              <strong style="color: #1e40af; font-size: 0.88rem;">Encargos da Folha (Provisão 35%)</strong>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">
+                INSS patronal, FGTS, férias e 13º s/ pessoal rateado (Base: ${BRL.format(folhaPessoalRateada)})
+              </div>
+            </div>
+          </div>
+        `;
+        trEnc.appendChild(tdItemEnc);
+
+        // 2. Classificação
+        const tdClassEnc = document.createElement('td');
+        tdClassEnc.className = 'cisa-cell';
+        tdClassEnc.style.textAlign = 'center';
+        tdClassEnc.innerHTML = `<span class="cisa-cat-pill cat-encargos"><i data-lucide="shield-check" style="width: 12px; height: 12px;"></i> Encargos</span>`;
+        trEnc.appendChild(tdClassEnc);
+
+        // 3. Rateio (%)
+        const tdRateioEnc = document.createElement('td');
+        tdRateioEnc.className = 'cisa-cell';
+        tdRateioEnc.style.textAlign = 'center';
+        tdRateioEnc.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: center; gap: 2px;">
+            <span style="font-weight: 800; font-size: 0.85rem; color: #1d4ed8;">35</span>
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">%</span>
+          </div>
+        `;
+        trEnc.appendChild(tdRateioEnc);
+
+        // 4. Qtd
+        const tdQtdEnc = document.createElement('td');
+        tdQtdEnc.className = 'cisa-cell';
+        tdQtdEnc.style.textAlign = 'center';
+        tdQtdEnc.innerHTML = `<span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">—</span>`;
+        trEnc.appendChild(tdQtdEnc);
+
+        // 5. R$ Unitário (Base de Cálculo)
+        const tdValEnc = document.createElement('td');
+        tdValEnc.className = 'cisa-cell';
+        tdValEnc.style.textAlign = 'right';
+        tdValEnc.innerHTML = `<span class="cisa-cell-val" style="color: var(--text-muted); font-size: 0.84rem;">${BRL.format(folhaPessoalRateada)}</span>`;
+        trEnc.appendChild(tdValEnc);
+
+        // 6. Total/mês
+        const tdTotEnc = document.createElement('td');
+        tdTotEnc.className = 'cisa-cell';
+        tdTotEnc.style.textAlign = 'right';
+        tdTotEnc.innerHTML = `<strong style="color: #dc2626; font-size: 0.92rem;">${BRL.format(valEncargos)}</strong>`;
+        trEnc.appendChild(tdTotEnc);
+
+        // 7. Ações
+        const tdActEnc = document.createElement('td');
+        tdActEnc.className = 'cisa-cell';
+        tdActEnc.style.textAlign = 'center';
+        tdActEnc.innerHTML = `
+          <span title="Calculado dinamicamente: 35% sobre a folha rateada de pessoal" style="font-size: 0.72rem; font-weight: 700; color: #2563eb; background: rgba(37, 99, 235, 0.08); padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 3px;">
+            <i data-lucide="sparkles" style="width: 12px; height: 12px;"></i> Auto
+          </span>
+        `;
+        trEnc.appendChild(tdActEnc);
+
+        tb.appendChild(trEnc);
+      }
     });
 
     if (window.lucide && lucide.createIcons) lucide.createIcons();
@@ -3796,6 +3892,7 @@ function initCisaInteractiveSimulation(currentKey) {
 
     let totFix = 0;
     let despPessoal = 0;
+    let folhaPessoal = 0;
     let despTasy = 0;
     let despInfra = 0;
 
@@ -3813,8 +3910,16 @@ function initCisaInteractiveSimulation(currentKey) {
         despInfra += totLinha;
       } else {
         despPessoal += totLinha;
+        if (cls === 'Pessoal') {
+          folhaPessoal += totLinha;
+        }
       }
     });
+
+    // 35% de Encargos da Folha sobre o total rateado de Pessoal
+    const valEncargos = folhaPessoal * 0.35;
+    totFix += valEncargos;
+    despPessoal += valEncargos;
 
     const despesaTotal = totFix;
     const resultadoMensal = totRec - despesaTotal;
@@ -3862,11 +3967,17 @@ function initCisaInteractiveSimulation(currentKey) {
       });
 
       let mCus = 0;
+      let mPessoal = 0;
       mCustos.forEach(c => {
         const q = (c.qtd !== undefined && c.qtd !== null && c.qtd !== '') ? parseFloat(c.qtd) : 0;
         const rateioPct = (c.rateio !== undefined && c.rateio !== null && c.rateio !== '') ? parseFloat(c.rateio) : 100;
-        mCus += (q * (c.val || 0) * (rateioPct / 100));
+        const linha = (q * (c.val || 0) * (rateioPct / 100));
+        mCus += linha;
+        if (c.classificacao === 'Pessoal') {
+          mPessoal += linha;
+        }
       });
+      mCus += (mPessoal * 0.35);
 
       annualRec += mRec;
       annualDesp += mCus;

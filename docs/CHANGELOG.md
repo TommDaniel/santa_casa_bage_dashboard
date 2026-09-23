@@ -4,6 +4,34 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-23] - Módulo CISA: Linha Destacada de Encargos da Folha (35% sobre Pessoal Rateado)
+
+### 🎯 O que foi feito:
+1. **Linha Especial Diferenciada de Encargos**:
+   - Inserida imediatamente após a última linha do grupo de pessoal (`Equipe de Higienização`) e antes de `Material de Almoxarifado` a linha **`Encargos da Folha (Provisão 35%)`**:
+     - Estilização visual destacada com borda tracejada superior, borda sólida inferior e fundo azul suave (`cisa-row-encargos`);
+     - Pill de classificação dedicada **`Encargos`** (`cat-encargos`, ícone `shield-check`);
+     - Base de cálculo automática informada: soma da folha de pessoal rateada (**`R$ 8.713,42`**);
+     - Percentual aplicado: **`35%`**;
+     - Custo rateado mensal calculado dinamicamente: \(8.713,42 \times 35\% =\) **`R$ 3.049,70/mês`**;
+     - Pill de ação indicando cálculo automatizado (`Auto`).
+2. **Atualização do Custo Total Operacional**:
+   - Subtotal das despesas operacionais atualizado de R$ 10.351,23 para **`R$ 13.400,93/mês`**.
+3. **Recálculo da Tabela de Negociação (Rateio 80/20)**:
+   - **Receita Mensal do Programa**: **`R$ 17.536,44`**;
+   - **Despesas de Pessoal Consolidada**: R$ 12.290,93 (pessoal + encargos + almoxarifado);
+   - **Sistema Hospitalar TASY**: R$ 510,00;
+   - **Manutenção e Infra Predial (tx de sala)**: R$ 600,00;
+   - **Subtotal das Despesas Operacionais**: **`R$ 13.400,93`**;
+   - **Saldo a Ratear**: \(17.536,44 - 13.400,93 =\) **`R$ 4.135,51`**;
+   - **Rateio 80% Médico**: \(4.135,51 \times 80\% =\) **`R$ 3.308,41`**;
+   - **Retenção Líquida Hospital (20%)**: \(4.135,51 \times 20\% =\) **`R$ 827,10`**;
+   - **TOTAL DA DESPESA**: \(13.400,93 + 3.308,41 =\) **`R$ 16.709,34`**.
+4. **Versionamento**:
+   - Cache busters atualizados: `style.css?v=20260923_2` e `app.js?v=20260923_3`.
+
+---
+
 ## [2026-09-23] - Módulo CISA: Inclusão da Equipe Administrativa e Atualização Dinâmica do Rateio 80/20
 
 ### 🎯 O que foi feito:

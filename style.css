@@ -5256,6 +5256,28 @@ body.dark-mode .cisa-cat-pill.cat-taxa-de-sala {
   border-color: rgba(196, 181, 253, 0.3);
 }
 
+.cisa-cat-pill.cat-encargos {
+  background: rgba(30, 64, 175, 0.10);
+  color: #1e40af;
+  border: 1px solid rgba(30, 64, 175, 0.25);
+}
+body.dark-mode .cisa-cat-pill.cat-encargos {
+  background: rgba(59, 130, 246, 0.22);
+  color: #93c5fd;
+  border-color: rgba(147, 197, 253, 0.35);
+}
+
+.cisa-row-encargos {
+  background: rgba(37, 99, 235, 0.035) !important;
+  border-top: 1px dashed rgba(37, 99, 235, 0.3) !important;
+  border-bottom: 2px solid rgba(37, 99, 235, 0.2) !important;
+}
+body.dark-mode .cisa-row-encargos {
+  background: rgba(37, 99, 235, 0.08) !important;
+  border-top: 1px dashed rgba(59, 130, 246, 0.4) !important;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.35) !important;
+}
+
 /* Botões de Ação na Linha */
 .btn-cisa-action {
   background: none;
