@@ -2444,6 +2444,7 @@ window.cisaSimState = {
     { especialidade: 'Oftalmologia', item: 'Equipe de Recepção', rateio: 20, qtd: 1, val: 2639.07, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Equipe de Supervisão/Regulação Agendas GERCON/CISA', rateio: 20, qtd: 1, val: 3404.23, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Equipe de Faturamento', rateio: 10, qtd: 1, val: 3192.73, classificacao: 'Pessoal' },
+    { especialidade: 'Oftalmologia', item: 'Equipe Administrativa (Adm, Financeiro, RH,...)', rateio: 5, qtd: 1, val: 20000.00, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Equipe de Higienização', rateio: 20, qtd: 1, val: 2639.07, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Material de Almoxarifado', rateio: 20, qtd: 1, val: 2639.07, classificacao: 'Material' },
     { especialidade: 'Oftalmologia', item: 'Manutenção Sistema Hospitalar - TASY', rateio: 10, qtd: 1, val: 5100.00, classificacao: 'Sistemas TI' },
@@ -2609,7 +2610,7 @@ window.cisaSelectedMonth = window.cisaSelectedMonth || '08';
 function getCisaMonthlyStore(monthId) {
   if (!window.cisaMonthlyStore) {
     try {
-      const saved = localStorage.getItem('cisa_monthly_store_2026_v15');
+      const saved = localStorage.getItem('cisa_monthly_store_2026_v16');
       if (saved) window.cisaMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.cisaMonthlyStore || typeof window.cisaMonthlyStore !== 'object') {
@@ -2650,7 +2651,7 @@ function getCisaMonthlyStore(monthId) {
 function saveCisaMonthlyStore() {
   try {
     if (window.cisaMonthlyStore) {
-      localStorage.setItem('cisa_monthly_store_2026_v15', JSON.stringify(window.cisaMonthlyStore));
+      localStorage.setItem('cisa_monthly_store_2026_v16', JSON.stringify(window.cisaMonthlyStore));
     }
   } catch (e) {}
 }

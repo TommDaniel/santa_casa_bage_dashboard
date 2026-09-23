@@ -4,6 +4,32 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-23] - Módulo CISA: Inclusão da Equipe Administrativa e Atualização Dinâmica do Rateio 80/20
+
+### 🎯 O que foi feito:
+1. **Nova Linha de Custo Operacional**:
+   - Inserida após a `Equipe de Faturamento` a linha **`Equipe Administrativa (Adm, Financeiro, RH,...)`**:
+     - Classificação: **`Pessoal`** (pill azul com ícone `users`);
+     - Qtd: `1` | Rateio: `5%` | Custo Mensal: **`R$ 20.000,00`**;
+     - Custo Rateado Mensal: \(20.000,00 \times 5\% =\) **`R$ 1.000,00/mês`**.
+2. **Atualização da Tabela de Custos (11 Linhas)**:
+   - Subtotal das despesas operacionais atualizado de R$ 9.351,23 para **`R$ 10.351,23/mês`**.
+3. **Recálculo da Tabela de Negociação (Regra Rateio 80% / 20%)**:
+   - **Receita Mensal do Programa**: **`R$ 17.536,44`**;
+   - **Despesas de Pessoal**: R$ 9.241,23;
+   - **Sistema Hospitalar TASY**: R$ 510,00;
+   - **Manutenção e Infra Predial (tx de sala)**: R$ 600,00;
+   - **Subtotal das Despesas Operacionais**: **`R$ 10.351,23`**;
+   - **Saldo a Ratear**: \(17.536,44 - 10.351,23 =\) **`R$ 7.185,21`**;
+   - **Rateio 80% Médico**: \(7.185,21 \times 80\% =\) **`R$ 5.748,17`**;
+   - **Retenção Líquida Hospital (20%)**: \(7.185,21 \times 20\% =\) **`R$ 1.437,04`**;
+   - **TOTAL DA DESPESA**: \(10.351,23 + 5.748,17 =\) **`R$ 16.099,40`**.
+4. **Versionamento e Integridade**:
+   - Chave de armazenamento atualizada para `cisa_monthly_store_2026_v16`.
+   - Script cache buster atualizado para `app.js?v=20260923_2`.
+
+---
+
 ## [2026-09-23] - Módulo CISA: Padronização de Nomenclaturas, Agrupamento de Pessoal e Pills de Classificação de Despesas
 
 ### 🎯 O que foi feito:
