@@ -4,6 +4,30 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
+## [2026-09-23] - Módulo CISA: Padronização de Nomenclaturas, Agrupamento de Pessoal e Pills de Classificação de Despesas
+
+### 🎯 O que foi feito:
+1. **Padronização das Nomenclaturas de Custos Operacionais**:
+   - `Apoio de Faturamento` renomeado para **`Equipe de Faturamento`**.
+   - `Supervisão de Regulação de Agendas GERCON/CISA` renomeado para **`Equipe de Supervisão/Regulação Agendas GERCON/CISA`**.
+   - `Recepção` renomeado para **`Equipe de Recepção`**.
+   - `Higienização e Limpeza` renomeado para **`Equipe de Higienização`**.
+2. **Reordenação para Agrupamento Contíguo de Pessoal**:
+   - A linha **`Equipe de Higienização`** foi reposicionada acima de **`Material de Almoxarifado`**, consolidando todas as 6 funções de despesa de pessoal de forma sequencial (Enfermeiro, Técnicos, Recepção, Regulação, Faturamento e Higienização).
+3. **Nova Coluna e Pills Visuais de Classificação de Despesas**:
+   - Adicionada a coluna dedicada **"Classificação"** na tabela de rateio de custos operacionais:
+     - **Prestador**: Médico Oftalmologista (`cat-prestador`, ícone `user-check`).
+     - **Pessoal**: Enfermeiro, Técnico, Recepção, Regulação, Faturamento e Higienização (`cat-pessoal`, ícone `users`).
+     - **Material**: Material de Almoxarifado (`cat-material`, ícone `package`).
+     - **Sistemas TI**: Manutenção Sistema Hospitalar - TASY (`cat-sistemas-ti`, ícone `monitor`).
+     - **Taxa de Sala**: Manutenção e Infra Predial (`cat-taxa-de-sala`, ícone `building`).
+   - Suporte completo no modo de edição inline via seletor `<select>` e persistência de dados.
+4. **Versionamento e Integridade**:
+   - Chave de armazenamento atualizada para `cisa_monthly_store_2026_v15`.
+   - Cache busters atualizados: `style.css?v=20260923_1` e `app.js?v=20260923_1`.
+
+---
+
 ## [2026-09-22] - Módulo CISA: Inclusão de Almoxarifado, Higienização e Atualização do Rateio 80/20
 
 ### 🎯 O que foi feito:
