@@ -2998,7 +2998,7 @@ function renderCisaViabilidade(key) {
               <thead>
                 <tr>
                   <th style="min-width: 340px;">Função / Recurso Operacional</th>
-                  <th style="width: 140px; text-align: center;">Classificação</th>
+                  <th style="width: 140px; text-align: center;">Centro de Custo</th>
                   <th style="width: 95px; text-align: center;">Rateio</th>
                   <th style="width: 75px; text-align: center;">Qtd</th>
                   <th style="width: 130px; text-align: right;">R$ Unitário</th>
@@ -3010,7 +3010,7 @@ function renderCisaViabilidade(key) {
               <tfoot>
                 <tr style="background: rgba(239, 68, 68, 0.05); font-weight: 800; border-top: 2px solid rgba(239, 68, 68, 0.2);">
                   <td colspan="5" style="padding: 14px 18px; color: #dc2626; font-size: 0.88rem;">
-                    ${isTodas ? 'SUBTOTAL DE CUSTOS OPERACIONAIS RATEADOS DO PROGRAMA CISA' : 'SUBTOTAL DE CUSTOS OPERACIONAIS RATEADOS DO SERVIÇO'}
+                    SUBTOTAL DE CUSTOS OPERACIONAIS RATEADOS PELA OFTALMOLOGIA
                   </td>
                   <td id="totCisaFixo" style="padding: 14px 18px; text-align: right; color: #dc2626; font-size: 1.05rem; font-weight: 800;">
                     R$ 0,00

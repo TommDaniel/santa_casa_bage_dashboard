@@ -2,6 +2,19 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-23] - Módulo CISA: Ajuste de Centro de Custo, Paleta das Pills e Título de Subtotal
+
+### 🎯 O que foi feito:
+1. **Renomeação de Coluna na Tabela de Custos**:
+   - Alterado o cabeçalho de `Classificação` para **`Centro de Custo`**.
+2. **Harmonização Visual das Pills de Centro de Custo**:
+   - Pill **`Prestador`**: Atualizada para elegante paleta rosa/roxo (`color: #be185d`, `background: rgba(219, 39, 119, 0.10)`, dark mode `color: #f472b6`).
+   - Pills **`Sistemas TI`** e **`Taxa de Sala`**: Unificadas com a mesma paleta âmbar/laranja da pill **`Material`** (`color: #b45309`, `background: rgba(245, 158, 11, 0.12)`, dark mode `color: #fcd34d`).
+3. **Novo Título de Subtotal no Rodapé da Tabela de Custos**:
+   - Atualizado para **`SUBTOTAL DE CUSTOS OPERACIONAIS RATEADOS PELA OFTALMOLOGIA`**.
+4. **Versionamento de Cache**:
+   - `style.css?v=20260923_3` e `app.js?v=20260923_4`.
+
 ---
 
 ## [2026-09-23] - Módulo CISA: Linha Destacada de Encargos da Folha (35% sobre Pessoal Rateado)
