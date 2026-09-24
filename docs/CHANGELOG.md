@@ -2,6 +2,18 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Refinamento da Faixa de Explicação da Regra de Negociação 80/20
+
+### 🎯 O que foi feito:
+1. **Refinamento do Texto Explicativo na Faixa de Regras**:
+   - Ajustada a mensagem na faixa explicativa âmbar (`#pcRuleNote` e `#cisaRuleNote`) e no card da regra para explicitar com precisão o momento da divisão após a retirada das despesas operacionais:
+     > *"Após a retirada de todas as despesas operacionais, o resultado líquido apurado é dividido na proporção de 80% para os prestadores médicos e 20% para o hospital."*
+   - Sincronizado dinamicamente nos módulos `prestacao_contas.js` e `app.js`.
+2. **Cache-Busting**:
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_19` e `app.js?v=20260924_4`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Inserção da Linha de Saldo Bruto (Receita − Despesas) a Ratear
 
 ### 🎯 O que foi feito:
