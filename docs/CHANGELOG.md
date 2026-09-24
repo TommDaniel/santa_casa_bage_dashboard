@@ -2,6 +2,32 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Novo Status em Escala de Cinza "Não se aplica" na Tabela de Receitas e Faturamento
+
+### 🎯 O que foi feito:
+1. **Criação do Status "Não se aplica" em Escala de Cinza (Grayscale)**:
+   - Adicionada a nova opção **`Não se aplica`** no seletor de status de repasse das receitas da tabela de faturamento;
+   - Estilização elegante em escala de cinza suave (`background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1`), garantindo distinção imediata para rubricas que não possuem repasse/execução na respectiva competência sem poluição visual;
+   - O seletor dropdown permite alternar dinamicamente entre os 4 estados:
+     - **`Recebido FES`** (Verde suave: `#eafaf1` / `#167b45`);
+     - **`Aguardando Recurso`** (Âmbar suave: `#fef6ea` / `#b86a04`);
+     - **`Pago ao Prestadores`** (Azul suave: `#eff6ff` / `#1d4ed8`);
+     - **`Não se aplica`** (Cinza neutro: `#f1f5f9` / `#475569`).
+2. **Definição Inteligente de Status Padrão por Competência**:
+   - **Junho (06) e Julho (07)**:
+     - `SUS Gaúcho - Ambulatório Estratégico`: Status **`Recebido FES`** (R$ 81.276,00);
+     - `Produção CISA - Oftalmologia`: Status **`Não se aplica`** (R$ 0,00).
+   - **Agosto (08)**:
+     - `SUS Gaúcho - Ambulatório Estratégico`: Status **`Não se aplica`** (R$ 0,00);
+     - `Produção CISA - Oftalmologia`: Status **`Recebido FES`** (R$ 17.536,44).
+   - **Demais meses sem produção**:
+     - Ambas as rubricas iniciam com status **`Não se aplica`** (R$ 0,00).
+3. **Persistência e Cache-Busting**:
+   - Storage versionado para `prestacao_monthly_store_2026_v9`;
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_10`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Atualização do Cabeçalho Institucional para "Prestação de Contas e Controle de Faturamento" (Hospital Bom Pastor)
 
 ### 🎯 O que foi feito:

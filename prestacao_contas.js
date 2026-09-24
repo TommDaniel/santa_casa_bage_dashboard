@@ -335,7 +335,7 @@ window.prestacaoSelectedMonth = window.prestacaoSelectedMonth || '06';
 function getPrestacaoMonthlyStore(monthId) {
   if (!window.prestacaoMonthlyStore) {
     try {
-      const saved = localStorage.getItem('prestacao_monthly_store_2026_v8');
+      const saved = localStorage.getItem('prestacao_monthly_store_2026_v9');
       if (saved) window.prestacaoMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.prestacaoMonthlyStore || typeof window.prestacaoMonthlyStore !== 'object') {
@@ -363,7 +363,7 @@ function getPrestacaoMonthlyStore(monthId) {
         natureza: 'Custeio Ambulatorial Especializado',
         origemSub: 'Fundo Estadual de Saúde (FES/RS)',
         icon: 'sparkles',
-        status: isJunhoOrJulho ? 'Recebido FES' : 'Aguardando Recurso',
+        status: isJunhoOrJulho ? 'Recebido FES' : 'Não se aplica',
         qtd: 1,
         val: isJunhoOrJulho ? 81276.00 : 0.00
       },
@@ -374,7 +374,7 @@ function getPrestacaoMonthlyStore(monthId) {
         natureza: 'Consórcio Intermunicipal de Saúde (CISA)',
         origemSub: 'Receita Própria Pactuada Consórcio',
         icon: 'building-2',
-        status: isAgosto ? 'Recebido FES' : 'Aguardando Recurso',
+        status: isAgosto ? 'Recebido FES' : 'Não se aplica',
         qtd: 1,
         val: isAgosto ? 17536.44 : 0.00
       }
@@ -408,7 +408,7 @@ function getPrestacaoMonthlyStore(monthId) {
         natureza: 'Custeio Ambulatorial Especializado',
         origemSub: 'Fundo Estadual de Saúde (FES/RS)',
         icon: 'sparkles',
-        status: isJunhoOrJulho ? 'Recebido FES' : 'Aguardando Recurso',
+        status: isJunhoOrJulho ? 'Recebido FES' : 'Não se aplica',
         qtd: 1,
         val: isJunhoOrJulho ? 81276.00 : 0.00
       },
@@ -419,7 +419,7 @@ function getPrestacaoMonthlyStore(monthId) {
         natureza: 'Consórcio Intermunicipal de Saúde (CISA)',
         origemSub: 'Receita Própria Pactuada Consórcio',
         icon: 'building-2',
-        status: isAgosto ? 'Recebido FES' : 'Aguardando Recurso',
+        status: isAgosto ? 'Recebido FES' : 'Não se aplica',
         qtd: 1,
         val: isAgosto ? 17536.44 : 0.00
       }
@@ -432,7 +432,7 @@ function getPrestacaoMonthlyStore(monthId) {
 function savePrestacaoMonthlyStore() {
   try {
     if (window.prestacaoMonthlyStore) {
-      localStorage.setItem('prestacao_monthly_store_2026_v8', JSON.stringify(window.prestacaoMonthlyStore));
+      localStorage.setItem('prestacao_monthly_store_2026_v9', JSON.stringify(window.prestacaoMonthlyStore));
     }
   } catch (e) {}
 }
@@ -1050,6 +1050,10 @@ function initPrestacaoInteractiveSimulation(currentKey) {
         stBg = '#eff6ff';
         stColor = '#1d4ed8';
         stBorder = '#bfdbfe';
+      } else if (curStatus === 'Não se aplica' || curStatus === 'Nao se aplica') {
+        stBg = '#f1f5f9';
+        stColor = '#475569';
+        stBorder = '#cbd5e1';
       }
 
       const isCisa = (p.id === 'cisa' || (p.rubrica && p.rubrica.toLowerCase().includes('cisa')));
@@ -1085,7 +1089,8 @@ function initPrestacaoInteractiveSimulation(currentKey) {
             <select class="sg-select-status" style="font-size: 0.8rem; font-weight: 700; padding: 5px 12px; border-radius: 9999px; cursor: pointer; border: 1px solid ${stBorder}; background: ${stBg}; color: ${stColor}; outline: none; font-family: inherit; transition: all 0.2s ease;">
               <option value="Recebido FES" ${curStatus === 'Recebido FES' ? 'selected' : ''} style="background: #ffffff; color: #167b45;">Recebido FES</option>
               <option value="Aguardando Recurso" ${curStatus === 'Aguardando Recurso' ? 'selected' : ''} style="background: #ffffff; color: #b86a04;">Aguardando Recurso</option>
-              <option value="Pago aos Prestadores" ${(curStatus === 'Pago aos Prestadores' || curStatus === 'Pago ao Prestadores') ? 'selected' : ''} style="background: #ffffff; color: #1d4ed8;">Pago ao Prestadores</option>
+              <option value="Pago ao Prestadores" ${(curStatus === 'Pago aos Prestadores' || curStatus === 'Pago ao Prestadores') ? 'selected' : ''} style="background: #ffffff; color: #1d4ed8;">Pago ao Prestadores</option>
+              <option value="Não se aplica" ${(curStatus === 'Não se aplica' || curStatus === 'Nao se aplica') ? 'selected' : ''} style="background: #ffffff; color: #475569;">Não se aplica</option>
             </select>
           </div>
         </td>
