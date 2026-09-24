@@ -2,6 +2,40 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas / Oftalmologia: Integração da Receita "SUS GAÚCHO - Ambulatório Especial (Mutirão)" em Junho e Julho
+
+### 🎯 O que foi feito:
+1. **Nova Tabela de Receita do SUS Gaúcho (Mutirão Especial)**:
+   - Criada a seção e tabela dedicada **"Tabela de Produção de Consultas — SUS Gaúcho (Ambulatório Especial / Mutirão)"** (`#cardPcSusGaucho`), posicionada estrategicamente acima da tabela CISA na aba de faturamento da Oftalmologia;
+   - Incluídos badges de identificação visual: `SUS GAÚCHO • MUTIRÃO` e `PORTARIA SES/RS 611/2026`;
+   - Botão interativo **`+ Nova Linha SUS Gaúcho`** para inserção dinâmica de procedimentos extraordinários do mutirão;
+   - Subtotais e quantitativos dedicados por profissional: Dr. Christian Pretto e Dr. Heron Gomes Correia.
+2. **Pactuação e Quantitativos de Junho (`06`) e Julho (`07`)**:
+   - Conforme solicitado, configurada a produção física de consultas do mutirão:
+     - **Dr. Christian Pretto**: 150 consultas/mês;
+     - **Dr. Heron Gomes Correia**: 150 consultas/mês;
+     - **Valor Unitário**: R$ 270,92 (código SIGTAP `03.01.01.007-2` - Consulta especializada em Oftalmologia Geral Adulto, com base na Portaria SES/RS nº 611/2026), totalmente editável em tempo real;
+     - **Faturamento SUS Gaúcho por médico**: R$ 40.638,00/mês;
+     - **Faturamento Mensal SUS Gaúcho Total**: **R$ 81.276,00/mês**.
+   - **Receita CISA zerada nesses meses**: Nos meses de junho e julho, a produção pactuada do Consórcio CISA foi configurada com quantidade zero (`Qtd = 0` / R$ 0,00), de modo que a receita do SUS Gaúcho Mutirão constitui a **única fonte de receita** desses meses.
+   - **Mês padrão de abertura**: Atualizado para Junho (`06`), permitindo visualização imediata do início do mutirão.
+3. **Consolidação Financeira & Estudo de Viabilidade (Rateio 80/20)**:
+   - **Card de Negociação 80/20**:
+     - Detalhamento das fontes no bloco de receitas: `Receita SUS Gaúcho (Mutirão)` (R$ 81.276,00) + `Receita Consórcio CISA` (R$ 0,00) = **Total de Receitas Faturadas: R$ 81.276,00**;
+     - Despesa Total Rateada: R$ 0,00 (ou R$ 13.044,55 com os encargos de 30,91% quando alocados);
+     - Repasse 80% Equipe Médica: **R$ 65.020,80**;
+     - Retenção 20% Hospitalar: **R$ 16.255,20**;
+   - **Tira de 12 Meses (Pills)**:
+     - Junho (`JUN`): R$ 81.276,00;
+     - Julho (`JUL`): R$ 81.276,00;
+     - Agosto (`AGO`): R$ 17.536,44 (produção CISA com 147 procedimentos);
+4. **Comprovante Documental em PDF (`exportPrestacaoCustosPDF`)**:
+   - Atualizado para discriminar no Demonstrativo de Receitas as linhas de `Receita SUS Gaúcho (Mutirão Especial)` e `Receita Consórcio CISA`.
+5. **Independência dos Módulos**:
+   - A aba original **Consórcio CISA** (`#tab-cisa`) permaneceu rigorosamente intacta e inalterada, mantendo sua produção e relatórios originais.
+
+---
+
 ## [2026-09-24] - Novo Módulo: Prestação de Contas (Clonagem Completa do Módulo CISA)
 
 ### 🎯 O que foi feito:
