@@ -2,6 +2,27 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Módulo CISA: Atualização dos Encargos da Folha para 30,91% (CEBAS Ativos + Equipe Substitutiva)
+
+### 🎯 O que foi feito:
+1. **Atualização da Alíquota de Encargos para 30,91%**:
+   - Atualizado o percentual aplicado sobre a folha rateada de pessoal de 35% para **`30,91%`** (tanto no texto da tabela quanto nos cálculos dinâmicos da competência ativa e no acumulado dos 12 meses);
+   - Linha renomeada para **`Encargos da Folha (Provisão 30,91%)`**;
+   - Subtítulo atualizado conforme determinação técnica: **`INSS patronal, FGTS, férias e 13º c/ CEBAS Ativos + Equipe Substituitiva (Base: R$ 8.713,42)`**;
+   - Valor mensal recalculado: \(8.713,42 \times 30,91\% =\) **`R$ 2.693,32/mês`** (redução de R$ 356,38 em relação aos 35% anteriores).
+2. **Impacto e Recálculo Global das Despesas e Rateio 80/20**:
+   - **Subtotal de Custos Operacionais Rateados**: atualizado de R$ 13.400,93 para **`R$ 13.044,55/mês`**;
+   - **Saldo Líquido a Ratear**: \(17.536,44 - 13.044,55 =\) **`R$ 4.491,89`**;
+   - **Rateio 80% Médico**: \(4.491,89 \times 80\% =\) **`R$ 3.593,51`** (aumento de R$ 285,10 no repasse médico);
+   - **Retenção Hospitalar Líquida (20%)**: \(4.491,89 \times 20\% =\) **`R$ 898,38`** (aumento de R$ 71,28 na retenção hospitalar);
+   - **TOTAL DA DESPESA DO PROGRAMA**: \(13.044,55 + 3.593,51 =\) **`R$ 16.638,06`**.
+3. **Comprovante Documental em PDF**:
+   - Sincronização automática de todos os novos valores e descrição da alíquota de 30,91% com CEBAS Ativos no comprovante para impressão e deliberação.
+4. **Versionamento**:
+   - Cache busters: `style.css?v=20260924_1` e `app.js?v=20260924_1`.
+
+---
+
 ## [2026-09-23] - Módulo CISA: Logo Hospital Bom Pastor, Botão de Exportação em PDF e Área "Versão para Aprovação"
 
 ### 🎯 O que foi feito:

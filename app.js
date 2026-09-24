@@ -3570,7 +3570,7 @@ function initCisaInteractiveSimulation(currentKey) {
 
     const list = getFilteredCustos();
 
-    // Calcula total rateado de Pessoal para a linha de Encargos (35%)
+    // Calcula total rateado de Pessoal para a linha de Encargos (30,91%)
     let folhaPessoalRateada = 0;
     list.forEach(c => {
       if (c.classificacao === 'Pessoal') {
@@ -3580,7 +3580,7 @@ function initCisaInteractiveSimulation(currentKey) {
         folhaPessoalRateada += (q * v * (r / 100));
       }
     });
-    const valEncargos = folhaPessoalRateada * 0.35;
+    const valEncargos = folhaPessoalRateada * 0.3091;
 
     list.forEach((c, idx) => {
       const tr = document.createElement('tr');
@@ -3818,7 +3818,7 @@ function initCisaInteractiveSimulation(currentKey) {
 
       tb.appendChild(tr);
 
-      // Ao final do bloco de pessoal (após a última linha de Pessoal), insere a linha especial de Encargos da Folha (35%)
+      // Ao final do bloco de pessoal (após a última linha de Pessoal), insere a linha especial de Encargos da Folha (30,91%)
       const isPessoal = (c.classificacao === 'Pessoal');
       const isLastPessoal = isPessoal && (!list[idx + 1] || list[idx + 1].classificacao !== 'Pessoal');
       if (isLastPessoal) {
@@ -3834,9 +3834,9 @@ function initCisaInteractiveSimulation(currentKey) {
               <i data-lucide="calculator" style="width: 14px; height: 14px;"></i>
             </div>
             <div>
-              <strong style="color: #1e40af; font-size: 0.88rem;">Encargos da Folha (Provisão 35%)</strong>
+              <strong style="color: #1e40af; font-size: 0.88rem;">Encargos da Folha (Provisão 30,91%)</strong>
               <div style="font-size: 0.72rem; color: var(--text-muted);">
-                INSS patronal, FGTS, férias e 13º s/ pessoal rateado (Base: ${BRL.format(folhaPessoalRateada)})
+                INSS patronal, FGTS, férias e 13º c/ CEBAS Ativos + Equipe Substituitiva (Base: ${BRL.format(folhaPessoalRateada)})
               </div>
             </div>
           </div>
@@ -3856,7 +3856,7 @@ function initCisaInteractiveSimulation(currentKey) {
         tdRateioEnc.style.textAlign = 'center';
         tdRateioEnc.innerHTML = `
           <div style="display: flex; align-items: center; justify-content: center; gap: 2px;">
-            <span style="font-weight: 800; font-size: 0.85rem; color: #1d4ed8;">35</span>
+            <span style="font-weight: 800; font-size: 0.85rem; color: #1d4ed8;">30,91</span>
             <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">%</span>
           </div>
         `;
@@ -3888,7 +3888,7 @@ function initCisaInteractiveSimulation(currentKey) {
         tdActEnc.className = 'cisa-cell';
         tdActEnc.style.textAlign = 'center';
         tdActEnc.innerHTML = `
-          <span title="Calculado dinamicamente: 35% sobre a folha rateada de pessoal" style="font-size: 0.72rem; font-weight: 700; color: #2563eb; background: rgba(37, 99, 235, 0.08); padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 3px;">
+          <span title="Calculado dinamicamente: 30,91% sobre a folha rateada de pessoal" style="font-size: 0.72rem; font-weight: 700; color: #2563eb; background: rgba(37, 99, 235, 0.08); padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 3px;">
             <i data-lucide="sparkles" style="width: 12px; height: 12px;"></i> Auto
           </span>
         `;
@@ -3960,8 +3960,8 @@ function initCisaInteractiveSimulation(currentKey) {
       }
     });
 
-    // 35% de Encargos da Folha sobre o total rateado de Pessoal
-    const valEncargos = folhaPessoal * 0.35;
+    // 30,91% de Encargos da Folha sobre o total rateado de Pessoal
+    const valEncargos = folhaPessoal * 0.3091;
     totFix += valEncargos;
     despPessoal += valEncargos;
 
@@ -4021,7 +4021,7 @@ function initCisaInteractiveSimulation(currentKey) {
           mPessoal += linha;
         }
       });
-      mCus += (mPessoal * 0.35);
+      mCus += (mPessoal * 0.3091);
 
       annualRec += mRec;
       annualDesp += mCus;
@@ -4491,10 +4491,17 @@ window.exportCisaCustosPDF = function() {
     });
   }
 
-  const subtotalVal = document.getElementById('totCisaFixo') ? document.getElementById('totCisaFixo').innerText.trim() : 'R$ 13.400,93';
+  const subtotalVal = document.getElementById('totCisaFixo') ? document.getElementById('totCisaFixo').innerText.trim() : 'R$ 13.044,55';
   const recVal = document.getElementById('cisaHProd') ? document.getElementById('cisaHProd').innerText.trim() : 'R$ 17.536,44';
-  const rateio80Val = document.getElementById('cisaDRateioMed') ? document.getElementById('cisaDRateioMed').innerText.trim() : 'R$ 3.308,41';
-  const totalDespVal = document.getElementById('cisaPRes2') ? document.getElementById('cisaPRes2').innerText.trim() : 'R$ 16.709,34';
+  const rateio80Val = document.getElementById('cisaDRateioMed') ? document.getElementById('cisaDRateioMed').innerText.trim() : 'R$ 3.593,51';
+  const totalDespVal = document.getElementById('cisaPRes2') ? document.getElementById('cisaPRes2').innerText.trim() : 'R$ 16.638,06';
+
+  const parseMoney = (txt) => parseFloat((txt || '0').replace(/[^\d,]/g, '').replace(',', '.')) || 0;
+  const recNum = parseMoney(recVal);
+  const subtotalNum = parseMoney(subtotalVal);
+  const saldoNum = Math.max(0, recNum - subtotalNum);
+  const saldoVal = BRL.format(saldoNum);
+  const hosp20Val = BRL.format(saldoNum * 0.20);
 
   const printDoc = `
 <!DOCTYPE html>
@@ -4739,9 +4746,9 @@ window.exportCisaCustosPDF = function() {
     <div class="neg-card">
       <h4>Consolidação de Despesas & Rateio (80% / 20%)</h4>
       <div class="neg-line"><span>Subtotal Custos Operacionais Rateados:</span> <strong>${subtotalVal}</strong></div>
-      <div class="neg-line"><span>Saldo Líquido a Ratear (Receita - Custos):</span> <strong style="color: #059669;">R$ 4.135,51</strong></div>
+      <div class="neg-line"><span>Saldo Líquido a Ratear (Receita - Custos):</span> <strong style="color: #059669;">${saldoVal}</strong></div>
       <div class="neg-line"><span>Rateio 80% Equipe Médica Prestadora:</span> <strong style="color: #dc2626;">${rateio80Val}</strong></div>
-      <div class="neg-line"><span>Retenção Hospitalar Líquida (20%):</span> <strong style="color: #059669;">R$ 827,10</strong></div>
+      <div class="neg-line"><span>Retenção Hospitalar Líquida (20%):</span> <strong style="color: #059669;">${hosp20Val}</strong></div>
       <div class="neg-line bold" style="color: #dc2626;"><span>TOTAL GERAL DA DESPESA DO PROGRAMA:</span> <strong>${totalDespVal}</strong></div>
     </div>
   </div>
