@@ -917,6 +917,7 @@ function renderPrestacaoViabilidade(key) {
                 <div id="pcBlockRateio80" style="display: contents;">
                   <span class="cisa-sep" style="grid-column: 1 / -1; margin: 4px 0; border-top: 1px dashed #cbd5e1;"></span>
                   <span class="cisa-k" style="font-weight: 700; color: var(--text-title);">Subtotal das Despesas</span><span class="cisa-v" id="pcDSubtotal" style="color: #dc2626; font-weight: 700;">—</span>
+                  <span class="cisa-k" style="font-weight: 800; color: #059669; border-top: 1px dashed #cbd5e1; padding-top: 4px;">Saldo Bruto (Receita − Despesas)</span><span class="cisa-v" id="pcDSaldoBruto" style="color: #059669; font-weight: 800; border-top: 1px dashed #cbd5e1; padding-top: 4px;">—</span>
                   <span class="cisa-k" style="font-weight: 700; color: #b91c1c;">Rateio 80% Médico(s) Prestador(es)</span><span class="cisa-v" id="pcDRateioMed" style="color: #dc2626; font-weight: 700;">—</span>
                   <span class="cisa-k" style="font-weight: 700; color: var(--text-muted); border-top: 1px dashed #cbd5e1; padding-top: 4px;">Total das Despesas</span><span class="cisa-v" id="pcDTotalDesp" style="color: #dc2626; font-weight: 700; border-top: 1px dashed #cbd5e1; padding-top: 4px;">—</span>
                 </div>
@@ -2029,6 +2030,7 @@ function initPrestacaoInteractiveSimulation(currentKey) {
 
     const elBlockRateio = root.querySelector('#pcBlockRateio80');
     const elDSubtotal = root.querySelector('#pcDSubtotal');
+    const elDSaldoBruto = root.querySelector('#pcDSaldoBruto');
     const elDRateioMed = root.querySelector('#pcDRateioMed');
     const elDTotalDesp = root.querySelector('#pcDTotalDesp');
     const elPRes = root.querySelector('#pcPRes2');
@@ -2037,6 +2039,7 @@ function initPrestacaoInteractiveSimulation(currentKey) {
     if (activeRule === 'rateio8020') {
       if (elBlockRateio) elBlockRateio.style.display = 'contents';
       if (elDSubtotal) elDSubtotal.textContent = BRL.format(totFix);
+      if (elDSaldoBruto) elDSaldoBruto.textContent = BRL.format(saldoTotalSobrou);
       if (elDRateioMed) elDRateioMed.textContent = BRL.format(rateioMed80);
       const totalDespesa8020 = totFix + rateioMed80;
       if (elDTotalDesp) elDTotalDesp.textContent = BRL.format(totalDespesa8020);
@@ -2727,7 +2730,7 @@ window.exportPrestacaoCustosPDF = function() {
     <div class="neg-card">
       <h4>Consolidação de Despesas & Rateio (80% / 20%)</h4>
       <div class="neg-line"><span>Subtotal Custos Operacionais Rateados:</span> <strong>${subtotalVal}</strong></div>
-      <div class="neg-line"><span>Saldo Líquido a Ratear (Receita - Custos):</span> <strong style="color: #059669;">${saldoVal}</strong></div>
+      <div class="neg-line"><span>Saldo Bruto a Ratear (Receita − Despesas):</span> <strong style="color: #059669;">${saldoVal}</strong></div>
       <div class="neg-line"><span>Rateio 80% Médico(s) Prestador(es):</span> <strong style="color: #dc2626;">${rateio80Val}</strong></div>
       <div class="neg-line"><span>Total Geral das Despesas:</span> <strong style="color: #dc2626;">${totalDespVal}</strong></div>
       <div class="neg-line bold" style="color: #059669; border-top: 1px dashed #cbd5e1; padding-top: 3px; margin-top: 3px;"><span>RESULTADO 20% HOSPITALAR:</span> <strong>${hosp20Val}</strong></div>

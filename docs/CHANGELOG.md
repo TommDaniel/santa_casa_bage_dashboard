@@ -2,6 +2,20 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Inserção da Linha de Saldo Bruto (Receita − Despesas) a Ratear
+
+### 🎯 O que foi feito:
+1. **Linha "Saldo Bruto (Receita − Despesas)" no Resumo de Despesas**:
+   - Inserida uma linha com destaque em verde esmeralda (`#059669`) posicionada logo após o *Subtotal das Despesas* e antes do *Rateio 80% Médico(s) Prestador(es)*;
+   - O valor reflete com precisão o cálculo `Receita Total Faturada (R$ 81.276,00) − Subtotal das Despesas Operacionais (R$ 13.044,55) = R$ 68.231,45`;
+   - Evidencia de forma transparente a base de cálculo que é dividida na proporção 80% médicos (`R$ 54.585,16`) e 20% hospital (`R$ 13.646,29`).
+2. **Sincronização no Relatório em PDF**:
+   - Atualizado o demonstrativo financeiro e de rateio da Seção 3 do PDF com o rótulo `"Saldo Bruto a Ratear (Receita − Despesas)"`.
+3. **Cache-Busting**:
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_18`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Atualização do Texto Explicativo da Regra de Rateio 80% / 20%
 
 ### 🎯 O que foi feito:
