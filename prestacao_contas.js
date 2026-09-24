@@ -687,9 +687,6 @@ function renderPrestacaoViabilidade(key) {
                   <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-weight: 800; font-size: 0.68rem; padding: 0.25rem 0.6rem; border-radius: 99px;">
                     DEMONSTRATIVO DE RECEITAS
                   </span>
-                  <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-weight: 800; font-size: 0.68rem; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                    SUS GAÚCHO & CISA
-                  </span>
                 </div>
                 <span style="font-size: 0.82rem; color: var(--text-muted);">
                   Demonstrativo consolidado das fontes de faturamento e receitas pactuadas do ambulatório

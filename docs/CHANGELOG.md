@@ -22,9 +22,11 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
      - `Produção CISA - Oftalmologia`: Status **`Recebido FES`** (R$ 17.536,44).
    - **Demais meses sem produção**:
      - Ambas as rubricas iniciam com status **`Não se aplica`** (R$ 0,00).
-3. **Persistência e Cache-Busting**:
+3. **Limpeza Visual do Cabeçalho de Receitas**:
+   - Removida a badge redundante `SUS GAÚCHO & CISA` do cabeçalho da tabela de receitas, mantendo o visual limpo e focado com `DEMONSTRATIVO DE RECEITAS`.
+4. **Persistência e Cache-Busting**:
    - Storage versionado para `prestacao_monthly_store_2026_v9`;
-   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_10`.
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_11`.
 
 ---
 
