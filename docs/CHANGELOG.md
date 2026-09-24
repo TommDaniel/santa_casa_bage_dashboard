@@ -2,6 +2,17 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Remoção do Parágrafo Obsoleto de Custo SIGTAP no Card de Regras
+
+### 🎯 O que foi feito:
+1. **Remoção do Texto Explicativo de SIGTAP**:
+   - Excluído o parágrafo explicativo posicionado no topo do card de regras (`"Define como o custo de cada procedimento é derivado do valor SIGTAP na negociação com a equipe médica. A regra escolhida passa a alimentar a coluna R$ custo da produção."`);
+   - O card de Regra de Negociação / Estudo de Viabilidade agora conecta diretamente o cabeçalho às opções das regras, proporcionando um layout mais direto e limpo.
+2. **Cache-Busting**:
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_20`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Refinamento da Faixa de Explicação da Regra de Negociação 80/20
 
 ### 🎯 O que foi feito:

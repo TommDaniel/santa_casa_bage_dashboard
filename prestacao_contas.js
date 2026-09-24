@@ -830,10 +830,6 @@ function renderPrestacaoViabilidade(key) {
           </div>
 
           <div style="padding: 16px 20px 0 20px;">
-            <p style="margin: 0 0 16px 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
-              Define como o custo de cada procedimento é derivado do valor SIGTAP na negociação com a equipe médica. A regra escolhida passa a alimentar a coluna <b>R$ custo</b> da produção.
-            </p>
-
             <!-- Grade de Regras -->
             <div class="cisa-rule-grid" role="group" aria-label="Regra de negociação">
               <!-- 1. 50% Margem Hospitalar -->
