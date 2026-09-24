@@ -2,6 +2,20 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Remoção dos Indicativos de "Versão para Aprovação" da Tabela e do Relatório PDF
+
+### 🎯 O que foi feito:
+1. **Remoção da Seção de Aprovação da Tabela de Despesas**:
+   - Excluído o quadro de destaque âmbar (`.cisa-aprovacao-box`) posicionado no rodapé da tabela de despesas (`cardPcCustosRateio`), contendo as menções a *"Versão para Aprovação"*, *"Documento Preliminar para Deliberação"* e *"Aguardando Aprovação Formal"*;
+   - A tabela agora finaliza diretamente na linha de subtotal dos custos rateados (`SUBTOTAL DE CUSTOS OPERACIONAIS RATEADOS PELA OFTALMOLOGIA`), deixando a interface mais limpa e direta.
+2. **Remoção dos Indicativos de Aprovação do Relatório PDF**:
+   - Excluída a badge âmbar `.badge-versao` (*"Versão para Aprovação"*) do cabeçalho superior do relatório em PDF;
+   - Excluído o bloco de destaque tracejado `.destaque-aprovacao` (*"Homologação Técnica • Versão para Aprovação Formal"*), realizando uma transição direta dos quadros demonstrativos financeiros e apuração 80/20 para as assinaturas oficiais dos signatários.
+3. **Cache-Busting**:
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_15`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Destaque Visual com Cor Vibrante no Mês Selecionado da Barra de Competências
 
 ### 🎯 O que foi feito:

@@ -816,37 +816,6 @@ function renderPrestacaoViabilidade(key) {
               </tfoot>
             </table>
           </div>
-
-          <!-- Área de Destaque: Versão para Aprovação -->
-          <div class="cisa-aprovacao-box">
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
-              <div style="display: flex; align-items: center; gap: 14px;">
-                <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(217, 119, 6, 0.15); color: #b45309; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(217, 119, 6, 0.3);">
-                  <i data-lucide="file-check-2" style="width: 22px; height: 22px;"></i>
-                </div>
-                <div>
-                  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 3px;">
-                    <span class="cisa-aprovacao-pill">
-                      <i data-lucide="alert-circle" style="width: 13px; height: 13px;"></i> Versão para Aprovação
-                    </span>
-                    <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted);">• Documento Preliminar para Deliberação</span>
-                  </div>
-                  <p style="margin: 0; font-size: 0.85rem; color: var(--text-main); font-weight: 500; line-height: 1.45;">
-                    Memória de cálculo dos custos operacionais rateados e provisão de encargos ambulatoriais submetida à deliberação e homologação formal entre a <strong>Direção Hospitalar / Provedoria</strong> e o <strong>Corpo Clínico Prestador (Oftalmologia)</strong>.
-                  </p>
-                </div>
-              </div>
-              <div style="display: flex; align-items: center; gap: 12px; background: var(--bg-card); padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
-                <div style="text-align: right;">
-                  <span style="font-size: 0.70rem; text-transform: uppercase; font-weight: 800; color: var(--text-muted); display: block; letter-spacing: 0.5px;">Status do Demonstrativo</span>
-                  <span style="font-size: 0.82rem; font-weight: 800; color: #d97706; display: inline-flex; align-items: center; gap: 5px;">
-                    <span style="width: 8px; height: 8px; border-radius: 50%; background: #d97706; display: inline-block;"></span>
-                    Aguardando Aprovação Formal
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         <!-- 3.3 REGRA DE NEGOCIAÇÃO | ESTUDO DE VIABILIDADE CISA -->
@@ -2557,19 +2526,6 @@ window.exportPrestacaoCustosPDF = function() {
       text-align: right;
       font-size: 9px;
     }
-    .badge-versao {
-      display: inline-block;
-      background: #fef3c7;
-      color: #92400e;
-      border: 1.5px solid #f59e0b;
-      font-weight: 900;
-      font-size: 10px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 3px;
-    }
     .meta-strip {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
@@ -2636,26 +2592,6 @@ window.exportPrestacaoCustosPDF = function() {
       padding-top: 3px;
       margin-top: 3px;
     }
-    .destaque-aprovacao {
-      background: #fffbeb;
-      border: 1.5px dashed #f59e0b;
-      border-radius: 6px;
-      padding: 6px 10px;
-      margin-bottom: 12px;
-    }
-    .destaque-aprovacao strong {
-      color: #b45309;
-      font-size: 9.5px;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 2px;
-    }
-    .destaque-aprovacao p {
-      margin: 0;
-      font-size: 8.5px;
-      color: #78350f;
-      line-height: 1.35;
-    }
     .signatures {
       display: flex;
       justify-content: space-between;
@@ -2690,7 +2626,6 @@ window.exportPrestacaoCustosPDF = function() {
       </div>
     </div>
     <div class="header-right">
-      <div class="badge-versao">Versão para Aprovação</div>
       <div><strong>Competência:</strong> ${compLabel}</div>
       <div><strong>Emissão:</strong> ${dateFormatted}</div>
     </div>
@@ -2774,11 +2709,6 @@ window.exportPrestacaoCustosPDF = function() {
       <div class="neg-line"><span>Retenção Hospitalar Líquida (20%):</span> <strong style="color: #059669;">${hosp20Val}</strong></div>
       <div class="neg-line bold" style="color: #dc2626;"><span>TOTAL GERAL DA DESPESA DO PROGRAMA:</span> <strong>${totalDespVal}</strong></div>
     </div>
-  </div>
-
-  <div class="destaque-aprovacao">
-    <strong>Homologação Técnica • Versão para Aprovação Formal</strong>
-    <p>Este comprovante documental consolida a memória técnica dos recebimentos pactuados, custos operacionais rateados e a apuração financeira proporcional acordada para o serviço ambulatorial de Oftalmologia do Hospital Bom Pastor de Santo Augusto. Emitido para deliberação, controle de faturamento e homologação formal pelas partes signatárias.</p>
   </div>
 
   <div class="signatures">
