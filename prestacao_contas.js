@@ -470,38 +470,26 @@ function renderPrestacaoViabilidade(key) {
       <div class="card" style="padding: 1.5rem 1.75rem; border-left: 5px solid ${isTodas ? '#10b981' : '#2563eb'}; background: linear-gradient(135deg, var(--bg-card) 0%, ${isTodas ? 'rgba(16, 185, 129, 0.04)' : 'rgba(37, 99, 235, 0.04)'} 100%);">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.25rem;">
           <div style="display: flex; align-items: center; gap: 1.25rem;">
-            <img src="logos/LOGO__SC_Bage.png" alt="Santa Casa de Bagé" style="height: 52px; width: auto;" onerror="this.style.display='none'">
-            <div style="width: 2px; height: 42px; background: ${isTodas ? 'rgba(16, 185, 129, 0.25)' : 'rgba(37, 99, 235, 0.25)'};"></div>
-            <img src="logo_cisa.png" alt="CISA" style="height: 48px; width: auto;" onerror="this.style.display='none'">
-            <div style="margin-left: 0.5rem;">
+            <div style="width: 58px; height: 58px; border-radius: 12px; overflow: hidden; border: 1.5px solid rgba(16, 185, 129, 0.35); background: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); flex-shrink: 0; padding: 2px;">
+              <img src="logo_hbp.jpg" alt="Hospital Bom Pastor - Santo Augusto" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div style="margin-left: 0.25rem;">
               <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.35rem;">
-                ${isTodas ? `
-                  <span class="badge-sus" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px; display: inline-flex; align-items: center; gap: 4px;">
-                    <i data-lucide="layers" style="width: 11px; height: 11px;"></i> TODAS ESPECIALIDADES
-                  </span>
-                  <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                    PACTUAÇÃO CISA REGIONAL
-                  </span>
-                  <span class="badge-sus" style="background: rgba(37, 99, 235, 0.1); color: var(--blue-vibrant); font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                    CONTRATO INTERMUNICIPAL CONSOLIDADO
-                  </span>
-                ` : `
-                  <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                    PACTUAÇÃO CISA REGIONAL
-                  </span>
-                  <span class="badge-sus" style="background: rgba(37, 99, 235, 0.1); color: var(--blue-vibrant); font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                    CONTRATO INTERMUNICIPAL
-                  </span>
-                  <span class="badge-sus" style="background: rgba(245, 158, 11, 0.12); color: #b45309; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                    HABILITAÇÃO 0506 GLAUCOMA
-                  </span>
-                `}
+                <span class="badge-sus" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px; display: inline-flex; align-items: center; gap: 4px;">
+                  <i data-lucide="building-2" style="width: 11px; height: 11px;"></i> HOSPITAL BOM PASTOR
+                </span>
+                <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
+                  CONTROLE DE FATURAMENTO
+                </span>
+                <span class="badge-sus" style="background: rgba(245, 158, 11, 0.12); color: #b45309; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
+                  TODOS OS PROGRAMAS
+                </span>
               </div>
               <h2 style="font-size: 1.45rem; font-weight: 800; color: var(--text-title); margin: 0; line-height: 1.2;">
-                ${isTodas ? 'Consórcio CISA — Prestação de Contas Consolidada' : 'Prestação de Contas — Ambulatório de Oftalmologia (CISA)'}
+                ${isTodas ? 'Prestação de Contas e Controle de Faturamento Consolidado' : 'Prestação de Contas e Controle de Faturamento — Ambulatório de Oftalmologia'}
               </h2>
               <div style="font-size: 0.84rem; color: var(--text-muted); margin-top: 0.3rem;">
-                ${isTodas ? 'Demonstrativo Consolidado de Viabilidade Econômico-Financeira · Santa Casa de Caridade de Bagé & Consórcio Intermunicipal de Saúde (CNPJ: 02.231.696/0001-92)' : 'Estudo de Viabilidade Econômico-Financeira · Santa Casa de Caridade de Bagé & Consórcio Intermunicipal de Saúde (CNPJ: 02.231.696/0001-92 · licitacoes@cisaijui.com.br)'}
+                ${isTodas ? 'Painel Geral de Controle de Recebimentos e Pagamentos de Todas as Especialidades · Hospital Bom Pastor' : 'Controle Geral de Recebimentos, Faturamento e Pagamentos da Oftalmologia · Integração de Programas (SUS Gaúcho & CISA)'}
               </div>
             </div>
           </div>
@@ -509,7 +497,7 @@ function renderPrestacaoViabilidade(key) {
           <!-- Ações Rápidas -->
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
             <button class="btn-primary" id="btnPcAddProcTop" style="background: ${isTodas ? '#10b981' : '#2563eb'}; border-color: ${isTodas ? '#10b981' : '#2563eb'}; font-size: 0.8rem; padding: 0.45rem 0.85rem; border-radius: 6px; box-shadow: 0 2px 6px ${isTodas ? 'rgba(16,185,129,0.25)' : 'rgba(37,99,235,0.25)'};">
-              <i data-lucide="plus-circle" style="width: 15px; height: 15px;"></i> Novo Procedimento
+              <i data-lucide="plus-circle" style="width: 15px; height: 15px;"></i> Novo Lançamento
             </button>
             <button class="btn-icon" id="btnPcExportCsvTop" title="Exportar CSV" style="border-radius: 6px;">
               <i data-lucide="download" style="width: 16px; height: 16px;"></i>
@@ -600,10 +588,10 @@ function renderPrestacaoViabilidade(key) {
             </div>
             <div>
               <div style="font-weight: 800; color: var(--text-title); font-size: 0.95rem; line-height: 1.2;">
-                Controle Mensal da Produção & Repasse CISA · Exercício 2026
+                Controle Mensal de Faturamento & Repasses · Exercício 2026
               </div>
               <div style="font-size: 0.75rem; color: var(--text-muted);">
-                Selecione o mês de competência para lançar a produção física (Qtd), faturamento e apurar a divisão de valores
+                Selecione o mês de competência para acompanhar receitas, custos operacionais e apurar a prestação de contas dos prestadores
               </div>
             </div>
           </div>
@@ -953,7 +941,7 @@ function renderPrestacaoViabilidade(key) {
       <div class="card" style="padding: 1rem 1.5rem; background: var(--bg-card-hover); font-size: 0.78rem; color: var(--text-muted); line-height: 1.6;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
           <div>
-            <strong>Base Normativa:</strong> Contrato de Rateio e Termo de Pactuação do Consórcio Intermunicipal de Saúde (CISA) nº 03/2026 · Contrato de Rateio Intermunicipal · Santa Casa de Caridade de Bagé.
+            <strong>Base Normativa:</strong> Controle Integrado de Faturamento Ambulatorial · Programas SUS Gaúcho (Portaria SES/RS nº 611/2026) & Consórcio Intermunicipal CISA · Hospital Bom Pastor de Santo Augusto.
           </div>
           <div style="font-weight: 700; color: #2563eb;">
             Sistema de Gestão & Viabilidade SUS © 2026

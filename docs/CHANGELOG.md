@@ -2,6 +2,22 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Atualização do Cabeçalho Institucional para "Prestação de Contas e Controle de Faturamento" (Hospital Bom Pastor)
+
+### 🎯 O que foi feito:
+1. **Substituição da Identidade Visual e Logotipo**:
+   - Substituído o logo do Consórcio CISA pelo logotipo oficial do **Hospital Bom Pastor — Santo Augusto** (`logo_hbp.jpg`) em todos os cabeçalhos institucionais do módulo de Prestação de Contas;
+   - Inseridos novos badges de identificação: `HOSPITAL BOM PASTOR`, `CONTROLE DE FATURAMENTO`, `TODOS OS PROGRAMAS` e `GESTÃO INTEGRADA`.
+2. **Atualização da Nomenclatura e Propósito da Página**:
+   - Nome atualizado de *Prestação de Contas — Ambulatório de Oftalmologia (CISA)* para **Prestação de Contas e Controle de Faturamento — Ambulatório de Oftalmologia**;
+   - Descrição redefinida para posicionar o módulo como a central unificada de controle de recebimentos, faturamento de programas integrados (SUS Gaúcho e CISA) e apuração de pagamentos e custos dos prestadores;
+   - Barra de navegação lateral renomeada de *Consórcio CISA* para **Especialidades (Ambulatórios)**;
+   - Botão de ação rápida ajustado para **`Novo Lançamento`**.
+3. **Cache-Busting e Sincronização**:
+   - Cache buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_9`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas / Oftalmologia: Remoção da Tabela Detalhada CISA e Inclusão da Linha "Produção CISA - Oftalmologia" nas Receitas
 
 ### 🎯 O que foi feito:
