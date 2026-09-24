@@ -2,6 +2,22 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Inclusão do Logotipo e Marca Registrada FluxSUS no Rodapé
+
+### 🎯 O que foi feito:
+1. **Logotipo FluxSUS no Rodapé Institucional**:
+   - Integrado o arquivo de imagem oficial `logo_fluxsus.png` no rodapé da página de Prestação de Contas e no relatório impresso em PDF;
+   - Inserido container estilizado e responsivo com badge suave que garante excelente legibilidade em fundos claros e escuros.
+2. **Atualização da Nomenclatura Institucional**:
+   - Atualizado o título de `"Sistema de Gestão & Viabilidade SUS © 2026"` para `"FluxSUS - Sala de Situação / Módulo de Controle e Prestação de contas SUS © 2026"`.
+3. **Menção Legal de Marca Registrada**:
+   - Adicionada nota institucional declaratória: *"FluxSUS® é uma marca registrada especializada em processos em saúde."*
+4. **Cache-Busting & Sincronização do PDF**:
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_21`;
+   - Inclusão do logotipo e marca no rodapé do documento de impressão e exportação em PDF.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Remoção do Parágrafo Obsoleto de Custo SIGTAP no Card de Regras
 
 ### 🎯 O que foi feito:

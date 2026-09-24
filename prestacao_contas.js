@@ -929,13 +929,28 @@ function renderPrestacaoViabilidade(key) {
       </div>
 
       <!-- 4. FOOTER INSTITUCIONAL -->
-      <div class="card" style="padding: 1rem 1.5rem; background: var(--bg-card-hover); font-size: 0.78rem; color: var(--text-muted); line-height: 1.6;">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
-          <div>
-            <strong>Base Normativa:</strong> Controle Integrado de Faturamento Ambulatorial · Programas SUS Gaúcho (Portaria SES/RS nº 611/2026) & Consórcio Intermunicipal CISA · Hospital Bom Pastor de Santo Augusto.
+      <div class="card" style="padding: 1.25rem 1.5rem; background: var(--bg-card-hover); font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; border-top: 1px solid var(--border-color, #e2e8f0);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem;">
+          <div style="flex: 1; min-width: 280px;">
+            <div style="margin-bottom: 0.25rem;">
+              <strong>Base Normativa:</strong> Controle Integrado de Faturamento Ambulatorial · Programas SUS Gaúcho (Portaria SES/RS nº 611/2026) & Consórcio Intermunicipal CISA · Hospital Bom Pastor de Santo Augusto.
+            </div>
+            <div style="font-size: 0.73rem; color: var(--text-muted); opacity: 0.85;">
+              FluxSUS® é uma marca registrada especializada em processos em saúde.
+            </div>
           </div>
-          <div style="font-weight: 700; color: #2563eb;">
-            Sistema de Gestão & Viabilidade SUS © 2026
+          <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: flex-end;">
+            <div style="text-align: right;">
+              <div style="font-weight: 700; color: var(--blue-vibrant, #2563eb); font-size: 0.82rem;">
+                FluxSUS - Sala de Situação / Módulo de Controle e Prestação de contas SUS © 2026
+              </div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">
+                Inteligência & Gestão Estratégica em Processos SUS
+              </div>
+            </div>
+            <div style="background: #ffffff; padding: 4px 10px; border-radius: 8px; border: 1px solid #e2e8f0; display: inline-flex; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+              <img src="logo_fluxsus.png" alt="FluxSUS - Processos em Saúde" style="height: 44px; width: auto; object-fit: contain; display: block;">
+            </div>
           </div>
         </div>
       </div>
@@ -2745,6 +2760,17 @@ window.exportPrestacaoCustosPDF = function() {
     <div class="sig-col">
       <strong>Contratualização SUS & Faturamento</strong>
       Auditoria e Controles Internos
+    </div>
+  </div>
+
+  <div style="margin-top: 22px; padding-top: 10px; border-top: 1px solid #cbd5e1; display: flex; justify-content: space-between; align-items: center; font-size: 7.5pt; color: #64748b;">
+    <div>
+      <strong style="color: #1e3a8a;">FluxSUS - Sala de Situação / Módulo de Controle e Prestação de contas SUS © 2026</strong><br>
+      FluxSUS® é uma marca registrada especializada em processos em saúde.
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="font-size: 7pt; color: #94a3b8;">Tecnologia & Gestão em Saúde</span>
+      <img src="logo_fluxsus.png" alt="FluxSUS" style="height: 24px; object-fit: contain;">
     </div>
   </div>
 </body>
