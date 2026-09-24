@@ -335,7 +335,7 @@ window.prestacaoSelectedMonth = window.prestacaoSelectedMonth || '06';
 function getPrestacaoMonthlyStore(monthId) {
   if (!window.prestacaoMonthlyStore) {
     try {
-      const saved = localStorage.getItem('prestacao_monthly_store_2026_v9');
+      const saved = localStorage.getItem('prestacao_monthly_store_2026_v12');
       if (saved) window.prestacaoMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.prestacaoMonthlyStore || typeof window.prestacaoMonthlyStore !== 'object') {
@@ -349,7 +349,6 @@ function getPrestacaoMonthlyStore(monthId) {
     const isAgosto = (monthId === '08');
     const isJunhoOrJulho = (monthId === '06' || monthId === '07');
     const cisaStore = (typeof getCisaMonthlyStore === 'function') ? getCisaMonthlyStore(monthId) : (window.cisaMonthlyStore && window.cisaMonthlyStore[monthId]);
-    const srcCustos = (cisaStore && cisaStore.custos) ? cisaStore.custos : window.cisaSimState.custos;
     const srcRegra = (cisaStore && cisaStore.regraAtiva) ? cisaStore.regraAtiva : 'rateio8020';
 
     // Receitas da Prestação de Contas:
@@ -380,10 +379,13 @@ function getPrestacaoMonthlyStore(monthId) {
       }
     ];
 
-    const baseCustos = srcCustos.map(c => ({
-      ...c,
+    // Custos operacionais do ambulatório rateados proporcionalmente (padrão com quantidades e rateios ativos)
+    const baseCustos = window.cisaSimState.custos.map(c => ({
+      especialidade: c.especialidade || 'Oftalmologia',
+      item: c.item,
       rateio: (c.rateio !== undefined && c.rateio !== null) ? c.rateio : 100,
-      qtd: (isAgosto || isJunhoOrJulho) ? ((c.qtd !== undefined && c.qtd !== null) ? c.qtd : 0) : 0,
+      qtd: (c.qtd !== undefined && c.qtd !== null) ? c.qtd : 1,
+      val: (c.val !== undefined && c.val !== null) ? c.val : 0,
       classificacao: c.classificacao || 'Pessoal'
     }));
 
@@ -426,13 +428,26 @@ function getPrestacaoMonthlyStore(monthId) {
     ];
   }
 
+  // Garantir integridade de custos se todas as quantidades estiverem zeradas
+  const totalQtdCustos = (mData.custos || []).reduce((acc, cur) => acc + (parseFloat(cur.qtd) || 0), 0);
+  if (!Array.isArray(mData.custos) || mData.custos.length === 0 || totalQtdCustos === 0) {
+    mData.custos = window.cisaSimState.custos.map(c => ({
+      especialidade: c.especialidade || 'Oftalmologia',
+      item: c.item,
+      rateio: (c.rateio !== undefined && c.rateio !== null) ? c.rateio : 100,
+      qtd: (c.qtd !== undefined && c.qtd !== null) ? c.qtd : 1,
+      val: (c.val !== undefined && c.val !== null) ? c.val : 0,
+      classificacao: c.classificacao || 'Pessoal'
+    }));
+  }
+
   return window.prestacaoMonthlyStore[monthId];
 }
 
 function savePrestacaoMonthlyStore() {
   try {
     if (window.prestacaoMonthlyStore) {
-      localStorage.setItem('prestacao_monthly_store_2026_v9', JSON.stringify(window.prestacaoMonthlyStore));
+      localStorage.setItem('prestacao_monthly_store_2026_v12', JSON.stringify(window.prestacaoMonthlyStore));
     }
   } catch (e) {}
 }
@@ -496,6 +511,10 @@ function renderPrestacaoViabilidade(key) {
 
           <!-- Ações Rápidas -->
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+            <button type="button" id="btnExportPcCustosPDF" onclick="exportPrestacaoCustosPDF()" class="btn-cisa-pdf-export" style="background: #166534; border: 1px solid #15803d; color: #ffffff; font-weight: 700; font-size: 0.8rem; padding: 0.45rem 0.95rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 7px; box-shadow: 0 2px 6px rgba(22, 101, 52, 0.25); cursor: pointer; transition: all 0.2s;" title="Gerar prestação de contas oficial em PDF com receitas, despesas e rateio">
+              <i data-lucide="file-down" style="width: 16px; height: 16px;"></i>
+              <span>Baixar Comprovante PDF</span>
+            </button>
             <button class="btn-primary" id="btnPcAddProcTop" style="background: ${isTodas ? '#10b981' : '#2563eb'}; border-color: ${isTodas ? '#10b981' : '#2563eb'}; font-size: 0.8rem; padding: 0.45rem 0.85rem; border-radius: 6px; box-shadow: 0 2px 6px ${isTodas ? 'rgba(16,185,129,0.25)' : 'rgba(37,99,235,0.25)'};">
               <i data-lucide="plus-circle" style="width: 15px; height: 15px;"></i> Novo Lançamento
             </button>
@@ -505,7 +524,7 @@ function renderPrestacaoViabilidade(key) {
             <button class="btn-icon" id="btnPcPrintTop" title="Imprimir Relatório" style="border-radius: 6px;">
               <i data-lucide="printer" style="width: 16px; height: 16px;"></i>
             </button>
-            <button class="btn-icon" id="btnPcResetTop" title="Restaurar Padrões CISA" style="border-radius: 6px; color: var(--danger);">
+            <button class="btn-icon" id="btnPcResetTop" title="Restaurar Padrões" style="border-radius: 6px; color: var(--danger);">
               <i data-lucide="rotate-ccw" style="width: 16px; height: 16px;"></i>
             </button>
           </div>
@@ -731,35 +750,34 @@ function renderPrestacaoViabilidade(key) {
           </div>
         </div>
 
-        <!-- 3.2 TABELA VERMELHA: RATEIO DE CUSTOS OPERACIONAIS AMBULATORIAIS (LARGURA TOTAL 100% ABAIXO DA VERDE) -->
-        <div class="card" id="cardPcCustosRateio" style="padding: 1.5rem; width: 100%; box-sizing: border-box;">
-          <div class="card-header cisa-custos-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.15rem; margin-bottom: 1.15rem; display: flex; justify-content: space-between; align-items: center; gap: 1.25rem;">
-            <!-- Canto Superior Esquerdo: Logo do Hospital + Título Oficial -->
-            <div style="display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0;">
-              <div class="cisa-hbp-logo-wrap" style="width: 58px; height: 58px; border-radius: 12px; overflow: hidden; border: 1.5px solid rgba(16, 185, 129, 0.35); background: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); flex-shrink: 0; padding: 2px;">
-                <img src="logo_hbp.jpg" alt="Hospital Bom Pastor - Santo Augusto" style="width: 100%; height: 100%; object-fit: contain;">
+        <!-- 3.2 TABELA VERMELHA: RATEIO DE CUSTOS OPERACIONAIS AMBULATORIAIS -->
+        <div class="card" id="cardPcCustosRateio" style="padding: 1.5rem; width: 100%; box-sizing: border-box; border-left: 5px solid #dc2626; background: var(--bg-card);">
+          <div class="card-header cisa-custos-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.15rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <!-- Canto Superior Esquerdo: Ícone Padrão + Título Oficial -->
+            <div class="card-title-group" style="display: flex; align-items: center; gap: 0.85rem;">
+              <div class="card-icon" style="background: rgba(220, 38, 38, 0.12); color: #dc2626; width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i data-lucide="calculator" style="width: 22px; height: 22px;"></i>
               </div>
-              <div style="min-width: 0;">
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 3px; flex-wrap: wrap;">
-                  <span style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: #059669; background: rgba(16, 185, 129, 0.1); padding: 2px 8px; border-radius: 4px;">Hospital Bom Pastor • Santo Augusto</span>
-                  <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted);">|</span>
-                  <span style="font-size: 0.72rem; font-weight: 700; color: #dc2626; background: rgba(239, 68, 68, 0.08); padding: 2px 8px; border-radius: 4px;">CISA / Oftalmologia</span>
+              <div>
+                <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
+                  <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
+                    ${isTodas ? 'Rateio de Custos Operacionais Ambulatoriais (Todas as Especialidades)' : 'Rateio de Custos Operacionais Ambulatoriais'}
+                  </h3>
+                  <span class="badge-sus" style="background: rgba(220, 38, 38, 0.12); color: #dc2626; font-weight: 800; font-size: 0.68rem; padding: 0.25rem 0.6rem; border-radius: 99px;">
+                    DEMONSTRATIVO DE DESPESAS
+                  </span>
                 </div>
-                <h3 style="margin: 0; font-size: 1.18rem; font-weight: 800; color: var(--text-title); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                  ${isTodas ? 'Rateio de Custos Operacionais Ambulatoriais (Todas as Especialidades)' : 'Rateio de Custos Operacionais Ambulatoriais'}
-                </h3>
                 <span style="font-size: 0.82rem; color: var(--text-muted); display: block;">
                   ${isTodas ? 'Custos operacionais compartilhados e rateados proporcionalmente entre os diversos ambulatórios que dividem a mesma estrutura' : 'Custos operacionais e de apoio rateados proporcionalmente entre os ambulatórios especializados que dividem a mesma estrutura física e operacional'}
                 </span>
               </div>
             </div>
 
-            <!-- Canto Superior Direito: Botão Baixar em PDF (Comprovante Documental) -->
-            <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
-              <button type="button" id="btnExportPcCustosPDF" onclick="exportPrestacaoCustosPDF()" class="btn-cisa-pdf-export" title="Gerar comprovante documental oficial em PDF para impressão e arquivamento">
-                <i data-lucide="file-down" style="width: 18px; height: 18px;"></i>
-                <span>Baixar Comprovante PDF</span>
-              </button>
+            <!-- Canto Superior Direito: Badge Informativo de Rateio Operacional -->
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="badge" style="background: rgba(220, 38, 38, 0.08); color: #dc2626; font-weight: 700; font-size: 0.78rem; padding: 0.4rem 0.85rem; border-radius: 8px; border: 1px solid rgba(220, 38, 38, 0.2); display: inline-flex; align-items: center; gap: 6px;">
+                <i data-lucide="calculator" style="width: 14px; height: 14px;"></i> Rateio Operacional Ambulatorial
+              </span>
             </div>
           </div>
 
@@ -2332,8 +2350,12 @@ window.renderPrestacaoViabilidade = renderPrestacaoViabilidade;
 // EXPORTAÇÃO OFICIAL EM PDF: COMPROVANTE DOCUMENTAL DE CUSTOS & RATEIO CISA
 // ----------------------------------------------------------------------------
 window.exportPrestacaoCustosPDF = function() {
-  const currentMonth = window.prestacaoSelectedMonth || '2026-09';
+  const currentMonth = window.prestacaoSelectedMonth || '06';
   const monthNames = {
+    '01': 'Janeiro/2026', '02': 'Fevereiro/2026', '03': 'Março/2026',
+    '04': 'Abril/2026', '05': 'Maio/2026', '06': 'Junho/2026',
+    '07': 'Julho/2026', '08': 'Agosto/2026', '09': 'Setembro/2026',
+    '10': 'Outubro/2026', '11': 'Novembro/2026', '12': 'Dezembro/2026',
     '2026-01': 'Janeiro/2026', '2026-02': 'Fevereiro/2026', '2026-03': 'Março/2026',
     '2026-04': 'Abril/2026', '2026-05': 'Maio/2026', '2026-06': 'Junho/2026',
     '2026-07': 'Julho/2026', '2026-08': 'Agosto/2026', '2026-09': 'Setembro/2026',
@@ -2390,11 +2412,60 @@ window.exportPrestacaoCustosPDF = function() {
     });
   }
 
-  const subtotalVal = document.getElementById('totPcFixo') ? document.getElementById('totPcFixo').innerText.trim() : 'R$ 13.044,55';
-  const recVal = document.getElementById('pcHProd') ? document.getElementById('pcHProd').innerText.trim() : 'R$ 17.536,44';
-  const rateio80Val = document.getElementById('pcDRateioMed') ? document.getElementById('pcDRateioMed').innerText.trim() : 'R$ 3.593,51';
-  const totalDespVal = document.getElementById('pcPRes2') ? document.getElementById('pcPRes2').innerText.trim() : 'R$ 16.638,06';
+  // Pega as linhas renderizadas na tabela atual de receitas (SUS Gaúcho & CISA)
+  const tbReceitas = document.getElementById('tbPcSusGaucho');
+  let receitasRowsHtml = '';
+  if (tbReceitas) {
+    const rRows = tbReceitas.querySelectorAll('tr');
+    rRows.forEach(tr => {
+      const cells = tr.querySelectorAll('td');
+      if (cells.length < 4) return;
+      const rubricaDiv = cells[0].querySelector('div:first-child span');
+      const portariaDiv = cells[0].querySelector('div:last-child');
+      const rubricaText = rubricaDiv ? rubricaDiv.innerText.trim() : cells[0].innerText.trim();
+      const portariaText = portariaDiv ? portariaDiv.innerText.trim() : '';
 
+      const dest = cells[1].innerText.trim().replace(/\n+/g, ' — ');
+      const selStatus = cells[2].querySelector('.sg-select-status');
+      const statusText = selStatus ? selStatus.value : cells[2].innerText.trim();
+      
+      let stBg = '#f1f5f9';
+      let stColor = '#475569';
+      if (statusText === 'Recebido FES') {
+        stBg = '#eafaf1'; stColor = '#167b45';
+      } else if (statusText === 'Aguardando Recurso') {
+        stBg = '#fef6ea'; stColor = '#b86a04';
+      } else if (statusText.toLowerCase().includes('pago')) {
+        stBg = '#eff6ff'; stColor = '#1d4ed8';
+      }
+
+      const valTot = cells[3].innerText.trim();
+
+      receitasRowsHtml += `
+        <tr>
+          <td style="padding: 5px 8px; border: 1px solid #cbd5e1;">
+            <strong style="color: #0f172a; font-size: 9.5px; display: block;">${rubricaText}</strong>
+            <span style="color: #2563eb; font-size: 8px; font-weight: 600;">${portariaText}</span>
+          </td>
+          <td style="padding: 5px 8px; border: 1px solid #cbd5e1; font-size: 8.5px; color: #334155;">${dest}</td>
+          <td style="padding: 5px 8px; border: 1px solid #cbd5e1; text-align: center;">
+            <span style="display: inline-block; padding: 2px 7px; border-radius: 99px; font-size: 8px; font-weight: 800; background: ${stBg}; color: ${stColor}; border: 1px solid ${stColor}44;">
+              ${statusText}
+            </span>
+          </td>
+          <td style="padding: 5px 8px; border: 1px solid #cbd5e1; text-align: right; font-weight: 800; color: #2563eb; font-size: 9.5px;">${valTot}</td>
+        </tr>
+      `;
+    });
+  }
+
+  const totRecVal = document.getElementById('totPcRecSusGaucho') ? document.getElementById('totPcRecSusGaucho').innerText.trim() : (document.getElementById('pcHProd') ? document.getElementById('pcHProd').innerText.trim() : 'R$ 0,00');
+  const subtotalVal = document.getElementById('totPcFixo') ? document.getElementById('totPcFixo').innerText.trim() : 'R$ 13.044,55';
+  const recVal = totRecVal;
+  const rateio80Val = document.getElementById('pcDRateioMed') ? document.getElementById('pcDRateioMed').innerText.trim() : 'R$ 0,00';
+  const totalDespVal = document.getElementById('pcPRes2') ? document.getElementById('pcPRes2').innerText.trim() : 'R$ 0,00';
+
+  const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
   const parseMoney = (txt) => parseFloat((txt || '0').replace(/[^\d,]/g, '').replace(',', '.')) || 0;
   const recNum = parseMoney(recVal);
   const subtotalNum = parseMoney(subtotalVal);
@@ -2407,7 +2478,7 @@ window.exportPrestacaoCustosPDF = function() {
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Comprovante Documental - Rateio de Custos Operacionais CISA</title>
+  <title>Relatório Oficial de Prestação de Contas e Faturamento - Hospital Bom Pastor</title>
   <style>
     @page {
       size: A4 portrait;
@@ -2591,11 +2662,11 @@ window.exportPrestacaoCustosPDF = function() {
 <body>
   <div class="header">
     <div class="header-left">
-      <img src="logo_hbp.jpg" alt="Logo Hospital Bom Pastor" class="logo-img">
+      <img src="${(window.location.origin && window.location.origin !== 'null') ? window.location.origin + '/logo_hbp.jpg' : 'logo_hbp.jpg'}" alt="Logo Hospital Bom Pastor" class="logo-img">
       <div class="header-title">
         <h1>Hospital Bom Pastor • Santo Augusto / RS</h1>
-        <h2>Comprovante Documental de Rateio de Custos Operacionais</h2>
-        <p>Consórcio Intermunicipal de Saúde (CISA) • Ambulatório de Oftalmologia Especializada</p>
+        <h2>Relatório de Prestação de Contas e Controle de Faturamento</h2>
+        <p>Demonstrativo Consolidado de Receitas, Custos Operacionais e Rateio Financeiro • Ambulatório de Oftalmologia</p>
       </div>
     </div>
     <div class="header-right">
@@ -2606,20 +2677,52 @@ window.exportPrestacaoCustosPDF = function() {
   </div>
 
   <div class="meta-strip">
-    <div><strong>Documento:</strong> COMPROVANTE DOCUMENTAL DE RATEIO AMBULATORIAL</div>
-    <div><strong>Modelo de Negociação:</strong> Rateio 80% Médico / 20% Hospital</div>
-    <div><strong>Status:</strong> VERSÃO PARA APROVAÇÃO FORMAL</div>
+    <div><strong>Documento:</strong> PRESTAÇÃO DE CONTAS & CONTROLE DE FATURAMENTO</div>
+    <div><strong>Modelo de Apuração:</strong> Rateio 80% Médico / 20% Hospital</div>
+    <div><strong>Programas:</strong> SUS Gaúcho (Portaria SES/RS 611/26) & CISA</div>
   </div>
 
+  <!-- SEÇÃO 1: RECEITAS E FATURAMENTO -->
+  <div style="font-weight: 800; color: #1e3a8a; font-size: 9.5px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: space-between;">
+    <span>1. Demonstrativo de Receitas e Faturamento Pactuado</span>
+    <span style="font-size: 8.5px; color: #2563eb;">Ambulatório de Oftalmologia</span>
+  </div>
+  <table class="table-custos" style="margin-bottom: 12px;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 42%;">Rubrica / Programa</th>
+        <th style="text-align: left; width: 28%;">Origem / Destinação Orçamentária</th>
+        <th style="text-align: center; width: 14%;">Status do Repasse</th>
+        <th style="text-align: right; width: 16%;">Receita Faturada (R$)</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${receitasRowsHtml}
+      <tr style="background: #eff6ff; font-weight: 900; color: #1d4ed8; border-top: 2px solid #3b82f6;">
+        <td colspan="3" style="padding: 6px 8px; border: 1px solid #cbd5e1; text-transform: uppercase;">
+          TOTAL GERAL DAS RECEITAS FATURADAS
+        </td>
+        <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: right; font-size: 10px;">
+          ${totRecVal}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SEÇÃO 2: CUSTOS OPERACIONAIS E RATEIO -->
+  <div style="font-weight: 800; color: #991b1b; font-size: 9.5px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: space-between;">
+    <span>2. Demonstrativo de Rateio de Custos Operacionais Ambulatoriais</span>
+    <span style="font-size: 8.5px; color: #dc2626;">Estrutura Compartilhada</span>
+  </div>
   <table class="table-custos">
     <thead>
       <tr>
-        <th style="text-align: left; width: 40%;">Função / Recurso Operacional</th>
+        <th style="text-align: left; width: 38%;">Função / Recurso Operacional</th>
         <th style="text-align: center; width: 14%;">Centro de Custo</th>
         <th style="text-align: center; width: 10%;">Rateio</th>
         <th style="text-align: center; width: 8%;">Qtd</th>
-        <th style="text-align: right; width: 13%;">R$ Unitário</th>
-        <th style="text-align: right; width: 15%;">Total/mês</th>
+        <th style="text-align: right; width: 14%;">R$ Unitário</th>
+        <th style="text-align: right; width: 16%;">Total/mês</th>
       </tr>
     </thead>
     <tbody>
@@ -2628,16 +2731,17 @@ window.exportPrestacaoCustosPDF = function() {
         <td colspan="5" style="padding: 6px 8px; border: 1px solid #cbd5e1; text-transform: uppercase;">
           SUBTOTAL DE CUSTOS OPERACIONAIS RATEADOS PELA OFTALMOLOGIA
         </td>
-        <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: right;">
+        <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: right; font-size: 10px;">
           ${subtotalVal}
         </td>
       </tr>
     </tbody>
   </table>
 
+  <!-- SEÇÃO 3: DEMONSTRATIVO FINANCEIRO E APURAÇÃO DE RATEIO -->
   <div class="neg-grid">
     <div class="neg-card">
-      <h4>Demonstrativo de Receitas (SUS Gaúcho / CISA)</h4>
+      <h4>Demonstrativo de Receitas Faturadas</h4>
       <div class="neg-line"><span>SUS Gaúcho - Ambulatório Estratégico Oftalmologia:</span> <strong>${document.getElementById('pcHMutirao') ? document.getElementById('pcHMutirao').innerText.trim() : 'R$ 0,00'}</strong></div>
       <div class="neg-line"><span>Receita Consórcio CISA:</span> <strong>${document.getElementById('pcHCisa') ? document.getElementById('pcHCisa').innerText.trim() : 'R$ 0,00'}</strong></div>
       <div class="neg-line bold" style="color: #059669;"><span>Total de Receitas Faturadas:</span> <strong>${recVal}</strong></div>
@@ -2653,8 +2757,8 @@ window.exportPrestacaoCustosPDF = function() {
   </div>
 
   <div class="destaque-aprovacao">
-    <strong>Homologação Técnica • Versão para Aprovação</strong>
-    <p>Este comprovante documental consolida a memória técnica dos custos rateados e os parâmetros financeiros pactuados para a contratualização do serviço ambulatorial de Oftalmologia junto ao CISA. Documento emitido para deliberação, apreciação e homologação formal pelas partes signatárias.</p>
+    <strong>Homologação Técnica • Versão para Aprovação Formal</strong>
+    <p>Este comprovante documental consolida a memória técnica dos recebimentos pactuados, custos operacionais rateados e a apuração financeira proporcional acordada para o serviço ambulatorial de Oftalmologia do Hospital Bom Pastor de Santo Augusto. Emitido para deliberação, controle de faturamento e homologação formal pelas partes signatárias.</p>
   </div>
 
   <div class="signatures">
@@ -2697,6 +2801,8 @@ window.exportPrestacaoCustosPDF = function() {
     printFrame.contentWindow.focus();
     printFrame.contentWindow.print();
   }, 400);
+
+  return printDoc;
 };
 
 // ----------------------------------------------------------------------------

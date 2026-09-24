@@ -2,6 +2,31 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Reorganização Visual das Despesas, População do Rateio Operacional e Relatório Oficial Completo em PDF
+
+### 🎯 O que foi feito:
+1. **Padronização Visual da Tabela de Despesas**:
+   - Removido o logotipo redundante do hospital do cabeçalho da tabela de rateio de despesas (`cardPcCustosRateio`);
+   - Inserido ícone padronizado de calculadora (`calculator`) em tons vermelhos (`#dc2626` / `rgba(220, 38, 38, 0.12)`) mantendo a simetria com o ícone azul de receitas;
+   - Inseridos badges padronizados: `DEMONSTRATIVO DE DESPESAS` e `Rateio Operacional Ambulatorial`.
+2. **Correção e População Automática dos Custos Rateados (`TOTAL/MÊS`)**:
+   - Corrigida a inicialização de custos na função `getPrestacaoMonthlyStore()` para carregar as quantidades (`qtd`) e percentuais de rateio (`rateio`) padrão de todas as equipes e recursos operacionais;
+   - As linhas da tabela de custos agora exibem seus valores devidamente calculados e formatados em moeda (ex: Enfermeiro R$ 3.413,10, Técnicos R$ 2.244,57, Encargos R$ 2.693,32, Subtotal R$ 13.044,55), eliminando os valores zerados em branco.
+3. **Migração do Botão de PDF para o Cabeçalho da Página**:
+   - O botão `Baixar Comprovante PDF` foi movido para a barra de ações rápidas no cabeçalho superior da página de Prestação de Contas, ao lado de `Novo Lançamento`;
+4. **Relatório Oficial em PDF Completo e Integrado**:
+   - A função `exportPrestacaoCustosPDF()` foi completamente reestruturada para gerar a **Prestação de Contas Completa**:
+     - **Cabeçalho Oficial**: Logotipo do Hospital Bom Pastor, título oficial, dados da competência ativa e carimbo de versão para aprovação;
+     - **Quadro 1 (Receitas)**: Tabela de receitas faturadas (SUS Gaúcho e Consórcio CISA), com rubricas, portarias, destinações orçamentárias, badges de status do repasse e Total Geral;
+     - **Quadro 2 (Despesas)**: Tabela detalhada de custos operacionais com centros de custo, rateios percentuais, quantidades, valores unitários, encargos da folha (30,91%) e Subtotal de custos rateados;
+     - **Quadro 3 (Demonstrativo Financeiro e Rateio 80/20)**: Memória de cálculo com apuração do saldo líquido, rateio de 80% aos prestadores, retenção hospitalar de 20% e total geral de despesas;
+     - **Homologação e Assinaturas**: Termo de aprovação e campos de assinatura formal (Direção Executiva, Coordenação Médica da Oftalmologia e Faturamento SUS).
+5. **Persistência e Cache-Busting**:
+   - Storage versionado para `prestacao_monthly_store_2026_v12`;
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_13`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Novo Status em Escala de Cinza "Não se aplica" na Tabela de Receitas e Faturamento
 
 ### 🎯 O que foi feito:
