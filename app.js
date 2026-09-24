@@ -2919,9 +2919,14 @@ function renderCisaViabilidade(key) {
                 <i data-lucide="calculator" style="width: 20px; height: 20px;"></i>
               </div>
               <div>
-                <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
-                  ${isTodas ? 'Tabela Geral de Procedimentos e Valores Pactuados (Todas as Especialidades CISA)' : 'Tabela de Procedimentos e Valores Pactuados (Contrato CISA)'}
-                </h3>
+                <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
+                  <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
+                    ${isTodas ? 'Tabela Geral de Procedimentos e Valores Pactuados (Todas as Especialidades CISA)' : 'Tabela de Procedimentos e Valores Pactuados (Contrato CISA)'}
+                  </h3>
+                  <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-weight: 800; font-size: 0.68rem; padding: 0.25rem 0.65rem; border-radius: 99px; letter-spacing: 0.5px;">
+                    DEMONSTRATIVO DE RECEITAS
+                  </span>
+                </div>
                 <span style="font-size: 0.82rem; color: var(--text-muted);">
                   ${isTodas ? 'Procedimentos ambulatoriais e cirúrgicos com codificação própria oficial do Consórcio CISA' : 'Procedimentos oftalmológicos com codificação própria oficial do Consórcio CISA'}
                 </span>
@@ -2996,9 +3001,14 @@ function renderCisaViabilidade(key) {
                   <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted);">|</span>
                   <span style="font-size: 0.72rem; font-weight: 700; color: #dc2626; background: rgba(239, 68, 68, 0.08); padding: 2px 8px; border-radius: 4px;">CISA / Oftalmologia</span>
                 </div>
-                <h3 style="margin: 0; font-size: 1.18rem; font-weight: 800; color: var(--text-title); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                  ${isTodas ? 'Rateio de Custos Operacionais Ambulatoriais (Todas as Especialidades)' : 'Rateio de Custos Operacionais Ambulatoriais'}
-                </h3>
+                <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
+                  <h3 style="margin: 0; font-size: 1.18rem; font-weight: 800; color: var(--text-title);">
+                    ${isTodas ? 'Rateio de Custos Operacionais Ambulatoriais (Todas as Especialidades)' : 'Rateio de Custos Operacionais Ambulatoriais'}
+                  </h3>
+                  <span class="badge-sus" style="background: rgba(220, 38, 38, 0.12); color: #dc2626; font-weight: 800; font-size: 0.68rem; padding: 0.25rem 0.65rem; border-radius: 99px; letter-spacing: 0.5px; display: inline-block;">
+                    DEMONSTRATIVO DE DESPESAS
+                  </span>
+                </div>
                 <span style="font-size: 0.82rem; color: var(--text-muted); display: block;">
                   ${isTodas ? 'Custos operacionais compartilhados e rateados proporcionalmente entre os diversos ambulatórios que dividem a mesma estrutura' : 'Custos operacionais e de apoio rateados proporcionalmente entre os ambulatórios especializados que dividem a mesma estrutura física e operacional'}
                 </span>

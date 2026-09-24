@@ -760,18 +760,18 @@ function renderPrestacaoViabilidade(key) {
 
         <!-- 3.2 TABELA VERMELHA: RATEIO DE CUSTOS OPERACIONAIS AMBULATORIAIS -->
         <div class="card" id="cardPcCustosRateio" style="padding: 1.5rem; width: 100%; box-sizing: border-box; border-left: 5px solid #dc2626; background: var(--bg-card);">
-          <div class="card-header cisa-custos-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.15rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
-            <!-- Canto Superior Esquerdo: Ícone Padrão + Título Oficial -->
-            <div class="card-title-group" style="display: flex; align-items: center; gap: 0.85rem;">
+          <div class="card-header cisa-custos-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.15rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+            <!-- Canto Superior Esquerdo: Ícone Padrão + Título Oficial + Pill -->
+            <div class="card-title-group" style="display: flex; align-items: center; gap: 0.85rem; flex: 1; min-width: 0;">
               <div class="card-icon" style="background: rgba(220, 38, 38, 0.12); color: #dc2626; width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                 <i data-lucide="calculator" style="width: 22px; height: 22px;"></i>
               </div>
-              <div>
+              <div style="min-width: 0;">
                 <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
                   <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
                     ${isTodas ? 'Rateio de Custos Operacionais Ambulatoriais (Todas as Especialidades)' : 'Rateio de Custos Operacionais Ambulatoriais'}
                   </h3>
-                  <span class="badge-sus" style="background: rgba(220, 38, 38, 0.12); color: #dc2626; font-weight: 800; font-size: 0.68rem; padding: 0.25rem 0.6rem; border-radius: 99px;">
+                  <span class="badge-sus" style="background: rgba(220, 38, 38, 0.12); color: #dc2626; font-weight: 800; font-size: 0.68rem; padding: 0.25rem 0.65rem; border-radius: 99px; letter-spacing: 0.5px; display: inline-block;">
                     DEMONSTRATIVO DE DESPESAS
                   </span>
                 </div>
@@ -782,7 +782,7 @@ function renderPrestacaoViabilidade(key) {
             </div>
 
             <!-- Canto Superior Direito: Badge Informativo de Rateio Operacional -->
-            <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <div style="display: flex; gap: 0.5rem; align-items: center; flex-shrink: 0;">
               <span class="badge" style="background: rgba(220, 38, 38, 0.08); color: #dc2626; font-weight: 700; font-size: 0.78rem; padding: 0.4rem 0.85rem; border-radius: 8px; border: 1px solid rgba(220, 38, 38, 0.2); display: inline-flex; align-items: center; gap: 6px;">
                 <i data-lucide="calculator" style="width: 14px; height: 14px;"></i> Rateio Operacional Ambulatorial
               </span>

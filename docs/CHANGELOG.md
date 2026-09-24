@@ -2,6 +2,18 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas & CISA: Padronização da Pill "DEMONSTRATIVO DE DESPESAS"
+
+### 🎯 O que foi feito:
+1. **Pill "DEMONSTRATIVO DE DESPESAS" na Tabela de Custos Operacionais**:
+   - Inserida e padronizada a pill `DEMONSTRATIVO DE DESPESAS` no cabeçalho da tabela de rateio de despesas (`#cardPcCustosRateio` em `prestacao_contas.js` e `#cardCisaCustosRateio` em `app.js`);
+   - Aplicado design consistente com cantos arredondados tipo pill (`border-radius: 99px`), tipografia em caixa alta com peso 800 e fundo com tom suave em harmonia com a paleta temática da tabela;
+   - Ajustado o flexbox do cabeçalho da tabela de despesas para eliminar quebras de linha indesejadas e garantir alinhamento perfeito com o badge de rateio à direita.
+2. **Cache-Busting**:
+   - Cache-buster atualizado em `index.html` para `app.js?v=20260924_5` e `prestacao_contas.js?v=20260924_22`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Inclusão do Logotipo e Marca Registrada FluxSUS no Rodapé
 
 ### 🎯 O que foi feito:
