@@ -2,6 +2,18 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Atualização do Texto Explicativo da Regra de Rateio 80% / 20%
+
+### 🎯 O que foi feito:
+1. **Novo Texto Explicativo da Regra 80/20**:
+   - Ajustada a descrição no card interativo e na nota explicativa para:
+     > *"Após retiradas as despesas operacionais, o resultado será 80% dos Prestadores e 20% do Hospital."*
+   - Sincronizado no módulo de Prestação de Contas (`prestacao_contas.js`) e no módulo CISA (`app.js`).
+2. **Cache-Busting**:
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_17` e `app.js?v=20260924_3`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Alinhamento das Despesas da Regra de Negociação com os Centros de Custo e Resultado 20% Hospitalar
 
 ### 🎯 O que foi feito:

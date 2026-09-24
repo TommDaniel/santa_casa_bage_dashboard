@@ -3108,7 +3108,7 @@ function renderCisaViabilidade(key) {
                   <span class="cisa-rule-dot"></span>
                   <span class="cisa-rule-name">Rateio 80% / 20%</span>
                 </div>
-                <div class="cisa-rule-desc">Oitenta por cento do saldo líquido remunera a equipe médica e vinte por cento permanecem com o hospital.</div>
+                <div class="cisa-rule-desc">Após retiradas as despesas operacionais, o resultado será 80% dos Prestadores e 20% do Hospital.</div>
                 <div class="cisa-rule-formula">repasse médico = saldo líquido × 80%</div>
               </button>
 
@@ -3123,7 +3123,7 @@ function renderCisaViabilidade(key) {
 
             <!-- Nota Explicativa da Regra -->
             <div class="cisa-rule-note" id="cisaRuleNote">
-              <strong>Rateio 80% / 20%.</strong> Oitenta por cento do saldo líquido remunera a equipe médica e vinte por cento permanecem com o hospital.
+              <strong>Rateio 80% / 20%.</strong> Após retiradas as despesas operacionais, o resultado será 80% dos Prestadores e 20% do Hospital.
             </div>
           </div>
 
@@ -4392,7 +4392,7 @@ function initCisaInteractiveSimulation(currentKey) {
     },
     rateio8020: {
       nome: 'Rateio 80% / 20%',
-      nota: 'Oitenta por cento do saldo líquido remunera a equipe médica e vinte por cento permanecem com o hospital.'
+      nota: 'Após retiradas as despesas operacionais, o resultado será 80% dos Prestadores e 20% do Hospital.'
     }
   };
 
