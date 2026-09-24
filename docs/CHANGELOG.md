@@ -2,6 +2,26 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas / Oftalmologia: Seletor Interativo de Status e Formatação Sem Bordas da Receita
+
+### 🎯 O que foi feito:
+1. **Seletor Dinâmico de Status de Repasse com Cores Semânticas**:
+   - Status inicial padrão definido como **`Recebido FES`** (badge verde suave: `#eafaf1` / `#167b45`);
+   - Disponibilizado seletor dropdown elegante integrado à tabela com as opções:
+     - **`Recebido FES`** (Repasse estadual creditado);
+     - **`Aguardando Recurso`** (badge âmbar suave: `#fef6ea` / `#b86a04`);
+     - **`Pago aos Prestadores`** (badge azul suave: `#eff6ff` / `#1d4ed8`);
+   - O status selecionado atualiza instantaneamente o estilo visual do pill e é persistido no armazenamento local (`localStorage`) da competência.
+2. **Formatação Limpa e Sem Bordas para o Valor Financeiro**:
+   - Removido o layout retangular de campo de formulário com bordas azuis;
+   - Aplicado layout idêntico ao da coluna financeira da tabela inferior (`TOTAL/MÊS`), exibindo o valor em tipografia limpa, sem bordas (`color: #2563eb; font-weight: 800; font-size: 0.95rem;`);
+   - Preservada a capacidade de edição inline ao clicar no valor, permitindo ajustes pontuais e recálculo automático mantendo a estética visual perfeita.
+3. **Persistência e Cache-Busting**:
+   - Chave de armazenamento atualizada para `prestacao_monthly_store_2026_v7` garantindo inicialização correta com status padrão "Recebido FES";
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_7`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas / Oftalmologia: Formatação em Linha Única da Receita "SUS Gaúcho - Ambulatório Estratégico Oftalmologia"
 
 ### 🎯 O que foi feito:

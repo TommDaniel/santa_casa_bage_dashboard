@@ -335,7 +335,7 @@ window.prestacaoSelectedMonth = window.prestacaoSelectedMonth || '06';
 function getPrestacaoMonthlyStore(monthId) {
   if (!window.prestacaoMonthlyStore) {
     try {
-      const saved = localStorage.getItem('prestacao_monthly_store_2026_v6');
+      const saved = localStorage.getItem('prestacao_monthly_store_2026_v7');
       if (saved) window.prestacaoMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.prestacaoMonthlyStore || typeof window.prestacaoMonthlyStore !== 'object') {
@@ -371,7 +371,7 @@ function getPrestacaoMonthlyStore(monthId) {
           rubrica: 'SUS Gaúcho - Ambulatório Estratégico Oftalmologia',
           portaria: 'Portaria SES/RS nº 611/2026 (Mutirão de Especialidades)',
           natureza: 'Custeio Ambulatorial Especializado (FES/RS)',
-          status: 'Homologado',
+          status: 'Recebido FES',
           qtd: 1,
           val: 81276.00
         }
@@ -402,7 +402,7 @@ function getPrestacaoMonthlyStore(monthId) {
           rubrica: 'SUS Gaúcho - Ambulatório Estratégico Oftalmologia',
           portaria: 'Portaria SES/RS nº 611/2026 (Mutirão de Especialidades)',
           natureza: 'Custeio Ambulatorial Especializado (FES/RS)',
-          status: 'Homologado',
+          status: 'Recebido FES',
           qtd: 1,
           val: 81276.00
         }
@@ -418,7 +418,7 @@ function getPrestacaoMonthlyStore(monthId) {
 function savePrestacaoMonthlyStore() {
   try {
     if (window.prestacaoMonthlyStore) {
-      localStorage.setItem('prestacao_monthly_store_2026_v6', JSON.stringify(window.prestacaoMonthlyStore));
+      localStorage.setItem('prestacao_monthly_store_2026_v7', JSON.stringify(window.prestacaoMonthlyStore));
     }
   } catch (e) {}
 }
@@ -1111,6 +1111,21 @@ function initPrestacaoInteractiveSimulation(currentKey) {
       tr.className = 'cisa-row';
 
       const v = (p.val !== undefined && p.val !== null && p.val !== '') ? parseFloat(p.val) : 0;
+      const curStatus = p.status || 'Recebido FES';
+
+      let stBg = '#eafaf1';
+      let stColor = '#167b45';
+      let stBorder = '#d2f4df';
+
+      if (curStatus === 'Aguardando Recurso') {
+        stBg = '#fef6ea';
+        stColor = '#b86a04';
+        stBorder = '#faecd4';
+      } else if (curStatus === 'Pago aos Prestadores' || curStatus === 'Pago ao Prestadores') {
+        stBg = '#eff6ff';
+        stColor = '#1d4ed8';
+        stBorder = '#bfdbfe';
+      }
 
       tr.innerHTML = `
         <td class="cisa-cell" style="padding: 16px 18px;">
@@ -1132,24 +1147,58 @@ function initPrestacaoInteractiveSimulation(currentKey) {
           </div>
         </td>
         <td class="cisa-cell" style="padding: 16px 18px; text-align: center; vertical-align: middle;">
-          <span class="cisa-status-badge status-cotado" style="display: inline-flex; align-items: center; gap: 5px; font-weight: 700; padding: 5px 12px; font-size: 0.78rem;">
-            <i data-lucide="check-circle-2" style="width: 13px; height: 13px;"></i> ${p.status || 'Homologado'}
-          </span>
+          <div style="display: inline-flex; align-items: center; justify-content: center;">
+            <select class="sg-select-status" style="font-size: 0.8rem; font-weight: 700; padding: 5px 12px; border-radius: 9999px; cursor: pointer; border: 1px solid ${stBorder}; background: ${stBg}; color: ${stColor}; outline: none; font-family: inherit; transition: all 0.2s ease;">
+              <option value="Recebido FES" ${curStatus === 'Recebido FES' ? 'selected' : ''} style="background: #ffffff; color: #167b45;">Recebido FES</option>
+              <option value="Aguardando Recurso" ${curStatus === 'Aguardando Recurso' ? 'selected' : ''} style="background: #ffffff; color: #b86a04;">Aguardando Recurso</option>
+              <option value="Pago aos Prestadores" ${(curStatus === 'Pago aos Prestadores' || curStatus === 'Pago ao Prestadores') ? 'selected' : ''} style="background: #ffffff; color: #1d4ed8;">Pago ao Prestadores</option>
+            </select>
+          </div>
         </td>
         <td class="cisa-cell" style="padding: 16px 18px; text-align: right; vertical-align: middle;">
-          <div style="display: inline-flex; align-items: center; justify-content: flex-end; gap: 6px;">
-            <span style="font-size: 0.88rem; font-weight: 800; color: #2563eb;">R$</span>
-            <input type="number" step="0.01" min="0" class="sg-input-val" value="${v.toFixed(2)}" style="width: 140px; text-align: right; padding: 6px 10px; border: 1.5px solid #2563eb; border-radius: 6px; font-weight: 800; font-size: 1.05rem; color: #2563eb; background: rgba(37,99,235,0.03);">
-          </div>
+          <span class="sg-val-wrapper" style="display: inline-flex; align-items: center; justify-content: flex-end;">
+            <strong class="sg-cell-tot" style="color: #2563eb; font-size: 0.95rem; font-weight: 800; cursor: pointer;" title="Clique para editar valor">${BRL.format(v)}</strong>
+          </span>
         </td>
       `;
 
-      const inVal = tr.querySelector('.sg-input-val');
-      if (inVal) {
-        inVal.oninput = (e) => {
-          p.val = parseFloat(e.target.value) || 0;
+      // Handler para mudança de status
+      const selStatus = tr.querySelector('.sg-select-status');
+      if (selStatus) {
+        selStatus.onchange = (e) => {
+          p.status = e.target.value;
           savePrestacaoMonthlyStore();
-          recalc();
+          renderSusGauchoTable();
+        };
+      }
+
+      // Handler para edição rápida sem bordas ao clicar
+      const valWrapper = tr.querySelector('.sg-val-wrapper');
+      const valText = tr.querySelector('.sg-cell-tot');
+      if (valText && valWrapper) {
+        valText.onclick = () => {
+          const currentVal = (p.val !== undefined && p.val !== null) ? p.val : 81276;
+          valWrapper.innerHTML = `
+            <span style="font-size: 0.88rem; font-weight: 800; color: #2563eb; margin-right: 4px;">R$</span>
+            <input type="number" step="0.01" min="0" class="sg-temp-input" value="${currentVal.toFixed(2)}" style="width: 120px; text-align: right; padding: 2px 6px; border: 1px solid #2563eb; border-radius: 4px; font-weight: 800; font-size: 0.95rem; color: #2563eb; background: #fff;">
+          `;
+          const tempIn = valWrapper.querySelector('.sg-temp-input');
+          tempIn.focus();
+          tempIn.select();
+
+          const commitEdit = () => {
+            const parsed = parseFloat(tempIn.value);
+            p.val = (!isNaN(parsed) && parsed >= 0) ? parsed : 0;
+            savePrestacaoMonthlyStore();
+            renderSusGauchoTable();
+            recalc();
+          };
+
+          tempIn.onblur = commitEdit;
+          tempIn.onkeydown = (ev) => {
+            if (ev.key === 'Enter') commitEdit();
+            if (ev.key === 'Escape') renderSusGauchoTable();
+          };
         };
       }
 
