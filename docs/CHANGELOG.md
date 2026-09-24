@@ -2,6 +2,27 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Subdivisão Clínica do Rateio 80% dos Médicos Prestadores
+
+### 🎯 O que foi feito:
+1. **Subdivisão Individualizada na Coluna de Despesas**:
+   - Subdividido o valor total do *Rateio 80% Médico(s) Prestador(es)* em duas linhas específicas para cada profissional com nomes completos:
+     - `↳ Dr. Christian Pretto (40% · 150 cons.)`: **R$ 27.292,58**;
+     - `↳ Dr. Heron Gomes Correia (40% · 150 cons.)`: **R$ 27.292,58**.
+2. **Painel de Rateio Clínico Individualizado (Abaixo da Tabela de Split)**:
+   - Inserido um painel dedicado (`#pcBoxSubdivisaoMedicos`) com cards detalhados para cada médico prestador:
+     - Apuração do percentual (40% do saldo bruto);
+     - Volume de consultas mensais realizadas (150 consultas/mês cada, totalizando 300 consultas);
+     - Valor financeiro bruto a receber (**R$ 27.292,58** cada);
+     - **Valor unitário apurado por consulta**: **R$ 181,95 / consulta**;
+     - Resumo consolidado da memória de cálculo e subtotal médico de 80% (**R$ 54.585,16**).
+3. **Sincronização no Relatório em PDF**:
+   - Incluída a discriminação das consultas e valores unitários de cada médico na Seção 3 do relatório impresso/exportado em PDF.
+4. **Cache-Busting**:
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_23`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas & CISA: Padronização da Pill "DEMONSTRATIVO DE DESPESAS"
 
 ### 🎯 O que foi feito:

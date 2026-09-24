@@ -915,6 +915,8 @@ function renderPrestacaoViabilidade(key) {
                   <span class="cisa-k" style="font-weight: 700; color: var(--text-title);">Subtotal das Despesas</span><span class="cisa-v" id="pcDSubtotal" style="color: #dc2626; font-weight: 700;">—</span>
                   <span class="cisa-k" style="font-weight: 800; color: #059669; border-top: 1px dashed #cbd5e1; padding-top: 4px;">Saldo Bruto (Receita − Despesas)</span><span class="cisa-v" id="pcDSaldoBruto" style="color: #059669; font-weight: 800; border-top: 1px dashed #cbd5e1; padding-top: 4px;">—</span>
                   <span class="cisa-k" style="font-weight: 700; color: #b91c1c;">Rateio 80% Médico(s) Prestador(es)</span><span class="cisa-v" id="pcDRateioMed" style="color: #dc2626; font-weight: 700;">—</span>
+                  <span class="cisa-k" style="font-size: 0.74rem; padding-left: 10px; color: #475569;">↳ Dr. Christian Pretto (40% · 150 cons.)</span><span class="cisa-v" id="pcDRateioChristian" style="font-size: 0.74rem; color: #b91c1c; font-weight: 600;">—</span>
+                  <span class="cisa-k" style="font-size: 0.74rem; padding-left: 10px; color: #475569;">↳ Dr. Heron Gomes Correia (40% · 150 cons.)</span><span class="cisa-v" id="pcDRateioHeron" style="font-size: 0.74rem; color: #b91c1c; font-weight: 600;">—</span>
                   <span class="cisa-k" style="font-weight: 700; color: var(--text-muted); border-top: 1px dashed #cbd5e1; padding-top: 4px;">Total das Despesas</span><span class="cisa-v" id="pcDTotalDesp" style="color: #dc2626; font-weight: 700; border-top: 1px dashed #cbd5e1; padding-top: 4px;">—</span>
                 </div>
               </div>
@@ -922,6 +924,70 @@ function renderPrestacaoViabilidade(key) {
                 <span class="cisa-lb" id="pcPResLabel" style="color: #047857; font-weight: 800;">RESULTADO 20% HOSPITALAR</span>
                 <span class="cisa-vl" id="pcPRes2" style="color: #059669; font-weight: 800;">—</span>
               </div>
+            </div>
+          </div>
+
+          <!-- Detalhamento Individualizado dos Prestadores Médicos (80% Rateio) -->
+          <div id="pcBoxSubdivisaoMedicos" style="margin: 0 1.25rem 1.25rem 1.25rem; padding: 1rem 1.25rem; background: rgba(37, 99, 235, 0.03); border: 1px solid rgba(37, 99, 235, 0.15); border-radius: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <i data-lucide="users" style="width: 18px; height: 18px; color: #2563eb;"></i>
+                <strong style="font-size: 0.88rem; color: var(--text-title); text-transform: uppercase; letter-spacing: 0.5px;">
+                  Rateio Clínico Individualizado dos Médicos Prestadores (80% do Saldo Bruto)
+                </strong>
+              </div>
+              <span class="badge" style="background: rgba(37, 99, 235, 0.1); color: #2563eb; font-weight: 700; font-size: 0.74rem; padding: 3px 8px; border-radius: 6px;">
+                Meta Ambulatorial: 300 Consultas/Mês (150 por Prestador)
+              </span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem;">
+              <!-- Card Dr. Christian Pretto -->
+              <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-left: 4px solid #2563eb; border-radius: 8px; padding: 0.9rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+                  <div>
+                    <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: var(--text-title);">Dr. Christian Pretto</h4>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Corpo Clínico · Oftalmologia Ambulatorial</span>
+                  </div>
+                  <span style="background: rgba(37, 99, 235, 0.1); color: #2563eb; font-weight: 800; font-size: 0.72rem; padding: 2px 7px; border-radius: 4px;">40% do Saldo</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1px dashed var(--border-color); padding-top: 0.6rem; margin-top: 0.4rem;">
+                  <div>
+                    <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">150 Consultas / Mês</div>
+                    <div style="font-size: 1.12rem; font-weight: 800; color: #dc2626;" id="pcValChristian">R$ 27.292,58</div>
+                  </div>
+                  <div style="text-align: right;">
+                    <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Valor por Consulta</div>
+                    <div style="font-size: 1.05rem; font-weight: 800; color: #059669;" id="pcUnitChristian">R$ 181,95 <span style="font-size: 0.7rem; font-weight: 600; color: var(--text-muted);">/ cons.</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Dr. Heron Gomes Correia -->
+              <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-left: 4px solid #10b981; border-radius: 8px; padding: 0.9rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+                  <div>
+                    <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: var(--text-title);">Dr. Heron Gomes Correia</h4>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Corpo Clínico · Oftalmologia Ambulatorial</span>
+                  </div>
+                  <span style="background: rgba(16, 185, 129, 0.1); color: #059669; font-weight: 800; font-size: 0.72rem; padding: 2px 7px; border-radius: 4px;">40% do Saldo</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1px dashed var(--border-color); padding-top: 0.6rem; margin-top: 0.4rem;">
+                  <div>
+                    <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">150 Consultas / Mês</div>
+                    <div style="font-size: 1.12rem; font-weight: 800; color: #dc2626;" id="pcValHeron">R$ 27.292,58</div>
+                  </div>
+                  <div style="text-align: right;">
+                    <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Valor por Consulta</div>
+                    <div style="font-size: 1.05rem; font-weight: 800; color: #059669;" id="pcUnitHeron">R$ 181,95 <span style="font-size: 0.7rem; font-weight: 600; color: var(--text-muted);">/ cons.</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 0.75rem; font-size: 0.74rem; color: var(--text-muted); line-height: 1.5; border-top: 1px solid rgba(37, 99, 235, 0.1); padding-top: 0.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+              <span><strong>Fórmula de Apuração:</strong> (Saldo Bruto a Ratear × 40%) ÷ 150 consultas realizadas no mês por médico prestador.</span>
+              <span style="color: #2563eb; font-weight: 700;">Subtotal Rateio Médico (80%): <strong id="pcValSubtotalMed" style="color: #dc2626;">R$ 54.585,16</strong></span>
             </div>
           </div>
         </div>
@@ -2039,19 +2105,45 @@ function initPrestacaoInteractiveSimulation(currentKey) {
     const rateioMed80 = saldoTotalSobrou * 0.80;
     const resultadoHosp20 = saldoTotalSobrou * 0.20;
 
+    // Subdivisão dos 80% entre os dois prestadores médicos (40% cada · 150 consultas cada)
+    const rateioMed40 = rateioMed80 / 2;
+    const qtdConsultasChristian = 150;
+    const qtdConsultasHeron = 150;
+    const unitarioChristian = qtdConsultasChristian > 0 ? (rateioMed40 / qtdConsultasChristian) : 0;
+    const unitarioHeron = qtdConsultasHeron > 0 ? (rateioMed40 / qtdConsultasHeron) : 0;
+
     const elBlockRateio = root.querySelector('#pcBlockRateio80');
     const elDSubtotal = root.querySelector('#pcDSubtotal');
     const elDSaldoBruto = root.querySelector('#pcDSaldoBruto');
     const elDRateioMed = root.querySelector('#pcDRateioMed');
+    const elDRateioChristian = root.querySelector('#pcDRateioChristian');
+    const elDRateioHeron = root.querySelector('#pcDRateioHeron');
     const elDTotalDesp = root.querySelector('#pcDTotalDesp');
     const elPRes = root.querySelector('#pcPRes2');
     const elPResLabel = root.querySelector('#pcPResLabel');
 
+    const elBoxSubdivisao = root.querySelector('#pcBoxSubdivisaoMedicos');
+    const elValChristian = root.querySelector('#pcValChristian');
+    const elUnitChristian = root.querySelector('#pcUnitChristian');
+    const elValHeron = root.querySelector('#pcValHeron');
+    const elUnitHeron = root.querySelector('#pcUnitHeron');
+    const elValSubtotalMed = root.querySelector('#pcValSubtotalMed');
+
     if (activeRule === 'rateio8020') {
       if (elBlockRateio) elBlockRateio.style.display = 'contents';
+      if (elBoxSubdivisao) elBoxSubdivisao.style.display = 'block';
       if (elDSubtotal) elDSubtotal.textContent = BRL.format(totFix);
       if (elDSaldoBruto) elDSaldoBruto.textContent = BRL.format(saldoTotalSobrou);
       if (elDRateioMed) elDRateioMed.textContent = BRL.format(rateioMed80);
+      if (elDRateioChristian) elDRateioChristian.textContent = BRL.format(rateioMed40);
+      if (elDRateioHeron) elDRateioHeron.textContent = BRL.format(rateioMed40);
+
+      if (elValChristian) elValChristian.textContent = BRL.format(rateioMed40);
+      if (elUnitChristian) elUnitChristian.innerHTML = `${BRL.format(unitarioChristian)} <span style="font-size: 0.7rem; font-weight: 600; color: var(--text-muted);">/ cons.</span>`;
+      if (elValHeron) elValHeron.textContent = BRL.format(rateioMed40);
+      if (elUnitHeron) elUnitHeron.innerHTML = `${BRL.format(unitarioHeron)} <span style="font-size: 0.7rem; font-weight: 600; color: var(--text-muted);">/ cons.</span>`;
+      if (elValSubtotalMed) elValSubtotalMed.textContent = BRL.format(rateioMed80);
+
       const totalDespesa8020 = totFix + rateioMed80;
       if (elDTotalDesp) elDTotalDesp.textContent = BRL.format(totalDespesa8020);
 
@@ -2067,6 +2159,7 @@ function initPrestacaoInteractiveSimulation(currentKey) {
       }
     } else {
       if (elBlockRateio) elBlockRateio.style.display = 'none';
+      if (elBoxSubdivisao) elBoxSubdivisao.style.display = 'none';
       if (elPResLabel) elPResLabel.textContent = 'RESULTADO HOSPITALAR';
       if (elPRes) {
         const res50 = hospRes;
@@ -2498,6 +2591,11 @@ window.exportPrestacaoCustosPDF = function() {
   const saldoNum = Math.max(0, recNum - subtotalNum);
   const saldoVal = BRL.format(saldoNum);
   const hosp20Val = BRL.format(saldoNum * 0.20);
+  const rateio80Num = saldoNum * 0.80;
+  const rateio40Num = rateio80Num / 2;
+  const rateio40Val = BRL.format(rateio40Num);
+  const unitChristianVal = BRL.format(rateio40Num / 150);
+  const unitHeronVal = BRL.format(rateio40Num / 150);
 
   const printDoc = `
 <!DOCTYPE html>
@@ -2743,6 +2841,12 @@ window.exportPrestacaoCustosPDF = function() {
       <div class="neg-line"><span>Subtotal Custos Operacionais Rateados:</span> <strong>${subtotalVal}</strong></div>
       <div class="neg-line"><span>Saldo Bruto a Ratear (Receita − Despesas):</span> <strong style="color: #059669;">${saldoVal}</strong></div>
       <div class="neg-line"><span>Rateio 80% Médico(s) Prestador(es):</span> <strong style="color: #dc2626;">${rateio80Val}</strong></div>
+      <div class="neg-line" style="padding-left: 10px; font-size: 7.5pt; color: #475569;">
+        <span>↳ Dr. Christian Pretto (40% · 150 consultas):</span> <strong>${rateio40Val} (${unitChristianVal} / cons.)</strong>
+      </div>
+      <div class="neg-line" style="padding-left: 10px; font-size: 7.5pt; color: #475569;">
+        <span>↳ Dr. Heron Gomes Correia (40% · 150 consultas):</span> <strong>${rateio40Val} (${unitHeronVal} / cons.)</strong>
+      </div>
       <div class="neg-line"><span>Total Geral das Despesas:</span> <strong style="color: #dc2626;">${totalDespVal}</strong></div>
       <div class="neg-line bold" style="color: #059669; border-top: 1px dashed #cbd5e1; padding-top: 3px; margin-top: 3px;"><span>RESULTADO 20% HOSPITALAR:</span> <strong>${hosp20Val}</strong></div>
     </div>
