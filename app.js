@@ -462,6 +462,14 @@ function switchTab(targetRef, tabId) {
         console.warn('Alerta na renderizacao do Consórcio CISA:', e);
       }
     }
+    if (idToActivate === 'tab-prestacao-contas') {
+      try {
+        if (typeof renderPrestacaoSidebar === 'function') renderPrestacaoSidebar();
+        if (typeof renderPrestacaoServico === 'function') renderPrestacaoServico(window.currentPrestacaoKey || 'oftalmologia');
+      } catch (e) {
+        console.warn('Alerta na renderizacao de Prestacao de Contas:', e);
+      }
+    }
     // 6. Recriar ícones e ajustar gráficos
     if (window.lucide && typeof lucide.createIcons === 'function') {
       lucide.createIcons();

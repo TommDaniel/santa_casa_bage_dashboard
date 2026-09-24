@@ -2,6 +2,25 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Novo Módulo: Prestação de Contas (Clonagem Completa do Módulo CISA)
+
+### 🎯 O que foi feito:
+1. **Novo Botão no Menu Principal de Navegação**:
+   - Adicionado no cabeçalho global o botão **`Prestação de Contas`** (`data-tab="tab-prestacao-contas"`), posicionado estrategicamente ao lado do botão **`Consórcio CISA`**, com o ícone `file-check` do Lucide Icons.
+2. **Nova Seção de Painel Independente (`#tab-prestacao-contas`)**:
+   - Criada a seção `<section id="tab-prestacao-contas" class="tab-pane">` em `index.html` com layout master (sidebar esquerda + painel central dinâmico).
+   - Identidade com cabeçalho documental, badges oficiais, dados do Consórcio CISA e botões de alternância (`Viabilidade & Prestação` vs `Ficha Técnica`).
+3. **Criação do Script Dedicado e Modular `prestacao_contas.js`**:
+   - Todo o ecossistema e funcionalidades do Consórcio CISA foram clonados com escopo e IDs próprios (`pcSidebarNav`, `pcMainContent`, `pcNativeDashboard`, `tbPcProcs`, `tbPcCustos`, etc.);
+   - Preservadas e ativas todas as 15 regras contratuais de procedimentos (com divisão médica por Dr. Christian Pretto e Dr. Heron Gomes Correia), a tabela de 11 despesas rateadas com centros de custo, encargos de 30,91% (CEBAS Ativos + Equipe Substitutiva), subtotal de R$ 13.044,55, saldo de R$ 4.491,89 e rateio 80/20 (Repasse R$ 3.593,51 e Retenção R$ 898,38);
+   - Exportação em PDF própria (`exportPrestacaoCustosPDF`) gerando o comprovante oficial com o título de Prestação de Contas e todas as assinaturas;
+   - Gerenciamento de estado e armazenamento mensal próprio (`prestacao_monthly_store_2026_v1`), permitindo ao usuário evoluir, alterar colunas e criar relatórios futuros no módulo de Prestação de Contas com total independência, sem alterar nem afetar o módulo Consórcio CISA.
+4. **Integração e Sincronização**:
+   - Função `switchTab` em `app.js` atualizada para gerenciar a ativação da aba `tab-prestacao-contas`;
+   - Inicialização nativa dos seletores e scripts ao final de `index.html`.
+
+---
+
 ## [2026-09-24] - Módulo CISA: Atualização dos Encargos da Folha para 30,91% (CEBAS Ativos + Equipe Substitutiva)
 
 ### 🎯 O que foi feito:
