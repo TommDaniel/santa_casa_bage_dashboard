@@ -2,6 +2,17 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Remoção da Tag "AMBULATÓRIOS" do Menu Lateral
+
+### 🎯 O que foi feito:
+1. **Remoção da Tag no Menu Lateral de Especialidades**:
+   - Excluído o badge `<span class="badge-sus">AMBULATÓRIOS</span>` do cabeçalho da barra lateral esquerda da aba de Prestação de Contas (`#tab-prestacao-contas`);
+   - O título *Especialidades* agora se apresenta de forma limpa, direta e alinhada ao lado do ícone de estetoscópio.
+2. **Cache-Busting**:
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_25`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Remoção do Banner Superior e Inclusão do Botão "Relatório em PDF" no Cabeçalho
 
 ### 🎯 O que foi feito:
