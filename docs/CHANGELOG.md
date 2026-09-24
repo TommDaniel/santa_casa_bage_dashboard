@@ -2,6 +2,28 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas / Oftalmologia: Remoção da Tabela Detalhada CISA e Inclusão da Linha "Produção CISA - Oftalmologia" nas Receitas
+
+### 🎯 O que foi feito:
+1. **Remoção da Tabela de Procedimentos e Valores Pactuados (Contrato CISA)**:
+   - Removido o card detalhado de procedimentos individuais (`#tbPcProcs`) da aba de Prestação de Contas, centralizando essa visualização na aba original Consórcio CISA;
+   - O painel agora foca diretamente nas receitas consolidadas e no rateio de custos operacionais ambulatoriais.
+2. **Inclusão da Linha "Produção CISA - Oftalmologia" na Tabela de Receitas**:
+   - A tabela superior passa a demonstrar de forma consolidada e limpa as duas fontes de faturamento:
+     - **Linha 1**: `SUS Gaúcho - Ambulatório Estratégico Oftalmologia` (`Portaria SES/RS nº 611/2026`);
+     - **Linha 2**: `Produção CISA - Oftalmologia` (`Procedimentos Ambulatoriais e Diagnósticos Especializados`).
+   - Cada linha possui seu seletor dinâmico de status (`Recebido FES`, `Aguardando Recurso`, `Pago ao Prestadores`) e valor formatado sem bordas com edição ao clicar;
+   - Em Junho e Julho, a linha CISA possui valor inicial de `R$ 0,00` e o SUS Gaúcho `R$ 81.276,00`;
+   - Em Agosto, a linha CISA reflete a produção realizada de `R$ 17.536,44` e o SUS Gaúcho `R$ 0,00`;
+   - O rodapé calcula o **Total Geral das Receitas Faturadas** somando dinamicamente ambas as rubricas.
+3. **Sincronização com o Estudo de Viabilidade e Rateio 80/20**:
+   - As colunas de receitas no card de Viabilidade e no Comprovante PDF detalham automaticamente a rubrica do SUS Gaúcho e a Receita do Consórcio CISA;
+   - Sincronização automática dos pills dos 12 meses (`JUN: R$ 81.276,00`, `JUL: R$ 81.276,00`, `AGO: R$ 17.536,44`).
+4. **Persistência**:
+   - Storage versionado como `prestacao_monthly_store_2026_v8` e cache buster `prestacao_contas.js?v=20260924_8`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas / Oftalmologia: Seletor Interativo de Status e Formatação Sem Bordas da Receita
 
 ### 🎯 O que foi feito:

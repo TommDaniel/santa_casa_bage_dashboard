@@ -335,7 +335,7 @@ window.prestacaoSelectedMonth = window.prestacaoSelectedMonth || '06';
 function getPrestacaoMonthlyStore(monthId) {
   if (!window.prestacaoMonthlyStore) {
     try {
-      const saved = localStorage.getItem('prestacao_monthly_store_2026_v7');
+      const saved = localStorage.getItem('prestacao_monthly_store_2026_v8');
       if (saved) window.prestacaoMonthlyStore = JSON.parse(saved);
     } catch (e) {}
     if (!window.prestacaoMonthlyStore || typeof window.prestacaoMonthlyStore !== 'object') {
@@ -345,38 +345,40 @@ function getPrestacaoMonthlyStore(monthId) {
 
   if (!monthId) monthId = window.prestacaoSelectedMonth || '06';
 
-  if (!window.prestacaoMonthlyStore[monthId] || !Array.isArray(window.prestacaoMonthlyStore[monthId].procs)) {
+  if (!window.prestacaoMonthlyStore[monthId] || !Array.isArray(window.prestacaoMonthlyStore[monthId].procsSusGaucho)) {
     const isAgosto = (monthId === '08');
     const isJunhoOrJulho = (monthId === '06' || monthId === '07');
     const cisaStore = (typeof getCisaMonthlyStore === 'function') ? getCisaMonthlyStore(monthId) : (window.cisaMonthlyStore && window.cisaMonthlyStore[monthId]);
-    const srcProcs = (cisaStore && cisaStore.procs) ? cisaStore.procs : window.cisaSimState.procs;
     const srcCustos = (cisaStore && cisaStore.custos) ? cisaStore.custos : window.cisaSimState.custos;
     const srcRegra = (cisaStore && cisaStore.regraAtiva) ? cisaStore.regraAtiva : 'rateio8020';
 
-    // Em Junho e Julho, CISA ainda não possui faturamento (quantidade = 0)
-    // Em Agosto, CISA possui a produção realizada
-    const baseProcs = srcProcs.map(p => ({
-      ...p,
-      qtd: isAgosto ? ((p.qtd !== undefined && p.qtd !== null) ? p.qtd : 0) : 0,
-      prestador: p.prestador || 'Dr. Christian Pretto'
-    }));
-
-    // Receita SUS GAÚCHO — Linha Única do Programa
-    // Rubrica: SUS Gaúcho - Ambulatório Estratégico Oftalmologia
-    // Portaria SES/RS nº 611/2026 (Mutirão de Especialidades)
-    let baseSusGaucho = [];
-    if (isJunhoOrJulho) {
-      baseSusGaucho = [
-        {
-          rubrica: 'SUS Gaúcho - Ambulatório Estratégico Oftalmologia',
-          portaria: 'Portaria SES/RS nº 611/2026 (Mutirão de Especialidades)',
-          natureza: 'Custeio Ambulatorial Especializado (FES/RS)',
-          status: 'Recebido FES',
-          qtd: 1,
-          val: 81276.00
-        }
-      ];
-    }
+    // Receitas da Prestação de Contas:
+    // 1. SUS Gaúcho - Ambulatório Estratégico Oftalmologia (Portaria SES/RS nº 611/2026) -> R$ 81.276,00 em Junho e Julho
+    // 2. Produção CISA - Oftalmologia (Procedimentos Pactuados) -> R$ 0,00 em Junho e Julho; R$ 17.536,44 em Agosto
+    const baseReceitas = [
+      {
+        id: 'sus_gaucho',
+        rubrica: 'SUS Gaúcho - Ambulatório Estratégico Oftalmologia',
+        portaria: 'Portaria SES/RS nº 611/2026 (Mutirão de Especialidades)',
+        natureza: 'Custeio Ambulatorial Especializado',
+        origemSub: 'Fundo Estadual de Saúde (FES/RS)',
+        icon: 'sparkles',
+        status: isJunhoOrJulho ? 'Recebido FES' : 'Aguardando Recurso',
+        qtd: 1,
+        val: isJunhoOrJulho ? 81276.00 : 0.00
+      },
+      {
+        id: 'cisa',
+        rubrica: 'Produção CISA - Oftalmologia',
+        portaria: 'Procedimentos Ambulatoriais e Diagnósticos Especializados',
+        natureza: 'Consórcio Intermunicipal de Saúde (CISA)',
+        origemSub: 'Receita Própria Pactuada Consórcio',
+        icon: 'building-2',
+        status: isAgosto ? 'Recebido FES' : 'Aguardando Recurso',
+        qtd: 1,
+        val: isAgosto ? 17536.44 : 0.00
+      }
+    ];
 
     const baseCustos = srcCustos.map(c => ({
       ...c,
@@ -386,30 +388,42 @@ function getPrestacaoMonthlyStore(monthId) {
     }));
 
     window.prestacaoMonthlyStore[monthId] = {
-      procs: JSON.parse(JSON.stringify(baseProcs)),
-      procsSusGaucho: JSON.parse(JSON.stringify(baseSusGaucho)),
+      procs: [],
+      procsSusGaucho: JSON.parse(JSON.stringify(baseReceitas)),
       custos: JSON.parse(JSON.stringify(baseCustos)),
       regraAtiva: srcRegra
     };
   }
 
-  // Garantir existência de procsSusGaucho se não existir
-  if (!Array.isArray(window.prestacaoMonthlyStore[monthId].procsSusGaucho)) {
+  // Garantir existência e integridade de procsSusGaucho se faltar alguma das 2 linhas
+  const mData = window.prestacaoMonthlyStore[monthId];
+  if (!Array.isArray(mData.procsSusGaucho) || mData.procsSusGaucho.length < 2) {
+    const isAgosto = (monthId === '08');
     const isJunhoOrJulho = (monthId === '06' || monthId === '07');
-    if (isJunhoOrJulho) {
-      window.prestacaoMonthlyStore[monthId].procsSusGaucho = [
-        {
-          rubrica: 'SUS Gaúcho - Ambulatório Estratégico Oftalmologia',
-          portaria: 'Portaria SES/RS nº 611/2026 (Mutirão de Especialidades)',
-          natureza: 'Custeio Ambulatorial Especializado (FES/RS)',
-          status: 'Recebido FES',
-          qtd: 1,
-          val: 81276.00
-        }
-      ];
-    } else {
-      window.prestacaoMonthlyStore[monthId].procsSusGaucho = [];
-    }
+    mData.procsSusGaucho = [
+      {
+        id: 'sus_gaucho',
+        rubrica: 'SUS Gaúcho - Ambulatório Estratégico Oftalmologia',
+        portaria: 'Portaria SES/RS nº 611/2026 (Mutirão de Especialidades)',
+        natureza: 'Custeio Ambulatorial Especializado',
+        origemSub: 'Fundo Estadual de Saúde (FES/RS)',
+        icon: 'sparkles',
+        status: isJunhoOrJulho ? 'Recebido FES' : 'Aguardando Recurso',
+        qtd: 1,
+        val: isJunhoOrJulho ? 81276.00 : 0.00
+      },
+      {
+        id: 'cisa',
+        rubrica: 'Produção CISA - Oftalmologia',
+        portaria: 'Procedimentos Ambulatoriais e Diagnósticos Especializados',
+        natureza: 'Consórcio Intermunicipal de Saúde (CISA)',
+        origemSub: 'Receita Própria Pactuada Consórcio',
+        icon: 'building-2',
+        status: isAgosto ? 'Recebido FES' : 'Aguardando Recurso',
+        qtd: 1,
+        val: isAgosto ? 17536.44 : 0.00
+      }
+    ];
   }
 
   return window.prestacaoMonthlyStore[monthId];
@@ -418,7 +432,7 @@ function getPrestacaoMonthlyStore(monthId) {
 function savePrestacaoMonthlyStore() {
   try {
     if (window.prestacaoMonthlyStore) {
-      localStorage.setItem('prestacao_monthly_store_2026_v7', JSON.stringify(window.prestacaoMonthlyStore));
+      localStorage.setItem('prestacao_monthly_store_2026_v8', JSON.stringify(window.prestacaoMonthlyStore));
     }
   } catch (e) {}
 }
@@ -670,7 +684,7 @@ function renderPrestacaoViabilidade(key) {
       <!-- 3. GRADE PRINCIPAL: TABELAS EXECUTIVAS EMPILHADAS VERTICALMENTE -->
       <div style="display: flex; flex-direction: column; gap: 1.75rem;">
         
-        <!-- 3.1.A TABELA AZUL: RECEITA DO PROGRAMA — SUS GAÚCHO (AMBULATÓRIO ESTRATÉGICO OFTALMOLOGIA) -->
+        <!-- 3.1 TABELA AZUL: RECEITAS E FATURAMENTO DO PROGRAMA OFTALMOLÓGICO -->
         <div class="card" id="cardPcSusGaucho" style="padding: 1.5rem; width: 100%; box-sizing: border-box; border-left: 5px solid #2563eb; background: var(--bg-card);">
           <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.15rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
             <div class="card-title-group" style="display: flex; align-items: center; gap: 0.85rem;">
@@ -680,17 +694,17 @@ function renderPrestacaoViabilidade(key) {
               <div>
                 <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
                   <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
-                    Receita do Programa — SUS Gaúcho (Ambulatório Estratégico Oftalmologia)
+                    Receitas e Faturamento — Ambulatório de Oftalmologia
                   </h3>
                   <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-weight: 800; font-size: 0.68rem; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                    SUS GAÚCHO • LINHA ÚNICA
+                    DEMONSTRATIVO DE RECEITAS
                   </span>
                   <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-weight: 800; font-size: 0.68rem; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                    PORTARIA SES/RS Nº 611/2026
+                    SUS GAÚCHO & CISA
                   </span>
                 </div>
                 <span style="font-size: 0.82rem; color: var(--text-muted);">
-                  Lançamento global e direto da receita do programa estadual para o Ambulatório Estratégico de Oftalmologia
+                  Demonstrativo consolidado das fontes de faturamento e receitas pactuadas do ambulatório
                 </span>
               </div>
             </div>
@@ -706,7 +720,7 @@ function renderPrestacaoViabilidade(key) {
             <table class="cisa-table-modern" style="width: 100%; border-collapse: separate; border-spacing: 0;">
               <thead>
                 <tr>
-                  <th style="min-width: 320px; text-align: left; padding: 12px 18px;">Rubrica / Programa Estadual</th>
+                  <th style="min-width: 320px; text-align: left; padding: 12px 18px;">Rubrica / Programa</th>
                   <th style="width: 250px; text-align: left; padding: 12px 18px;">Origem / Destinação Orçamentária</th>
                   <th style="width: 170px; text-align: center; padding: 12px 18px;">Status do Repasse</th>
                   <th style="width: 220px; text-align: right; padding: 12px 18px;">Receita Faturada (R$)</th>
@@ -716,7 +730,7 @@ function renderPrestacaoViabilidade(key) {
               <tfoot>
                 <tr style="background: rgba(37, 99, 235, 0.05); font-weight: 800; border-top: 2px solid rgba(37, 99, 235, 0.25);">
                   <td colspan="3" style="padding: 14px 18px; color: #2563eb; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.5px;">
-                    TOTAL DA RECEITA SUS GAÚCHO (MUTIRÃO ESTRATÉGICO)
+                    TOTAL GERAL DAS RECEITAS FATURADAS
                   </td>
                   <td id="totPcRecSusGaucho" style="padding: 14px 18px; text-align: right; color: #2563eb; font-size: 1.15rem; font-weight: 900;">
                     R$ 0,00
@@ -726,80 +740,9 @@ function renderPrestacaoViabilidade(key) {
             </table>
           </div>
 
-          <!-- Nota Técnica Informativa SUS Gaúcho -->
+          <!-- Nota Técnica Informativa -->
           <div style="margin-top: 1.15rem; background: rgba(37, 99, 235, 0.04); border-left: 3px solid #2563eb; padding: 0.9rem 1.2rem; border-radius: 0 8px 8px 0; font-size: 0.82rem; color: var(--text-main); line-height: 1.6;">
-            <strong>Portaria SES/RS nº 611/2026 (Mutirão de Especialidades):</strong> Rubrica de receita extraordinária para o <em>SUS Gaúcho - Ambulatório Estratégico Oftalmologia</em> no valor de <strong>R$ 81.276,00</strong>. Lançamento em linha única da receita total do programa, sem necessidade de composição por consulta nesta etapa; a divisão da parte médica individualizada será efetuada posteriormente na prestação de contas dos profissionais.
-          </div>
-        </div>
-
-        <!-- 3.1 TABELA VERDE: PROCEDIMENTOS DO CONTRATO CISA (LARGURA TOTAL 100%) -->
-        <div class="card" style="padding: 1.5rem; width: 100%; box-sizing: border-box;">
-          <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
-            <div class="card-title-group">
-              <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: #2563eb;">
-                <i data-lucide="calculator" style="width: 20px; height: 20px;"></i>
-              </div>
-              <div>
-                <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
-                  ${isTodas ? 'Tabela Geral de Procedimentos e Valores Pactuados (Todas as Especialidades CISA)' : 'Tabela de Procedimentos e Valores Pactuados (Contrato CISA)'}
-                </h3>
-                <span style="font-size: 0.82rem; color: var(--text-muted);">
-                  ${isTodas ? 'Procedimentos ambulatoriais e cirúrgicos com codificação própria oficial do Consórcio CISA' : 'Procedimentos oftalmológicos com codificação própria oficial do Consórcio CISA'}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="table-responsive" style="overflow-x: auto;">
-            <table class="cisa-table-modern">
-              <thead>
-                <tr>
-                  <th style="width: 100px;">Código</th>
-                  <th style="min-width: 380px;">Procedimento</th>
-                  <th style="width: 80px; text-align: center;">Qtd</th>
-                  <th style="width: 140px; text-align: right;">R$ Unitário</th>
-                  <th style="width: 150px; text-align: right;">Total/mês</th>
-                  <th style="width: 130px; text-align: center;">Status</th>
-                  <th style="min-width: 180px; text-align: center;">Prestador</th>
-                </tr>
-              </thead>
-              <tbody id="tbPcProcs"></tbody>
-              <tfoot>
-                <tr style="background: rgba(37, 99, 235, 0.05); font-weight: 800; border-top: 2px solid rgba(37, 99, 235, 0.2);">
-                  <td colspan="4" style="padding: 14px 18px; color: #2563eb; font-size: 0.88rem;">
-                    ${isTodas ? 'SOMA DA RECEITA ESTIMADA PACTUADA (PROGRAMA CISA COMPLETO)' : 'SOMA DA RECEITA ESTIMADA PACTUADA (TABELA CISA)'}
-                  </td>
-                  <td id="totPcRec" style="padding: 14px 18px; text-align: right; color: #2563eb; font-size: 1.05rem; font-weight: 800;">
-                    Aguardando valores
-                  </td>
-                  <td colspan="2"></td>
-                </tr>
-                <tr id="pcDoctorBreakdownRow" style="background: rgba(248, 250, 252, 0.95); font-size: 0.82rem; border-top: 1px dashed rgba(37, 99, 235, 0.25);">
-                  <td colspan="7" style="padding: 10px 18px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
-                      <span style="font-weight: 800; color: var(--text-muted); text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
-                        <i data-lucide="users" style="width: 14px; height: 14px; color: #2563eb;"></i> Subtotais por Médico Prestador:
-                      </span>
-                      <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
-                        <span class="badge" style="background: rgba(37, 99, 235, 0.08); color: #2563eb; font-weight: 700; padding: 5px 12px; border-radius: 99px; border: 1px solid rgba(37, 99, 235, 0.25); display: inline-flex; align-items: center; gap: 6px;">
-                          <i data-lucide="user-check" style="width: 13px; height: 13px;"></i> Dr. Christian Pretto: <strong id="pcSubtotChristian" style="font-size: 0.88rem; margin-left: 2px;">R$ 0,00</strong> (<span id="pcQtdChristian">0</span> exames)
-                        </span>
-                        <span class="badge" style="background: rgba(16, 185, 129, 0.08); color: #059669; font-weight: 700; padding: 5px 12px; border-radius: 99px; border: 1px solid rgba(16, 185, 129, 0.25); display: inline-flex; align-items: center; gap: 6px;">
-                          <i data-lucide="user-check" style="width: 13px; height: 13px;"></i> Dr. Heron Gomes Correia: <strong id="pcSubtotHeron" style="font-size: 0.88rem; margin-left: 2px;">R$ 0,00</strong> (<span id="pcQtdHeron">0</span> exames)
-                        </span>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-
-          <!-- Nota Técnica do Contrato -->
-          <div style="margin-top: 1.25rem; background: rgba(37, 99, 235, 0.04); border-left: 3px solid #2563eb; padding: 0.85rem 1.15rem; border-radius: 0 6px 6px 0; font-size: 0.82rem; color: var(--text-main); line-height: 1.55;">
-            ${isTodas
-              ? '<strong>Codificação Própria CISA:</strong> Relação consolidada dos procedimentos de todas as especialidades pactuadas junto ao Consórcio Intermunicipal de Saúde (CISA). Os valores unitários encontram-se em fase de cotação e pactuação formal com os municípios consorciados.'
-              : '<strong>Codificação Própria CISA:</strong> Os códigos e procedimentos acima seguem a tabela oficial do Consórcio Intermunicipal de Saúde (CISA), compreendendo o Grupo 01 (Consultas Especializadas) e o Grupo 11 (Diagnóstico em Oftalmologia). Os valores pactuados unitários encontram-se em branco e serão preenchidos conforme o contrato formal.'}
+            <strong>Demonstrativo de Receitas e Faturamento:</strong> Demonstração dos recursos recebidos via <em>SUS Gaúcho (Portaria SES/RS nº 611/2026 - Ambulatório Estratégico de Oftalmologia)</em> e <em>Produção CISA - Oftalmologia</em>. A apuração médica individualizada e o rateio proporcional aos profissionais prestadores serão detalhados nas etapas da prestação de contas dos serviços executados.
           </div>
         </div>
 
@@ -973,14 +916,8 @@ function renderPrestacaoViabilidade(key) {
             <div class="cisa-side cisa-hosp" style="display: flex; flex-direction: column;">
               <h3><span class="cisa-sq" style="background: #2563eb;"></span>■ RECEITAS</h3>
               <div class="cisa-kv" id="pcHStream">
-                <span class="cisa-k">Receita SUS Gaúcho (Mutirão)</span><span class="cisa-v" id="pcHMutirao" style="color: #2563eb; font-weight: 700;">R<div class="cisa-kv" id="pcHStream">
-                <span class="cisa-k">Incentivo ASSISTIR</span><span class="cisa-v" id="pcHInc">R$&nbsp;0,00</span>
-                <span class="cisa-k">Produção Tabela CISA</span><span class="cisa-v" id="pcHProd" style="color: #2563eb; font-weight: 700;">—</span>
-              </div>nbsp;0,00</span>
-                <span class="cisa-k">Receita Consórcio CISA</span><span class="cisa-v" id="pcHCisa" style="color: #2563eb; font-weight: 700;">R<div class="cisa-kv" id="pcHStream">
-                <span class="cisa-k">Incentivo ASSISTIR</span><span class="cisa-v" id="pcHInc">R$&nbsp;0,00</span>
-                <span class="cisa-k">Produção Tabela CISA</span><span class="cisa-v" id="pcHProd" style="color: #2563eb; font-weight: 700;">—</span>
-              </div>nbsp;0,00</span>
+                <span class="cisa-k">Receita SUS Gaúcho (Mutirão)</span><span class="cisa-v" id="pcHMutirao" style="color: #2563eb; font-weight: 700;">R$&nbsp;0,00</span>
+                <span class="cisa-k">Receita Consórcio CISA</span><span class="cisa-v" id="pcHCisa" style="color: #2563eb; font-weight: 700;">R$&nbsp;0,00</span>
                 <span class="cisa-k" style="font-weight: 800; color: var(--text-title); border-top: 1px dashed #cbd5e1; padding-top: 4px;">Total de Receitas Faturadas</span><span class="cisa-v" id="pcHProd" style="color: #10b981; font-weight: 800; border-top: 1px dashed #cbd5e1; padding-top: 4px;">—</span>
               </div>
               <div class="cisa-res" style="margin-top: auto;">
@@ -1098,7 +1035,7 @@ function initPrestacaoInteractiveSimulation(currentKey) {
       trEmpty.innerHTML = `
         <td colspan="4" style="text-align: center; padding: 24px 18px; color: var(--text-muted); font-size: 0.88rem;">
           <i data-lucide="info" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 6px;"></i>
-          Nenhuma receita do SUS Gaúcho pactuada para este mês. (Receita ativa nos meses de Junho e Julho/2026).
+          Nenhuma receita cadastrada para esta competência.
         </td>
       `;
       tbSG.appendChild(trEmpty);
@@ -1127,26 +1064,35 @@ function initPrestacaoInteractiveSimulation(currentKey) {
         stBorder = '#bfdbfe';
       }
 
+      const isCisa = (p.id === 'cisa' || (p.rubrica && p.rubrica.toLowerCase().includes('cisa')));
+      const iconName = isCisa ? 'building-2' : 'sparkles';
+      const iconColor = isCisa ? '#059669' : '#2563eb';
+      const subIcon = isCisa ? 'file-text' : 'file-badge-2';
+      const defaultRubrica = isCisa ? 'Produção CISA - Oftalmologia' : 'SUS Gaúcho - Ambulatório Estratégico Oftalmologia';
+      const defaultPortaria = isCisa ? 'Procedimentos Ambulatoriais e Diagnósticos Especializados' : 'Portaria SES/RS nº 611/2026 (Mutirão de Especialidades)';
+      const defaultNatureza = isCisa ? 'Consórcio Intermunicipal de Saúde (CISA)' : 'Custeio Ambulatorial Especializado';
+      const defaultOrigemSub = isCisa ? 'Receita Própria Pactuada Consórcio' : 'Fundo Estadual de Saúde (FES/RS)';
+
       tr.innerHTML = `
-        <td class="cisa-cell" style="padding: 16px 18px;">
-          <div style="font-weight: 800; color: var(--text-title); font-size: 0.95rem; margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
-            <i data-lucide="sparkles" style="width: 16px; height: 16px; color: #2563eb; flex-shrink: 0;"></i>
-            <span>${p.rubrica || 'SUS Gaúcho - Ambulatório Estratégico Oftalmologia'}</span>
+        <td class="cisa-cell" style="padding: 14px 18px;">
+          <div style="font-weight: 800; color: var(--text-title); font-size: 0.95rem; margin-bottom: 3px; display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="${iconName}" style="width: 16px; height: 16px; color: ${iconColor}; flex-shrink: 0;"></i>
+            <span>${p.rubrica || defaultRubrica}</span>
           </div>
-          <div style="font-size: 0.78rem; color: #2563eb; font-weight: 600; margin-left: 24px;">
-            <i data-lucide="file-badge-2" style="width: 13px; height: 13px; vertical-align: middle; margin-right: 3px;"></i>
-            ${p.portaria || 'Portaria SES/RS nº 611/2026 (Mutirão de Especialidades)'}
+          <div style="font-size: 0.78rem; color: ${iconColor}; font-weight: 600; margin-left: 24px;">
+            <i data-lucide="${subIcon}" style="width: 13px; height: 13px; vertical-align: middle; margin-right: 3px;"></i>
+            ${p.portaria || defaultPortaria}
           </div>
         </td>
-        <td class="cisa-cell" style="padding: 16px 18px; vertical-align: middle;">
+        <td class="cisa-cell" style="padding: 14px 18px; vertical-align: middle;">
           <div style="font-weight: 700; color: var(--text-main); font-size: 0.86rem;">
-            ${p.natureza || 'Custeio Ambulatorial Especializado'}
+            ${p.natureza || defaultNatureza}
           </div>
           <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">
-            Fundo Estadual de Saúde (FES/RS)
+            ${p.origemSub || defaultOrigemSub}
           </div>
         </td>
-        <td class="cisa-cell" style="padding: 16px 18px; text-align: center; vertical-align: middle;">
+        <td class="cisa-cell" style="padding: 14px 18px; text-align: center; vertical-align: middle;">
           <div style="display: inline-flex; align-items: center; justify-content: center;">
             <select class="sg-select-status" style="font-size: 0.8rem; font-weight: 700; padding: 5px 12px; border-radius: 9999px; cursor: pointer; border: 1px solid ${stBorder}; background: ${stBg}; color: ${stColor}; outline: none; font-family: inherit; transition: all 0.2s ease;">
               <option value="Recebido FES" ${curStatus === 'Recebido FES' ? 'selected' : ''} style="background: #ffffff; color: #167b45;">Recebido FES</option>
@@ -1155,7 +1101,7 @@ function initPrestacaoInteractiveSimulation(currentKey) {
             </select>
           </div>
         </td>
-        <td class="cisa-cell" style="padding: 16px 18px; text-align: right; vertical-align: middle;">
+        <td class="cisa-cell" style="padding: 14px 18px; text-align: right; vertical-align: middle;">
           <span class="sg-val-wrapper" style="display: inline-flex; align-items: center; justify-content: flex-end;">
             <strong class="sg-cell-tot" style="color: #2563eb; font-size: 0.95rem; font-weight: 800; cursor: pointer;" title="Clique para editar valor">${BRL.format(v)}</strong>
           </span>
@@ -1177,7 +1123,7 @@ function initPrestacaoInteractiveSimulation(currentKey) {
       const valText = tr.querySelector('.sg-cell-tot');
       if (valText && valWrapper) {
         valText.onclick = () => {
-          const currentVal = (p.val !== undefined && p.val !== null) ? p.val : 81276;
+          const currentVal = (p.val !== undefined && p.val !== null) ? p.val : 0;
           valWrapper.innerHTML = `
             <span style="font-size: 0.88rem; font-weight: 800; color: #2563eb; margin-right: 4px;">R$</span>
             <input type="number" step="0.01" min="0" class="sg-temp-input" value="${currentVal.toFixed(2)}" style="width: 120px; text-align: right; padding: 2px 6px; border: 1px solid #2563eb; border-radius: 4px; font-weight: 800; font-size: 0.95rem; color: #2563eb; background: #fff;">
@@ -1864,55 +1810,21 @@ function initPrestacaoInteractiveSimulation(currentKey) {
     const listProcs = getFilteredProcs();
     const listCustos = getFilteredCustos();
 
-    let totRec = 0;
-    let countComValor = 0;
-    let recChristian = 0;
-    let qtdChristian = 0;
-    let recHeron = 0;
-    let qtdHeron = 0;
-
+    // 1. CÁLCULO DAS RECEITAS DA PRESTAÇÃO DE CONTAS (SUS GAÚCHO E PRODUÇÃO CISA)
+    let totRecSusGaucho = 0;
     let totRecCisa = 0;
-    let recChristianCisa = 0;
-    let qtdChristianCisa = 0;
-    let recHeronCisa = 0;
-    let qtdHeronCisa = 0;
-
-    listProcs.forEach((p) => {
-      const q = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? parseFloat(p.qtd) : 0;
-      const isHeron = (p.prestador && p.prestador.includes('Heron'));
-      if (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val)) {
-        const lineTot = q * parseFloat(p.val);
-        totRecCisa += lineTot;
-        if (q > 0) countComValor++;
-        if (isHeron) {
-          recHeronCisa += lineTot;
-          qtdHeronCisa += q;
-        } else {
-          recChristianCisa += lineTot;
-          qtdChristianCisa += q;
-        }
+    const listSG = state.procsSusGaucho || [];
+    listSG.forEach((p) => {
+      const v = (p.val !== undefined && p.val !== null && p.val !== '') ? parseFloat(p.val) : 0;
+      if (p.id === 'cisa' || (p.rubrica && p.rubrica.toLowerCase().includes('cisa'))) {
+        totRecCisa += v;
       } else {
-        if (q > 0) {
-          if (isHeron) qtdHeronCisa += q;
-          else qtdChristianCisa += q;
-        }
+        totRecSusGaucho += v;
       }
     });
 
-    // 1.B CÁLCULO DA RECEITA DO PROGRAMA — SUS GAÚCHO (LINHA ÚNICA)
-    let totRecSusGaucho = 0;
-    const listSusGaucho = state.procsSusGaucho || [];
-    listSusGaucho.forEach((p) => {
-      const v = (p.val !== undefined && p.val !== null && p.val !== '') ? parseFloat(p.val) : 0;
-      totRecSusGaucho += v;
-    });
-
     // RECEITA TOTAL CONSOLIDADA DO MÊS (CISA + SUS GAÚCHO)
-    totRec = totRecCisa + totRecSusGaucho;
-    recChristian = recChristianCisa;
-    recHeron = recHeronCisa;
-    qtdChristian = qtdChristianCisa;
-    qtdHeron = qtdHeronCisa;
+    const totRec = totRecCisa + totRecSusGaucho;
 
     let totFix = 0;
     let despPessoal = 0;
@@ -1952,30 +1864,9 @@ function initPrestacaoInteractiveSimulation(currentKey) {
     const elTotRecCisa = root.querySelector('#totPcRec');
     if (elTotRecCisa) elTotRecCisa.textContent = BRL.format(totRecCisa);
 
-    // Totais específicos da Tabela SUS Gaúcho
+    // Totais específicos da Tabela de Receitas (Total Consolidado da Competência)
     const elTotRecSG = root.querySelector('#totPcRecSusGaucho');
-    if (elTotRecSG) elTotRecSG.textContent = BRL.format(totRecSusGaucho);
-
-    const elSubtotChristianSG = root.querySelector('#pcSubtotChristianSG');
-    if (elSubtotChristianSG) elSubtotChristianSG.textContent = BRL.format(recChristianSG);
-    const elQtdChristianSG = root.querySelector('#pcQtdChristianSG');
-    if (elQtdChristianSG) elQtdChristianSG.textContent = qtdChristianSG;
-
-    const elSubtotHeronSG = root.querySelector('#pcSubtotHeronSG');
-    if (elSubtotHeronSG) elSubtotHeronSG.textContent = BRL.format(recHeronSG);
-    const elQtdHeronSG = root.querySelector('#pcQtdHeronSG');
-    if (elQtdHeronSG) elQtdHeronSG.textContent = qtdHeronSG;
-
-    // Atualiza Subtotais por Médico
-    const elSubtotChristian = root.querySelector('#pcSubtotChristian');
-    if (elSubtotChristian) elSubtotChristian.textContent = BRL.format(recChristian);
-    const elQtdChristian = root.querySelector('#pcQtdChristian');
-    if (elQtdChristian) elQtdChristian.textContent = qtdChristian;
-
-    const elSubtotHeron = root.querySelector('#pcSubtotHeron');
-    if (elSubtotHeron) elSubtotHeron.textContent = BRL.format(recHeron);
-    const elQtdHeron = root.querySelector('#pcQtdHeron');
-    if (elQtdHeron) elQtdHeron.textContent = qtdHeron;
+    if (elTotRecSG) elTotRecSG.textContent = BRL.format(totRec);
 
     const elTotFix = root.querySelector('#totPcFixo');
     if (elTotFix) elTotFix.textContent = BRL.format(totFix);
@@ -1986,33 +1877,22 @@ function initPrestacaoInteractiveSimulation(currentKey) {
     let countMonthsActive = 0;
 
     PC_MESES.forEach(m => {
-      let mProcs, mCustos;
+      let mCustos;
       if (m.id === window.prestacaoSelectedMonth) {
-        mProcs = listProcs;
         mCustos = listCustos;
       } else {
         const mStore = getPrestacaoMonthlyStore(m.id);
-        mProcs = isTodas ? mStore.procs : mStore.procs.filter(p => !p.especialidade || matchSpec(p.especialidade, currentKey));
         mCustos = isTodas ? mStore.custos : mStore.custos.filter(c => !c.especialidade || matchSpec(c.especialidade, currentKey));
       }
 
       let mRec = 0;
-      mProcs.forEach(p => {
-        if (p.val !== null && p.val !== undefined && p.val !== '' && !isNaN(p.val)) {
-          const q = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? parseFloat(p.qtd) : 0;
-          mRec += (q * parseFloat(p.val));
-        }
-      });
-
-      // Inclui faturamento de SUS Gaúcho no mês
       const mSG = (m.id === window.prestacaoSelectedMonth)
         ? (state.procsSusGaucho || [])
         : (getPrestacaoMonthlyStore(m.id).procsSusGaucho || []);
 
       mSG.forEach(p => {
         const v = (p.val !== undefined && p.val !== null && p.val !== '') ? parseFloat(p.val) : 0;
-        const q = (p.qtd !== undefined && p.qtd !== null && p.qtd !== '') ? parseFloat(p.qtd) : 1;
-        mRec += (q * v);
+        mRec += v;
       });
 
       let mCus = 0;
