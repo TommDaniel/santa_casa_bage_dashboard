@@ -510,19 +510,16 @@ function renderPrestacaoViabilidade(key) {
           </div>
 
           <!-- Ações Rápidas -->
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
-            <button type="button" id="btnExportPcCustosPDF" onclick="exportPrestacaoCustosPDF()" class="btn-cisa-pdf-export" style="background: #166534; border: 1px solid #15803d; color: #ffffff; font-weight: 700; font-size: 0.8rem; padding: 0.45rem 0.95rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 7px; box-shadow: 0 2px 6px rgba(22, 101, 52, 0.25); cursor: pointer; transition: all 0.2s;" title="Gerar prestação de contas oficial em PDF com receitas, despesas e rateio">
-              <i data-lucide="file-down" style="width: 16px; height: 16px;"></i>
-              <span>Baixar Comprovante PDF</span>
-            </button>
-            <button class="btn-primary" id="btnPcAddProcTop" style="background: ${isTodas ? '#10b981' : '#2563eb'}; border-color: ${isTodas ? '#10b981' : '#2563eb'}; font-size: 0.8rem; padding: 0.45rem 0.85rem; border-radius: 6px; box-shadow: 0 2px 6px ${isTodas ? 'rgba(16,185,129,0.25)' : 'rgba(37,99,235,0.25)'};">
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
+            <button class="btn-primary" id="btnPcAddProcTop" style="background: ${isTodas ? '#10b981' : '#2563eb'}; border-color: ${isTodas ? '#10b981' : '#2563eb'}; font-size: 0.82rem; padding: 0.48rem 0.95rem; border-radius: 6px; box-shadow: 0 2px 6px ${isTodas ? 'rgba(16,185,129,0.25)' : 'rgba(37,99,235,0.25)'}; display: inline-flex; align-items: center; gap: 6px; font-weight: 700; cursor: pointer;">
               <i data-lucide="plus-circle" style="width: 15px; height: 15px;"></i> Novo Lançamento
+            </button>
+            <button type="button" id="btnExportPcCustosPDF" onclick="exportPrestacaoCustosPDF()" class="btn-cisa-pdf-export" style="background: #dc2626; border: 1px solid #b91c1c; color: #ffffff; font-weight: 700; font-size: 0.82rem; padding: 0.48rem 1rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 7px; box-shadow: 0 2px 6px rgba(220, 38, 38, 0.25); cursor: pointer; transition: all 0.2s;" title="Gerar e imprimir Relatório Oficial Completo de Prestação de Contas em PDF">
+              <i data-lucide="file-text" style="width: 16px; height: 16px;"></i>
+              <span>Relatório em PDF</span>
             </button>
             <button class="btn-icon" id="btnPcExportCsvTop" title="Exportar CSV" style="border-radius: 6px;">
               <i data-lucide="download" style="width: 16px; height: 16px;"></i>
-            </button>
-            <button class="btn-icon" id="btnPcPrintTop" title="Imprimir Relatório" style="border-radius: 6px;">
-              <i data-lucide="printer" style="width: 16px; height: 16px;"></i>
             </button>
             <button class="btn-icon" id="btnPcResetTop" title="Restaurar Padrões" style="border-radius: 6px; color: var(--danger);">
               <i data-lucide="rotate-ccw" style="width: 16px; height: 16px;"></i>

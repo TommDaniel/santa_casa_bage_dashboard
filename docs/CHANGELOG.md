@@ -2,6 +2,20 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Remoção do Banner Superior e Inclusão do Botão "Relatório em PDF" no Cabeçalho
+
+### 🎯 O que foi feito:
+1. **Remoção do Card Superior Redundante**:
+   - Excluído o banner introdutório de topo da aba de Prestação de Contas (`#tab-prestacao-contas`);
+   - A página agora se inicia diretamente no layout mestre (menu lateral de *Especialidades* à esquerda e painel de controle executivo à direita), conferindo maior dinamismo e foco visual à tela.
+2. **Botão Oficial "Relatório em PDF" no Cabeçalho Principal**:
+   - Inserido botão em destaque com identidade visual avermelhada (`#dc2626`) e rótulo explícito **`Relatório em PDF`** posicionado lado a lado com o botão `+ Novo Lançamento`;
+   - O botão dispara o relatório consolidado oficial de prestação de contas com receitas faturadas, detalhamento de centros de custo, rateio 80/20, discriminação dos médicos e rodapé com a marca FluxSUS.
+3. **Cache-Busting**:
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_24`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Subdivisão Clínica do Rateio 80% dos Médicos Prestadores
 
 ### 🎯 O que foi feito:

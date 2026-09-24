@@ -1781,52 +1781,6 @@
 
       <!-- TAB: PRESTAÇÃO DE CONTAS -->
       <section id="tab-prestacao-contas" class="tab-pane">
-        <div class="card" style="margin-bottom: 1.5rem; padding: 1.25rem 1.5rem;">
-          <div class="card-header" style="flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 0.85rem;">
-            <div class="card-title-group" style="display: flex; align-items: center; gap: 1.25rem;">
-              <div style="width: 58px; height: 58px; border-radius: 12px; overflow: hidden; border: 1.5px solid rgba(16, 185, 129, 0.35); background: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); flex-shrink: 0; padding: 2px;">
-                <img src="logo_hbp.jpg" alt="Hospital Bom Pastor - Santo Augusto" style="width: 100%; height: 100%; object-fit: contain;">
-              </div>
-              <div>
-                <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
-                  <h2 style="margin: 0; font-size: 1.35rem; font-weight: 800; color: var(--text-title);">Prestação de Contas e Controle de Faturamento</h2>
-                  <span class="badge-sus" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-size: 0.65rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 4px;">GESTÃO INTEGRADA</span>
-                </div>
-                <div style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600; margin-top: 0.15rem;">
-                  Controle Consolidado de Recebimentos, Faturamento por Programa e Pagamento dos Prestadores por Especialidade
-                </div>
-                <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; margin-top: 0.45rem; font-size: 0.78rem;">
-                  <span style="display: inline-flex; align-items: center; gap: 0.35rem; color: var(--text-title); background: rgba(16, 185, 129, 0.08); padding: 0.22rem 0.6rem; border-radius: 6px; border: 1px solid rgba(16, 185, 129, 0.25);">
-                    <i data-lucide="building-2" style="width: 13px; height: 13px; color: #059669;"></i>
-                    <strong style="color: #065f46;">Hospital Bom Pastor:</strong> Santo Augusto / RS
-                  </span>
-                  <span style="display: inline-flex; align-items: center; gap: 0.35rem; color: var(--text-title); background: rgba(37, 99, 235, 0.08); padding: 0.22rem 0.6rem; border-radius: 6px; border: 1px solid rgba(37, 99, 235, 0.2);">
-                    <i data-lucide="layers" style="width: 13px; height: 13px; color: #2563eb;"></i>
-                    <strong style="color: #1d4ed8;">Programas Integrados:</strong> SUS Gaúcho (Mutirão) & CISA
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Botões de Alternância: Viabilidade vs Ficha Técnica -->
-            <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap;" id="pc-view-mode-buttons">
-              <button class="btn-period active-period" id="btn-pc-view-viabilidade" onclick="setPcViewMode('viabilidade')" style="padding: 0.55rem 1.15rem; border-radius: 8px; font-size: 0.84rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 0.45rem; transition: var(--transition); border: 1px solid #2563eb; background: #2563eb; color: #FFFFFF; box-shadow: 0 2px 8px rgba(37,99,235,0.3);">
-                <i data-lucide="scale" style="width: 16px; height: 16px;"></i>
-                Viabilidade & Prestação
-              </button>
-              <button class="btn-period" id="btn-pc-view-portaria" onclick="setPcViewMode('portaria')" style="padding: 0.55rem 1.15rem; border-radius: 8px; font-size: 0.84rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 0.45rem; transition: var(--transition); border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-muted);">
-                <i data-lucide="file-text" style="width: 16px; height: 16px;"></i>
-                Ficha Técnica
-              </button>
-            </div>
-          </div>
-
-          <!-- Texto Oficial Institucional -->
-          <div style="font-size: 0.84rem; color: var(--text-main); line-height: 1.55; background: rgba(37, 99, 235, 0.04); border-left: 3px solid #2563eb; padding: 0.65rem 1rem; border-radius: 0 6px 6px 0;">
-            Painel geral de controle e prestação de contas dos ambulatórios especializados do Hospital Bom Pastor, integrando os repasses de programas estaduais (SUS Gaúcho), consórcios de saúde (CISA) e o rateio de custos operacionais e honorários dos prestadores.
-          </div>
-        </div>
-
         <!-- Master Layout: Left Sidebar + Main Service Panel -->
         <div style="display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 1.5rem; align-items: start;">
           <div class="card" style="padding: 1rem; align-self: start; display: flex; flex-direction: column; gap: 0.75rem;">
@@ -7072,7 +7026,7 @@
   <!-- Main JavaScript File -->
   <script src="app.js?v=20260924_5"></script>
   <!-- Módulo de Prestação de Contas -->
-  <script src="prestacao_contas.js?v=20260924_23"></script>
+  <script src="prestacao_contas.js?v=20260924_24"></script>
   <script>
     if (typeof renderAssistirSidebar === 'function') {
       renderAssistirSidebar();
