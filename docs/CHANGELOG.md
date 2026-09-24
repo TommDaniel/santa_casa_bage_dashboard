@@ -2,6 +2,29 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Alinhamento das Despesas da Regra de Negociação com os Centros de Custo e Resultado 20% Hospitalar
+
+### 🎯 O que foi feito:
+1. **Padronização dos Textos e Centros de Custo no Resumo de Despesas**:
+   - Atualizado o primeiro item para `"Despesas de Pessoal (+) encargos"` com o valor consolidado da folha rateada acrescida dos 30,91% de encargos (`R$ 11.406,74`);
+   - Mapeados e exibidos individualmente os demais centros de custo conforme as pills da tabela de despesas:
+     - `"Material"`: `R$ 527,81` (Material de Almoxarifado);
+     - `"Sistemas de TI"`: `R$ 510,00` (Manutenção Sistema Hospitalar - TASY);
+     - `"Taxa de Sala"`: `R$ 600,00` (Manutenção e Infra Predial);
+   - Subtotal das Despesas perfeitamente reconciliado em `R$ 13.044,55`.
+2. **Despesa Médica do Rateio 80% e Total das Despesas**:
+   - Inserida a linha `"Rateio 80% Médico(s) Prestador(es)"` logo abaixo do Subtotal das Despesas (`R$ 54.585,16`);
+   - Inserida a linha `"Total das Despesas"` consolidando custos operacionais + remuneração médica (`R$ 67.629,71`).
+3. **Última Linha: Resultado 20% Hospitalar**:
+   - A última linha do quadro de despesas foi renomeada para `"RESULTADO 20% HOSPITALAR"`;
+   - O valor reflete os 20% remanescentes do resultado líquido a ratear (`+ R$ 13.646,29`), formatado em verde esmeralda com destaque visual, representando o resultado/lucro hospitalar do programa.
+4. **Alinhamento no Relatório PDF**:
+   - Seção 3 do comprovante em PDF atualizada com as nomenclaturas `"Rateio 80% Médico(s) Prestador(es)"` e `"RESULTADO 20% HOSPITALAR"`.
+5. **Cache-Busting**:
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_16`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Remoção dos Indicativos de "Versão para Aprovação" da Tabela e do Relatório PDF
 
 ### 🎯 O que foi feito:

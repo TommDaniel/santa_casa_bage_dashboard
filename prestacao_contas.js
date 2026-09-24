@@ -901,8 +901,8 @@ function renderPrestacaoViabilidade(key) {
                 <span class="cisa-k" style="font-weight: 800; color: var(--text-title); border-top: 1px dashed #cbd5e1; padding-top: 4px;">Total de Receitas Faturadas</span><span class="cisa-v" id="pcHProd" style="color: #10b981; font-weight: 800; border-top: 1px dashed #cbd5e1; padding-top: 4px;">—</span>
               </div>
               <div class="cisa-res" style="margin-top: auto;">
-                <span class="cisa-lb">RESULTADO MENSAL</span>
-                <span class="cisa-vl" id="pcHRes" style="color: #10b981;">—</span>
+                <span class="cisa-lb">RECEITA TOTAL FATURADA</span>
+                <span class="cisa-vl" id="pcHRes" style="color: #2563eb;">—</span>
               </div>
             </div>
 
@@ -910,18 +910,20 @@ function renderPrestacaoViabilidade(key) {
             <div class="cisa-side cisa-pres" style="display: flex; flex-direction: column;">
               <h3><span class="cisa-sq" style="background: #dc2626;"></span>■ DESPESAS</h3>
               <div class="cisa-kv" id="pcPStream">
-                <span class="cisa-k">Despesas de Pessoal</span><span class="cisa-v" id="pcDPessoal" style="color: #dc2626; font-weight: 700;">—</span>
-                <span class="cisa-k">Sistema Hospitalar TASY</span><span class="cisa-v" id="pcDTasy" style="color: #dc2626; font-weight: 700;">—</span>
-                <span class="cisa-k">Manutenção e infra predial (tx de sala)</span><span class="cisa-v" id="pcDInfra" style="color: #dc2626; font-weight: 700;">—</span>
+                <span class="cisa-k">Despesas de Pessoal (+) encargos</span><span class="cisa-v" id="pcDPessoal" style="color: #dc2626; font-weight: 700;">—</span>
+                <span class="cisa-k">Material</span><span class="cisa-v" id="pcDMaterial" style="color: #dc2626; font-weight: 700;">—</span>
+                <span class="cisa-k">Sistemas de TI</span><span class="cisa-v" id="pcDTasy" style="color: #dc2626; font-weight: 700;">—</span>
+                <span class="cisa-k">Taxa de Sala</span><span class="cisa-v" id="pcDInfra" style="color: #dc2626; font-weight: 700;">—</span>
                 <div id="pcBlockRateio80" style="display: contents;">
                   <span class="cisa-sep" style="grid-column: 1 / -1; margin: 4px 0; border-top: 1px dashed #cbd5e1;"></span>
                   <span class="cisa-k" style="font-weight: 700; color: var(--text-title);">Subtotal das Despesas</span><span class="cisa-v" id="pcDSubtotal" style="color: #dc2626; font-weight: 700;">—</span>
-                  <span class="cisa-k" style="font-weight: 700; color: #b91c1c;">Rateio 80% Médico</span><span class="cisa-v" id="pcDRateioMed" style="color: #dc2626; font-weight: 700;">—</span>
+                  <span class="cisa-k" style="font-weight: 700; color: #b91c1c;">Rateio 80% Médico(s) Prestador(es)</span><span class="cisa-v" id="pcDRateioMed" style="color: #dc2626; font-weight: 700;">—</span>
+                  <span class="cisa-k" style="font-weight: 700; color: var(--text-muted); border-top: 1px dashed #cbd5e1; padding-top: 4px;">Total das Despesas</span><span class="cisa-v" id="pcDTotalDesp" style="color: #dc2626; font-weight: 700; border-top: 1px dashed #cbd5e1; padding-top: 4px;">—</span>
                 </div>
               </div>
-              <div class="cisa-res" style="margin-top: auto;">
-                <span class="cisa-lb">TOTAL DA DESPESA</span>
-                <span class="cisa-vl" id="pcPRes2" style="color: #dc2626;">—</span>
+              <div class="cisa-res" style="margin-top: auto; padding-top: 10px; border-top: 1px solid #e2e8f0;">
+                <span class="cisa-lb" id="pcPResLabel" style="color: #047857; font-weight: 800;">RESULTADO 20% HOSPITALAR</span>
+                <span class="cisa-vl" id="pcPRes2" style="color: #059669; font-weight: 800;">—</span>
               </div>
             </div>
           </div>
@@ -1470,7 +1472,7 @@ function initPrestacaoInteractiveSimulation(currentKey) {
         folhaPessoalRateada += (q * v * (r / 100));
       }
     });
-    const valEncargos = folhaPessoalRateada * 0.3091;
+    const valEncargos = Math.round(folhaPessoalRateada * 0.3091 * 100) / 100;
 
     list.forEach((c, idx) => {
       const tr = document.createElement('tr');
@@ -1812,8 +1814,9 @@ function initPrestacaoInteractiveSimulation(currentKey) {
     const totRec = totRecCisa + totRecSusGaucho;
 
     let totFix = 0;
-    let despPessoal = 0;
+    let despPessoalSemEncargos = 0;
     let folhaPessoal = 0;
+    let despMaterial = 0;
     let despTasy = 0;
     let despInfra = 0;
 
@@ -1825,12 +1828,16 @@ function initPrestacaoInteractiveSimulation(currentKey) {
 
       const cls = c.classificacao || '';
       const itemLower = (c.item || '').toLowerCase();
-      if (cls === 'Sistemas TI' || itemLower.includes('tasy')) {
+      if (cls === 'Material' || itemLower.includes('material') || itemLower.includes('almoxarifado')) {
+        despMaterial += totLinha;
+      } else if (cls === 'Sistemas TI' || itemLower.includes('tasy') || itemLower.includes('sistema')) {
         despTasy += totLinha;
       } else if (cls === 'Taxa de Sala' || itemLower.includes('infra') || itemLower.includes('predial') || itemLower.includes('luz') || itemLower.includes('sala')) {
         despInfra += totLinha;
+      } else if (cls === 'Prestador') {
+        // Médicos cirurgiões com RQE (remunerados na despesa médica do rateio 80%)
       } else {
-        despPessoal += totLinha;
+        despPessoalSemEncargos += totLinha;
         if (cls === 'Pessoal') {
           folhaPessoal += totLinha;
         }
@@ -1838,9 +1845,9 @@ function initPrestacaoInteractiveSimulation(currentKey) {
     });
 
     // 30,91% de Encargos da Folha sobre o total rateado de Pessoal
-    const valEncargos = folhaPessoal * 0.3091;
+    const valEncargos = Math.round(folhaPessoal * 0.3091 * 100) / 100;
     totFix += valEncargos;
-    despPessoal += valEncargos;
+    const despPessoalTotal = despPessoalSemEncargos + valEncargos;
 
     const despesaTotal = totFix;
     const resultadoMensal = totRec - despesaTotal;
@@ -1971,7 +1978,7 @@ function initPrestacaoInteractiveSimulation(currentKey) {
       elPoolLiq.style.color = resultadoMensal >= 0 ? '#10b981' : '#dc2626';
     }
 
-    const activeRule = state.regraAtiva || 'margem50';
+    const activeRule = state.regraAtiva || 'rateio8020';
     let hospProd = 0;
     let presProd = 0;
 
@@ -1982,8 +1989,8 @@ function initPrestacaoInteractiveSimulation(currentKey) {
       hospProd = totRec * 0.20;
       presProd = totRec * 0.80;
     } else {
-      hospProd = totRec * 0.50;
-      presProd = totRec * 0.50;
+      hospProd = totRec * 0.20;
+      presProd = totRec * 0.80;
     }
 
     const hospRes = hospProd - totFix;
@@ -1998,13 +2005,16 @@ function initPrestacaoInteractiveSimulation(currentKey) {
     if (elHProd) elHProd.textContent = BRL.format(totRec);
     const elHRes = root.querySelector('#pcHRes');
     if (elHRes) {
-      elHRes.textContent = totRec > 0 ? ('+ ' + BRL.format(totRec)) : 'R$ 0,00';
-      elHRes.style.color = '#10b981';
+      elHRes.textContent = BRL.format(totRec);
+      elHRes.style.color = '#2563eb';
     }
 
-    // Coluna DESPESAS (Consolidação em 3 Linhas do Programa CISA)
+    // Coluna DESPESAS (Consolidação em 4 Centros de Custo + Rateio 80/20)
     const elDPessoal = root.querySelector('#pcDPessoal');
-    if (elDPessoal) elDPessoal.textContent = BRL.format(despPessoal);
+    if (elDPessoal) elDPessoal.textContent = BRL.format(despPessoalTotal);
+
+    const elDMaterial = root.querySelector('#pcDMaterial');
+    if (elDMaterial) elDMaterial.textContent = BRL.format(despMaterial);
 
     const elDTasy = root.querySelector('#pcDTasy');
     if (elDTasy) elDTasy.textContent = BRL.format(despTasy);
@@ -2015,26 +2025,39 @@ function initPrestacaoInteractiveSimulation(currentKey) {
     // Rateio 80/20 do saldo total que sobrou (Receita Total - Subtotal de Despesas Operacionais)
     const saldoTotalSobrou = Math.max(0, totRec - totFix);
     const rateioMed80 = saldoTotalSobrou * 0.80;
+    const resultadoHosp20 = saldoTotalSobrou * 0.20;
 
     const elBlockRateio = root.querySelector('#pcBlockRateio80');
     const elDSubtotal = root.querySelector('#pcDSubtotal');
     const elDRateioMed = root.querySelector('#pcDRateioMed');
+    const elDTotalDesp = root.querySelector('#pcDTotalDesp');
     const elPRes = root.querySelector('#pcPRes2');
+    const elPResLabel = root.querySelector('#pcPResLabel');
 
     if (activeRule === 'rateio8020') {
       if (elBlockRateio) elBlockRateio.style.display = 'contents';
       if (elDSubtotal) elDSubtotal.textContent = BRL.format(totFix);
       if (elDRateioMed) elDRateioMed.textContent = BRL.format(rateioMed80);
+      const totalDespesa8020 = totFix + rateioMed80;
+      if (elDTotalDesp) elDTotalDesp.textContent = BRL.format(totalDespesa8020);
+
+      if (elPResLabel) elPResLabel.textContent = 'RESULTADO 20% HOSPITALAR';
       if (elPRes) {
-        const totalDespesa8020 = totFix + rateioMed80;
-        elPRes.textContent = BRL.format(totalDespesa8020);
-        elPRes.style.color = '#dc2626';
+        if (totRec > 0) {
+          elPRes.textContent = '+ ' + BRL.format(resultadoHosp20);
+          elPRes.style.color = '#059669';
+        } else {
+          elPRes.textContent = 'R$ 0,00';
+          elPRes.style.color = '#64748b';
+        }
       }
     } else {
       if (elBlockRateio) elBlockRateio.style.display = 'none';
+      if (elPResLabel) elPResLabel.textContent = 'RESULTADO HOSPITALAR';
       if (elPRes) {
-        elPRes.textContent = BRL.format(totFix);
-        elPRes.style.color = '#dc2626';
+        const res50 = hospRes;
+        elPRes.textContent = (res50 > 0 ? '+ ' : '') + BRL.format(res50);
+        elPRes.style.color = res50 >= 0 ? '#059669' : '#dc2626';
       }
     }
 
@@ -2452,7 +2475,7 @@ window.exportPrestacaoCustosPDF = function() {
   const subtotalVal = document.getElementById('totPcFixo') ? document.getElementById('totPcFixo').innerText.trim() : 'R$ 13.044,55';
   const recVal = totRecVal;
   const rateio80Val = document.getElementById('pcDRateioMed') ? document.getElementById('pcDRateioMed').innerText.trim() : 'R$ 0,00';
-  const totalDespVal = document.getElementById('pcPRes2') ? document.getElementById('pcPRes2').innerText.trim() : 'R$ 0,00';
+  const totalDespVal = document.getElementById('pcDTotalDesp') ? document.getElementById('pcDTotalDesp').innerText.trim() : 'R$ 0,00';
 
   const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
   const parseMoney = (txt) => parseFloat((txt || '0').replace(/[^\d,]/g, '').replace(',', '.')) || 0;
@@ -2705,9 +2728,9 @@ window.exportPrestacaoCustosPDF = function() {
       <h4>Consolidação de Despesas & Rateio (80% / 20%)</h4>
       <div class="neg-line"><span>Subtotal Custos Operacionais Rateados:</span> <strong>${subtotalVal}</strong></div>
       <div class="neg-line"><span>Saldo Líquido a Ratear (Receita - Custos):</span> <strong style="color: #059669;">${saldoVal}</strong></div>
-      <div class="neg-line"><span>Rateio 80% Equipe Médica Prestadora:</span> <strong style="color: #dc2626;">${rateio80Val}</strong></div>
-      <div class="neg-line"><span>Retenção Hospitalar Líquida (20%):</span> <strong style="color: #059669;">${hosp20Val}</strong></div>
-      <div class="neg-line bold" style="color: #dc2626;"><span>TOTAL GERAL DA DESPESA DO PROGRAMA:</span> <strong>${totalDespVal}</strong></div>
+      <div class="neg-line"><span>Rateio 80% Médico(s) Prestador(es):</span> <strong style="color: #dc2626;">${rateio80Val}</strong></div>
+      <div class="neg-line"><span>Total Geral das Despesas:</span> <strong style="color: #dc2626;">${totalDespVal}</strong></div>
+      <div class="neg-line bold" style="color: #059669; border-top: 1px dashed #cbd5e1; padding-top: 3px; margin-top: 3px;"><span>RESULTADO 20% HOSPITALAR:</span> <strong>${hosp20Val}</strong></div>
     </div>
   </div>
 
