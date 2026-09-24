@@ -5856,27 +5856,27 @@ body.dark-mode .cisa-res {
   box-shadow: var(--shadow-sm);
 }
 
-.cisa-month-pill {
+.cisa-month-pill, .pc-month-pill {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--text-title);
   position: relative;
   overflow: hidden;
 }
 
-.cisa-month-pill:hover {
+.cisa-month-pill:hover, .pc-month-pill:hover {
   border-color: #2563eb !important;
   background: rgba(37, 99, 235, 0.05) !important;
   transform: translateY(-1px);
 }
 
-.cisa-month-pill.active {
+.cisa-month-pill.active, .pc-month-pill.active {
   background: #2563eb !important;
   color: #ffffff !important;
   border-color: #2563eb !important;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
 }
 
-.cisa-month-pill.active .cisa-month-subval {
+.cisa-month-pill.active .cisa-month-subval, .pc-month-pill.active .cisa-month-subval {
   color: rgba(255, 255, 255, 0.9) !important;
 }
 

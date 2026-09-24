@@ -625,12 +625,20 @@ function renderPrestacaoViabilidade(key) {
 
         <!-- Tira de 12 Meses (Pills) -->
         <div style="display: flex; gap: 0.45rem; flex-wrap: wrap; align-items: center;">
-          ${PC_MESES.map(m => `
-            <button type="button" class="pc-month-pill ${m.id === curMonth ? 'active' : ''}" data-month="${m.id}" style="flex: 1 1 calc(8.33% - 0.45rem); min-width: 68px; text-align: center; padding: 7px 6px; border-radius: 8px; font-size: 0.78rem; font-weight: 800; border: 1px solid var(--border-color); background: var(--bg-card); cursor: pointer; transition: all 0.15s ease;">
-              <div style="font-size: 0.8rem; font-weight: 800;">${m.sigla}</div>
-              <div class="cisa-month-subval" id="pcMonthSub_${m.id}" style="font-size: 0.65rem; font-weight: 600; opacity: 0.8; margin-top: 2px;">—</div>
+          ${PC_MESES.map(m => {
+            const isActive = (m.id === curMonth);
+            const activeBg = isTodas ? '#059669' : '#2563eb';
+            const bg = isActive ? activeBg : 'var(--bg-card)';
+            const color = isActive ? '#ffffff' : 'var(--text-title)';
+            const border = isActive ? activeBg : 'var(--border-color)';
+            const shadow = isActive ? `0 4px 12px ${isTodas ? 'rgba(5, 150, 105, 0.35)' : 'rgba(37, 99, 235, 0.35)'}` : 'none';
+            const subColor = isActive ? 'rgba(255, 255, 255, 0.92)' : 'var(--text-muted)';
+            return `
+            <button type="button" class="pc-month-pill cisa-month-pill ${isActive ? 'active' : ''}" data-month="${m.id}" style="flex: 1 1 calc(8.33% - 0.45rem); min-width: 68px; text-align: center; padding: 7px 6px; border-radius: 8px; font-size: 0.78rem; font-weight: 800; border: 1.5px solid ${border}; background: ${bg}; color: ${color}; box-shadow: ${shadow}; cursor: pointer; transition: all 0.15s ease;">
+              <div style="font-size: 0.82rem; font-weight: 800; color: inherit;">${m.sigla}</div>
+              <div class="cisa-month-subval" id="pcMonthSub_${m.id}" style="font-size: 0.65rem; font-weight: 600; color: ${subColor}; margin-top: 2px;">—</div>
             </button>
-          `).join('')}
+          `;}).join('')}
         </div>
       </div>
 
@@ -2185,7 +2193,19 @@ function initPrestacaoInteractiveSimulation(currentKey) {
       const lbl = root.querySelector('#pcMonthSelectedLabel');
       if (lbl) lbl.textContent = `COMPETÊNCIA: ${curMObj.nome.toUpperCase()} / 2026`;
 
-      monthPills.forEach(p => p.classList.toggle('active', p.dataset.month === mId));
+      monthPills.forEach(p => {
+        const isPActive = (p.dataset.month === mId);
+        p.classList.toggle('active', isPActive);
+        const activeBg = isTodas ? '#059669' : '#2563eb';
+        p.style.background = isPActive ? activeBg : 'var(--bg-card)';
+        p.style.color = isPActive ? '#ffffff' : 'var(--text-title)';
+        p.style.borderColor = isPActive ? activeBg : 'var(--border-color)';
+        p.style.boxShadow = isPActive ? `0 4px 12px ${isTodas ? 'rgba(5, 150, 105, 0.35)' : 'rgba(37, 99, 235, 0.35)'}` : 'none';
+        const sub = p.querySelector('.cisa-month-subval');
+        if (sub) {
+          sub.style.color = isPActive ? 'rgba(255, 255, 255, 0.92)' : 'var(--text-muted)';
+        }
+      });
 
       ruleCards.forEach(c => {
         c.setAttribute('aria-pressed', c.dataset.rule === state.regraAtiva ? 'true' : 'false');

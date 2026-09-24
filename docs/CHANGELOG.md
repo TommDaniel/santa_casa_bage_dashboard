@@ -2,6 +2,20 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-24] - Prestação de Contas: Destaque Visual com Cor Vibrante no Mês Selecionado da Barra de Competências
+
+### 🎯 O que foi feito:
+1. **Destaque Visual do Mês Selecionado**:
+   - Aplicada estilização proeminente e imediata ao botão do mês ativo na barra de competências de 12 meses (`.pc-month-pill.active`);
+   - Mês ativo renderizado com preenchimento em azul royal vibrante (`#2563eb`), tipografia em branco puro (`#ffffff`), borda sólida e sombra sutil (`box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35)`);
+   - Transição dinâmica e instantânea ao alternar entre os meses (ao clicar em qualquer mês, o mês anterior volta ao tom neutro e o novo mês é destacado);
+   - Subvalores monetários de cada mês sincronizados com alto contraste na pílula ativa;
+   - Suporte a tema consolidado com realce verde esmeralda (`#059669`) quando aplicável.
+2. **Cache-Busting**:
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260924_14`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Reorganização Visual das Despesas, População do Rateio Operacional e Relatório Oficial Completo em PDF
 
 ### 🎯 O que foi feito:
