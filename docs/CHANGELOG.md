@@ -2,6 +2,31 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-25] - Prestação de Contas & CISA: Atualização da Equipe de Faturamento (4 Colaboradores, Média R$ 3.473,9875 e Rateio de 8%)
+
+### 🎯 O que foi feito:
+1. **Revisão Paramétrica da "Equipe de Faturamento"**:
+   - Quantidade de colaboradores: atualizado de 1 para **4 funcionários**;
+   - Valor médio unitário: atualizado para **R$ 3.473,9875** (formatado visualmente na tela e relatórios como R$ 3.473,99, preservando o cálculo micrométrico no motor financeiro);
+   - Alíquota de rateio: atualizada de 10% para **8%**;
+   - Custo mensal rateado da linha: `4 * 3.473,9875 * 8%` = **R$ 1.111,68** (anteriormente R$ 319,27, variação de +R$ 792,41).
+2. **Impacto na Folha de Pessoal e Provisão de Encargos (30,91%)**:
+   - Base total de Pessoal rateado: ajustada de R$ 8.977,32 para **R$ 9.769,73** (+R$ 792,41);
+   - Encargos da folha provisionados (30,91%): ajustados de R$ 2.774,89 para **R$ 3.019,82** (+R$ 244,93);
+   - Subtotal de Despesas Operacionais: recalculado de R$ 13.390,03 para **R$ 14.427,36** (+R$ 1.037,34).
+3. **Consolidação do Rateio 80% Médicos / 20% Hospital**:
+   - Saldo Bruto a ratear (`R$ 81.276,00 - R$ 14.427,36`): **R$ 66.848,64**;
+   - Rateio 80% Médicos: **R$ 53.478,91**
+     - Dr. Christian Pretto (40% · 150 consultas): **R$ 26.739,46**;
+     - Dr. Heron Gomes Correia (40% · 150 consultas): **R$ 26.739,46**;
+   - Resultado 20% Hospitalar: **R$ 13.369,73**.
+4. **Sincronização em Ambos os Módulos (Prestação de Contas e CISA) & PDF**:
+   - Módulo de Prestação de Contas (`prestacao_contas.js`): estrutura padrão, migração de store `v14` e geração do PDF atualizadas;
+   - Módulo de Gestão CISA (`app.js`): estudo de viabilidade, tabela de custos operacionais e migração de store `v18` atualizadas;
+   - Cache-busters atualizados em `index.html` para `app.js?v=20260925_6` e `prestacao_contas.js?v=20260925_6`.
+
+---
+
 ## [2026-09-25] - Prestação de Contas: Destaque Amarelo Vibrante na Competência do Relatório em PDF (Fix de Impressão)
 
 ### 🎯 O que foi feito:

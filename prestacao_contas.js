@@ -168,7 +168,7 @@ window.cisaSimState = {
     { especialidade: 'Oftalmologia', item: 'Técnicos de Enfermagem (Triagem/Suporte Ambulatorial)', rateio: 30, qtd: 2, val: 3740.95, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Equipe de Recepção', rateio: 30, qtd: 1, val: 2639.07, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Equipe de Supervisão/Regulação Agendas GERCON/CISA', rateio: 20, qtd: 1, val: 3404.23, classificacao: 'Pessoal' },
-    { especialidade: 'Oftalmologia', item: 'Equipe de Faturamento', rateio: 10, qtd: 1, val: 3192.73, classificacao: 'Pessoal' },
+    { especialidade: 'Oftalmologia', item: 'Equipe de Faturamento', rateio: 8, qtd: 4, val: 3473.9875, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Equipe Administrativa (Adm, Financeiro, RH,...)', rateio: 5, qtd: 1, val: 20000.00, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Equipe de Higienização', rateio: 20, qtd: 1, val: 2639.07, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Material de Almoxarifado', rateio: 20, qtd: 1, val: 2639.07, classificacao: 'Material' },
@@ -335,11 +335,11 @@ window.prestacaoSelectedMonth = window.prestacaoSelectedMonth || '06';
 function getPrestacaoMonthlyStore(monthId) {
   if (!window.prestacaoMonthlyStore) {
     try {
-      const saved = localStorage.getItem('prestacao_monthly_store_2026_v13');
+      const saved = localStorage.getItem('prestacao_monthly_store_2026_v14');
       if (saved) {
         window.prestacaoMonthlyStore = JSON.parse(saved);
       } else {
-        const oldSaved = localStorage.getItem('prestacao_monthly_store_2026_v12');
+        const oldSaved = localStorage.getItem('prestacao_monthly_store_2026_v13') || localStorage.getItem('prestacao_monthly_store_2026_v12');
         if (oldSaved) window.prestacaoMonthlyStore = JSON.parse(oldSaved);
       }
     } catch (e) {}
@@ -452,6 +452,11 @@ function getPrestacaoMonthlyStore(monthId) {
       if (c.item && c.item.includes('Recepção') && c.rateio === 20) {
         c.rateio = 30;
       }
+      if (c.item && c.item.includes('Faturamento')) {
+        c.qtd = 4;
+        c.val = 3473.9875;
+        c.rateio = 8;
+      }
     });
   }
 
@@ -461,7 +466,7 @@ function getPrestacaoMonthlyStore(monthId) {
 function savePrestacaoMonthlyStore() {
   try {
     if (window.prestacaoMonthlyStore) {
-      localStorage.setItem('prestacao_monthly_store_2026_v13', JSON.stringify(window.prestacaoMonthlyStore));
+      localStorage.setItem('prestacao_monthly_store_2026_v14', JSON.stringify(window.prestacaoMonthlyStore));
     }
   } catch (e) {}
 }
