@@ -2,6 +2,22 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-25] - Prestação de Contas & CISA: Ajuste do Rateio da "Equipe de Recepção" para 30%
+
+### 🎯 O que foi feito:
+1. **Ajuste do Percentual de Rateio da Recepção para 30%**:
+   - Atualizado o parâmetro de rateio da `Equipe de Recepção` (Centro de Custo: *Pessoal*, Qtd: 1, R$ Unitário: R$ 2.639,07) de **20% para 30%**;
+   - O custo rateado mensal da linha passou de R$ 527,81 para **R$ 791,72** (+R$ 263,91);
+   - A base de cálculo dos *Encargos da Folha (30,91%)* foi automaticamente atualizada de R$ 8.713,42 para **R$ 8.977,32**, resultando em **R$ 2.774,89** de encargos provisionados.
+2. **Atualização Consistente em Todo o Ecossistema Oftalmológico**:
+   - **Módulo de Prestação de Contas** (`prestacao_contas.js`): tabela operacional, resumo consolidado, memória de cálculo 80/20, repasse aos médicos (`Dr. Christian Pretto`: R$ 27.154,39; `Dr. Heron Gomes Correia`: R$ 27.154,39), resultado hospitalar de 20% (R$ 13.577,19) e relatório em PDF;
+   - **Módulo Consórcio CISA** (`app.js`): estudo de viabilidade econômica e tabela de despesas de Oftalmologia sincronizados;
+   - Migração e validação de persistência em `localStorage` implementadas com versionamento avançado (`v13` / `v17`).
+3. **Cache-Busting**:
+   - Cache-busters atualizados em `index.html` para `app.js?v=20260925_2` e `prestacao_contas.js?v=20260925_2`.
+
+---
+
 ## [2026-09-25] - Prestação de Contas: Ajustes no Relatório em PDF (Linhas de Rateio e Assinaturas Institucionais)
 
 ### 🎯 O que foi feito:

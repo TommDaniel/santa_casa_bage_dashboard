@@ -2449,7 +2449,7 @@ window.cisaSimState = {
     { especialidade: 'Oftalmologia', item: 'Médicos Oftalmologistas Cirurgiões com RQE (por produção)', rateio: 100, qtd: 2, val: 0.00, classificacao: 'Prestador' },
     { especialidade: 'Oftalmologia', item: 'Enfermeiro(a) / Ambulatório Especializado', rateio: 30, qtd: 2, val: 5688.50, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Técnicos de Enfermagem (Triagem/Suporte Ambulatorial)', rateio: 30, qtd: 2, val: 3740.95, classificacao: 'Pessoal' },
-    { especialidade: 'Oftalmologia', item: 'Equipe de Recepção', rateio: 20, qtd: 1, val: 2639.07, classificacao: 'Pessoal' },
+    { especialidade: 'Oftalmologia', item: 'Equipe de Recepção', rateio: 30, qtd: 1, val: 2639.07, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Equipe de Supervisão/Regulação Agendas GERCON/CISA', rateio: 20, qtd: 1, val: 3404.23, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Equipe de Faturamento', rateio: 10, qtd: 1, val: 3192.73, classificacao: 'Pessoal' },
     { especialidade: 'Oftalmologia', item: 'Equipe Administrativa (Adm, Financeiro, RH,...)', rateio: 5, qtd: 1, val: 20000.00, classificacao: 'Pessoal' },
@@ -2618,8 +2618,13 @@ window.cisaSelectedMonth = window.cisaSelectedMonth || '08';
 function getCisaMonthlyStore(monthId) {
   if (!window.cisaMonthlyStore) {
     try {
-      const saved = localStorage.getItem('cisa_monthly_store_2026_v16');
-      if (saved) window.cisaMonthlyStore = JSON.parse(saved);
+      const saved = localStorage.getItem('cisa_monthly_store_2026_v17');
+      if (saved) {
+        window.cisaMonthlyStore = JSON.parse(saved);
+      } else {
+        const oldSaved = localStorage.getItem('cisa_monthly_store_2026_v16');
+        if (oldSaved) window.cisaMonthlyStore = JSON.parse(oldSaved);
+      }
     } catch (e) {}
     if (!window.cisaMonthlyStore || typeof window.cisaMonthlyStore !== 'object') {
       window.cisaMonthlyStore = {};
@@ -2653,13 +2658,22 @@ function getCisaMonthlyStore(monthId) {
     };
   }
 
+  // Garantir que a Equipe de Recepção esteja com rateio pactuado de 30%
+  if (window.cisaMonthlyStore[monthId] && Array.isArray(window.cisaMonthlyStore[monthId].custos)) {
+    window.cisaMonthlyStore[monthId].custos.forEach(c => {
+      if (c.item && c.item.includes('Recepção') && c.rateio === 20) {
+        c.rateio = 30;
+      }
+    });
+  }
+
   return window.cisaMonthlyStore[monthId];
 }
 
 function saveCisaMonthlyStore() {
   try {
     if (window.cisaMonthlyStore) {
-      localStorage.setItem('cisa_monthly_store_2026_v16', JSON.stringify(window.cisaMonthlyStore));
+      localStorage.setItem('cisa_monthly_store_2026_v17', JSON.stringify(window.cisaMonthlyStore));
     }
   } catch (e) {}
 }
