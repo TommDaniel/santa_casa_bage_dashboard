@@ -4733,7 +4733,7 @@ window.exportCisaCustosPDF = function() {
     </div>
     <div class="header-right">
       <div class="badge-versao">Versão para Aprovação</div>
-      <div><strong>Competência:</strong> ${compLabel}</div>
+      <div style="margin-bottom: 3px;"><span style="background: #fef08a; border: 1px solid #eab308; color: #78350f; font-weight: 800; font-size: 9px; padding: 2px 7px; border-radius: 4px; display: inline-block;"><strong>Competência:</strong> ${compLabel}</span></div>
       <div><strong>Emissão:</strong> ${dateFormatted}</div>
     </div>
   </div>

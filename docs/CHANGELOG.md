@@ -2,6 +2,18 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-25] - Prestação de Contas: Destaque Amarelo na Competência do Relatório em PDF
+
+### 🎯 O que foi feito:
+1. **Destaque Visual da Competência no Cabeçalho do PDF**:
+   - Inserido destaque visual em estilo pill/tag com fundo amarelo suave (`#fef08a`), borda amarela de contraste (`#eab308`), cantos arredondados e tipografia em marrom escuro de alta legibilidade (`#78350f`) na indicação de **`Competência: [Mês]/2026`**;
+   - O mês e ano de referência do faturamento e repasse ganham evidência visual imediata na impressão e exportação do documento oficial.
+2. **Sincronização e Cache-Busting**:
+   - Padrão replicado nos relatórios de Prestação de Contas (`prestacao_contas.js`) e CISA (`app.js`);
+   - Cache-busters atualizados em `index.html` para `app.js?v=20260925_4` e `prestacao_contas.js?v=20260925_4`.
+
+---
+
 ## [2026-09-25] - Prestação de Contas: Simplificação do Cabeçalho Executivo
 
 ### 🎯 O que foi feito:
