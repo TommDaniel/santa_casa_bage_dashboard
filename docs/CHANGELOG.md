@@ -2,15 +2,17 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
-## [2026-09-25] - Prestação de Contas: Destaque Amarelo na Competência do Relatório em PDF
+## [2026-09-25] - Prestação de Contas: Destaque Amarelo Vibrante na Competência do Relatório em PDF (Fix de Impressão)
 
 ### 🎯 O que foi feito:
-1. **Destaque Visual da Competência no Cabeçalho do PDF**:
-   - Inserido destaque visual em estilo pill/tag com fundo amarelo suave (`#fef08a`), borda amarela de contraste (`#eab308`), cantos arredondados e tipografia em marrom escuro de alta legibilidade (`#78350f`) na indicação de **`Competência: [Mês]/2026`**;
-   - O mês e ano de referência do faturamento e repasse ganham evidência visual imediata na impressão e exportação do documento oficial.
-2. **Sincronização e Cache-Busting**:
+1. **Destaque Amarelo Vibrante de Alta Visibilidade**:
+   - Ajustado o tom de amarelo da tag para amarelo canário vibrante (`#ffea00`), com texto em preto nítido (`#000000`), borda de contraste âmbar (`#d97706`), peso tipográfico `900` e sombra suave;
+2. **Correção do Motor de Impressão de Navegadores (`print-color-adjust: exact`)**:
+   - Aplicadas as regras CSS `-webkit-print-color-adjust: exact !important;`, `print-color-adjust: exact !important;` e `color-adjust: exact !important;` tanto na folha de estilos global, na classe `.badge-competencia`, no bloco `@media print` e diretamente nos atributos inline;
+   - Isso impede que os navegadores (Chrome, Edge, Safari e Firefox) desativem ou atenuem o fundo amarelo durante a geração do PDF e impressão física, garantindo fidelidade cromática idêntica à tela.
+3. **Sincronização e Cache-Busting**:
    - Padrão replicado nos relatórios de Prestação de Contas (`prestacao_contas.js`) e CISA (`app.js`);
-   - Cache-busters atualizados em `index.html` para `app.js?v=20260925_4` e `prestacao_contas.js?v=20260925_4`.
+   - Cache-busters atualizados em `index.html` para `app.js?v=20260925_5` e `prestacao_contas.js?v=20260925_5`.
 
 ---
 

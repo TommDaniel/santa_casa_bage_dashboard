@@ -4546,7 +4546,12 @@ window.exportCisaCustosPDF = function() {
       size: A4 portrait;
       margin: 8mm 12mm 12mm 12mm;
     }
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       color: #1f2937;
@@ -4555,6 +4560,38 @@ window.exportCisaCustosPDF = function() {
       padding: 0;
       font-size: 10px;
       line-height: 1.35;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .badge-competencia {
+      background-color: #ffea00 !important;
+      background: #ffea00 !important;
+      border: 1.5px solid #d97706 !important;
+      color: #000000 !important;
+      font-weight: 900 !important;
+      font-size: 10px !important;
+      padding: 3px 9px !important;
+      border-radius: 5px !important;
+      display: inline-block !important;
+      letter-spacing: 0.3px !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+    }
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      .badge-competencia {
+        background-color: #ffea00 !important;
+        background: #ffea00 !important;
+        border: 1.5px solid #d97706 !important;
+        color: #000000 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
     }
     .header {
       display: flex;
@@ -4733,7 +4770,7 @@ window.exportCisaCustosPDF = function() {
     </div>
     <div class="header-right">
       <div class="badge-versao">Versão para Aprovação</div>
-      <div style="margin-bottom: 3px;"><span style="background: #fef08a; border: 1px solid #eab308; color: #78350f; font-weight: 800; font-size: 9px; padding: 2px 7px; border-radius: 4px; display: inline-block;"><strong>Competência:</strong> ${compLabel}</span></div>
+      <div style="margin-bottom: 4px;"><span class="badge-competencia" style="background-color: #ffea00 !important; background: #ffea00 !important; border: 1.5px solid #d97706 !important; color: #000000 !important; font-weight: 900 !important; font-size: 10px !important; padding: 3px 9px !important; border-radius: 5px !important; display: inline-block !important; letter-spacing: 0.3px !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;"><strong>Competência:</strong> ${compLabel}</span></div>
       <div><strong>Emissão:</strong> ${dateFormatted}</div>
     </div>
   </div>
