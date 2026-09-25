@@ -7,3 +7,7 @@ app_before_merge_backup.js
 _ctz_preview/
 .DS_Store
 Thumbs.db
+
+# Novo projeto independente: Hospital Bom Pastor de Santo Augusto
+/_BP - Santo Augusto/
+
