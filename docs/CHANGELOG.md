@@ -2,6 +2,18 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-25] - Prestação de Contas: Simplificação do Cabeçalho Executivo
+
+### 🎯 O que foi feito:
+1. **Remoção de Botões Não Utilizados do Cabeçalho**:
+   - Excluído o botão azul `+ Novo Lançamento` (`#btnPcAddProcTop`);
+   - Excluídos os dois botões compactos de utilidades: `Exportar CSV` (`#btnPcExportCsvTop`) e `Restaurar Padrões` (`#btnPcResetTop`);
+   - O cabeçalho executivo da Prestação de Contas passa a ter foco exclusivo no botão oficial **`[📄 Relatório em PDF]`**, tornando a interface mais limpa, direta e intuitiva.
+2. **Cache-Busting**:
+   - Cache-buster atualizado em `index.html` para `prestacao_contas.js?v=20260925_3`.
+
+---
+
 ## [2026-09-25] - Prestação de Contas & CISA: Ajuste do Rateio da "Equipe de Recepção" para 30%
 
 ### 🎯 O que foi feito:
