@@ -2,6 +2,15 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-25] - Navegação: Reordenação do Menu Principal (Prestação de Contas na Última Posição)
+
+### 🎯 O que foi feito:
+1. **Reordenação do Botão no Menu Superior (`.nav-tabs`)**:
+   - O botão `Prestação de Contas` (`data-tab="tab-prestacao-contas"`) foi reposicionado da posição intermediária (entre *Consórcio CISA* e *SUS Gaúcho - Avançar*) para a **última posição do menu de navegação**, logo após `Rede Alyne`;
+   - Mantida total integridade de navegação, estado visual ativo e carregamento dinâmico dos dados.
+
+---
+
 ## [2026-09-25] - Prestação de Contas & CISA: Atualização da Equipe de Faturamento (4 Colaboradores, Média R$ 3.473,9875 e Rateio de 8%)
 
 ### 🎯 O que foi feito:
