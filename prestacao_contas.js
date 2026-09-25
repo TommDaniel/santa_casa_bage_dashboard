@@ -2839,10 +2839,10 @@ window.exportPrestacaoCustosPDF = function() {
       <div class="neg-line"><span>Saldo Bruto a Ratear (Receita − Despesas):</span> <strong style="color: #059669;">${saldoVal}</strong></div>
       <div class="neg-line"><span>Rateio 80% Médico(s) Prestador(es):</span> <strong style="color: #dc2626;">${rateio80Val}</strong></div>
       <div class="neg-line" style="padding-left: 10px; font-size: 7.5pt; color: #475569;">
-        <span>↳ Dr. Christian Pretto (40% · 150 consultas):</span> <strong>${rateio40Val} (${unitChristianVal} / cons.)</strong>
+        <span>↳ Dr. Christian Pretto (40% · 150 consultas):</span> <strong style="white-space: nowrap;">${rateio40Val}</strong>
       </div>
       <div class="neg-line" style="padding-left: 10px; font-size: 7.5pt; color: #475569;">
-        <span>↳ Dr. Heron Gomes Correia (40% · 150 consultas):</span> <strong>${rateio40Val} (${unitHeronVal} / cons.)</strong>
+        <span>↳ Dr. Heron Gomes Correia (40% · 150 consultas):</span> <strong style="white-space: nowrap;">${rateio40Val}</strong>
       </div>
       <div class="neg-line"><span>Total Geral das Despesas:</span> <strong style="color: #dc2626;">${totalDespVal}</strong></div>
       <div class="neg-line bold" style="color: #059669; border-top: 1px dashed #cbd5e1; padding-top: 3px; margin-top: 3px;"><span>RESULTADO 20% HOSPITALAR:</span> <strong>${hosp20Val}</strong></div>
@@ -2852,10 +2852,10 @@ window.exportPrestacaoCustosPDF = function() {
   <div class="signatures">
     <div class="sig-col">
       <strong>Hospital Bom Pastor de Santo Augusto</strong>
-      Direção Executiva / Provedoria
+      Direção Hospitalar / Presidência
     </div>
     <div class="sig-col">
-      <strong>Coordenação do Corpo Clínico</strong>
+      <strong>Prestador Médico</strong>
       Responsável Técnico - Oftalmologia
     </div>
     <div class="sig-col">

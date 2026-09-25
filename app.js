@@ -4779,10 +4779,10 @@ window.exportCisaCustosPDF = function() {
   <div class="signatures">
     <div class="sig-col">
       <strong>Hospital Bom Pastor de Santo Augusto</strong>
-      Direção Executiva / Provedoria
+      Direção Hospitalar / Presidência
     </div>
     <div class="sig-col">
-      <strong>Coordenação do Corpo Clínico</strong>
+      <strong>Prestador Médico</strong>
       Responsável Técnico - Oftalmologia
     </div>
     <div class="sig-col">

@@ -2,6 +2,22 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-25] - Prestação de Contas: Ajustes no Relatório em PDF (Linhas de Rateio e Assinaturas Institucionais)
+
+### 🎯 O que foi feito:
+1. **Remoção do Valor Unitário por Consulta no Relatório PDF**:
+   - Retirado o sufixo `(R$ 181,95 / cons.)` exclusivamente do relatório impresso/PDF nas linhas de discriminação individual dos médicos (`Dr. Christian Pretto` e `Dr. Heron Gomes Correia`), mantendo o valor monetário total (`R$ 27.292,58`) em linha única sem quebras de texto indesejadas;
+   - Os cards da tela principal continuam exibindo todos os indicadores detalhados (quantitativo de 150 consultas, valor bruto e valor unitário de R$ 181,95 por consulta).
+2. **Atualização da Assinatura da Direção Hospitalar**:
+   - Atualizado o signatário da coluna da esquerda de `Direção Executiva / Provedoria` para **`Direção Hospitalar / Presidência`** sob o nome institucional *Hospital Bom Pastor de Santo Augusto*.
+3. **Atualização da Assinatura do Corpo Clínico**:
+   - Alterado o cargo da assinatura central de `Coordenação do Corpo Clínico` para **`Prestador Médico`**, mantendo o subtítulo *Responsável Técnico - Oftalmologia*.
+4. **Sincronização e Cache-Busting**:
+   - As assinaturas institucionais foram sincronizadas tanto no relatório de Prestação de Contas (`prestacao_contas.js`) quanto no relatório complementar do CISA (`app.js`);
+   - Cache-busters atualizados em `index.html` para `app.js?v=20260925_1` e `prestacao_contas.js?v=20260925_1`.
+
+---
+
 ## [2026-09-24] - Prestação de Contas: Remoção da Tag "AMBULATÓRIOS" do Menu Lateral
 
 ### 🎯 O que foi feito:
