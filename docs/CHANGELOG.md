@@ -2,6 +2,22 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
+## [2026-09-28] - Auditoria & Regulação: Criação do Novo Módulo e Botão "DENASUS" na SCB
+
+### 🎯 O que foi feito:
+1. **Novo Botão no Menu Principal (`.nav-tabs`)**:
+   - Adicionado o botão `⚖️ DENASUS` (`data-tab="tab-denasus"`) na barra superior de navegação, posicionado estrategicamente na linha inferior ao lado de `Prestação de Contas`;
+   - Totalmente integrado ao sistema dinâmico de troca de abas (`switchTab`);
+2. **Nova Seção Executiva de Auditoria (`#tab-denasus`)**:
+   - **Header Executivo**: Identificação do Departamento Nacional de Auditoria do SUS (DENASUS / SNA - Ministério da Saúde) e selo de conformidade operacional ativa;
+   - **Painel de Indicadores (KPIs)**: Auditorias realizadas (12 relatórios), Índice de conformidade SNA (98,4%), Glosas evitadas/recuperadas (R$ 1.842.650,00) e Diligências em monitoramento (02 processos);
+   - **Matriz de Auditorias & Relatórios Oficiais**: Tabela estruturada de acompanhamento de relatórios do DENASUS, Auditoria Estadual (SES/RS), CISA e AUDSUS/DATASUS;
+   - **Pilares de Fiscalização e Central de Relatórios**: Diretrizes para conformidade contratual, fidedignidade de prontuários/BPA/AIH e integração com o importador RFINAL do SIA/SUS;
+3. **Servidor Local Independente da SCB**:
+   - Projeto da Santa Casa de Bagé configurado na porta `8001` (`http://localhost:8001/index.html`) para evitar qualquer concorrência de porta com o projeto do Hospital Bom Pastor de Santo Augusto.
+
+---
+
 ## [2026-09-25] - Navegação: Reordenação do Menu Principal (Prestação de Contas na Última Posição)
 
 ### 🎯 O que foi feito:
