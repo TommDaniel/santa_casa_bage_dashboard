@@ -157,3 +157,27 @@ O sistema conta com **20 módulos principais** acessíveis através da barra de 
 
 ## 20. Rede Alyne (`#tab-rede-alyne`)
 - **Objetivo**: Monitoramento da linha de cuidado materno-infantil (evolução da Rede Cegonha no âmbito federal), garantindo segurança ao parto, pré-natal de alto risco e leitos de UTI Neonatal/Pediátrica.
+
+---
+
+## 21. Prestação de Contas (`#tab-prestacao-contas`)
+- **Objetivo**: Prestação de contas analítica mensal e rateio de custos operacionais hospitalares (80% Corpo Clínico / 20% Hospital) com detalhamento por especialidade e município conveniado.
+- **Componentes**:
+  - Seleção por competência mensal (Janeiro a Dezembro de 2026).
+  - Folha de Pessoal Rateada (incluindo equipe de faturamento com 4 colaboradores e encargos previdenciários de 30,91%).
+  - Demonstrativo de Rateio Líquido por Profissional/Serviço.
+  - Exportação oficial de Relatório em PDF com comprovante documental de rateio via motor de impressão A4.
+
+---
+
+## 22. DENASUS (`#tab-denasus`)
+- **Objetivo**: Gestão operacional e monitoramento de conformidade regulatória para atendimento às notificações e diligências de auditoria do Departamento Nacional de Auditoria do SUS (DENASUS / SNA - Ministério da Saúde).
+- **Processo Atual**: Comunicado de Auditoria nº 6 / Auditoria n.º 20.307/2026 (Processo SEI nº 25000.104532/2026-93, SEI nº 0057570172).
+- **Componentes**:
+  - Tabela completa de metadados cadastrais do ofício: prazos regulamentares (10 dias úteis), período de abrangência (maio/2025 a junho/2026), e-mails institucionais, coordenadora de equipe (Matilde Nascimento), responsável pelo atendimento (Henry Ritta).
+  - Checklist interativo dos 16 itens oficiais (a até p) com persistência automática no navegador (`localStorage: scb_denasus_checklist_v2026`).
+  - Barra de progressão visual em tempo real (0% a 100%) com contadores automáticos de itens concluídos, em preparação e pendentes.
+  - Sinalizadores de observação com tooltips flutuantes no `:hover` e modal ampliado para exibição literal e integral do texto do ofício sem perda de nenhuma informação.
+  - Botão de download do ofício PDF original digitalizado (`docs/DENASUS_Oficio_6_20307_2026_SCCB.pdf`).
+  - Botão de geração e exportação oficial do Relatório de Andamento do DENASUS em PDF formatado para impressão A4.
+

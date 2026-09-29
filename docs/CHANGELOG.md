@@ -36,7 +36,7 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
 
 ---
 
-
+## [2026-09-28] - Auditoria & Regulação: Criação do Novo Módulo e Botão "DENASUS" na SCB
 
 ### 🎯 O que foi feito:
 1. **Novo Botão no Menu Principal (`.nav-tabs`)**:
