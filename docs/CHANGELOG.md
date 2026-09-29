@@ -33,6 +33,16 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
    - Campo para anotações internas e status por item gravado automaticamente.
 5. **Novo Módulo JavaScript (`denasus.js`)**:
    - Modularização desacoplada contendo dados, reatividade, persistência e motor de impressão/geração em PDF via iframe invisível.
+6. **Checklist Retrátil (Accordion) & Gestão de Respostas e Anexos**:
+   - Todos os 16 itens agora possuem gaveta retrátil independente que oculta a resposta por padrão e abre com um clique (`Ver Resposta & Anexos`);
+   - Botões globais na barra de ferramentas: **Expandir Todas as Respostas** e **Recolher Todas**;
+   - Suporte universal em todos os itens para redação de resposta formal institucional, upload/vinculação de arquivos anexos com tamanho e formato, além de notas internas.
+7. **Tabela de Produção de AIHs (SIH/SUS) no Item "d"**:
+   - Inserida tabela estruturada completa com as 14 competências (mai/25 a jun/26) solicitadas pelo DENASUS;
+   - Contém: AIHs Apresentadas (9.741), Aprovadas (8.521), Rejeitadas (1.220), % Rejeição (12,52%), Produção Apresentada (R$ 14.554.095,09), Produção Aprovada (R$ 11.522.032,05) e Diferença (R$ 3.032.063,04);
+   - Acompanha observação técnica formal sobre SIH/SUS e glosas não definitivas.
+8. **Relatório Executivo Oficial em PDF 100% Expandido**:
+   - O motor de emissão em PDF (`exportDenasusRelatorioPDF`) gera o dossiê com todas as respostas, justificativas, anexos e tabelas (incluindo a tabela completa de AIHs do Item D) **totalmente visíveis e expandidas**, sem ocultar nada, pronto para protocolo.
 
 ---
 

@@ -7406,7 +7406,13 @@
             </div>
 
             <!-- Ações em Lote -->
-            <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+              <button type="button" onclick="window.denasusExpandAll(true)" class="btn-icon" style="width: auto; padding: 0.4rem 0.75rem; font-size: 0.76rem; display: flex; align-items: center; gap: 4px;" title="Expandir as respostas e anexos de todos os 16 itens">
+                <i data-lucide="chevrons-down" style="width: 14px; height: 14px; color: #0284c7;"></i> Expandir Todas Respostas
+              </button>
+              <button type="button" onclick="window.denasusExpandAll(false)" class="btn-icon" style="width: auto; padding: 0.4rem 0.75rem; font-size: 0.76rem; display: flex; align-items: center; gap: 4px;" title="Recolher todas as respostas e anexos">
+                <i data-lucide="chevrons-up" style="width: 14px; height: 14px; color: var(--text-muted);"></i> Recolher Todas
+              </button>
               <button type="button" onclick="window.denasusMarkAll('concluido')" class="btn-icon" style="width: auto; padding: 0.4rem 0.75rem; font-size: 0.76rem; display: flex; align-items: center; gap: 4px;" title="Marcar todos os itens como concluídos">
                 <i data-lucide="check-check" style="width: 14px; height: 14px; color: #10b981;"></i> Marcar Todos
               </button>
