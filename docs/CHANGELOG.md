@@ -43,6 +43,17 @@ Este arquivo registra cronologicamente todas as edições, implementações, ref
    - Acompanha observação técnica formal sobre SIH/SUS e glosas não definitivas.
 8. **Relatório Executivo Oficial em PDF 100% Expandido**:
    - O motor de emissão em PDF (`exportDenasusRelatorioPDF`) gera o dossiê com todas as respostas, justificativas, anexos e tabelas (incluindo a tabela completa de AIHs do Item D) **totalmente visíveis e expandidas**, sem ocultar nada, pronto para protocolo.
+9. **Layout Retrátil do Ofício DENASUS & Repositório de Documentos Anexos (Estilo Print Referência)**:
+   - Reprodução fiel do layout solicitado pelo usuário (conforme print de referência): card retrátil (`accordion`) posicionado estrategicamente entre o cabeçalho executivo e os metadados;
+   - Cabeçalho com ícone `file-down`, contagem de arquivos e chevron animado de retração/expansão;
+   - Container estilizado com fundo neutro suave (`#f8fafc`) e cards individuais brancos para cada documento anexo relacionado ao processo;
+   - **Botão Terracota / Brick-Red com Ícone de Olho (`eye`)**: botão circular (`#b8422b`) com efeito hover (`scale(1.08)` e sombra) à direita de cada item para visualizar/baixar;
+   - Suporte nativo a múltiplos anexos do processo de auditoria:
+     - *Ofício DENASUS Original nº 6/2026 - Auditoria 20.307*;
+     - *Termo de Notificação e Processo SEI nº 25000.104532/2026-93 (0057570172)*;
+     - *Anexo I - Cadastro de Responsável Institucional (Formulário SEAUD)*;
+     - *Demonstrativo de AIHs e Produção SIH/SUS (Competências Mai/25 a Jun/26)*;
+   - Gerenciamento dinâmico: botão `+ Anexar Novo Documento ao Ofício` com modal para inclusão de novos arquivos com título, subtítulo e link/base64, e remoção individual com persistência em `localStorage: scb_denasus_oficio_files_v1`.
 
 ---
 

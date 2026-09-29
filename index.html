@@ -7243,18 +7243,51 @@
               </div>
             </div>
 
-            <!-- Botões Principais de Ação: Baixar Original e Gerar Relatório de Andamento -->
+            <!-- Botões Principais de Ação: Acesso aos Documentos e Gerar Relatório de Andamento -->
             <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
-              <!-- Botão 1: Baixar PDF Original -->
-              <a href="docs/DENASUS_Oficio_6_20307_2026_SCCB.pdf" download="DENASUS_Oficio_6_20307_2026_SCCB.pdf" class="btn-primary" style="background: #0284c7; border: 1px solid #0369a1; color: #ffffff; font-weight: 700; font-size: 0.85rem; padding: 0.55rem 1.15rem; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25); text-decoration: none;" title="Baixar cópia original digitalizada do Comunicado de Auditoria nº 6 do DENASUS em PDF">
-                <i data-lucide="download" style="width: 16px; height: 16px;"></i>
-                <span>Baixar Ofício DENASUS Original (PDF)</span>
-              </a>
+              <!-- Botão 1: Atalho para Ofício & Documentos Anexos -->
+              <button type="button" onclick="window.denasusScrollToOficioDocs()" class="btn-primary" style="background: #0284c7; border: 1px solid #0369a1; color: #ffffff; font-weight: 700; font-size: 0.85rem; padding: 0.55rem 1.15rem; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25); cursor: pointer;" title="Acessar repositório retrátil de documentos e baixar o Ofício DENASUS">
+                <i data-lucide="file-down" style="width: 16px; height: 16px;"></i>
+                <span>Ofício DENASUS & Anexos</span>
+              </button>
 
               <!-- Botão 2: Gerar Relatório de Andamento em PDF -->
               <button type="button" onclick="window.exportDenasusRelatorioPDF()" class="btn-primary" style="background: #dc2626; border: 1px solid #b91c1c; color: #ffffff; font-weight: 700; font-size: 0.85rem; padding: 0.55rem 1.15rem; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(220, 38, 38, 0.25); cursor: pointer;" title="Gerar e imprimir Relatório Executivo Oficial de Andamento do Checklist em PDF">
                 <i data-lucide="printer" style="width: 16px; height: 16px;"></i>
                 <span>Gerar Relatório de Andamento (PDF)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Componente Retrátil de Download do Ofício DENASUS & Documentos Oficiais (Layout idêntico ao modelo) -->
+        <div id="denasusOficioAccordionContainer" class="card" style="margin-bottom: 1.5rem; padding: 0; border: 1px solid var(--border-color); border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); overflow: hidden;">
+          <!-- Cabeçalho do Accordion (com ícone file-down e chevron) -->
+          <div onclick="window.denasusToggleOficioAccordion()" style="padding: 1.1rem 1.4rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; background: var(--bg-card); transition: background 0.2s ease;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <i data-lucide="file-down" style="width: 24px; height: 24px; color: var(--text-title);"></i>
+              <span style="font-size: 1.05rem; font-weight: 700; color: var(--text-title); letter-spacing: -0.2px;">Ofício DENASUS</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span id="denasusOficioDocsCount" style="font-size: 0.74rem; font-weight: 700; color: #0284c7; background: rgba(2, 132, 199, 0.08); padding: 3px 9px; border-radius: 99px; border: 1px solid rgba(2, 132, 199, 0.2);">
+                4 arquivos
+              </span>
+              <div id="denasusOficioChevronWrap" style="transition: transform 0.25s ease;">
+                <i id="denasusOficioChevron" data-lucide="chevron-up" style="width: 20px; height: 20px; color: var(--text-muted); transition: transform 0.25s ease;"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Corpo Retrátil com a lista de arquivos (fundo claro / cinza sutil como no modelo) -->
+          <div id="denasusOficioBody" style="background: var(--bg-body); padding: 1.15rem 1.4rem; border-top: 1px solid var(--border-color); transition: all 0.3s ease;">
+            <div id="denasusOficioDocsList">
+              <!-- Renderizado dinamicamente por denasus.js com o botão redondo vermelho-terracota com olho -->
+            </div>
+            
+            <div style="display: flex; justify-content: flex-end; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-color);">
+              <button type="button" onclick="window.denasusPromptAddOficioDoc()" class="btn-icon" style="width: auto; padding: 0.35rem 0.85rem; font-size: 0.76rem; display: flex; align-items: center; gap: 5px;">
+                <i data-lucide="plus-circle" style="width: 14px; height: 14px; color: #0284c7;"></i>
+                <span>Adicionar Arquivo ao Processo DENASUS</span>
               </button>
             </div>
           </div>

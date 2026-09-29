@@ -2,14 +2,15 @@
  * Módulo DENASUS - Departamento Nacional de Auditoria do SUS
  * Santa Casa de Caridade de Bagé (SCB)
  * Gestão e Acompanhamento do Comunicado de Auditoria nº 06 / Auditoria nº 20.307/2026
- * Versão com Checklist Retrátil, Anexos, Tabelas Estruturadas (Item D AIHs) e Relatório PDF Expandido
+ * Versão com Checklist Retrátil, Anexos, Tabela de AIHs (Item D), Repositório Retrátil de Documentos Oficiais (layout Terracota/Eye) e Relatório PDF
  */
 
 (function () {
   'use strict';
 
-  // Chave do LocalStorage para persistência do checklist
-  const STORAGE_KEY = 'scb_denasus_checklist_v2026_r3';
+  // Chaves do LocalStorage
+  const STORAGE_KEY = 'scb_denasus_checklist_v2026_r4';
+  const DOCS_STORAGE_KEY = 'scb_denasus_oficio_files_v1';
 
   // Metadados Oficiais do Comunicado DENASUS
   const denasusMeta = {
@@ -35,6 +36,74 @@
     emailResponsavel: 'id-henry.ritta@outlook.com.br',
     destinatarios: 'Lindonor Peruzzo (Provedor) e Ricardo Martins (Diretor Executivo)'
   };
+
+  // Documentos Oficiais Padrão para o Componente Retrátil de Download (Layout com botão Terracota/Eye)
+  const defaultOficioFiles = [
+    {
+      id: 'doc_oficio_denasus',
+      titulo: 'Ofício DENASUS — Comunicado de Auditoria nº 6',
+      subtitulo: 'Processo SEI nº 25000.104532/2026-93 • SEI nº 0057570172 (PDF Oficial Digitalizado, 8.8 MB)',
+      url: 'docs/DENASUS_Oficio_6_20307_2026_SCCB.pdf',
+      download: 'DENASUS_Oficio_6_20307_2026_SCCB.pdf',
+      tipo: 'PDF',
+      tamanho: '8.8 MB',
+      isSystem: true
+    },
+    {
+      id: 'doc_termo_notificacao',
+      titulo: 'Termo de Notificação & Ciência da Auditoria nº 20.307/2026',
+      subtitulo: 'Despacho eletrônico assinado por Leidiane Bello Ferreira de Jesus (Chefe SEAUD/RS)',
+      url: 'docs/DENASUS_Oficio_6_20307_2026_SCCB.pdf',
+      download: 'DENASUS_Oficio_6_20307_2026_SCCB.pdf',
+      tipo: 'PDF',
+      tamanho: '8.8 MB',
+      isSystem: true
+    },
+    {
+      id: 'doc_anexo_1_cadastro',
+      titulo: 'Anexo I — Cadastro de Responsável (Modelo Oficial DENASUS)',
+      subtitulo: 'Formulário padrão para preenchimento dos dados de Presidência e Direção (Item a)',
+      url: '#',
+      tipo: 'MODELO DOCX/PDF',
+      tamanho: '142 KB',
+      isSystem: true
+    },
+    {
+      id: 'doc_tabela_aih_item_d',
+      titulo: 'Demonstrativo Consolidado de Produção Hospitalar AIH/SIH (Item d)',
+      subtitulo: 'Tabela oficial das 14 competências de mai/2025 a jun/2026 (9.741 AIHs · R$ 11.522.032,05)',
+      url: 'docs/tabela_aih_denasus_mai25_jun26.jpg',
+      tipo: 'TABELA / PDF',
+      tamanho: '348 KB',
+      isSystem: true
+    }
+  ];
+
+  function loadOficioFiles() {
+    try {
+      const saved = localStorage.getItem(DOCS_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.warn('Erro ao carregar arquivos oficiais do localStorage:', e);
+    }
+    return JSON.parse(JSON.stringify(defaultOficioFiles));
+  }
+
+  function saveOficioFiles(docs) {
+    try {
+      localStorage.setItem(DOCS_STORAGE_KEY, JSON.stringify(docs));
+    } catch (e) {
+      console.error('Erro ao salvar arquivos oficiais no localStorage:', e);
+    }
+  }
+
+  let oficioFiles = loadOficioFiles();
+  let isOficioAccordionOpen = true;
 
   // Dados da Tabela de AIHs do Item D (conforme documento oficial anexo)
   const tabelaAihItemD = {
@@ -406,6 +475,120 @@
     `;
   }
 
+  // ----------------------------------------------------------------------------
+  // RENDERIZAÇÃO DO COMPONENTE RETRÁTIL DE DOCUMENTOS OFICIAIS (LAYOUT TERRACOTA/EYE)
+  // Idêntico ao print do usuário: lista de cards brancos com botão circular terracota e ícone de olho
+  // ----------------------------------------------------------------------------
+  function renderOficioDocsList() {
+    const listEl = document.getElementById('denasusOficioDocsList');
+    const countEl = document.getElementById('denasusOficioDocsCount');
+    const bodyEl = document.getElementById('denasusOficioBody');
+    const chevronEl = document.getElementById('denasusOficioChevron');
+
+    if (countEl) {
+      countEl.innerText = `${oficioFiles.length} arquivo${oficioFiles.length !== 1 ? 's' : ''}`;
+    }
+
+    if (bodyEl && chevronEl) {
+      bodyEl.style.display = isOficioAccordionOpen ? 'block' : 'none';
+      chevronEl.style.transform = isOficioAccordionOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    if (!listEl) return;
+
+    if (oficioFiles.length === 0) {
+      listEl.innerHTML = `
+        <div style="padding: 1.25rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; font-style: italic;">
+          Nenhum documento oficial anexado no repositório.
+        </div>
+      `;
+      return;
+    }
+
+    const html = oficioFiles.map((doc, idx) => {
+      const isExternalOrBlank = !doc.download && doc.url && doc.url !== '#';
+      const targetAttr = isExternalOrBlank ? 'target="_blank"' : '';
+      const downloadAttr = doc.download ? `download="${doc.download}"` : '';
+
+      return `
+        <div class="denasus-oficio-row-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem 1.35rem; margin-bottom: 0.65rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03); transition: all 0.2s ease;">
+          <div style="flex: 1; padding-right: 1rem;">
+            <div style="font-size: 0.98rem; font-weight: 700; color: var(--text-title); letter-spacing: -0.15px; margin-bottom: 2px;">
+              ${doc.titulo}
+            </div>
+            ${doc.subtitulo ? `
+              <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.35;">
+                ${doc.subtitulo}
+              </div>
+            ` : ''}
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0;">
+            ${!doc.isSystem ? `
+              <button type="button" onclick="window.denasusRemoveOficioDoc('${doc.id}')" style="border: none; background: transparent; color: #ef4444; cursor: pointer; padding: 6px;" title="Remover este arquivo">
+                <i data-lucide="trash-2" style="width: 15px; height: 15px;"></i>
+              </button>
+            ` : ''}
+
+            <!-- Botão Redondo Terracota com Olho (Idêntico ao Print) -->
+            <a href="${doc.url}" ${downloadAttr} ${targetAttr} class="denasus-circle-view-btn" style="width: 40px; height: 40px; border-radius: 50%; background: #b8422b; color: #ffffff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 2px 6px rgba(184, 66, 43, 0.35); cursor: pointer; transition: transform 0.15s ease, background 0.15s ease;" onmouseover="this.style.transform='scale(1.08)'; this.style.background='#a13924'" onmouseout="this.style.transform='scale(1)'; this.style.background='#b8422b'" title="Visualizar ou baixar ${doc.titulo}">
+              <i data-lucide="eye" style="width: 20px; height: 20px;"></i>
+            </a>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    listEl.innerHTML = html;
+  }
+
+  window.denasusToggleOficioAccordion = function () {
+    isOficioAccordionOpen = !isOficioAccordionOpen;
+    renderOficioDocsList();
+    if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+  };
+
+  window.denasusPromptAddOficioDoc = function () {
+    const titulo = prompt('Título do documento a anexar (ex: Termo de Notificação Complementar nº 2):');
+    if (!titulo || !titulo.trim()) return;
+    const subtitulo = prompt('Descrição ou observação do documento (opcional):', 'Documento anexado pela Santa Casa de Bagé') || '';
+    const url = prompt('Caminho ou URL do arquivo (deixe vazio se for apenas registro formal):', '#') || '#';
+
+    const newDoc = {
+      id: 'doc_' + Date.now(),
+      titulo: titulo.trim(),
+      subtitulo: subtitulo.trim(),
+      url: url.trim(),
+      download: url.endsWith('.pdf') ? url.split('/').pop() : '',
+      tipo: 'DOC',
+      isSystem: false
+    };
+
+    oficioFiles.push(newDoc);
+    saveOficioFiles(oficioFiles);
+    renderOficioDocsList();
+    if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+  };
+
+  window.denasusRemoveOficioDoc = function (id) {
+    if (confirm('Deseja realmente remover este arquivo da lista de documentos oficiais?')) {
+      oficioFiles = oficioFiles.filter(d => d.id !== id);
+      saveOficioFiles(oficioFiles);
+      renderOficioDocsList();
+      if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+    }
+  };
+
+  window.denasusScrollToOficioDocs = function () {
+    const el = document.getElementById('denasusOficioAccordionContainer');
+    if (el) {
+      if (!isOficioAccordionOpen) {
+        window.denasusToggleOficioAccordion();
+      }
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   // Atualiza a interface
   function updateUI() {
     const stats = getStats();
@@ -454,7 +637,10 @@
     if (kpiAnalise) kpiAnalise.innerText = stats.emAnalise;
     if (kpiPendentes) kpiPendentes.innerText = stats.pendentes;
 
-    // 3. Renderizar Lista de Itens do Checklist
+    // 3. Renderizar Repositório Retrátil de Documentos Oficiais (Terracota/Eye)
+    renderOficioDocsList();
+
+    // 4. Renderizar Lista de Itens do Checklist
     renderChecklistRows();
 
     // Re-renderiza ícones lucide
@@ -821,7 +1007,9 @@
   window.denasusResetChecklist = function () {
     if (!confirm('Deseja restaurar o checklist oficial para o estado original? Todas as respostas, tabelas e anotações serão reiniciadas para os padrões oficiais.')) return;
     items = JSON.parse(JSON.stringify(defaultItems));
+    oficioFiles = JSON.parse(JSON.stringify(defaultOficioFiles));
     saveChecklistData();
+    saveOficioFiles(oficioFiles);
     updateUI();
   };
 
