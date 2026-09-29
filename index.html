@@ -1429,234 +1429,462 @@
 
           <!-- RIGHT MAIN PANEL: CONTAINER DINÂMICO DO SERVIÇO CISA -->
           <div id="cisaMainContent" style="min-width: 0; max-width: 100%;">
-<div id="cisaNativeDashboard" style="display: flex; flex-direction: column; gap: 1.5rem;">
-      
-      <!-- 1. CABEÇALHO EXECUTIVO DO SERVIÇO CISA -->
-      <div class="card" style="padding: 1.5rem 1.75rem; border-left: 5px solid #2563eb; background: linear-gradient(135deg, var(--bg-card) 0%, rgba(37, 99, 235, 0.04) 100%);">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.25rem;">
-          <div style="display: flex; align-items: center; gap: 1.25rem;">
-            <img src="logos/LOGO__SC_Bage.png" alt="Santa Casa de Bagé" style="height: 52px; width: auto; display: none;" onerror="this.style.display='none'">
-            <div style="width: 2px; height: 42px; background: rgba(37, 99, 235, 0.25);"></div>
-            <img src="logo_cisa.png" alt="CISA" style="height: 48px; width: auto;" onerror="this.style.display='none'">
-            <div style="margin-left: 0.5rem;">
-              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.35rem;">
-                <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                  PACTUAÇÃO CISA REGIONAL
-                </span>
-                <span class="badge-sus" style="background: rgba(37, 99, 235, 0.1); color: var(--blue-vibrant); font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                  CONTRATO INTERMUNICIPAL
-                </span>
-                <span class="badge-sus" style="background: rgba(245, 158, 11, 0.12); color: #b45309; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
-                  HABILITAÇÃO 0506 GLAUCOMA
-                </span>
-              </div>
-              <h2 style="font-size: 1.45rem; font-weight: 800; color: var(--text-title); margin: 0; line-height: 1.2;">
-                Ambulatório de Especialidade em Oftalmologia Clínico-Cirúrgica
-              </h2>
-              <div style="font-size: 0.84rem; color: var(--text-muted); margin-top: 0.3rem;">
-                Estudo de Viabilidade Econômico-Financeira · Santa Casa de Caridade de Bagé &amp; Consórcio Intermunicipal de Saúde (CNPJ: 02.231.696/0001-92 · licitacoes@cisaijui.com.br)
-              </div>
-            </div>
-          </div>
-
-          <!-- Ações Rápidas -->
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
-            <button class="btn-primary" id="btnCisaAddProcTop" style="background: #2563eb; border-color: #2563eb; font-size: 0.8rem; padding: 0.45rem 0.85rem; border-radius: 6px; box-shadow: 0 2px 6px rgba(37,99,235,0.25);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus-circle" aria-hidden="true" style="width: 15px; height: 15px;" class="lucide lucide-plus-circle"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg> Novo Procedimento
-            </button>
-            <button class="btn-icon" id="btnCisaExportCsvTop" title="Exportar CSV" style="border-radius: 6px;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="download" aria-hidden="true" style="width: 16px; height: 16px;" class="lucide lucide-download"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg>
-            </button>
-            <button class="btn-icon" id="btnCisaPrintTop" title="Imprimir Relatório" style="border-radius: 6px;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="printer" aria-hidden="true" style="width: 16px; height: 16px;" class="lucide lucide-printer"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"></path><rect x="6" y="14" width="12" height="8" rx="1"></rect></svg>
-            </button>
-            <button class="btn-icon" id="btnCisaResetTop" title="Restaurar Padrões Anexo 3" style="border-radius: 6px; color: var(--danger);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="rotate-ccw" aria-hidden="true" style="width: 16px; height: 16px;" class="lucide lucide-rotate-ccw"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. GRID EXECUTIVO DE INDICADORES (KPIs NATIVOS - 3 CARDS EM 1 LINHA) -->
-      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem;">
-        
-        <!-- KPI 1: Receita Contratada -->
-        <div class="card kpi-card" style="border-top: 4px solid #2563eb; padding: 1.25rem;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <span class="kpi-label">Receita Mensal Contratada</span>
-            <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: #2563eb;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="wallet" aria-hidden="true" style="width: 20px; height: 20px;" class="lucide lucide-wallet"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path></svg>
-            </div>
-          </div>
-          <div class="kpi-value" id="kpiCisaReceita" style="color: #2563eb; font-size: 1.85rem; margin: 0.5rem 0 0.2rem 0;">R$&nbsp;781,84</div>
-          <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
-            <span>Produção: <strong id="subCisaProdTxt" style="color: var(--text-title);">8 de 15 cotados</strong></span>
-            <span style="margin: 0 4px;">•</span>
-            <span>Custeio: <strong id="subCisaIncTxt" style="color: #2563eb;">7 a definir</strong></span>
-          </div>
-          <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem;">
-            <span style="color: var(--text-muted);">Projeção Anual:</span>
-            <strong id="kpiCisaReceitaAno" style="color: var(--text-title); font-weight: 800;">Conforme demanda mensal</strong>
-          </div>
-        </div>
-
-        <!-- KPI 2: Custos Operacionais -->
-        <div class="card kpi-card" style="border-top: 4px solid #dc2626; padding: 1.25rem;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <span class="kpi-label">Custos Operacionais</span>
-            <div class="card-icon" style="background: rgba(239, 68, 68, 0.12); color: #dc2626;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" aria-hidden="true" style="width: 20px; height: 20px;" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>
-            </div>
-          </div>
-          <div class="kpi-value" id="kpiCisaDespesa" style="color: #dc2626; font-size: 1.85rem; margin: 0.5rem 0 0.2rem 0;">R$&nbsp;39.072,86</div>
-          <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
-            <span>Equipe Mínima RQE + Enfermagem + Apoio</span>
-          </div>
-          <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem;">
-            <span style="color: var(--text-muted);">Custo Anual Total:</span>
-            <strong id="kpiCisaDespesaAno" style="color: var(--text-title); font-weight: 800;">R$&nbsp;468.874,32</strong>
-          </div>
-        </div>
-
-        <!-- KPI 3: Resultado Líquido Mensal -->
-        <div class="card kpi-card" style="border-top: 4px solid var(--blue-vibrant); padding: 1.25rem;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <span class="kpi-label">Superávit Operacional Líquido</span>
-            <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--blue-vibrant);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trending-up" aria-hidden="true" style="width: 20px; height: 20px;" class="lucide lucide-trending-up"><path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path></svg>
-            </div>
-          </div>
-          <div class="kpi-value" id="kpiCisaResultado" style="color: rgb(2, 132, 199); font-size: 1.85rem; margin: 0.5rem 0px 0.2rem;">Tabela CISA</div>
-          <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
-            <span>Margem Líquida: <strong id="kpiCisaMargemTxt" style="color: #2563eb; font-weight: 800;">Tabela Unitária</strong></span>
-            <span style="margin: 0 4px;">•</span>
-            <span>Break-Even: <strong id="kpiCisaBreakeven" style="color: var(--text-title); font-weight: 800;">Por Produção</strong></span>
-          </div>
-          <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem;">
-            <span style="color: var(--text-muted);">Resultado Anual Líquido:</span>
-            <strong id="kpiCisaResultadoAno" style="color: var(--text-muted); font-weight: 800;">Faturamento variável</strong>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- 3. GRADE PRINCIPAL: TABELAS EXECUTIVAS EMPILHADAS VERTICALMENTE -->
-      <div style="display: flex; flex-direction: column; gap: 1.75rem;">
-        
-        <!-- 3.1 TABELA VERDE: PROCEDIMENTOS DO CONTRATO CISA (LARGURA TOTAL 100%) -->
-        <div class="card" style="padding: 1.5rem; width: 100%; box-sizing: border-box;">
-          <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
-            <div class="card-title-group">
-              <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: #2563eb;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calculator" aria-hidden="true" style="width: 20px; height: 20px;" class="lucide lucide-calculator"><rect width="16" height="20" x="4" y="2" rx="2"></rect><line x1="8" x2="16" y1="6" y2="6"></line><line x1="16" x2="16" y1="14" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
-              </div>
-              <div>
-                <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
-                  Tabela de Procedimentos e Valores Pactuados (Contrato CISA)
-                </h3>
-                <span style="font-size: 0.82rem; color: var(--text-muted);">
-                  Procedimentos oftalmológicos com codificação própria oficial do Consórcio CISA
-                </span>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="table-responsive" style="overflow-x: auto;">
-            <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-              <thead style="background: #0f1741; color: #ffffff;">
-                <tr>
-                  <th style="padding: 11px 12px; text-align: left; color: #fff; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; width: 140px;">Código CISA</th>
-                  <th style="padding: 11px 12px; text-align: left; color: #fff; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; min-width: 480px;">Procedimento / Descrição</th>
-                  <th style="padding: 11px 14px; text-align: right; color: #fff; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; width: 200px;">Valor Pactuado (R$)</th>
-                  <th style="width: 40px; text-align: center; color: #fff;"></th>
-                </tr>
-              </thead>
-              <tbody id="tbCisaProcs"><tr style="background: linear-gradient(90deg, rgba(79, 70, 229, 0.12) 0%, rgba(79, 70, 229, 0.02) 100%); border-top: 2px solid rgb(79, 70, 229); border-bottom: 1px solid rgba(79, 70, 229, 0.25);"><td colspan="4" style="padding: 10px 14px; font-weight: 800; font-size: 0.8rem; color: rgb(55, 48, 163); text-transform: uppercase; letter-spacing: 0.5px;">
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="stethoscope" aria-hidden="true" style="width: 16px; height: 16px; color: #4f46e5;" class="lucide lucide-stethoscope"><path d="M11 2v2"></path><path d="M5 2v2"></path><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"></path><path d="M8 15a6 6 0 0 0 12 0v-3"></path><circle cx="20" cy="10" r="2"></circle></svg>
-            <span>Grupo 01: Consultas / Atendimentos em Atenção Especializada</span>
-          </div>
-        </td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00483" title="Código CISA: 00483" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="CONSULTA ESPECIALIZADA EM OFTALMOLOGIA (C/ MAPEAM. + TONOME)" title="CONSULTA ESPECIALIZADA EM OFTALMOLOGIA (C/ MAPEAM. + TONOME)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="background: linear-gradient(90deg, rgba(37, 99, 235, 0.12) 0%, rgba(37, 99, 235, 0.02) 100%); border-top: 2px solid rgb(2, 132, 199); border-bottom: 1px solid rgba(2, 132, 199, 0.25);"><td colspan="4" style="padding: 10px 14px; font-weight: 800; font-size: 0.8rem; color: rgb(7, 89, 133); text-transform: uppercase; letter-spacing: 0.5px;">
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 16px; height: 16px; color: #0284c7;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg>
-            <span>Grupo 11: Diagnóstico em Oftalmologia</span>
-          </div>
-        </td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00257" title="Código CISA: 00257" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="BIOMETRIA ULTRASSONICA (01 OLHO)" title="BIOMETRIA ULTRASSONICA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="64.24" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00256" title="Código CISA: 00256" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="CAMPIMETRIA COMPUTADORIZADA (01 OLHO)" title="CAMPIMETRIA COMPUTADORIZADA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="64.24" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00269" title="Código CISA: 00269" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="FUNDOSCOPIA" title="FUNDOSCOPIA" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00260" title="Código CISA: 00260" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="GONIOSCOPIA" title="GONIOSCOPIA" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00261" title="Código CISA: 00261" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="MAPEAMENTO DE RETINA (01 OLHO)" title="MAPEAMENTO DE RETINA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00262" title="Código CISA: 00262" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="MICROSCOPIA ESPECULAR DE CORNEA (01 OLHO)" title="MICROSCOPIA ESPECULAR DE CORNEA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="149.09" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00263" title="Código CISA: 00263" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="PAQUIMETRIA ULTRASSONICA (01 OLHO)" title="PAQUIMETRIA ULTRASSONICA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="40.4" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00543" title="Código CISA: 00543" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="POTENCIAL DE ACUIDADE VISUAL" title="POTENCIAL DE ACUIDADE VISUAL" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00264" title="Código CISA: 00264" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="RETINOGRAFIA COLORIDA BINOCULAR (02 OLHOS)" title="RETINOGRAFIA COLORIDA BINOCULAR (02 OLHOS)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="71.95" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00593" title="Código CISA: 00593" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="RETIRADA DE CORPO ESTRANHO DO OLHO (HON/SALA/MAT)" title="RETIRADA DE CORPO ESTRANHO DO OLHO (HON/SALA/MAT)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00870" title="Código CISA: 00870" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="TOMOGRAFIA DE COERENCIA OPTICA (AMBOS OS OLHOS)" title="TOMOGRAFIA DE COERENCIA OPTICA (AMBOS OS OLHOS)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="313.47" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00266" title="Código CISA: 00266" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="TONOMETRIA (01 OLHO)" title="TONOMETRIA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="14.21" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00267" title="Código CISA: 00267" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="TOPOGRAFIA COMPUTADORIZADA DE CORNEA (01 OLHO)" title="TOPOGRAFIA COMPUTADORIZADA DE CORNEA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="64.24" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00258" title="Código CISA: 00258" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="ULTRA-SONOGRAFIA DE GLOBO OCULAR / ORBITA (01 OLHO)" title="ULTRA-SONOGRAFIA DE GLOBO OCULAR / ORBITA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr></tbody>
-              <tfoot>
-                <tr style="background: rgba(37, 99, 235, 0.08); font-weight: 800; border-top: 2px solid rgba(37, 99, 235, 0.3);">
-                  <td colspan="2" style="padding: 12px 12px; color: #2563eb; font-size: 0.88rem;">
-                    SOMA DOS VALORES UNITÁRIOS PACTUADOS (TABELA CISA)
-                  </td>
-                  <td id="totCisaRec" style="padding: 12px 14px; text-align: right; color: #2563eb; font-size: 1.05rem; font-weight: 900;">R$&nbsp;781,84</td>
-                  <td></td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-
-          <!-- Nota Técnica do Contrato -->
-          <div style="margin-top: 1.25rem; background: rgba(37, 99, 235, 0.04); border-left: 3px solid #2563eb; padding: 0.85rem 1.15rem; border-radius: 0 6px 6px 0; font-size: 0.82rem; color: var(--text-main); line-height: 1.55;">
-            <strong>Codificação Própria CISA:</strong> Os códigos e procedimentos acima seguem a tabela oficial do Consórcio Intermunicipal de Saúde (CISA), compreendendo o Grupo 01 (Consultas Especializadas) e o Grupo 11 (Diagnóstico em Oftalmologia). Os valores pactuados unitários encontram-se em branco e serão preenchidos conforme o contrato formal.
-          </div>
-        </div>
-
-        <!-- 3.2 TABELA VERMELHA: CUSTOS OPERACIONAIS DO SERVIÇO (LARGURA TOTAL 100% ABAIXO DA VERDE) -->
-        <div class="card" style="padding: 1.5rem; width: 100%; box-sizing: border-box;">
-          <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
-            <div class="card-title-group">
-              <div class="card-icon" style="background: rgba(239, 68, 68, 0.12); color: #dc2626;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="stethoscope" aria-hidden="true" style="width: 20px; height: 20px;" class="lucide lucide-stethoscope"><path d="M11 2v2"></path><path d="M5 2v2"></path><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"></path><path d="M8 15a6 6 0 0 0 12 0v-3"></path><circle cx="20" cy="10" r="2"></circle></svg>
-              </div>
-              <div>
-                <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
-                  Custos Operacionais do Serviço (Equipe e Infraestrutura)
-                </h3>
-                <span style="font-size: 0.82rem; color: var(--text-muted);">
-                  Dimensionamento de corpo clínico especializado com RQE, enfermagem dedicada e apoio administrativo
-                </span>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="table-responsive" style="overflow-x: auto;">
-            <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-              <thead style="background: #0f1741; color: #ffffff;">
-                <tr>
-                  <th style="padding: 11px 10px; text-align: left; color: #fff; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; min-width: 440px;">Função / Recurso Operacional</th>
-                  <th style="padding: 11px 6px; text-align: center; color: #fff; font-size: 0.72rem; text-transform: uppercase; width: 75px;">Qtd</th>
-                  <th style="padding: 11px 8px; text-align: right; color: #fff; font-size: 0.72rem; text-transform: uppercase; width: 120px;">R$ Unitário</th>
-                  <th style="padding: 11px 10px; text-align: right; color: #fff; font-size: 0.72rem; text-transform: uppercase; width: 130px;">Total/mês</th>
-                  <th style="width: 36px; text-align: center; color: #fff;"></th>
-                </tr>
-              </thead>
-              <tbody id="tbCisaCustos"><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 8px; min-width: 440px;"><input type="text" title="Médicos Oftalmologistas Cirurgiões com RQE (2 prof. 20h cada)" style="width: 100%; min-width: 420px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></td><td style="padding: 8px 4px; text-align: center;"><input type="number" step="0.5" min="0" style="width: 48px; text-align: center; font-weight: 700; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td style="padding: 8px 4px; text-align: right;"><input type="number" step="10" min="0" style="width: 80px; text-align: right; font-weight: 600; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td class="tot-col" style="padding: 8px 6px; text-align: right; font-weight: 800; color: rgb(220, 38, 38);">R$&nbsp;24.000,00</td><td style="text-align: center; padding: 4px;"><button title="Remover item" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 17px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 8px; min-width: 440px;"><input type="text" title="Enfermeiro(a) Centro Cirúrgico / Ambulatório Especializado" style="width: 100%; min-width: 420px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></td><td style="padding: 8px 4px; text-align: center;"><input type="number" step="0.5" min="0" style="width: 48px; text-align: center; font-weight: 700; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td style="padding: 8px 4px; text-align: right;"><input type="number" step="10" min="0" style="width: 80px; text-align: right; font-weight: 600; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td class="tot-col" style="padding: 8px 6px; text-align: right; font-weight: 800; color: rgb(220, 38, 38);">R$&nbsp;4.200,00</td><td style="text-align: center; padding: 4px;"><button title="Remover item" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 17px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 8px; min-width: 440px;"><input type="text" title="Técnicos de Enfermagem (Ambulatório / Centro Cirúrgico)" style="width: 100%; min-width: 420px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></td><td style="padding: 8px 4px; text-align: center;"><input type="number" step="0.5" min="0" style="width: 48px; text-align: center; font-weight: 700; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td style="padding: 8px 4px; text-align: right;"><input type="number" step="10" min="0" style="width: 80px; text-align: right; font-weight: 600; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td class="tot-col" style="padding: 8px 6px; text-align: right; font-weight: 800; color: rgb(220, 38, 38);">R$&nbsp;6.172,86</td><td style="text-align: center; padding: 4px;"><button title="Remover item" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 17px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 8px; min-width: 440px;"><input type="text" title="Recepcionista / Apoio Central de Regulação CISA" style="width: 100%; min-width: 420px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></td><td style="padding: 8px 4px; text-align: center;"><input type="number" step="0.5" min="0" style="width: 48px; text-align: center; font-weight: 700; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td style="padding: 8px 4px; text-align: right;"><input type="number" step="10" min="0" style="width: 80px; text-align: right; font-weight: 600; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td class="tot-col" style="padding: 8px 6px; text-align: right; font-weight: 800; color: rgb(220, 38, 38);">R$&nbsp;2.200,00</td><td style="text-align: center; padding: 4px;"><button title="Remover item" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 17px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 8px; min-width: 440px;"><input type="text" title="Manutenção preventiva e calibração de equipamentos oftálmicos" style="width: 100%; min-width: 420px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></td><td style="padding: 8px 4px; text-align: center;"><input type="number" step="0.5" min="0" style="width: 48px; text-align: center; font-weight: 700; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td style="padding: 8px 4px; text-align: right;"><input type="number" step="10" min="0" style="width: 80px; text-align: right; font-weight: 600; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td class="tot-col" style="padding: 8px 6px; text-align: right; font-weight: 800; color: rgb(220, 38, 38);">R$&nbsp;2.500,00</td><td style="text-align: center; padding: 4px;"><button title="Remover item" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 17px; font-weight: 700;">×</button></td></tr></tbody>
-              <tfoot>
-                <tr style="background: rgba(239, 68, 68, 0.08); font-weight: 800; border-top: 2px solid rgba(239, 68, 68, 0.25);">
-                  <td colspan="3" style="padding: 12px 10px; color: #dc2626; font-size: 0.88rem;">
-                    SUBTOTAL DE CUSTOS OPERACIONAIS FIXOS DO SERVIÇO
-                  </td>
-                  <td id="totCisaFixo" style="padding: 12px 8px; text-align: right; color: #dc2626; font-size: 1.05rem; font-weight: 900;">R$&nbsp;39.072,86</td>
-                  <td></td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- 4. FOOTER INSTITUCIONAL -->
-      <div class="card" style="padding: 1rem 1.5rem; background: var(--bg-card-hover); font-size: 0.78rem; color: var(--text-muted); line-height: 1.6;">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
-          <div>
-            <strong>Base Normativa:</strong> Contrato de Rateio e Termo de Pactuação do Consórcio Intermunicipal de Saúde (CISA) nº 03/2026 · Contrato de Rateio Intermunicipal · Santa Casa de Caridade de Bagé.
-          </div>
-          <div style="font-weight: 700; color: #2563eb;">
-            Sistema de Gestão &amp; Viabilidade SUS © 2026
-          </div>
-        </div>
+<div id="cisaNativeDashboard" style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+      
+
+      <!-- 1. CABEÇALHO EXECUTIVO DO SERVIÇO CISA -->
+
+      <div class="card" style="padding: 1.5rem 1.75rem; border-left: 5px solid #2563eb; background: linear-gradient(135deg, var(--bg-card) 0%, rgba(37, 99, 235, 0.04) 100%);">
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.25rem;">
+
+          <div style="display: flex; align-items: center; gap: 1.25rem;">
+
+            <img src="logos/LOGO__SC_Bage.png" alt="Santa Casa de Bagé" style="height: 52px; width: auto; display: none;" onerror="this.style.display='none'">
+
+            <div style="width: 2px; height: 42px; background: rgba(37, 99, 235, 0.25);"></div>
+
+            <img src="logo_cisa.png" alt="CISA" style="height: 48px; width: auto;" onerror="this.style.display='none'">
+
+            <div style="margin-left: 0.5rem;">
+
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.35rem;">
+
+                <span class="badge-sus" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
+
+                  PACTUAÇÃO CISA REGIONAL
+
+                </span>
+
+                <span class="badge-sus" style="background: rgba(37, 99, 235, 0.1); color: var(--blue-vibrant); font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
+
+                  CONTRATO INTERMUNICIPAL
+
+                </span>
+
+                <span class="badge-sus" style="background: rgba(245, 158, 11, 0.12); color: #b45309; font-size: 0.68rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 99px;">
+
+                  HABILITAÇÃO 0506 GLAUCOMA
+
+                </span>
+
+              </div>
+
+              <h2 style="font-size: 1.45rem; font-weight: 800; color: var(--text-title); margin: 0; line-height: 1.2;">
+
+                Ambulatório de Especialidade em Oftalmologia Clínico-Cirúrgica
+
+              </h2>
+
+              <div style="font-size: 0.84rem; color: var(--text-muted); margin-top: 0.3rem;">
+
+                Estudo de Viabilidade Econômico-Financeira · Santa Casa de Caridade de Bagé &amp; Consórcio Intermunicipal de Saúde (CNPJ: 02.231.696/0001-92 · licitacoes@cisaijui.com.br)
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Ações Rápidas -->
+
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+
+            <button class="btn-primary" id="btnCisaAddProcTop" style="background: #2563eb; border-color: #2563eb; font-size: 0.8rem; padding: 0.45rem 0.85rem; border-radius: 6px; box-shadow: 0 2px 6px rgba(37,99,235,0.25);">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus-circle" aria-hidden="true" style="width: 15px; height: 15px;" class="lucide lucide-plus-circle"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg> Novo Procedimento
+
+            </button>
+
+            <button class="btn-icon" id="btnCisaExportCsvTop" title="Exportar CSV" style="border-radius: 6px;">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="download" aria-hidden="true" style="width: 16px; height: 16px;" class="lucide lucide-download"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg>
+
+            </button>
+
+            <button class="btn-icon" id="btnCisaPrintTop" title="Imprimir Relatório" style="border-radius: 6px;">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="printer" aria-hidden="true" style="width: 16px; height: 16px;" class="lucide lucide-printer"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"></path><rect x="6" y="14" width="12" height="8" rx="1"></rect></svg>
+
+            </button>
+
+            <button class="btn-icon" id="btnCisaResetTop" title="Restaurar Padrões Anexo 3" style="border-radius: 6px; color: var(--danger);">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="rotate-ccw" aria-hidden="true" style="width: 16px; height: 16px;" class="lucide lucide-rotate-ccw"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- 2. GRID EXECUTIVO DE INDICADORES (KPIs NATIVOS - 3 CARDS EM 1 LINHA) -->
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem;">
+
+        
+
+        <!-- KPI 1: Receita Contratada -->
+
+        <div class="card kpi-card" style="border-top: 4px solid #2563eb; padding: 1.25rem;">
+
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+
+            <span class="kpi-label">Receita Mensal Contratada</span>
+
+            <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: #2563eb;">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="wallet" aria-hidden="true" style="width: 20px; height: 20px;" class="lucide lucide-wallet"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path></svg>
+
+            </div>
+
+          </div>
+
+          <div class="kpi-value" id="kpiCisaReceita" style="color: #2563eb; font-size: 1.85rem; margin: 0.5rem 0 0.2rem 0;">R$&nbsp;781,84</div>
+
+          <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
+
+            <span>Produção: <strong id="subCisaProdTxt" style="color: var(--text-title);">8 de 15 cotados</strong></span>
+
+            <span style="margin: 0 4px;">•</span>
+
+            <span>Custeio: <strong id="subCisaIncTxt" style="color: #2563eb;">7 a definir</strong></span>
+
+          </div>
+
+          <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem;">
+
+            <span style="color: var(--text-muted);">Projeção Anual:</span>
+
+            <strong id="kpiCisaReceitaAno" style="color: var(--text-title); font-weight: 800;">Conforme demanda mensal</strong>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- KPI 2: Custos Operacionais -->
+
+        <div class="card kpi-card" style="border-top: 4px solid #dc2626; padding: 1.25rem;">
+
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+
+            <span class="kpi-label">Custos Operacionais</span>
+
+            <div class="card-icon" style="background: rgba(239, 68, 68, 0.12); color: #dc2626;">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" aria-hidden="true" style="width: 20px; height: 20px;" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>
+
+            </div>
+
+          </div>
+
+          <div class="kpi-value" id="kpiCisaDespesa" style="color: #dc2626; font-size: 1.85rem; margin: 0.5rem 0 0.2rem 0;">R$&nbsp;39.072,86</div>
+
+          <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
+
+            <span>Equipe Mínima RQE + Enfermagem + Apoio</span>
+
+          </div>
+
+          <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem;">
+
+            <span style="color: var(--text-muted);">Custo Anual Total:</span>
+
+            <strong id="kpiCisaDespesaAno" style="color: var(--text-title); font-weight: 800;">R$&nbsp;468.874,32</strong>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- KPI 3: Resultado Líquido Mensal -->
+
+        <div class="card kpi-card" style="border-top: 4px solid var(--blue-vibrant); padding: 1.25rem;">
+
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+
+            <span class="kpi-label">Superávit Operacional Líquido</span>
+
+            <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--blue-vibrant);">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trending-up" aria-hidden="true" style="width: 20px; height: 20px;" class="lucide lucide-trending-up"><path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path></svg>
+
+            </div>
+
+          </div>
+
+          <div class="kpi-value" id="kpiCisaResultado" style="color: rgb(2, 132, 199); font-size: 1.85rem; margin: 0.5rem 0px 0.2rem;">Tabela CISA</div>
+
+          <div class="kpi-subtext" style="color: var(--text-muted); font-size: 0.78rem;">
+
+            <span>Margem Líquida: <strong id="kpiCisaMargemTxt" style="color: #2563eb; font-weight: 800;">Tabela Unitária</strong></span>
+
+            <span style="margin: 0 4px;">•</span>
+
+            <span>Break-Even: <strong id="kpiCisaBreakeven" style="color: var(--text-title); font-weight: 800;">Por Produção</strong></span>
+
+          </div>
+
+          <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem;">
+
+            <span style="color: var(--text-muted);">Resultado Anual Líquido:</span>
+
+            <strong id="kpiCisaResultadoAno" style="color: var(--text-muted); font-weight: 800;">Faturamento variável</strong>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <!-- 3. GRADE PRINCIPAL: TABELAS EXECUTIVAS EMPILHADAS VERTICALMENTE -->
+
+      <div style="display: flex; flex-direction: column; gap: 1.75rem;">
+
+        
+
+        <!-- 3.1 TABELA VERDE: PROCEDIMENTOS DO CONTRATO CISA (LARGURA TOTAL 100%) -->
+
+        <div class="card" style="padding: 1.5rem; width: 100%; box-sizing: border-box;">
+
+          <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
+
+            <div class="card-title-group">
+
+              <div class="card-icon" style="background: rgba(37, 99, 235, 0.12); color: #2563eb;">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calculator" aria-hidden="true" style="width: 20px; height: 20px;" class="lucide lucide-calculator"><rect width="16" height="20" x="4" y="2" rx="2"></rect><line x1="8" x2="16" y1="6" y2="6"></line><line x1="16" x2="16" y1="14" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
+
+              </div>
+
+              <div>
+
+                <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
+
+                  Tabela de Procedimentos e Valores Pactuados (Contrato CISA)
+
+                </h3>
+
+                <span style="font-size: 0.82rem; color: var(--text-muted);">
+
+                  Procedimentos oftalmológicos com codificação própria oficial do Consórcio CISA
+
+                </span>
+
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+
+
+          <div class="table-responsive" style="overflow-x: auto;">
+
+            <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+
+              <thead style="background: #0f1741; color: #ffffff;">
+
+                <tr>
+
+                  <th style="padding: 11px 12px; text-align: left; color: #fff; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; width: 140px;">Código CISA</th>
+
+                  <th style="padding: 11px 12px; text-align: left; color: #fff; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; min-width: 480px;">Procedimento / Descrição</th>
+
+                  <th style="padding: 11px 14px; text-align: right; color: #fff; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; width: 200px;">Valor Pactuado (R$)</th>
+
+                  <th style="width: 40px; text-align: center; color: #fff;"></th>
+
+                </tr>
+
+              </thead>
+
+              <tbody id="tbCisaProcs"><tr style="background: linear-gradient(90deg, rgba(79, 70, 229, 0.12) 0%, rgba(79, 70, 229, 0.02) 100%); border-top: 2px solid rgb(79, 70, 229); border-bottom: 1px solid rgba(79, 70, 229, 0.25);"><td colspan="4" style="padding: 10px 14px; font-weight: 800; font-size: 0.8rem; color: rgb(55, 48, 163); text-transform: uppercase; letter-spacing: 0.5px;">
+
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="stethoscope" aria-hidden="true" style="width: 16px; height: 16px; color: #4f46e5;" class="lucide lucide-stethoscope"><path d="M11 2v2"></path><path d="M5 2v2"></path><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"></path><path d="M8 15a6 6 0 0 0 12 0v-3"></path><circle cx="20" cy="10" r="2"></circle></svg>
+
+            <span>Grupo 01: Consultas / Atendimentos em Atenção Especializada</span>
+
+          </div>
+
+        </td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00483" title="Código CISA: 00483" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="CONSULTA ESPECIALIZADA EM OFTALMOLOGIA (C/ MAPEAM. + TONOME)" title="CONSULTA ESPECIALIZADA EM OFTALMOLOGIA (C/ MAPEAM. + TONOME)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="background: linear-gradient(90deg, rgba(37, 99, 235, 0.12) 0%, rgba(37, 99, 235, 0.02) 100%); border-top: 2px solid rgb(2, 132, 199); border-bottom: 1px solid rgba(2, 132, 199, 0.25);"><td colspan="4" style="padding: 10px 14px; font-weight: 800; font-size: 0.8rem; color: rgb(7, 89, 133); text-transform: uppercase; letter-spacing: 0.5px;">
+
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 16px; height: 16px; color: #0284c7;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg>
+
+            <span>Grupo 11: Diagnóstico em Oftalmologia</span>
+
+          </div>
+
+        </td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00257" title="Código CISA: 00257" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="BIOMETRIA ULTRASSONICA (01 OLHO)" title="BIOMETRIA ULTRASSONICA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="64.24" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00256" title="Código CISA: 00256" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="CAMPIMETRIA COMPUTADORIZADA (01 OLHO)" title="CAMPIMETRIA COMPUTADORIZADA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="64.24" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00269" title="Código CISA: 00269" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="FUNDOSCOPIA" title="FUNDOSCOPIA" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00260" title="Código CISA: 00260" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="GONIOSCOPIA" title="GONIOSCOPIA" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00261" title="Código CISA: 00261" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="MAPEAMENTO DE RETINA (01 OLHO)" title="MAPEAMENTO DE RETINA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00262" title="Código CISA: 00262" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="MICROSCOPIA ESPECULAR DE CORNEA (01 OLHO)" title="MICROSCOPIA ESPECULAR DE CORNEA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="149.09" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00263" title="Código CISA: 00263" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="PAQUIMETRIA ULTRASSONICA (01 OLHO)" title="PAQUIMETRIA ULTRASSONICA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="40.4" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00543" title="Código CISA: 00543" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="POTENCIAL DE ACUIDADE VISUAL" title="POTENCIAL DE ACUIDADE VISUAL" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00264" title="Código CISA: 00264" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="RETINOGRAFIA COLORIDA BINOCULAR (02 OLHOS)" title="RETINOGRAFIA COLORIDA BINOCULAR (02 OLHOS)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="71.95" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00593" title="Código CISA: 00593" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="RETIRADA DE CORPO ESTRANHO DO OLHO (HON/SALA/MAT)" title="RETIRADA DE CORPO ESTRANHO DO OLHO (HON/SALA/MAT)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00870" title="Código CISA: 00870" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="TOMOGRAFIA DE COERENCIA OPTICA (AMBOS OS OLHOS)" title="TOMOGRAFIA DE COERENCIA OPTICA (AMBOS OS OLHOS)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="313.47" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00266" title="Código CISA: 00266" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="TONOMETRIA (01 OLHO)" title="TONOMETRIA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="14.21" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00267" title="Código CISA: 00267" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="TOPOGRAFIA COMPUTADORIZADA DE CORNEA (01 OLHO)" title="TOPOGRAFIA COMPUTADORIZADA DE CORNEA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" value="64.24" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 9px 12px; width: 140px;"><input type="text" value="00258" title="Código CISA: 00258" style="width: 120px; font-family: monospace; font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="padding: 9px 12px; min-width: 480px;"><div style="display: flex; align-items: center; gap: 0.65rem;"><span style="background: rgba(37, 99, 235, 0.08); color: rgb(29, 78, 216); border: 1px solid rgba(37, 99, 235, 0.22); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" style="width: 11px; height: 11px;" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Oftalmologia</span><input type="text" value="ULTRA-SONOGRAFIA DE GLOBO OCULAR / ORBITA (01 OLHO)" title="ULTRA-SONOGRAFIA DE GLOBO OCULAR / ORBITA (01 OLHO)" style="width: 100%; min-width: 380px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></div></td><td style="padding: 9px 14px; text-align: right; width: 200px;"><input type="number" step="0.01" min="0" placeholder="A definir (R$)" style="width: 160px; text-align: right; font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: rgb(29, 78, 216);"></td><td style="text-align: center; width: 40px; padding: 4px;"><button title="Remover procedimento" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 18px; font-weight: 700;">×</button></td></tr></tbody>
+
+              <tfoot>
+
+                <tr style="background: rgba(37, 99, 235, 0.08); font-weight: 800; border-top: 2px solid rgba(37, 99, 235, 0.3);">
+
+                  <td colspan="2" style="padding: 12px 12px; color: #2563eb; font-size: 0.88rem;">
+
+                    SOMA DOS VALORES UNITÁRIOS PACTUADOS (TABELA CISA)
+
+                  </td>
+
+                  <td id="totCisaRec" style="padding: 12px 14px; text-align: right; color: #2563eb; font-size: 1.05rem; font-weight: 900;">R$&nbsp;781,84</td>
+
+                  <td></td>
+
+                </tr>
+
+              </tfoot>
+
+            </table>
+
+          </div>
+
+
+
+          <!-- Nota Técnica do Contrato -->
+
+          <div style="margin-top: 1.25rem; background: rgba(37, 99, 235, 0.04); border-left: 3px solid #2563eb; padding: 0.85rem 1.15rem; border-radius: 0 6px 6px 0; font-size: 0.82rem; color: var(--text-main); line-height: 1.55;">
+
+            <strong>Codificação Própria CISA:</strong> Os códigos e procedimentos acima seguem a tabela oficial do Consórcio Intermunicipal de Saúde (CISA), compreendendo o Grupo 01 (Consultas Especializadas) e o Grupo 11 (Diagnóstico em Oftalmologia). Os valores pactuados unitários encontram-se em branco e serão preenchidos conforme o contrato formal.
+
+          </div>
+
+        </div>
+
+
+
+        <!-- 3.2 TABELA VERMELHA: CUSTOS OPERACIONAIS DO SERVIÇO (LARGURA TOTAL 100% ABAIXO DA VERDE) -->
+
+        <div class="card" style="padding: 1.5rem; width: 100%; box-sizing: border-box;">
+
+          <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
+
+            <div class="card-title-group">
+
+              <div class="card-icon" style="background: rgba(239, 68, 68, 0.12); color: #dc2626;">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="stethoscope" aria-hidden="true" style="width: 20px; height: 20px;" class="lucide lucide-stethoscope"><path d="M11 2v2"></path><path d="M5 2v2"></path><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"></path><path d="M8 15a6 6 0 0 0 12 0v-3"></path><circle cx="20" cy="10" r="2"></circle></svg>
+
+              </div>
+
+              <div>
+
+                <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">
+
+                  Custos Operacionais do Serviço (Equipe e Infraestrutura)
+
+                </h3>
+
+                <span style="font-size: 0.82rem; color: var(--text-muted);">
+
+                  Dimensionamento de corpo clínico especializado com RQE, enfermagem dedicada e apoio administrativo
+
+                </span>
+
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+
+
+          <div class="table-responsive" style="overflow-x: auto;">
+
+            <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+
+              <thead style="background: #0f1741; color: #ffffff;">
+
+                <tr>
+
+                  <th style="padding: 11px 10px; text-align: left; color: #fff; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; min-width: 440px;">Função / Recurso Operacional</th>
+
+                  <th style="padding: 11px 6px; text-align: center; color: #fff; font-size: 0.72rem; text-transform: uppercase; width: 75px;">Qtd</th>
+
+                  <th style="padding: 11px 8px; text-align: right; color: #fff; font-size: 0.72rem; text-transform: uppercase; width: 120px;">R$ Unitário</th>
+
+                  <th style="padding: 11px 10px; text-align: right; color: #fff; font-size: 0.72rem; text-transform: uppercase; width: 130px;">Total/mês</th>
+
+                  <th style="width: 36px; text-align: center; color: #fff;"></th>
+
+                </tr>
+
+              </thead>
+
+              <tbody id="tbCisaCustos"><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 8px; min-width: 440px;"><input type="text" title="Médicos Oftalmologistas Cirurgiões com RQE (2 prof. 20h cada)" style="width: 100%; min-width: 420px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></td><td style="padding: 8px 4px; text-align: center;"><input type="number" step="0.5" min="0" style="width: 48px; text-align: center; font-weight: 700; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td style="padding: 8px 4px; text-align: right;"><input type="number" step="10" min="0" style="width: 80px; text-align: right; font-weight: 600; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td class="tot-col" style="padding: 8px 6px; text-align: right; font-weight: 800; color: rgb(220, 38, 38);">R$&nbsp;24.000,00</td><td style="text-align: center; padding: 4px;"><button title="Remover item" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 17px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 8px; min-width: 440px;"><input type="text" title="Enfermeiro(a) Centro Cirúrgico / Ambulatório Especializado" style="width: 100%; min-width: 420px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></td><td style="padding: 8px 4px; text-align: center;"><input type="number" step="0.5" min="0" style="width: 48px; text-align: center; font-weight: 700; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td style="padding: 8px 4px; text-align: right;"><input type="number" step="10" min="0" style="width: 80px; text-align: right; font-weight: 600; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td class="tot-col" style="padding: 8px 6px; text-align: right; font-weight: 800; color: rgb(220, 38, 38);">R$&nbsp;4.200,00</td><td style="text-align: center; padding: 4px;"><button title="Remover item" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 17px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 8px; min-width: 440px;"><input type="text" title="Técnicos de Enfermagem (Ambulatório / Centro Cirúrgico)" style="width: 100%; min-width: 420px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></td><td style="padding: 8px 4px; text-align: center;"><input type="number" step="0.5" min="0" style="width: 48px; text-align: center; font-weight: 700; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td style="padding: 8px 4px; text-align: right;"><input type="number" step="10" min="0" style="width: 80px; text-align: right; font-weight: 600; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td class="tot-col" style="padding: 8px 6px; text-align: right; font-weight: 800; color: rgb(220, 38, 38);">R$&nbsp;6.172,86</td><td style="text-align: center; padding: 4px;"><button title="Remover item" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 17px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 8px; min-width: 440px;"><input type="text" title="Recepcionista / Apoio Central de Regulação CISA" style="width: 100%; min-width: 420px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></td><td style="padding: 8px 4px; text-align: center;"><input type="number" step="0.5" min="0" style="width: 48px; text-align: center; font-weight: 700; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td style="padding: 8px 4px; text-align: right;"><input type="number" step="10" min="0" style="width: 80px; text-align: right; font-weight: 600; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td class="tot-col" style="padding: 8px 6px; text-align: right; font-weight: 800; color: rgb(220, 38, 38);">R$&nbsp;2.200,00</td><td style="text-align: center; padding: 4px;"><button title="Remover item" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 17px; font-weight: 700;">×</button></td></tr><tr style="border-bottom: 1px solid var(--border-color); transition: background-color 0.15s;"><td style="padding: 8px; min-width: 440px;"><input type="text" title="Manutenção preventiva e calibração de equipamentos oftálmicos" style="width: 100%; min-width: 420px; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title);"></td><td style="padding: 8px 4px; text-align: center;"><input type="number" step="0.5" min="0" style="width: 48px; text-align: center; font-weight: 700; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td style="padding: 8px 4px; text-align: right;"><input type="number" step="10" min="0" style="width: 80px; text-align: right; font-weight: 600; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card);"></td><td class="tot-col" style="padding: 8px 6px; text-align: right; font-weight: 800; color: rgb(220, 38, 38);">R$&nbsp;2.500,00</td><td style="text-align: center; padding: 4px;"><button title="Remover item" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: var(--text-muted); cursor: pointer; font-size: 17px; font-weight: 700;">×</button></td></tr></tbody>
+
+              <tfoot>
+
+                <tr style="background: rgba(239, 68, 68, 0.08); font-weight: 800; border-top: 2px solid rgba(239, 68, 68, 0.25);">
+
+                  <td colspan="3" style="padding: 12px 10px; color: #dc2626; font-size: 0.88rem;">
+
+                    SUBTOTAL DE CUSTOS OPERACIONAIS FIXOS DO SERVIÇO
+
+                  </td>
+
+                  <td id="totCisaFixo" style="padding: 12px 8px; text-align: right; color: #dc2626; font-size: 1.05rem; font-weight: 900;">R$&nbsp;39.072,86</td>
+
+                  <td></td>
+
+                </tr>
+
+              </tfoot>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <!-- 4. FOOTER INSTITUCIONAL -->
+
+      <div class="card" style="padding: 1rem 1.5rem; background: var(--bg-card-hover); font-size: 0.78rem; color: var(--text-muted); line-height: 1.6;">
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+
+          <div>
+
+            <strong>Base Normativa:</strong> Contrato de Rateio e Termo de Pactuação do Consórcio Intermunicipal de Saúde (CISA) nº 03/2026 · Contrato de Rateio Intermunicipal · Santa Casa de Caridade de Bagé.
+
+          </div>
+
+          <div style="font-weight: 700; color: #2563eb;">
+
+            Sistema de Gestão &amp; Viabilidade SUS © 2026
+
+          </div>
+
+        </div>
+
       </div>
           </div>
         </div>
@@ -6870,199 +7098,368 @@
         </div>
       </section>
 
-      <!-- TAB: DENASUS (DEPARTAMENTO NACIONAL DE AUDITORIA DO SUS) -->
+            <!-- TAB: DENASUS (DEPARTAMENTO NACIONAL DE AUDITORIA DO SUS) -->
       <section id="tab-denasus" class="tab-pane">
+        <style>
+          .denasus-item-card {
+            position: relative;
+            overflow: visible !important;
+          }
+          .denasus-item-card:hover {
+            z-index: 80 !important;
+          }
+          .denasus-tooltip-wrap {
+            position: relative;
+            display: inline-block;
+            z-index: 90;
+          }
+          .denasus-btn-hover-obs {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(2, 132, 199, 0.08);
+            border: 1px solid rgba(2, 132, 199, 0.3);
+            color: #0284c7;
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+          }
+          .denasus-btn-hover-obs:hover {
+            background: #0284c7;
+            color: #ffffff;
+            border-color: #0284c7;
+          }
+          .denasus-btn-hover-obs:hover i {
+            color: #ffffff !important;
+          }
+          .denasus-hover-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            width: 520px;
+            max-width: 88vw;
+            background: #090d16;
+            color: #f8fafc;
+            text-align: left;
+            border-radius: 8px;
+            padding: 14px 16px;
+            position: absolute;
+            z-index: 1000;
+            top: calc(100% + 8px);
+            left: 0;
+            box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.6), 0 6px 12px -2px rgba(0, 0, 0, 0.4);
+            border: 1.5px solid #0284c7;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            transform: translateY(-4px);
+            pointer-events: none;
+          }
+          .denasus-hover-tooltip::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 28px;
+            border-width: 7px;
+            border-style: solid;
+            border-color: transparent transparent #0284c7 transparent;
+          }
+          .denasus-tooltip-wrap:hover .denasus-hover-tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+          }
+          .denasus-hover-tooltip .tooltip-header {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #38bdf8;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 5px;
+          }
+          .denasus-hover-tooltip .tooltip-body {
+            font-size: 0.82rem;
+            line-height: 1.45;
+            color: #e2e8f0;
+          }
+          .denasus-hover-tooltip .tooltip-footer {
+            margin-top: 6px;
+            font-size: 0.7rem;
+            color: #94a3b8;
+            text-align: right;
+            border-top: 1px dashed #334155;
+            padding-top: 4px;
+          }
+          .denasus-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0.85rem;
+          }
+          .denasus-meta-item {
+            padding: 0.75rem 1rem;
+            background: var(--bg-body);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+          }
+          .denasus-meta-item label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+          }
+          .denasus-meta-item .val {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-title);
+          }
+        </style>
+
         <!-- Header Executivo DENASUS -->
         <div class="card" style="margin-bottom: 1.5rem; padding: 1.25rem 1.75rem; border-left: 5px solid #0284c7; background: linear-gradient(135deg, var(--bg-card) 0%, rgba(2, 132, 199, 0.05) 100%);">
           <div class="card-header" style="flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 0.85rem;">
             <div class="card-title-group" style="display: flex; align-items: center; gap: 1.25rem;">
-              <div class="card-icon" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                <i data-lucide="scale" style="width: 26px; height: 26px;"></i>
+              <div class="card-icon" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15);">
+                <i data-lucide="scale" style="width: 28px; height: 28px;"></i>
               </div>
               <div>
                 <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
                   <h2 style="margin: 0; font-size: 1.45rem; font-weight: 800; color: var(--text-title);">DENASUS — Departamento Nacional de Auditoria do SUS</h2>
                   <span class="badge-sus" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.3); font-weight: 800; font-size: 0.72rem; padding: 0.25rem 0.65rem; border-radius: 99px;">
-                    SNA · MINISTÉRIO DA SAÚDE
+                    SNA • MINISTÉRIO DA SAÚDE
+                  </span>
+                  <span id="denasusGlobalStatusBadge" class="badge-sus" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; font-weight: 800; font-size: 0.75rem; padding: 0.25rem 0.65rem; border-radius: 99px; display: flex; align-items: center; gap: 4px;">
+                    <i data-lucide="clock" style="width: 14px; height: 14px;"></i> Diligência Recebida - Prazo Aberto
                   </span>
                 </div>
                 <p style="margin: 0.25rem 0 0 0; font-size: 0.88rem; color: var(--text-muted);">
-                  Sistema Nacional de Auditoria (SNA) • Monitoramento de Conformidade Regulatória, Auditoria Concorrente e Gestão Preventiva de Glosas SUS • Santa Casa de Caridade de Bagé
+                  Serviço Nacional de Auditoria do SUS no Rio Grande do Sul (SEAUD/RS/DENASUS/MS) • Santa Casa de Caridade de Bagé/RS
                 </p>
               </div>
             </div>
-            <div style="display: flex; gap: 0.75rem; align-items: center;">
-              <span class="badge-sus" style="background: rgba(16, 185, 129, 0.12); color: var(--success); font-weight: 800; font-size: 0.8rem; padding: 0.4rem 0.85rem; border-radius: 99px; display: flex; align-items: center; gap: 0.4rem;">
-                <i data-lucide="shield-check" style="width: 14px; height: 14px;"></i> Conformidade Operacional Ativa
-              </span>
+
+            <!-- Botões Principais de Ação: Baixar Original e Gerar Relatório de Andamento -->
+            <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+              <!-- Botão 1: Baixar PDF Original -->
+              <a href="docs/DENASUS_Oficio_6_20307_2026_SCCB.pdf" download="DENASUS_Oficio_6_20307_2026_SCCB.pdf" class="btn-primary" style="background: #0284c7; border: 1px solid #0369a1; color: #ffffff; font-weight: 700; font-size: 0.85rem; padding: 0.55rem 1.15rem; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25); text-decoration: none;" title="Baixar cópia original digitalizada do Comunicado de Auditoria nº 6 do DENASUS em PDF">
+                <i data-lucide="download" style="width: 16px; height: 16px;"></i>
+                <span>Baixar Ofício DENASUS Original (PDF)</span>
+              </a>
+
+              <!-- Botão 2: Gerar Relatório de Andamento em PDF -->
+              <button type="button" onclick="window.exportDenasusRelatorioPDF()" class="btn-primary" style="background: #dc2626; border: 1px solid #b91c1c; color: #ffffff; font-weight: 700; font-size: 0.85rem; padding: 0.55rem 1.15rem; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(220, 38, 38, 0.25); cursor: pointer;" title="Gerar e imprimir Relatório Executivo Oficial de Andamento do Checklist em PDF">
+                <i data-lucide="printer" style="width: 16px; height: 16px;"></i>
+                <span>Gerar Relatório de Andamento (PDF)</span>
+              </button>
             </div>
           </div>
         </div>
 
-        <!-- 4 KPI Cards de Auditoria & Conformidade -->
-        <div class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
-          <div class="card" style="padding: 1.25rem; border-top: 3px solid #0284c7;">
-            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-              <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Auditorias Realizadas</span>
-              <div style="background: rgba(2, 132, 199, 0.1); color: #0284c7; padding: 6px; border-radius: 8px;">
-                <i data-lucide="file-check-2" style="width: 18px; height: 18px;"></i>
-              </div>
-            </div>
-            <div style="font-size: 1.65rem; font-weight: 800; color: var(--text-title); margin-bottom: 0.25rem;">12 Relatórios</div>
-            <span style="font-size: 0.8rem; color: var(--success); display: flex; align-items: center; gap: 4px;">
-              <i data-lucide="check-circle" style="width: 12px; height: 12px;"></i> 100% dos planos de ação atendidos
-            </span>
-          </div>
-
-          <div class="card" style="padding: 1.25rem; border-top: 3px solid #10b981;">
-            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-              <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Índice de Conformidade SNA</span>
-              <div style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 6px; border-radius: 8px;">
-                <i data-lucide="shield-check" style="width: 18px; height: 18px;"></i>
-              </div>
-            </div>
-            <div style="font-size: 1.65rem; font-weight: 800; color: var(--success); margin-bottom: 0.25rem;">98,4%</div>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">
-              Aderência às Portarias SAES/MS e Contrato SUS
-            </span>
-          </div>
-
-          <div class="card" style="padding: 1.25rem; border-top: 3px solid #8b5cf6;">
-            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-              <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Glosas Evitadas (2026)</span>
-              <div style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; padding: 6px; border-radius: 8px;">
-                <i data-lucide="trending-up" style="width: 18px; height: 18px;"></i>
-              </div>
-            </div>
-            <div style="font-size: 1.65rem; font-weight: 800; color: #8b5cf6; margin-bottom: 0.25rem;">R$ 1.842.650,00</div>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">
-              Auditoria interna prévia SIA / SIH e RFINAL
-            </span>
-          </div>
-
-          <div class="card" style="padding: 1.25rem; border-top: 3px solid #f59e0b;">
-            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-              <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Diligências em Monitoramento</span>
-              <div style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 6px; border-radius: 8px;">
-                <i data-lucide="clock" style="width: 18px; height: 18px;"></i>
-              </div>
-            </div>
-            <div style="font-size: 1.65rem; font-weight: 800; color: #f59e0b; margin-bottom: 0.25rem;">02 Processos</div>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">
-              Prazo regular e instrução documental completa
-            </span>
-          </div>
-        </div>
-
-        <!-- Matriz de Auditoria e Apontamentos -->
-        <div class="card" style="margin-bottom: 1.5rem; padding: 1.5rem;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; flex-wrap: wrap; gap: 0.75rem;">
+        <!-- Painel Executivo com Dados Oficiais do Ofício de Auditoria -->
+        <div class="card" style="margin-bottom: 1.5rem; padding: 1.35rem 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.15rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.65rem; flex-wrap: wrap; gap: 0.5rem;">
             <div>
-              <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title); display: flex; align-items: center; gap: 0.5rem;">
-                <i data-lucide="clipboard-list" style="color: #0284c7; width: 20px; height: 20px;"></i>
-                Matriz de Auditorias Oficiais & Relatórios do Sistema Nacional de Auditoria (SNA)
+              <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800; color: var(--text-title); display: flex; align-items: center; gap: 0.5rem;">
+                <i data-lucide="file-text" style="color: #0284c7; width: 18px; height: 18px;"></i>
+                Dados Cadastrais & Metadados Oficiais do Ofício DENASUS
               </h3>
-              <p style="margin: 0.25rem 0 0 0; font-size: 0.82rem; color: var(--text-muted);">
-                Acompanhamento dos relatórios de auditoria do DENASUS, Auditoria Estadual (SES/RS) e Auditoria Municipal do SUS
+              <p style="margin: 0.2rem 0 0 0; font-size: 0.8rem; color: var(--text-muted);">
+                Registro formal extraído integralmente do Comunicado de Auditoria SEI nº 0057570172
               </p>
             </div>
-            <div style="display: flex; gap: 0.5rem;">
+            <div>
               <span class="badge-sus" style="background: rgba(2, 132, 199, 0.08); color: #0284c7; font-weight: 700; font-size: 0.75rem; padding: 0.35rem 0.75rem; border-radius: 6px;">
-                Exercício 2025/2026
+                SEI: 25000.104532/2026-93
               </span>
             </div>
           </div>
 
-          <div class="table-responsive" style="overflow-x: auto;">
-            <table class="cisa-table-modern" style="width: 100%; font-size: 0.85rem;">
-              <thead>
-                <tr>
-                  <th style="min-width: 140px;">Nº Relatório / Exercício</th>
-                  <th style="min-width: 200px;">Objeto da Auditoria</th>
-                  <th style="min-width: 130px; text-align: center;">Órgão Auditor</th>
-                  <th style="min-width: 120px; text-align: center;">Período Auditado</th>
-                  <th style="min-width: 140px; text-align: center;">Parecer / Situação</th>
-                  <th style="min-width: 180px;">Plano de Ação Corretiva</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="font-weight: 700; color: var(--text-title);">RA nº 18.420/2025</td>
-                  <td>Contratualização MAC, Cumprimento de Metas Físicas SIA/SIH e Leitos SUS</td>
-                  <td style="text-align: center;"><span class="badge-sus" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; font-weight: 700;">DENASUS / Núcleo RS</span></td>
-                  <td style="text-align: center; color: var(--text-muted);">Jan a Dez/2025</td>
-                  <td style="text-align: center;"><span class="badge-sus" style="background: rgba(16, 185, 129, 0.12); color: var(--success); font-weight: 800;">Regular c/ Recomendações</span></td>
-                  <td style="color: var(--text-muted);">Ajuste de registro de laudos no prontuário eletrônico (concluído)</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 700; color: var(--text-title);">AUD-SES nº 042/2026</td>
-                  <td>Programa ASSISTIR — Incentivos de Custeio e Ambulatórios Especializados</td>
-                  <td style="text-align: center;"><span class="badge-sus" style="background: rgba(139, 92, 246, 0.12); color: #8b5cf6; font-weight: 700;">Auditoria SES/RS</span></td>
-                  <td style="text-align: center; color: var(--text-muted);">1º Trimestre/2026</td>
-                  <td style="text-align: center;"><span class="badge-sus" style="background: rgba(16, 185, 129, 0.12); color: var(--success); font-weight: 800;">Aprovado Plenamente</span></td>
-                  <td style="color: var(--text-muted);">Metas e indicadores 100% validados na DGAE/SES</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 700; color: var(--text-title);">AUD-CONC nº 08/2026</td>
-                  <td>Produção Ambulatorial CISA e Portaria SES/RS nº 611/2026 (Mutirão SUS Gaúcho)</td>
-                  <td style="text-align: center;"><span class="badge-sus" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b; font-weight: 700;">Auditoria Interna / CISA</span></td>
-                  <td style="text-align: center; color: var(--text-muted);">Jun a Ago/2026</td>
-                  <td style="text-align: center;"><span class="badge-sus" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; font-weight: 800;">Em Monitoramento</span></td>
-                  <td style="color: var(--text-muted);">Acompanhamento concorrente de rateio 80/20 e faturamento pactuado</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 700; color: var(--text-title);">VERIF-SIA nº 115/2026</td>
-                  <td>Auditoria de Fechamento do Relatório RFINAL (BPA-I, APAC Nefro/Onco)</td>
-                  <td style="text-align: center;"><span class="badge-sus" style="background: rgba(16, 185, 129, 0.12); color: var(--success); font-weight: 700;">AUDSUS / DATASUS</span></td>
-                  <td style="text-align: center; color: var(--text-muted);">Jul/2026</td>
-                  <td style="text-align: center;"><span class="badge-sus" style="background: rgba(16, 185, 129, 0.12); color: var(--success); font-weight: 800;">Consistente / Sem Glosas</span></td>
-                  <td style="color: var(--text-muted);">Compatibilidade total entre físico programado e orçado</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="denasus-meta-grid">
+            <div class="denasus-meta-item">
+              <label><i data-lucide="hash" style="width: 12px; height: 12px; display: inline-block;"></i> Comunicado / Documento</label>
+              <div class="val">Comunicado de Auditoria nº 6</div>
+            </div>
+
+            <div class="denasus-meta-item">
+              <label><i data-lucide="shield" style="width: 12px; height: 12px; display: inline-block;"></i> Número da Auditoria</label>
+              <div class="val" style="color: #0284c7;">Auditoria n.º 20.307/2026</div>
+            </div>
+
+            <div class="denasus-meta-item">
+              <label><i data-lucide="calendar" style="width: 12px; height: 12px; display: inline-block;"></i> Data de Emissão / Assinatura</label>
+              <div class="val">21/08/2026 (SEI: 25/08/2026 às 14:56)</div>
+            </div>
+
+            <div class="denasus-meta-item">
+              <label><i data-lucide="hourglass" style="width: 12px; height: 12px; display: inline-block;"></i> Prazo Regulamentar</label>
+              <div class="val" style="color: #f59e0b;">10 (dez) dias úteis da ciência</div>
+            </div>
+
+            <div class="denasus-meta-item">
+              <label><i data-lucide="building-2" style="width: 12px; height: 12px; display: inline-block;"></i> Órgão Responsável Auditor</label>
+              <div class="val">SEAUD/RS/DENASUS/MS (Porto Alegre/RS)</div>
+            </div>
+
+            <div class="denasus-meta-item">
+              <label><i data-lucide="calendar-range" style="width: 12px; height: 12px; display: inline-block;"></i> Período de Abrangência Auditado</label>
+              <div class="val">Maio de 2025 a Junho de 2026 (14 meses)</div>
+            </div>
+
+            <div class="denasus-meta-item">
+              <label><i data-lucide="user-check" style="width: 12px; height: 12px; display: inline-block;"></i> Coordenação da Equipe Auditora</label>
+              <div class="val">Matilde Moreira do Nascimento • Cel: (51) 99890-1165</div>
+            </div>
+
+            <div class="denasus-meta-item">
+              <label><i data-lucide="mail" style="width: 12px; height: 12px; display: inline-block;"></i> E-mails Institucionais Oficiais</label>
+              <div class="val" style="font-size: 0.8rem;">
+                <a href="mailto:auditoria.semsrs@saude.gov.br" style="color: #0284c7; text-decoration: none;">auditoria.semsrs@saude.gov.br</a> / 
+                <a href="mailto:matilde.nascimento@saude.gov.br" style="color: #0284c7; text-decoration: none;">matilde.nascimento@saude.gov.br</a>
+              </div>
+            </div>
+
+            <div class="denasus-meta-item">
+              <label><i data-lucide="folder-symlink" style="width: 12px; height: 12px; display: inline-block;"></i> Forma de Envio Solicitada</label>
+              <div class="val">Eletrônico via pasta compartilhada <strong>SEAUD-RS-TRANF</strong></div>
+            </div>
+
+            <div class="denasus-meta-item">
+              <label><i data-lucide="user" style="width: 12px; height: 12px; display: inline-block;"></i> Responsável pelo Atendimento</label>
+              <div class="val">Henry Ritta (Contratualização - Santa Casa de Bagé)</div>
+            </div>
+
+            <div class="denasus-meta-item" style="grid-column: 1 / -1;">
+              <label><i data-lucide="info" style="width: 12px; height: 12px; display: inline-block;"></i> Destinatários Oficiais & Autenticidade SEI</label>
+              <div class="val" style="font-size: 0.82rem; font-weight: normal; color: var(--text-muted);">
+                Aos Srs. <strong>Lindonor Peruzzo</strong> (Provedor) e <strong>Ricardo Martins</strong> (Diretor Executivo) • Santa Casa de Caridade de Bagé/RS (Rua Gomes Carneiro, 1350 – Fone: 53 3240-3200 • a/c: id-henry.ritta@outlook.com.br). Assinado por <strong>Leidiane Bello Ferreira de Jesus</strong> (Chefe SEAUD/RS). Autenticidade conferível no portal SEI/MS com Código Verificador <strong>0057570172</strong> e CRC <strong>FD8751A9</strong>.
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Painel de Diretrizes e Normativas do DENASUS -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
-          <div class="card" style="padding: 1.25rem;">
-            <h4 style="margin: 0 0 0.85rem 0; font-size: 1rem; font-weight: 800; color: var(--text-title); display: flex; align-items: center; gap: 0.5rem;">
-              <i data-lucide="book-open" style="color: #0284c7; width: 18px; height: 18px;"></i>
-              Pilares de Fiscalização e Auditoria DENASUS
-            </h4>
-            <div style="display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.85rem;">
-              <div style="padding: 0.65rem; background: var(--bg-body); border-radius: 6px; border-left: 3px solid #0284c7;">
-                <strong>1. Regularidade Contratual:</strong> Cumprimento das cláusulas quantitativas e qualitativas da contratualização hospitalar com a Secretaria de Saúde.
+        <!-- Painel de Progresso & Barra de Progressão Interativa (Exigência do Usuário) -->
+        <div class="card" style="margin-bottom: 1.5rem; padding: 1.35rem 1.5rem; border-top: 4px solid #0284c7;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Andamento do Checklist DENASUS</span>
+              <div style="display: flex; align-items: baseline; gap: 0.75rem; margin-top: 2px;">
+                <span id="denasusProgressPct" style="font-size: 2.2rem; font-weight: 900; color: #0284c7; line-height: 1;">0%</span>
+                <span id="denasusProgressCount" style="font-size: 0.95rem; font-weight: 700; color: var(--text-title);">0 de 16 itens concluídos</span>
               </div>
-              <div style="padding: 0.65rem; background: var(--bg-body); border-radius: 6px; border-left: 3px solid #10b981;">
-                <strong>2. Fidedignidade de Produção:</strong> Rastreabilidade de prontuários, BPA e AIH aprovadas no SIA/SIH sem sobreposição ou inconsistência cadastral.
+            </div>
+
+            <!-- Mini KPIs de Contagem -->
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 0.5rem 0.85rem; text-align: center;">
+                <div style="font-size: 0.72rem; font-weight: 700; color: #10b981; text-transform: uppercase;">Concluídos</div>
+                <div id="denasusKpiConcluidos" style="font-size: 1.25rem; font-weight: 900; color: #10b981;">0</div>
               </div>
-              <div style="padding: 0.65rem; background: var(--bg-body); border-radius: 6px; border-left: 3px solid #8b5cf6;">
-                <strong>3. Aplicação dos Incentivos:</strong> Destinação e prestação de contas dos incentivos de custeio federais (MAC/FAEC) e estaduais (ASSISTIR/SUS Gaúcho).
+
+              <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 0.5rem 0.85rem; text-align: center;">
+                <div style="font-size: 0.72rem; font-weight: 700; color: #f59e0b; text-transform: uppercase;">Em Preparação</div>
+                <div id="denasusKpiAnalise" style="font-size: 1.25rem; font-weight: 900; color: #f59e0b;">0</div>
+              </div>
+
+              <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px; padding: 0.5rem 0.85rem; text-align: center;">
+                <div style="font-size: 0.72rem; font-weight: 700; color: #ef4444; text-transform: uppercase;">Pendentes</div>
+                <div id="denasusKpiPendentes" style="font-size: 1.25rem; font-weight: 900; color: #ef4444;">16</div>
               </div>
             </div>
           </div>
 
-          <div class="card" style="padding: 1.25rem;">
-            <h4 style="margin: 0 0 0.85rem 0; font-size: 1rem; font-weight: 800; color: var(--text-title); display: flex; align-items: center; gap: 0.5rem;">
-              <i data-lucide="file-up" style="color: #0284c7; width: 18px; height: 18px;"></i>
-              Módulo de Integração AUDSUS / RFINAL
-            </h4>
-            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.85rem;">
-              Ferramenta de validação prévia de relatórios do DATASUS para auditoria concorrente e blindagem contra glosas no faturamento hospitalar.
-            </p>
-            <div style="border: 2px dashed rgba(2, 132, 199, 0.3); border-radius: 8px; padding: 1.25rem; text-align: center; background: rgba(2, 132, 199, 0.02);">
-              <i data-lucide="upload-cloud" style="width: 32px; height: 32px; color: #0284c7; margin-bottom: 0.5rem;"></i>
-              <div style="font-weight: 700; font-size: 0.88rem; color: var(--text-title); margin-bottom: 0.25rem;">
-                Relatórios SIA/SUS & RFINAL
+          <!-- Barra de Progresso Visual Fluida -->
+          <div style="width: 100%; height: 14px; background: var(--border-color); border-radius: 99px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <div id="denasusProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #0284c7 0%, #38bdf8 100%); border-radius: 99px; transition: width 0.35s ease, background 0.35s ease;"></div>
+          </div>
+        </div>
+
+        <!-- Barra de Ferramentas, Busca e Filtros do Checklist -->
+        <div class="card" style="margin-bottom: 1.25rem; padding: 1rem 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.85rem;">
+            
+            <!-- Campo de Busca em Tempo Real -->
+            <div style="flex: 1 1 280px; position: relative;">
+              <i data-lucide="search" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--text-muted);"></i>
+              <input type="text" placeholder="Buscar por item, descrição, palavra-chave ou setor..." oninput="window.denasusSearch(this.value)" style="width: 100%; padding: 0.5rem 0.75rem 0.5rem 2.2rem; font-size: 0.85rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-title); outline: none;">
+            </div>
+
+            <!-- Botões de Filtro por Status -->
+            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center;">
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-right: 4px;">Filtros:</span>
+              <button type="button" class="denasus-filter-btn active" data-filter="todos" onclick="window.denasusSetFilter('todos')" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; font-weight: 700; border-radius: 6px; border: 1px solid var(--border-color); background: #0284c7; color: #ffffff; cursor: pointer;">
+                Todos (16)
+              </button>
+              <button type="button" class="denasus-filter-btn" data-filter="pendente" onclick="window.denasusSetFilter('pendente')" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; font-weight: 700; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-muted); cursor: pointer;">
+                Pendentes
+              </button>
+              <button type="button" class="denasus-filter-btn" data-filter="em_analise" onclick="window.denasusSetFilter('em_analise')" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; font-weight: 700; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-muted); cursor: pointer;">
+                Em Preparação
+              </button>
+              <button type="button" class="denasus-filter-btn" data-filter="concluido" onclick="window.denasusSetFilter('concluido')" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; font-weight: 700; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-muted); cursor: pointer;">
+                Concluídos
+              </button>
+            </div>
+
+            <!-- Ações em Lote -->
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <button type="button" onclick="window.denasusMarkAll('concluido')" class="btn-icon" style="width: auto; padding: 0.4rem 0.75rem; font-size: 0.76rem; display: flex; align-items: center; gap: 4px;" title="Marcar todos os itens como concluídos">
+                <i data-lucide="check-check" style="width: 14px; height: 14px; color: #10b981;"></i> Marcar Todos
+              </button>
+              <button type="button" onclick="window.denasusMarkAll('pendente')" class="btn-icon" style="width: auto; padding: 0.4rem 0.75rem; font-size: 0.76rem; display: flex; align-items: center; gap: 4px;" title="Desmarcar todos os itens">
+                <i data-lucide="rotate-ccw" style="width: 14px; height: 14px;"></i> Desmarcar Todos
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Lista Principal do Checklist Interativo DENASUS (Renderizada via JS) -->
+        <div id="denasusChecklistContainer">
+          <!-- Renderizado dinamicamente por denasus.js -->
+        </div>
+
+        <!-- Modal: Visualização de Texto Literal Completo do Ofício DENASUS -->
+        <div id="modalDenasusFullText" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center; padding: 1rem;">
+          <div class="card" style="max-width: 650px; width: 100%; box-shadow: var(--shadow-lg); animation: fadeIn 0.25s ease;">
+            <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+              <div class="card-title-group" style="display: flex; align-items: center; gap: 0.75rem;">
+                <div class="card-icon" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                  <i data-lucide="file-text" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div>
+                  <h3 id="denasusModalTitle" style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-title);">Texto Literal do Ofício DENASUS</h3>
+                  <span style="font-size: 0.75rem; color: var(--text-muted);">Comunicado de Auditoria nº 6 • Auditoria nº 20.307/2026</span>
+                </div>
               </div>
-              <span style="font-size: 0.78rem; color: var(--text-muted);">
-                Compatível com arquivos RFINAL_AMB (latin-1 / DATASUS / SIA)
-              </span>
+              <button onclick="window.denasusCloseFullTextModal()" style="border: none; background: transparent; color: var(--text-muted); cursor: pointer; font-size: 1.2rem; padding: 4px;">
+                <i data-lucide="x"></i>
+              </button>
+            </div>
+
+            <div style="margin-bottom: 1.25rem;">
+              <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.4rem;">
+                Setor Hospitalar Sugerido: <strong id="denasusModalSector" style="color: #0284c7;"></strong>
+              </div>
+              <div id="denasusModalContent" style="padding: 1rem 1.25rem; background: var(--bg-body); border-radius: 8px; border-left: 4px solid #0284c7; font-size: 0.95rem; line-height: 1.6; color: var(--text-title); font-family: inherit;">
+                <!-- Texto integral preenchido via JS -->
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 0.75rem; border-top: 1px solid var(--border-color); padding-top: 0.85rem;">
+              <button type="button" class="btn-primary" onclick="window.denasusCloseFullTextModal()" style="padding: 0.45rem 1.25rem; font-size: 0.85rem;">
+                Fechar
+              </button>
             </div>
           </div>
         </div>
+
       </section>
+
 
     </main>
 
@@ -7223,6 +7620,8 @@
   <script src="app.js?v=20260925_6"></script>
   <!-- Módulo de Prestação de Contas -->
   <script src="prestacao_contas.js?v=20260925_6"></script>
+  <!-- Módulo DENASUS (Auditoria & Checklist Oficial) -->
+  <script src="denasus.js?v=20260929_1"></script>
   <script>
     if (typeof renderAssistirSidebar === 'function') {
       renderAssistirSidebar();
@@ -7252,6 +7651,13 @@
         renderPrestacaoServico(window.currentPrestacaoKey || 'oftalmologia');
       } catch (e) {
         console.error('Error initializing Prestacao de Contas:', e);
+      }
+    }
+    if (typeof initDenasusModule === 'function') {
+      try {
+        initDenasusModule();
+      } catch (e) {
+        console.error('Error initializing DENASUS:', e);
       }
     }
   </script>

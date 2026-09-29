@@ -2,7 +2,41 @@
 
 Este arquivo registra cronologicamente todas as edições, implementações, refatorações de código e próximos passos para continuidade do projeto por qualquer agente de inteligência artificial ou desenvolvedor.
 
-## [2026-09-28] - Auditoria & Regulação: Criação do Novo Módulo e Botão "DENASUS" na SCB
+## [2026-09-29] - Auditoria DENASUS: Implementação Completa do Checklist Interativo, Tabela de Metadados e Relatório em PDF
+
+### 🎯 O que foi feito:
+1. **Página Oficial de Auditoria DENASUS (`#tab-denasus`)**:
+   - Header executivo oficial com brasão/ícone do Ministério da Saúde / DENASUS e indicação do Serviço Nacional de Auditoria do SUS no RS (SEAUD/RS/DENASUS/MS);
+   - Dois botões de ação de alto destaque no topo:
+     - **"Baixar Ofício DENASUS Original (PDF)"**: Permite baixar diretamente o PDF original digitalizado (`docs/DENASUS_Oficio_6_20307_2026_SCCB.pdf`);
+     - **"Gerar Relatório de Andamento (PDF)"**: Dispara emissão executiva formatada em A4 com dados da auditoria, barra de progresso, status dos 16 itens e assinaturas institucionais.
+2. **Tabela de Metadados Cadastrais do Ofício**:
+   - Detalhamento completo do **Comunicado de Auditoria nº 6** / **Auditoria n.º 20.307/2026**;
+   - Número do Processo SEI: `25000.104532/2026-93` | SEI nº `0057570172` | CRC `FD8751A9`;
+   - Data de Emissão: 21/08/2026 (Assinatura SEI em 25/08/2026 às 14:56);
+   - Prazo: **10 (dez) dias úteis**;
+   - Período de Abrangência Auditado: **Maio de 2025 a Junho de 2026** (14 meses);
+   - Contatos oficiais: Coordenadora Matilde Moreira do Nascimento (Cel: 51 99890-1165), E-mails `auditoria.semsrs@saude.gov.br` e `matilde.nascimento@saude.gov.br`;
+   - Canal de envio: Pasta compartilhada `SEAUD-RS-TRANF`;
+   - Responsável pelo Atendimento: Henry Ritta (Contratualização - Santa Casa de Bagé - `id-henry.ritta@outlook.com.br`).
+3. **Checklist Interativo com Barra de Progressão**:
+   - Transcrição literal e categorizada de todos os **16 itens (a até p)** do ofício oficial;
+   - Barra de progresso dinâmica em tempo real (0% a 100%) com cálculo automático e badges de status (Concluído, Em Preparação, Pendente);
+   - Persistência total de estado no navegador (`localStorage: scb_denasus_checklist_v2026`) para preservação de dados entre sessões;
+   - Busca em tempo real e filtros rápidos por status (`Todos`, `Pendentes`, `Em Preparação`, `Concluídos`);
+   - Botões de ações em lote: *Marcar Todos*, *Desmarcar Todos* e *Restaurar Checklist*.
+4. **Sinalizador de Observações / Tooltip de Texto Integral (Exigência do Usuário)**:
+   - Resumo objetivo em destaque para leitura ágil;
+   - Botão interativo `Texto Integral do Ofício DENASUS` com:
+     - **Tooltip flutuante (:hover)** com fundo escuro, contraste máximo, borda azul e seta indicadora, exibindo 100% da redação original do item sem cortes;
+     - **Modal expansível (clique)** para visualização ampliada e confortável do texto literal e setor responsável sugerido.
+   - Campo para anotações internas e status por item gravado automaticamente.
+5. **Novo Módulo JavaScript (`denasus.js`)**:
+   - Modularização desacoplada contendo dados, reatividade, persistência e motor de impressão/geração em PDF via iframe invisível.
+
+---
+
+
 
 ### 🎯 O que foi feito:
 1. **Novo Botão no Menu Principal (`.nav-tabs`)**:

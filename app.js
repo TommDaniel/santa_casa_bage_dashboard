@@ -470,6 +470,13 @@ function switchTab(targetRef, tabId) {
         console.warn('Alerta na renderizacao de Prestacao de Contas:', e);
       }
     }
+    if (idToActivate === 'tab-denasus') {
+      try {
+        if (typeof window.initDenasusModule === 'function') window.initDenasusModule();
+      } catch (e) {
+        console.warn('Alerta na renderizacao do DENASUS:', e);
+      }
+    }
     // 6. Recriar ícones e ajustar gráficos
     if (window.lucide && typeof lucide.createIcons === 'function') {
       lucide.createIcons();
